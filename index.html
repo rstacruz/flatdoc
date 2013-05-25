@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Doclet</title>
+
+  <!-- Doclet -->
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+  <script src='legacy.js'></script>
+  <script src='doclet.js'></script>
+
+  <!-- Doclet theme -->
+  <link  href='theme-white/style.css' rel='stylesheet'>
+  <script src='theme-white/script.js'></script>
+
+  <!-- Initializer -->
+  <script>
+    Doclet.run({
+      fetcher: Doclet.file('Readme.md')
+    });
+  </script>
+</head>
+<body>
+  <div role='doclet'>
+    <div role='doclet-menu'></div>
+    <div role='doclet-content'></div>
+  </div>
+</body>
+</html>

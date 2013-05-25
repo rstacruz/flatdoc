@@ -1,0 +1,10 @@
+{
+  "name": "doclet",
+  "description": "",
+  "keywords": [""],
+  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "version": "0.1.0",
+  "dependencies": {
+    "uglify-js": "*"
+  }
+}
