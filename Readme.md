@@ -44,3 +44,7 @@ A fetcher function.
 ``` js
 fetcher: Doclet.ajax('Readme.md')
 ```
+
+### super
+
+Do things.
