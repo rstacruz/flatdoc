@@ -4,12 +4,13 @@ STYLUS := ./node_modules/.bin/stylus -U -u nib
 all: \
 	flatdoc.js \
 	legacy.js \
-	theme-white/style.css
+	theme-white/style.css \
+	theme-white/script.js \
 
 watch:
 	while true; do make all | grep -v "Nothing"; sleep 1; done
 
-flatdoc.js: src/flatdoc.js vendor/marked.js vendor/jquery.scrollagent.js
+flatdoc.js: src/flatdoc.js vendor/marked.js
 	cat $^ > $@
 
 legacy.js: vendor/html5shiv.js vendor/respond.js
@@ -18,15 +19,17 @@ legacy.js: vendor/html5shiv.js vendor/respond.js
 %.css: %.styl
 	$(STYLUS) < $< > $@
 
+theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/jquery.anchorjump.js
+	cat $^ > $@
+
 # $ make v/0.1.0
 # Makes a distribution.
 #
-v/%: flatdoc.js
+v/%: all
 	mkdir -p $@
 	$(UGLIFY) < flatdoc.js > $@/flatdoc.js
 	$(UGLIFY) < legacy.js > $@/legacy.js
 	mkdir -p $@/theme-white
-	$(UGLIFY) < theme-white/script.js > $@/theme-white/script.js
 	cp theme-white/style.css $@/theme-white
 
 .PHONY: watch
