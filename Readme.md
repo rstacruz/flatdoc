@@ -98,7 +98,6 @@ up as buttons.
 > [View in GitHub >][project]
 
 
-
 Customizing
 -----------
 

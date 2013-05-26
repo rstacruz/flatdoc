@@ -72,8 +72,10 @@
   Parser.setMarkedOptions = function() {
     marked.setOptions({
       highlight: function(code, lang) {
-        var fn = Flatdoc.highlighters[lang];
-        if (fn) return fn(code);
+        if (lang) {
+          var fn = Flatdoc.highlighters[lang] || Flatdoc.highlighters.generic;
+          return fn(code);
+        }
         return code;
       }
     });
@@ -191,6 +193,26 @@
       .replace(/\b(function|new|throw|return|var|if|else)\b/gm, '<span class="keyword">$1</span>');
   };
 
+  Highlighters.html = function(code) {
+    return code
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
+      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
+      .replace(/&lt;!--(.*)--&gt;/g, '<span class="comment">&lt;!--$1--&gt;</span>')
+      .replace(/&lt;([^!][^ ]*)/g, '&lt;<span class="keyword">$1</span>');
+  };
+
+  Highlighters.generic = function(code) {
+    return code
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
+      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
+      .replace(/(\/\/|#)(.*)/gm, '<span class="comment">$1$2</span>')
+      .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')
+      .replace(/(\d+)/gm, '<span class="number">$1</span>');
+  };
 
   /**
    * Menu view. Renders menus
