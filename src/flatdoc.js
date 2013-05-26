@@ -125,21 +125,26 @@
     var $el = $("<ul>");
 
     function process(node, $parent) {
+      var id = node.id || 'root';
+
       var $li = $('<li>')
+        .attr('id', id + '-item')
+        .addClass('level-' + node.level)
         .appendTo($parent);
 
       if (node.section) {
         var $a = $('<a>')
           .html(node.section)
-          .attr('id', node.id + '-item')
+          .attr('id', id + '-link')
           .attr('href', '#' + node.id)
+          .addClass('level-' + node.level)
           .appendTo($li);
       }
 
       if (node.items.length > 0) {
         var $ul = $('<ul>')
           .addClass('level-' + (node.level+1))
-          .attr('id', node.id + '-list')
+          .attr('id', id + '-list')
           .appendTo($li);
 
         node.items.forEach(function(item) {

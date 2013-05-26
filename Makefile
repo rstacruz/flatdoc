@@ -9,7 +9,7 @@ all: \
 watch:
 	while true; do make all | grep -v "Nothing"; sleep 1; done
 
-flatdoc.js: src/flatdoc.js vendor/marked.js
+flatdoc.js: src/flatdoc.js vendor/marked.js vendor/jquery.scrollagent.js
 	cat $^ > $@
 
 legacy.js: vendor/html5shiv.js vendor/respond.js

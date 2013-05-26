@@ -346,20 +346,23 @@ a.big.button
 
 // Menu items
 .menu
-  .level-1 > li + li
+  ul.level-1 > li + li
     margin-top: 20px
 
   a
+    box-sizing: border-box
+
     display: block
-    padding-top: 2px
-    padding-bottom: 2px
+    padding-top: 1px
+    padding-bottom: 1px
+    margin-right: ($sidepad * -1)
 
     &, &:visited
       color: $accent
     &:hover
       color: $accent*0.8
 
-  .level-1 > li > a
+  a.level-1
     font-family: montserrat, sans-serif
     text-transform: uppercase
     font-size: 0.9em
@@ -369,10 +372,10 @@ a.big.button
     &:hover
       color: $grey*0.6
 
-  .level-2 > li > a
+  a.level-2
     font-weight: normal
 
-  .level-3 > li > a
+  a.level-3
     font-weight: normal
     font-size: 0.9em
     padding-left: 10px
@@ -381,5 +384,6 @@ a.big.button
     &, &:visited, &:hover
       color: $txt !important
     font-weight: bold !important
+    border-right: solid 3px $accent
 
 

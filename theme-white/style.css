@@ -267,8 +267,6 @@ a:hover {
     -webkit-border-radius: 8px;
     border-radius: 8px;
     border: solid 4px #f3f6fb;
-    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
   }
   .content pre > code:hover::-webkit-scrollbar-thumb {
     background: #999;
@@ -497,8 +495,6 @@ a.big.button:hover:visited {
     -webkit-border-radius: 8px;
     border-radius: 8px;
     border: solid 4px #fff;
-    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
   }
   .menubar.fixed:hover::-webkit-scrollbar-thumb {
     background: #999;
@@ -509,13 +505,17 @@ a.big.button:hover:visited {
 .menubar {
   font-size: 0.9em;
 }
-.menu .level-1 > li + li {
+.menu ul.level-1 > li + li {
   margin-top: 20px;
 }
 .menu a {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-right: -30px;
 }
 .menu a,
 .menu a:visited {
@@ -524,29 +524,30 @@ a.big.button:hover:visited {
 .menu a:hover {
   color: #228a8a;
 }
-.menu .level-1 > li > a {
+.menu a.level-1 {
   font-family: montserrat, sans-serif;
   text-transform: uppercase;
   font-size: 0.9em;
   font-weight: bold;
 }
-.menu .level-1 > li > a,
-.menu .level-1 > li > a:visited {
+.menu a.level-1,
+.menu a.level-1:visited {
   color: #9090aa;
 }
-.menu .level-1 > li > a:hover {
+.menu a.level-1:hover {
   color: #565666;
 }
-.menu .level-2 > li > a {
+.menu a.level-2 {
   font-weight: normal;
 }
-.menu .level-3 > li > a {
+.menu a.level-3 {
   font-weight: normal;
   font-size: 0.9em;
   padding-left: 10px;
 }
 .menu a.active {
   font-weight: bold !important;
+  border-right: solid 3px #2badad;
 }
 .menu a.active,
 .menu a.active:visited,
