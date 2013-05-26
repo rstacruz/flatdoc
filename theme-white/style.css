@@ -554,4 +554,18 @@ a.big.button:hover:visited {
 .menu a.active:hover {
   color: #505050 !important;
 }
+.title-area {
+  min-height: 500px;
+}
+.title-card {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 200px 0;
+  position: relative;
+  z-index: 1;
+}
 
