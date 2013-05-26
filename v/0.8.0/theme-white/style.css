@@ -92,8 +92,10 @@ a img {
 @import url("http://fonts.googleapis.com/css?family=Montserrat");
 html,
 body {
-  overflow-x: hidden;
   height: 100%;
+}
+html {
+  overflow-x: hidden;
 }
 body,
 td,
@@ -427,24 +429,36 @@ a:hover {
   float: left;
 }
 .header .right {
+  text-align: right;
   position: absolute;
   right: 15px;
   top: 15px;
+}
+.header .right iframe {
+  display: inline-block;
+  vertical-align: middle;
 }
 .header h1 {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-weight: bold;
   font-family: montserrat, sans-serif;
-  color: #9090aa;
   font-size: 13px;
 }
-.header a {
+.header h1,
+.header h1 a,
+.header h1 a:visited {
+  color: #9090aa;
+}
+.header h1 a:hover {
+  color: #505050;
+}
+.header li a {
   font-size: 0.88em;
   color: #9090aa;
   display: block;
 }
-.header a:hover {
+.header li a:hover {
   color: #3a3a44;
 }
 @media (min-width: 480px) /* Tablet & Desktop */ {
@@ -470,7 +484,7 @@ a:hover {
   .header li:last-child {
     border-right: 0;
   }
-  .header a {
+  .header li a {
     padding: 0 15px;
   }
 }
