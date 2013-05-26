@@ -117,11 +117,6 @@ Flatdoc then simply renders *menu* and *content* DOM elements to your HTML
 document. Flatdoc also comes with a default theme to style your page for you, or
 you may opt to create your own styles.
 
-Making documentation
---------------------
-
-Simply create a Markdown document.
-
 Markdown extras
 ---------------
 
@@ -153,7 +148,10 @@ up as buttons.
 > [View in GitHub >][project]
 
 Customizing
------------
+===========
+
+Basic
+-----
 
 ### Theme options
 
