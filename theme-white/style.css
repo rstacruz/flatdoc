@@ -136,6 +136,8 @@ a:hover {
 .content h5,
 .content h6 {
   font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 .content pre {
   font-family: Menlo, monospace;
