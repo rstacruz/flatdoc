@@ -9,6 +9,7 @@ way to make open source documentation from *Readme* files.
  * No build process needed
  * Deployable via GitHub Pages
  * Can fetch GitHub Readme files
+ * Gorgeous default theme (and it's responsive)
  * Just create an HTML file and deploy!
 
 *Current version: [0.8.0][dist]*
