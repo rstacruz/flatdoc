@@ -761,13 +761,13 @@ a.big.button:hover:visited {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 30px;
   width: 9px;
-  height: 9px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  border: solid 2px #2badad;
+  height: 3px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #2badad;
 }
 code .string,
 code .number {

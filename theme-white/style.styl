@@ -538,19 +538,19 @@ a.big.button
     &, &:visited, &:hover
       color: $txt !important
     font-weight: bold !important
-    // border-right: solid 3px $accent
     
+    // Indicator
     &:after
       content: ''
       display: block
       box-sizing: border-box
 
-      absolute: top 5px right $sidepad
+      absolute: top 10px right $sidepad
 
       width: 9px
-      height: 9px
-      border-radius: 4px
-      border: solid 2px $accent
+      height: 3px
+      border-radius: 2px
+      background: $accent
 
 // ----------------------------------------------------------------------------
 // Syntax highlighting
