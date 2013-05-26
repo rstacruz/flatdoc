@@ -63,6 +63,7 @@
     // Mangle content
     Transformer.addIDs(html);
     Transformer.buttonize(html);
+    Transformer.smartquotes(html);
     var menu = Transformer.getMenu(html);
 
     return { title: title, content: html, menu: menu };
@@ -129,6 +130,10 @@
     return re;
   };
 
+  /**
+   * Changes "button >" text to buttons.
+   */
+
   Transformer.buttonize = function($content) {
     $content.find('a').each(function() {
       var $a = $(this);
@@ -136,6 +141,19 @@
       var m = $a.text().match(/^(.*) >$/);
       if (m) $a.text(m[1]).addClass('button');
     });
+  };
+
+  /**
+   * Applies smart quotes to a given element.
+   * It leaves `code` and `pre` blocks alone.
+   */
+
+  Transformer.smartquotes = function ($content) {
+    var nodes = getTextNodesIn($content);
+    for (var i=0; i<nodes.length; i++) {
+      var node = nodes[i];
+      node.nodeValue = quotify(node.nodeValue);
+    }
   };
 
   /**
@@ -267,4 +285,26 @@
   Runner.prototype.el = function(aspect) {
     return $(this[aspect], this.root);
   };
+
+  /*
+   * Helpers
+   */
+
+  // http://stackoverflow.com/questions/298750/how-do-i-select-text-nodes-with-jquery
+  function getTextNodesIn(el) {
+    return $(el).find(":not(iframe,pre,code)").andSelf().contents().filter(function() {
+      return this.nodeType == 3;
+    });
+  }
+
+  // http://www.leancrew.com/all-this/2010/11/smart-quotes-in-javascript/
+  function quotify(a) {
+    a = a.replace(/(^|[\-\u2014\s(\["])'/g, "$1\u2018");        // opening singles
+    a = a.replace(/'/g, "\u2019");                              // closing singles & apostrophes
+    a = a.replace(/(^|[\-\u2014\/\[(\u2018\s])"/g, "$1\u201c"); // opening doubles
+    a = a.replace(/"/g, "\u201d");                              // closing doubles
+    a = a.replace(/\.\.\./g, "\u2026");                         // ellipses
+    a = a.replace(/--/g, "\u2014");                             // em-dashes
+    return a;
+  }
 })(jQuery);

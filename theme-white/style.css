@@ -164,6 +164,12 @@ a:hover {
   font-size: 0.85em;
   letter-spacing: -1px;
 }
+.content blockquote :first-child {
+  padding-top: 0;
+}
+.content blockquote :last-child {
+  padding-bottom: 0;
+}
 .content-root {
   position: relative;
 }
@@ -182,6 +188,10 @@ a:hover {
 }
 .content:after {
   clear: both;
+}
+.content blockquote {
+  color: #9090aa;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
 .content h1,
 .content h2,
@@ -306,11 +316,13 @@ a:hover {
 .content .button:visited {
   background: #2badad;
   color: #fff;
+  text-shadow: none;
 }
 .content .button:hover {
   border-color: #111;
   background: #111;
   color: #fff;
+  text-shadow: none;
 }
 .content .button + em {
   color: #9090aa;

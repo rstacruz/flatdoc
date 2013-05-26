@@ -57,6 +57,48 @@ Flatdoc then simply renders *menu* and *content* DOM elements to your HTML
 document. Flatdoc also comes with a default theme to style your page for you, or
 you may opt to create your own styles.
 
+Making documentation
+--------------------
+
+Simply create a Markdown document.
+
+> See:
+>
+> [foo][project]  
+> [bar][project]
+
+Markdown extras
+---------------
+
+Flatdoc offers a few harmless, unobtrusive extras that come in handy in building
+documentation sites.
+
+#### Blockquotes
+
+Blockquotes show up as side figures. This is useful for providing side
+information or non-code examples.
+
+> Blockquotes are blocks that begin with `>`.
+
+#### Smart quotes
+
+Single quotes, double quotes, and double-hyphens are automatically replaced to
+their typographically-accurate equivalent. This, of course, does not apply to
+`<code>` and `<pre>` blocks to leave code alone.
+
+> "From a certain point onward there is no longer any turning back. That is the
+> point that must be reached."  
+> --Franz Kafka
+
+#### Buttons
+
+If your link text has a `>` at the end (for instance: `Continue >`), they show
+up as buttons.
+
+> [View in GitHub >][project]
+
+
+
 Customizing
 -----------
 
@@ -91,6 +133,7 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [nd]:  http://nadarei.co
 
 [GitHub pages]: https://pages.github.com
+[project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/blob/master/template.html
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked

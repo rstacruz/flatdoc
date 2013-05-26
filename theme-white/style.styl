@@ -111,6 +111,12 @@ a
     font-size: 0.85em
     letter-spacing: -1px
 
+  blockquote
+    :first-child
+      padding-top: 0
+    :last-child
+      padding-bottom: 0
+
 // ----------------------------------------------------------------------------
 // Content
 
@@ -125,6 +131,10 @@ a
   clearfix()
 
   max-width: 700px
+
+  blockquote
+    color: $grey
+    text-shadow: 0 1px 0 rgba(white, 0.5)
 
   h1, h2, h3
     antialias()
@@ -209,6 +219,7 @@ a
     &, &:visited
       background: $accent
       color: white
+      text-shadow: none
 
     &:hover
       border-color: #111
