@@ -712,6 +712,8 @@ code .comment {
 }
 .title-area > img.bg {
   z-index: 0;
+  position: absolute;
+  left: -9999px;
 }
 .title-area > div {
   position: relative;

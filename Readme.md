@@ -66,6 +66,10 @@ Doclet.run({
 });
 ```
 
+After you've done this, you probably want to deploy it via [GitHub Pages].
+
+[GitHub Pages guide >][GitHub Pages]
+
 ### Via a file
 
 You may also fetch a file. In this example, this fetches the file `Readme.md` in
@@ -86,12 +90,21 @@ Doclet.run({
 });
 ```
 
-
 How it works
 ------------
 
-Flatdoc utilizes the [GitHub API] to fetch your project's Readme files. (You may
-also configure it to fetch any arbitrary URL via AJAX.)
+Flatdoc is a hosted `.js` file (along with a theme and its assets) that you can
+add into any page hosted anywhere.
+
+#### All client-side
+
+There are no build scripts or 3rd-party services involved. Everything is done in
+the browser. Worried about performance? Oh, It's pretty fast.
+
+Flatdoc utilizes the [GitHub API] to fetch your project's Readme files. You may
+also configure it to fetch any arbitrary URL via AJAX.
+
+#### Lightning-fast parsing
 
 Next, it uses [marked], an extremely fast Markdown parser that has support for
 GitHub flavored Markdown.
@@ -184,15 +197,36 @@ $(document).on('flatdoc:ready', function() {
 });
 ```
 
+Full customization
+------------------
+
+You don't have to be restricted to the given theme. Flatdoc is just really one
+`.js` file that expects 2 HTML elements (for *menu* and *content*). Start with
+the blank template and customize as you see fit.
+
+[Get blank template >][template]
+
+``` html
+<html>
+  <head>
+    <script src='jquery.js'></script>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
+    <!-- Initializer -->
+    <script>
+      Doclet.run({
+        fetcher: Doclet.github('USER/REPO')
+      });
+    </script>
+  </head>
+
+  <body role='flatdoc'>
+    <div role='flatdoc-menu'></div>
+    <div role='flatdoc-content'></div>
+  </body>
+</html>
+```
 Misc
 ====
-
-Changelog
----------
-
-#### v0.8.0 - May 26, 2013
-
-First version.
 
 Inspirations
 ------------
@@ -206,6 +240,13 @@ The following projects have inspired Flatdoc.
  and side-by-side documentation in general.
 
  * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
+
+Changelog
+---------
+
+#### v0.8.0 - May 26, 2013
+
+First version.
 
 Acknowledgements
 ----------------
@@ -234,3 +275,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [dox]: https://github.com/visionmedia/dox
 [Stripe]: https://stripe.com/docs/api
 [Docco]: http://jashkenas.github.com/docco
+[blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/blank.html
