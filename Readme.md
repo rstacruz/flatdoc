@@ -1,16 +1,17 @@
 Flatdoc
 =======
 
-Flatdoc is a small JavaScript file that fetches Markdown files (from Github or
-    any URL) and renders them as full pages. Essentially, it's the easiest way
-to make open source documentation from *Readme* files.
+Flatdoc is a small JavaScript file that fetches Markdown files and renders them
+as full pages. Essentially, it's the easiest
+way to make open source documentation from *Readme* files.
 
  * No server-side components
  * No build process needed
  * Deployable via GitHub Pages
+ * Can fetch GitHub Readme files
  * Just create an HTML file and deploy!
 
-*Current version: 0.8.0*
+*Current version: [0.8.0][dist]*
 
 Getting started
 ---------------
@@ -174,6 +175,13 @@ appear on the left.
 <body class='no-literate'>
 ```
 
+#### large-brief
+Makes the opening paragraph large.
+
+``` html
+<body class='large-brief'>
+```
+
 ### Adding more markup
 
 You have full control over the HTML file, just add markup wherever you see fit.
@@ -278,3 +286,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [Stripe]: https://stripe.com/docs/api
 [Docco]: http://jashkenas.github.com/docco
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/blank.html
+[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.0

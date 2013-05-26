@@ -89,7 +89,7 @@ td {
 a img {
   border: none;
 }
-@import url("http://fonts.googleapis.com/css?family=Montserrat");
+@import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans");
 html,
 body {
   height: 100%;
@@ -720,6 +720,11 @@ code .keyword {
 }
 code .comment {
   color: #adadcc;
+}
+.large-brief .content > h1:first-child + p {
+  font-size: 1.3em;
+  font-family: Open Sans, sans-serif;
+  font-weight: 300;
 }
 .title-area {
   min-height: 100px;
