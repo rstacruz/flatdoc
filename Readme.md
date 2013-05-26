@@ -57,6 +57,16 @@ Doclet.run({
 });
 ```
 
+You may also fetch another file other than the Readme file, just specify it as
+the 2nd parameter.
+
+``` javascript
+Doclet.run({
+  fetcher: Doclet.github('USER/REPO', 'Changelog.md')
+});
+```
+
+
 #### Via a file
 
 You may also fetch a file. In this example, this fetches the file `Readme.md` in

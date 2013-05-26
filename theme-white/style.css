@@ -92,8 +92,10 @@ a img {
 @import url("http://fonts.googleapis.com/css?family=Montserrat");
 html,
 body {
-  overflow-x: hidden;
   height: 100%;
+}
+html {
+  overflow-x: hidden;
 }
 body,
 td,

@@ -20,22 +20,11 @@
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('Readme.md')
-    });
-    $(document).on('flatdoc:done', function() {
-      // Remove some sections I don't want
-      $("#misc").remove();
+      fetcher: Flatdoc.file('Reference.md')
     });
   </script>
 </head>
 <body role='flatdoc'>
-
-  <div class='title-area title-card'>
-    <div class='headline'>
-      <h1>Documentation is easy.</h1>
-      <p>Flatdoc is the fastest way to create a site for your open source project.</h5>
-    </div>
-  </div>
 
   <div class='header'>
     <div class='left'>
@@ -54,9 +43,6 @@
 
   <div class='content-root'>
     <div class='menubar'>
-      <div class='section'>
-        <a class='big button' href='https://github.com/rstacruz/backbone-patterns'>View in GitHub</a>
-      </div>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
     <div role='flatdoc-content' class='content'></div>

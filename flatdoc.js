@@ -22,6 +22,9 @@
 
   /**
    * File fetcher function.
+   *
+   * Fetches a given `url` via AJAX.
+   * See [Runner#run()] for a description of fetcher functions.
    */
 
   Flatdoc.file = function(url) {
@@ -32,8 +35,24 @@
     };
   };
 
-  Flatdoc.github = function(repo) {
-    var url = 'https://api.github.com/repos/'+repo+'/readme';
+  /**
+   * Github fetcher.
+   * Fetches from repo `repo` (in format 'user/repo').
+   * 
+   * If the parameter `filepath` is supplied, it fetches the contents of that
+   * given file in the repo.
+   *
+   * See [Runner#run()] for a description of fetcher functions.
+   *
+   * See: http://developer.github.com/v3/repos/contents/
+   */
+  Flatdoc.github = function(repo, filepath) {
+    var url;
+    if (filepath) {
+      url = 'https://api.github.com/repos/'+repo+'/contents/'+filepath;
+    } else {
+      url = 'https://api.github.com/repos/'+repo+'/readme';
+    }
     return function(callback) {
       $.get(url)
         .fail(function(e) { callback(e, null); })
@@ -122,22 +141,32 @@
    */
 
   Transformer.getMenu = function($content) {
-    var re = {items: [], id: '', level: 0};
-    var cache = [re];
+    var root = {items: [], id: '', level: 0};
+    var cache = [root];
+
+    function mkdir_p(level) {
+      var parent = (level > 1) ? mkdir_p(level-1) : root;
+      if (!cache[level]) {
+        var obj = { items: [], level: level };
+        cache[level] = obj;
+        parent.items.push(obj);
+        return obj;
+      }
+      return cache[level];
+    }
 
     $content.find('h1, h2, h3').each(function() {
       var $el = $(this);
       var level = +(this.nodeName.substr(1));
 
-      var parent = cache[level-1];
-      if (!parent) throw "Nesting problem, expected level " + (level-1);
+      parent = mkdir_p(level-1);
 
       var obj = { section: $el.text(), items: [], level: level, id: $el.attr('id') };
       parent.items.push(obj);
       cache[level] = obj;
     });
 
-    return re;
+    return root;
   };
 
   /**
@@ -263,8 +292,21 @@
   };
 
   /**
-   * Runner.
+   * A runner module that fetches via a `fetcher` function.
+   *
+   *   var runner = new Flatdoc.runner({
+   *     fetcher: Flatdoc.url('readme.txt')
+   *   });
+   *   runner.run();
+   *
+   * The following options are available:
+   *
+   *  - `fetcher` - a function that takes a callback as an argument and
+   *    executes that callback when data is returned.
+   *
+   * See: [Flatdoc.run()]
    */
+
   var Runner = Flatdoc.runner = function(options) {
     this.initialize(options);
   };

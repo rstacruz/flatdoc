@@ -1,5 +1,6 @@
 UGLIFY := ./node_modules/.bin/uglifyjs --comments "/^!/"
 STYLUS := ./node_modules/.bin/stylus -U -u nib
+DOX := dox
 
 all: \
 	flatdoc.js \
@@ -21,6 +22,9 @@ legacy.js: vendor/html5shiv.js vendor/respond.js
 
 theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/jquery.anchorjump.js
 	cat $^ > $@
+
+Reference.md: src/flatdoc.js Makefile
+	$(DOX) -a < $< | sed "s/^## \(.*\.\)/### \1/g" > $@
 
 # $ make v/0.1.0
 # Makes a distribution.
