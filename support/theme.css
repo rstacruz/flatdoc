@@ -5,12 +5,21 @@
   position: relative;
   z-index: 1;
 
-  text-shadow: 0 0 4px rgba(black, 0.3); }
+  width: 100%;
+  display: table; }
+
+.title-card > .in {
+  display: table-cell;
+  vertical-align: middle; }
 
 .title-card .headline {
+  vertical-align: middle;
+  display: inline-block;
+
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
   padding-left: 40px;
   padding-right: 40px;
-  margin: 0 auto;
   max-width: 800px;
   line-height: 1.7; }
 
@@ -18,14 +27,29 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 3.3em;
   font-weight: 100;
-  line-height: 1.4;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
   color: #fff; }
 
 .title-card p {
   font-family: montserrat, sans-serif;
+  color: #b8eaea;
+  font-size: 1.3em; }
+
+.title-card h5 {
+  margin-top: 150px;
+
+  font-family: montserrat, sans-serif;
+  font-weight: bold;
   color: #fff;
-  opacity: 0.5;
-  font-size: 1.2em; }
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.8em; }
+
+.title-card h5 span {
+  display: inline-block;
+  padding: 5px 20px;
+  border: solid 3px #fff; }
 
 @media (max-width: 480px) /* Mobile */ {
   .title-card .headline { }
