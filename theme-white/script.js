@@ -70,13 +70,13 @@
     $window
       .on('resize.sidestick', function() {
         elY = $sidebar.offset().top;
+        $window.trigger('scroll.sidestick');
       })
       .on('scroll.sidestick', function() {
         var scrollY = $window.scrollTop();
         $sidebar.toggleClass('fixed', (scrollY >= elY));
       })
-      .trigger('resize.sidestick')
-      .trigger('scroll.sidestick');
+      .trigger('resize.sidestick');
   });
 
 })(jQuery);
