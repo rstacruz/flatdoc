@@ -6,6 +6,8 @@ cli
   .option('--private', 'Show privates')
   .option('--source', 'Show sources')
   .option('--debug', 'Print debug JSON')
+  .option('--module-level [n]', 'Heading level for modules [2]', 2)
+  .option('--default-level [n]', 'Heading level for everything [3]', 3)
   .option('--lang <lang>', 'Sets highlight block language [js]', 'js')
   .on('--help', function() {
     console.log('  Basic use:');
@@ -51,8 +53,8 @@ function markdownify(block, i, options) {
 
   // Heading
   if (i === 0) { level = 1; }
-  else if (isModule(name)) { level = 2; }
-  else { level = 3; }
+  else if (isModule(name)) { level = options.moduleLevel; }
+  else { level = options.defaultLevel; }
   lines.push(heading(name, level));
   lines.push(fixMarkdown(block.description.full, options.lang));
   lines.push("");

@@ -25,7 +25,7 @@ theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/
 	cat $^ > $@
 
 Reference.md: src/flatdoc.js
-	$(DOX) -r < $< | node support/dox2md.js > $@
+	$(DOX) -r < $< | node support/dox2md.js --default-level 3 > $@
 
 # $ make v/0.1.0
 # Makes a distribution.
