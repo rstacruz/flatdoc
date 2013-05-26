@@ -260,6 +260,12 @@ The following projects have inspired Flatdoc.
 
  * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
 
+Attributions
+------------
+
+[Photo](http://www.flickr.com/photos/doug88888/2953428679/) taken from Flickr,
+licensed under Creative Commons.
+
 Changelog
 ---------
 
