@@ -556,7 +556,7 @@ a.big.button:hover:visited {
 }
 code .string,
 code .number {
-  color: #2badad;
+  color: #3ac;
 }
 code .init {
   color: #383;
@@ -568,17 +568,25 @@ code .comment {
   color: #adadcc;
 }
 .title-area {
-  min-height: 500px;
+  min-height: 100px;
+  padding: 50px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .title-card {
   background: #222;
   color: #ccc;
   text-align: center;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 200px 0;
   position: relative;
   z-index: 1;
+}
+@media (min-width: 480px) /* Tablet & Desktop */ {
+  .title-area {
+    min-height: 500px;
+  }
+  .title-card {
+    padding: 200px 0;
+  }
 }
 

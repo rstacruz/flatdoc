@@ -391,7 +391,7 @@ a.big.button
 
 code
   .string, .number
-    color: $accent
+    color: #3ac
   .init
     color: #383
   .keyword
@@ -402,14 +402,20 @@ code
 // ----------------------------------------------------------------------------
 
 .title-area
-  min-height: 500px
+  min-height: 100px
+  padding: 50px 0
+  box-sizing: border-box
 
 .title-card
   background: #222
   color: #ccc
   text-align: center
-  box-sizing: border-box
-  padding: 200px 0
 
   position: relative
   z-index: 1
+
+@media (min-width: 480px) /* Tablet & Desktop */
+  .title-area
+    min-height: 500px
+  .title-card
+    padding: 200px 0
