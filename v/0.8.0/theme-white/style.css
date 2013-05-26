@@ -777,7 +777,6 @@ code .comment {
 }
 .title-area {
   min-height: 100px;
-  padding: 50px 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
