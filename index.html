@@ -16,15 +16,12 @@
   <link  href='theme-white/style.css' rel='stylesheet'>
   <script src='theme-white/script.js'></script>
   <link  href='support/theme.css' rel='stylesheet'>
+  <script src='support/theme.js'></script>
 
   <!-- Initializer -->
   <script>
     Flatdoc.run({
       fetcher: Flatdoc.file('Readme.md')
-    });
-
-    $(document).on('flatdoc:ready', function() {
-      $("#misc, #basic").remove();
     });
   </script>
 

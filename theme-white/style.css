@@ -435,6 +435,18 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 .content .button + em {
   color: #9090aa;
 }
+.content .button.light,
+.content .button.light:visited {
+  background: transparent;
+  color: #9090aa;
+  border-color: #9090aa;
+  text-shadow: none;
+}
+.content .button.light:hover {
+  border-color: #9090aa;
+  background: #9090aa;
+  color: #fff;
+}
 @media (min-width: 1180px) /* Big desktop */ {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
