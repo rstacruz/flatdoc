@@ -1,15 +1,22 @@
 Flatdoc
 =======
 
-Documentation generator.
+Flatdoc is a small browser JavaScript file that fetches Markdown files (from
+    Github or any URL) and renders them as full pages. Essentially, it's the
+easiest way to make open source documentation from *Readme* files.
+
+Flatdoc has no server-side components or any build process needed. Simply create
+an HTML file and deploy.
 
 Getting started
 ---------------
 
-Simply create a file based on the template, which has a bare DOM, link to the
+Create a file based on the template, which has a bare DOM, link to the
 scripts, and a link to a theme. It will look something like this (not exact).
+For GitHub projects, simply place this file in your [GitHub pages] branch and
+you're all good to go.
 
-[View template >](http://foo.com) *Opens in new window*
+[Download template >][template] *Opens in new window*
 
 ``` html
 <html>
@@ -36,6 +43,24 @@ scripts, and a link to a theme. It will look something like this (not exact).
 </body>
 </html>
 ```
+
+How it works
+------------
+
+Flatdoc utilizes the [GitHub API] to fetch your project's Readme files. (You may
+also configure it to fetch any arbitrary URL via AJAX.)
+
+Next, it uses [marked], an extremely fast Markdown parser that has support for
+GitHub flavored Markdown.
+
+Flatdoc then simply renders *menu* and *content* DOM elements to your HTML
+document. Flatdoc also comes with a default theme to style your page for you, or
+you may opt to create your own styles.
+
+Customizing
+-----------
+
+You can customize it to your seeds.
 
 Misc
 ====
@@ -64,3 +89,8 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [rsc]: http://ricostacruz.com
 [c]:   http://github.com/rstacruz/flatdoc/contributors
 [nd]:  http://nadarei.co
+
+[GitHub pages]: https://pages.github.com
+[template]: https://github.com/rstacruz/flatdoc/blob/master/template.html
+[GitHub API]: http://github.com/api
+[marked]: https://github.com/chjj/marked

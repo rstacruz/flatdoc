@@ -90,6 +90,10 @@ a img {
   border: none;
 }
 @import url("http://fonts.googleapis.com/css?family=Montserrat");
+html,
+body {
+  overflow-x: hidden;
+}
 body,
 td,
 textarea,
