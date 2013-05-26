@@ -300,7 +300,7 @@ body.big-h3 .content h3 {
   .content .big-heading:before,
 body.big-h3 .content h3:before {
     background: #dfe2e7;
-    left: -20px;
+    left: -40px;
     top: -20px;
     width: 120%;
   }
