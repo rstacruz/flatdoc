@@ -28,6 +28,20 @@ $sidebar-width = 230px
 $content-width = 550px
 $pre-width = 380px
 
+scrollbar($bg=white)
+  &
+    -webkit-overflow-scrolling: touch
+  &::-webkit-scrollbar
+    width: 15px
+    height: 15px
+  &::-webkit-scrollbar-thumb
+    background: #ddd
+    border-radius: 8px
+    border: solid 4px $bg
+  &:hover::-webkit-scrollbar-thumb
+    background: #999
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.2)
+
 // ----------------------------------------------------------------------------
 // Fonts
 
@@ -152,8 +166,9 @@ a
       display: block
       padding: 10px
       border-radius: 2px
-      -webkit-overflow-scrolling: touch
+
       overflow: auto
+      scrollbar($offwhite)
     
 // ----------------------------------------------------------------------------
 // Literate mode content
@@ -322,7 +337,8 @@ a.big.button
 
   .menubar.fixed
     position: fixed
-    -webkit-overflow-scrolling: touch
+
+    scrollbar()
     overflow-y: auto
 
 .menubar

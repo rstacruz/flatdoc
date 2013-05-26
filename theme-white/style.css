@@ -253,8 +253,27 @@ a:hover {
     padding: 10px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    -webkit-overflow-scrolling: touch;
     overflow: auto;
+  }
+  .content pre > code {
+    -webkit-overflow-scrolling: touch;
+  }
+  .content pre > code::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+  .content pre > code::-webkit-scrollbar-thumb {
+    background: #ddd;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: solid 4px #f3f6fb;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
+  }
+  .content pre > code:hover::-webkit-scrollbar-thumb {
+    background: #999;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   }
 }
 @media (min-width: 1180px) /* Big desktop */ {
@@ -464,8 +483,27 @@ a.big.button:hover:visited {
   }
   .menubar.fixed {
     position: fixed;
-    -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+  }
+  .menubar.fixed {
+    -webkit-overflow-scrolling: touch;
+  }
+  .menubar.fixed::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+  .menubar.fixed::-webkit-scrollbar-thumb {
+    background: #ddd;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: solid 4px #fff;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0);
+  }
+  .menubar.fixed:hover::-webkit-scrollbar-thumb {
+    background: #999;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   }
 }
 .menubar {
