@@ -1,0 +1,170 @@
+@import 'nib'
+global-reset()
+
+$body-font = Helvetica Neue, Open Sans, sans-serif
+$mono-font = Menlo, monospace
+
+$pad = 40px
+$vmargin = 10px
+$offwhite = #ececf3
+$grey = #a0a0b0
+$txt = #505050
+$accent = #3ad
+$sidebar-width = 230px
+$content-width = 550px
+$pre-width = 380px
+
+// ----------------------------------------------------------------------------
+// Fonts
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat)
+
+// ----------------------------------------------------------------------------
+// Base
+
+body, td, textarea, input
+  font-family: $body-font
+  line-height: 1.6
+  font-size: 13px
+  color:$txt
+
+a
+  color: $accent
+  text-decoration: none
+  &:hover
+    color: $accent * 0.8
+
+// ----------------------------------------------------------------------------
+// Content
+
+.content
+  p, ul, ol, h1, h2, h3, h4, h5, h6, pre, blockquote
+    padding: $vmargin 0
+    box-sizing: border-box
+
+  h1, h2, h3, h4, h5, h6
+    font-weight: bold
+
+  pre
+    font-family: $mono-font
+
+  ul > li
+    list-style-type: disc
+
+  ol > li
+    list-style-type: decimal
+
+
+  code
+    font-family: $mono-font
+    background: $offwhite
+    padding: 1px 3px
+    font-size: 0.95em
+
+  pre > code
+    display: block
+    background: transparent
+    font-size: 0.85em
+    letter-spacing: -1px
+
+.content-root
+  background-color: $offwhite
+  $w = ($sidebar-width + $pad/2 + $content-width)
+  box-shadow: inset $w 0 white, inset ($w + 1) 0 rgba(black, 0.1), inset ($w + 10) 0 10px -10px rgba(black, 0.1)
+
+.content
+  padding-top: $pad - $vmargin
+  padding-bottom: $pad
+
+.content.literate
+  width: $content-width + $pre-width
+  clearfix()
+  >
+    p, ul, ol, h1, h2, h3, h4, h5, h6, pre, blockquote
+      width: $content-width
+      box-sizing: border-box
+      padding-right: $pad
+      padding-left: $pad
+    h1, h2, h3
+      clear: both
+      width: 100%
+    pre, blockquote
+      width: $pre-width
+      float: right
+      clear: right
+      +
+        p, ul, ol, h4, h5, h6
+          clear: both
+    p, ul, ol, h4, h5, h6
+      float: left
+      clear: left
+
+    h1, h2, h3
+      font-family: montserrat
+      padding-bottom: 0
+
+      + p, ul, ol
+        padding-top: 10px
+
+    h2
+      text-transform: uppercase
+      letter-spacing: 1px
+      font-size: 1.5em
+
+    h3
+      font-size: 1.2em
+
+    h2, h3
+      padding-top: $pad * 2
+      &:before
+        display: block
+        content: ''
+        background: linear-gradient(left, rgba(black, 0.15) 40%, rgba(black, 0.0) 90%)
+        width: 100%
+        height: 1px
+        position: relative
+        top: $pad * -1
+        left: $pad * -1
+
+    h4, h5
+      border-bottom: solid 1px rgba(black, 0.15)
+      color: $grey
+      margin-left: $pad
+      width: $content-width - $pad * 1.5
+      padding-top: $vmargin * 3
+      padding-bottom: 7px
+      margin-bottom: 0px
+
+      padding-left: 0
+      padding-right: 0
+  
+
+// ----------------------------------------------------------------------------
+// Chrome
+
+.header
+  background: $offwhite
+  border-bottom: solid 1px rgba(black, 0.15)
+  padding: 15px 15px 15px $pad
+  clearfix()
+
+  .left
+    float: left
+  .right
+    float: right
+
+.content-root
+  padding-left: ($sidebar-width)
+  position: relative
+
+  .sidebar
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: $sidebar-width
+    border-right: solid 1px rgba(black, 0.15)
+    padding: $pad
+    box-sizing: border-box
+
+

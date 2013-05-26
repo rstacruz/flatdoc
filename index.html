@@ -2,6 +2,9 @@
 <html>
 <head>
   <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="viewport" content="width=device-width">
+
   <title>Doclet</title>
 
   <!-- Doclet -->
@@ -16,15 +19,29 @@
   <!-- Initializer -->
   <script>
     Doclet.run({
-      fetcher: Doclet.file('Readme.md')
+      fetcher: Doclet.file('support/assetpack.md')
     });
   </script>
 </head>
 <body>
-  <div role='doclet'>
-    <div role='doclet-title'></div>
-    <div role='doclet-menu'></div>
-    <div role='doclet-content'></div>
+
+  <div class='header'>
+    <div class='left'>
+      My documentation
+    </div>
+    <div class='right'>
+      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&repo=jquery.transit&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+    </div>
   </div>
+
+  <div role='doclet' class='content-root'>
+    <div class='sidebar'>
+      <div role='doclet-title'></div>
+      <div role='doclet-menu'></div>
+    </div>
+    <div role='doclet-content' class='content literate'></div>
+  </div>
+
 </body>
 </html>
