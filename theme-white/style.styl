@@ -94,6 +94,26 @@ a
   ol > li
     list-style-type: decimal
 
+  ul, ol
+    margin-left: 20px
+
+  ul > li
+    list-style-type: none
+    position: relative
+    &:before
+      content: ''
+      display: block
+      absolute: left -17px top 7px
+      width: 5px
+      height: 5px
+      border-radius: 4px
+      box-sizing: border-box
+      background: white
+      border: solid 1px $grey
+
+  li > :first-child
+    padding-top: 0
+
   strong, b
     font-weight: bold
 
