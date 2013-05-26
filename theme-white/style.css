@@ -279,36 +279,42 @@ body:not(.big-h3) .content h3 {
     padding: 20px;
   }
 }
+.inset-box,
+body.no-literate .content pre > code {
+  background: #f3f6fb;
+  border: solid 1px #e7eaee;
+  border-top: solid 1px #dbdde2;
+  border-left: solid 1px #e2e5e9;
+  display: block;
+  padding: 10px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  overflow: auto;
+}
+.inset-box,
+body.no-literate .content pre > code,
+body.no-literate .content pre > code {
+  -webkit-overflow-scrolling: touch;
+}
+.inset-box::-webkit-scrollbar,
+body.no-literate .content pre > code::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+.inset-box::-webkit-scrollbar-thumb,
+body.no-literate .content pre > code::-webkit-scrollbar-thumb {
+  background: #ddd;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: solid 4px #f3f6fb;
+}
+.inset-box:hover::-webkit-scrollbar-thumb,
+body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
+  background: #999;
+  -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+  box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+}
 @media (max-width: 1180px) /* Small desktop */ {
-  .content pre > code {
-    background: #f3f6fb;
-    border: solid 1px #e7eaee;
-    border-top: solid 1px #dbdde2;
-    border-left: solid 1px #e2e5e9;
-    display: block;
-    padding: 10px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    overflow: auto;
-  }
-  .content pre > code {
-    -webkit-overflow-scrolling: touch;
-  }
-  .content pre > code::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
-  }
-  .content pre > code::-webkit-scrollbar-thumb {
-    background: #ddd;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    border: solid 4px #f3f6fb;
-  }
-  .content pre > code:hover::-webkit-scrollbar-thumb {
-    background: #999;
-    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
-  }
 }
 .content .button {
   -webkit-font-smoothing: antialiased;
@@ -338,30 +344,30 @@ body:not(.big-h3) .content h3 {
   color: #9090aa;
 }
 @media (min-width: 1180px) /* Big desktop */ {
-  .content-root {
+  body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
     -webkit-box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
     box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
   }
 }
 @media (min-width: 1180px) /* Big desktop */ {
-  .content {
+  body:not(.no-literate) .content {
     padding-left: 0;
     padding-right: 0;
     width: 930px;
     max-width: none;
   }
-  .content > p,
-  .content > ul,
-  .content > ol,
-  .content > h1,
-  .content > h2,
-  .content > h3,
-  .content > h4,
-  .content > h5,
-  .content > h6,
-  .content > pre,
-  .content > blockquote {
+  body:not(.no-literate) .content > p,
+  body:not(.no-literate) .content > ul,
+  body:not(.no-literate) .content > ol,
+  body:not(.no-literate) .content > h1,
+  body:not(.no-literate) .content > h2,
+  body:not(.no-literate) .content > h3,
+  body:not(.no-literate) .content > h4,
+  body:not(.no-literate) .content > h5,
+  body:not(.no-literate) .content > h6,
+  body:not(.no-literate) .content > pre,
+  body:not(.no-literate) .content > blockquote {
     width: 550px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -369,47 +375,47 @@ body:not(.big-h3) .content h3 {
     padding-right: 40px;
     padding-left: 40px;
   }
-  .content > h1,
-  .content > h2,
-  .content > h3 {
+  body:not(.no-literate) .content > h1,
+  body:not(.no-literate) .content > h2,
+  body:not(.no-literate) .content > h3 {
     clear: both;
     width: 100%;
   }
-  .content > pre,
-  .content > blockquote {
+  body:not(.no-literate) .content > pre,
+  body:not(.no-literate) .content > blockquote {
     width: 380px;
     padding-left: 20px;
     padding-right: 20px;
     float: right;
     clear: right;
   }
-  .content > pre + p,
-  .content > blockquote + p,
-  .content > pre + ul,
-  .content > blockquote + ul,
-  .content > pre + ol,
-  .content > blockquote + ol,
-  .content > pre + h4,
-  .content > blockquote + h4,
-  .content > pre + h5,
-  .content > blockquote + h5,
-  .content > pre + h6,
-  .content > blockquote + h6 {
+  body:not(.no-literate) .content > pre + p,
+  body:not(.no-literate) .content > blockquote + p,
+  body:not(.no-literate) .content > pre + ul,
+  body:not(.no-literate) .content > blockquote + ul,
+  body:not(.no-literate) .content > pre + ol,
+  body:not(.no-literate) .content > blockquote + ol,
+  body:not(.no-literate) .content > pre + h4,
+  body:not(.no-literate) .content > blockquote + h4,
+  body:not(.no-literate) .content > pre + h5,
+  body:not(.no-literate) .content > blockquote + h5,
+  body:not(.no-literate) .content > pre + h6,
+  body:not(.no-literate) .content > blockquote + h6 {
     clear: both;
   }
-  .content > p,
-  .content > ul,
-  .content > ol,
-  .content > h4,
-  .content > h5,
-  .content > h6 {
+  body:not(.no-literate) .content > p,
+  body:not(.no-literate) .content > ul,
+  body:not(.no-literate) .content > ol,
+  body:not(.no-literate) .content > h4,
+  body:not(.no-literate) .content > h5,
+  body:not(.no-literate) .content > h6 {
     float: left;
     clear: left;
   }
-  .content > h4,
-  .content > h5,
-  .content > .small-heading,
-  body:not(.big-h3) .content > h3 {
+  body:not(.no-literate) .content > h4,
+  body:not(.no-literate) .content > h5,
+  body:not(.no-literate) .content > .small-heading,
+  body:not(.big-h3) body:not(.no-literate) .content > h3 {
     margin-left: 40px;
     width: 470px;
     margin-bottom: 3px;

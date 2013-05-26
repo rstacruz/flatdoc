@@ -194,19 +194,24 @@ a
   .content
     padding: $minipad
 
-@media (max-width: 1180px) /* Small desktop */
-  .content
-    pre > code
-      background: $offwhite
-      border: solid 1px $offwhite*0.95
-      border-top: solid 1px $offwhite*0.9
-      border-left: solid 1px $offwhite*0.93
-      display: block
-      padding: 10px
-      border-radius: 2px
+.inset-box
+  background: $offwhite
+  border: solid 1px $offwhite*0.95
+  border-top: solid 1px $offwhite*0.9
+  border-left: solid 1px $offwhite*0.93
+  display: block
+  padding: 10px
+  border-radius: 2px
 
-      overflow: auto
-      scrollbar($offwhite)
+  overflow: auto
+  scrollbar($offwhite)
+
+body.no-literate .content pre > code
+  @extends .inset-box
+
+@media (max-width: 1180px) /* Small desktop */
+  .content pre > code
+    @extends .inset-box
     
 // ----------------------------------------------------------------------------
 // Buttons
@@ -243,49 +248,51 @@ a
 // Literate mode content
 
 @media (min-width: 1180px) /* Big desktop */
-  .content-root
-    background-color: $offwhite
-    $w = ($sidebar-width + $content-width)
-    box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 5px -10px rgba(black, $shadow-str)
+  body:not(.no-literate)
+    .content-root
+      background-color: $offwhite
+      $w = ($sidebar-width + $content-width)
+      box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 5px -10px rgba(black, $shadow-str)
 
 // Literate mode
 @media (min-width: 1180px) /* Big desktop */
-  .content
-    padding-left: 0
-    padding-right: 0
+  body:not(.no-literate)
+    .content
+      padding-left: 0
+      padding-right: 0
 
-    width: $content-width + $pre-width
-    max-width: none
+      width: $content-width + $pre-width
+      max-width: none
 
-    >
-      p, ul, ol, h1, h2, h3, h4, h5, h6, pre, blockquote
-        width: $content-width
-        box-sizing: border-box
-        padding-right: $pad
-        padding-left: $pad
-      h1, h2, h3
-        clear: both
-        width: 100%
-      pre, blockquote
-        width: $pre-width
-        padding-left: ($pad/2)
-        padding-right: ($pad/2)
-        float: right
-        clear: right
-        +
-          p, ul, ol, h4, h5, h6
-            clear: both
-      p, ul, ol, h4, h5, h6
-        float: left
-        clear: left
+      >
+        p, ul, ol, h1, h2, h3, h4, h5, h6, pre, blockquote
+          width: $content-width
+          box-sizing: border-box
+          padding-right: $pad
+          padding-left: $pad
+        h1, h2, h3
+          clear: both
+          width: 100%
+        pre, blockquote
+          width: $pre-width
+          padding-left: ($pad/2)
+          padding-right: ($pad/2)
+          float: right
+          clear: right
+          +
+            p, ul, ol, h4, h5, h6
+              clear: both
+        p, ul, ol, h4, h5, h6
+          float: left
+          clear: left
 
-      h4, h5, .small-heading, body:not(.big-h3) & h3
-        margin-left: $pad
-        width: $content-width - $pad * 2
-        margin-bottom: 3px
+        h4, h5, .small-heading, body:not(.big-h3) & h3
+          margin-left: $pad
+          width: $content-width - $pad * 2
+          margin-bottom: 3px
 
-        padding-left: 0
-        padding-right: 0
+          padding-left: 0
+          padding-right: 0
 
 // ----------------------------------------------------------------------------
 // Header

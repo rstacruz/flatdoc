@@ -106,10 +106,6 @@ Making documentation
 
 Simply create a Markdown document.
 
-> See:
->
-> [dox][https://github.com/visionmedia/dox]  
-
 Markdown extras
 ---------------
 
@@ -156,6 +152,14 @@ Makes 3rd-level headings bigger.
 
 ``` html
 <body class='big-h3'>
+```
+
+#### no-literate
+Disables "literate" mode, where code appears on the right and content text
+appear on the left.
+
+``` html
+<body class='no-literate'>
 ```
 
 ### Adding more markup
