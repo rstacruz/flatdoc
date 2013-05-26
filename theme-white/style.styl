@@ -269,7 +269,7 @@ a
 // ----------------------------------------------------------------------------
 // Sidebar
 
-.menu
+.menubar
   .section
     padding: $sidepad $sidepad
     box-sizing: border-box
@@ -278,43 +278,41 @@ a
     border-top: solid 1px $line
 
 a.big.button
-  &, .menu &
-    display: block
-    padding: 10px 20px
-    text-align: center
+  display: block
+  padding: 10px 20px
+  text-align: center
 
-    font-weight: bold
-    font-size: 1.1em
+  font-weight: bold
+  font-size: 1.1em
 
-    background: transparent
-    border: solid 3px $accent
-    border-radius: 30px
-    font-family: montserrat, sans-serif
+  background: transparent
+  border: solid 3px $accent
+  border-radius: 30px
+  font-family: montserrat, sans-serif
 
+  &, &:visited
+    color: $accent
+    text-decoration: none
+
+  &:hover
+    background: $accent
     &, &:visited
-      color: $accent
-      text-decoration: none
-
-    &:hover
-      background: $accent
-      &, &:visited
-        color: white
-
+      color: white
 
 @media (max-width: 480px) /* Mobile */
-  .menu
+  .menubar
     padding: $minipad
     border-bottom: solid 1px $line
 
 @media (max-width: 768px) /* Mobile and tablet */
-  .menu
+  .menubar
     display: none
 
 @media (min-width: 768px) /* Desktop */
   .content-root
     padding-left: $sidebar-width
 
-  .menu
+  .menubar
     position: absolute
     left: 0
     top: 0
@@ -322,15 +320,16 @@ a.big.button
     width: $sidebar-width
     border-right: solid 1px $line
 
-  .menu.fixed
+  .menubar.fixed
     position: fixed
     -webkit-overflow-scrolling: touch
     overflow-y: auto
 
-// Menu items
-.menu
+.menubar
   font-size: 0.9em
 
+// Menu items
+.menu
   .level-1
     margin-bottom: 20px
 

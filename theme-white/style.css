@@ -406,17 +406,16 @@ a:hover {
     display: none;
   }
 }
-.menu .section {
+.menubar .section {
   padding: 30px 30px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.menu .section + .section {
+.menubar .section + .section {
   border-top: solid 1px #e4e7ec;
 }
-a.big.button,
-.menu a.big.button {
+a.big.button {
   display: block;
   padding: 10px 20px;
   text-align: center;
@@ -429,30 +428,25 @@ a.big.button,
   font-family: montserrat, sans-serif;
 }
 a.big.button,
-.menu a.big.button,
-a.big.button:visited,
-.menu a.big.button:visited {
+a.big.button:visited {
   color: #3cc;
   text-decoration: none;
 }
-a.big.button:hover,
-.menu a.big.button:hover {
+a.big.button:hover {
   background: #3cc;
 }
 a.big.button:hover,
-.menu a.big.button:hover,
-a.big.button:hover:visited,
-.menu a.big.button:hover:visited {
+a.big.button:hover:visited {
   color: #fff;
 }
 @media (max-width: 480px) /* Mobile */ {
-  .menu {
+  .menubar {
     padding: 20px;
     border-bottom: solid 1px #e4e7ec;
   }
 }
 @media (max-width: 768px) /* Mobile and tablet */ {
-  .menu {
+  .menubar {
     display: none;
   }
 }
@@ -460,7 +454,7 @@ a.big.button:hover:visited,
   .content-root {
     padding-left: 230px;
   }
-  .menu {
+  .menubar {
     position: absolute;
     left: 0;
     top: 0;
@@ -468,13 +462,13 @@ a.big.button:hover:visited,
     width: 230px;
     border-right: solid 1px #e4e7ec;
   }
-  .menu.fixed {
+  .menubar.fixed {
     position: fixed;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
   }
 }
-.menu {
+.menubar {
   font-size: 0.9em;
 }
 .menu .level-1 {
