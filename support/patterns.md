@@ -15,6 +15,8 @@ This document assumes that you already have some knowledge of [Backbone.js][bb],
 Model patterns
 ==============
 
+Here are some patterns that would apply to Backbone models.
+
 Bootstrapping data
 ------------------
 
