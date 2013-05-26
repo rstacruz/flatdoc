@@ -26,14 +26,22 @@
 
   Flatdoc.file = function(url) {
     return function(callback) {
-      $.get(url, function(data) {
-        callback(null, data);
-      });
+      $.get(url)
+        .fail(function(e) { callback(e, null); })
+        .done(function(data) {  callback(null, data); });
     };
   };
 
   Flatdoc.github = function(repo) {
     var url = 'https://api.github.com/repos/'+repo+'/readme';
+    return function(callback) {
+      $.get(url)
+        .fail(function(e) { callback(e, null); })
+        .done(function(data) {
+          var markdown = exports.Base64.decode(data.content);
+          callback(null, markdown);
+        });
+    };
   };
 
   /**
@@ -278,7 +286,12 @@
   Runner.prototype.run = function() {
     var doc = this;
     $(doc.root).trigger('flatdoc:loading');
+    console.log(doc);
     doc.fetcher(function(err, markdown) {
+      if (err) {
+        console.err('[Flatdoc] fetching Markdown data failed.', err);
+        return;
+      }
       var data = Flatdoc.parser.parse(markdown);
       doc.applyData(data, doc);
       $(doc.root).trigger('flatdoc:done');

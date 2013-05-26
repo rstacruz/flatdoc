@@ -1,8 +1,6 @@
 Todo:
 
 - Sectioning
-- Error handling
-- GitHub fetch
 
 Progress:
 
@@ -14,3 +12,5 @@ Done:
 - Menus
 - IDs
 - Syntax highlighting
+- GitHub fetch
+- Error handling
