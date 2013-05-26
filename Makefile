@@ -15,7 +15,7 @@ watch:
 flatdoc.js: src/flatdoc.js vendor/marked.js vendor/base64.js
 	cat $^ > $@
 
-legacy.js: vendor/html5shiv.js vendor/respond.js
+legacy.js: support/legacy-header.js vendor/html5shiv.js vendor/respond.js
 	cat $^ > $@
 
 %.css: %.styl

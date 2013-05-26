@@ -1,4 +1,22 @@
-# Flatdoc
+  - [Flatdoc](#flatdoc)
+  - [Flatdoc.run()](#flatdocrun)
+  - [Flatdoc.file()](#flatdocfile)
+  - [Flatdoc.github()](#flatdocgithub)
+  - [Parser](#parser)
+  - [Parser.parse()](#parserparse)
+  - [Transformer](#transformer)
+  - [Transformer.mangle()](#transformermangle)
+  - [Transformer.addIDs()](#transformeraddids)
+  - [Transformer.getMenu()](#transformergetmenu)
+  - [Transformer.buttonize()](#transformerbuttonize)
+  - [Transformer.smartquotes()](#transformersmartquotes)
+  - [Highlighters](#highlighters)
+  - [MenuView](#menuview)
+  - [Runner](#runner)
+  - [Runner.run()](#runnerrun)
+  - [Runner.applyData()](#runnerapplydata)
+
+## Flatdoc
 
   Flatdoc.
 

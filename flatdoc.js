@@ -1,6 +1,19 @@
-/*! Flatdoc (http://ricostacruz.com/flatdoc)
- *  MIT licensed
- */
+/*!
+Flatdoc (http://ricostacruz.com/flatdoc)
+(c) 2013 Rico Sta. Cruz. MIT licensed.
+
+Also includes:
+
+  marked
+    a markdown parser
+    (c) 2011-2013, Christopher Jeffrey. (MIT Licensed)
+    https://github.com/chjj/marked
+
+  base64.js
+    http://github.com/dankogai/js-base64
+
+*/
+
 (function($) {
   var exports = this;
 
@@ -1535,7 +1548,7 @@ if (typeof exports === 'object') {
 }).call(function() {
   return this || (typeof window !== 'undefined' ? window : global);
 }());
-/*
+/*!
  * $Id: base64.js,v 2.12 2013/05/06 07:54:20 dankogai Exp dankogai $
  *
  *  Licensed under the MIT license.
