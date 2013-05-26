@@ -124,6 +124,16 @@ Markdown extras
 Flatdoc offers a few harmless, unobtrusive extras that come in handy in building
 documentation sites.
 
+#### Code highlighting
+
+You can use Markdown code fences to make syntax-highlighted text. Simply
+surround your text with three backticks. This works in GitHub as well.
+See [GitHub Syntax Highlighting][fences] for more info.
+
+    ``` html
+    <strong>Hola, mundo</strong>
+    ```
+
 #### Blockquotes
 
 Blockquotes show up as side figures. This is useful for providing side
@@ -153,16 +163,6 @@ Customizing
 
 Basic
 -----
-
-### Code highlighting
-
-You can use Markdown code fences to make syntax-highlighted text. Simply
-surround your text with three backticks. This works in GitHub as well.
-See [GitHub Syntax Highlighting][fences] for more info.
-
-    ``` html
-    <strong>Hola, mundo</strong>
-    ```
 
 ### Theme options
 
