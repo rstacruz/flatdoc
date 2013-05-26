@@ -46,7 +46,7 @@ you're all good to go.
 </html>
 ```
 
-#### Via GitHub
+### Via GitHub
 
 To fetch a Github Repository's readme file, use the `Doclet.github` fetcher.
 This will fetch the Readme file of the repository's default branch.
@@ -66,8 +66,7 @@ Doclet.run({
 });
 ```
 
-
-#### Via a file
+### Via a file
 
 You may also fetch a file. In this example, this fetches the file `Readme.md` in
 the same folder as the HTML file.
@@ -138,8 +137,6 @@ up as buttons.
 
 Customizing
 -----------
-
-You can customize it to your needs.
 
 ### Theme options
 

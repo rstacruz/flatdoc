@@ -12,16 +12,28 @@ all: \
 watch:
 	while true; do make all | grep -v "Nothing"; sleep 1; done
 
-flatdoc.js: src/flatdoc.js vendor/marked.js vendor/base64.js
+# Main distribution
+flatdoc.js: \
+	src/flatdoc.js \
+	vendor/marked.js \
+	vendor/base64.js
 	cat $^ > $@
 
-legacy.js: support/legacy-header.js vendor/html5shiv.js vendor/respond.js
+# Legacy shims for IE
+legacy.js: \
+	support/legacy-header.js \
+	vendor/html5shiv.js \
+	vendor/respond.js
 	cat $^ > $@
 
 %.css: %.styl
 	$(STYLUS) < $< > $@
 
-theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/jquery.anchorjump.js
+theme-white/script.js: \
+	theme-white/setup.js \
+	vendor/jquery.scrollagent.js \
+	vendor/jquery.anchorjump.js \
+	vendor/jquery.fillsize.js
 	cat $^ > $@
 
 Reference.md: src/flatdoc.js

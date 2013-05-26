@@ -16,5 +16,8 @@ jquery.scrollagent.js:
 jquery.anchorjump.js:
 	wget "https://github.com/rstacruz/jquery-stuff/raw/master/anchorjump/jquery.anchorjump.js" -q -O $@
 
+jquery.fillsize.js:
+	wget "https://github.com/rstacruz/jquery-stuff/raw/master/fillsize/jquery.fillsize.js" -q -O $@
+
 base64.js:
 	wget "https://raw.github.com/dankogai/js-base64/master/base64.js" -q -O $@

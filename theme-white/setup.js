@@ -48,6 +48,8 @@
         }
       })
       .trigger('resize.title-card');
+
+    $card.fillsize('> img.bg');
   });
 
   /*
