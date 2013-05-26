@@ -93,6 +93,7 @@ a img {
 html,
 body {
   overflow-x: hidden;
+  height: 100%;
 }
 body,
 td,
@@ -171,6 +172,7 @@ a:hover {
   padding-bottom: 0;
 }
 .content-root {
+  min-height: 90%;
   position: relative;
 }
 .content {
@@ -322,7 +324,6 @@ a:hover {
   border-color: #111;
   background: #111;
   color: #fff;
-  text-shadow: none;
 }
 .content .button + em {
   color: #9090aa;
