@@ -17,8 +17,8 @@ $vmargin = 10px  // Margin between blocks
 $offwhite = #f3f6fb
 $grey = #9090aa
 $txt = #505050
-$accent = #3cc
-$line = #e4e7ec
+$accent = #3cc * 0.85
+$line = #e4e7ec * 0.98
 
 // Misc
 $shadow-str = 0.1
@@ -162,7 +162,7 @@ a
   .content-root
     background-color: $offwhite
     $w = ($sidebar-width + $content-width)
-    box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 10px -10px rgba(black, $shadow-str)
+    box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 5px -10px rgba(black, $shadow-str)
 
 // Literate mode
 @media (min-width: 1180px) /* Big desktop */
@@ -330,8 +330,8 @@ a.big.button
 
 // Menu items
 .menu
-  .level-1
-    margin-bottom: 20px
+  .level-1 > li + li
+    margin-top: 20px
 
   a
     display: block
