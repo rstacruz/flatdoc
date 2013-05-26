@@ -5,6 +5,8 @@
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "version": "0.1.0",
   "dependencies": {
-    "uglify-js": "*"
+    "uglify-js": "2.3.6",
+    "stylus": "0.32.1",
+    "nib": "0.9.1"
   }
 }
