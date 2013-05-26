@@ -53,7 +53,8 @@
    */
   Parser.parse = function(source) {
     marked = exports.marked;
-    marked.setOptions({});
+
+    Parser.setMarkedOptions();
 
     var html = $("<div>" + marked(source));
     var h1 = html.find('h1').eq(0);
@@ -64,6 +65,16 @@
     var menu = Transformer.getMenu(html);
 
     return { title: title, content: html, menu: menu };
+  };
+
+  Parser.setMarkedOptions = function() {
+    marked.setOptions({
+      highlight: function(code, lang) {
+        var fn = Flatdoc.highlighters[lang];
+        if (fn) return fn(code);
+        return code;
+      }
+    });
   };
 
   /**
@@ -116,6 +127,42 @@
 
     return re;
   };
+
+  /**
+   * Syntax highlighters.
+   *
+   * You may add or change more highlighters via the `Flatdoc.highlighters`
+   * object.
+   *
+   *   Flatdoc.highlighters.js = function(code) {
+   *   };
+   *
+   * Each of these functions
+   */
+
+  var Highlighters = Flatdoc.highlighters = {};
+
+  /**
+   * JavaScript syntax highlighter.
+   *
+   * Thanks @visionmedia!
+   */
+
+  Highlighters.javascript =
+  Highlighters.js = function(code) {
+    return code
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
+      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
+      .replace(/\/\/(.*)/gm, '<span class="comment">//$1</span>')
+      .replace(/\/\*(.*)\*\//gm, '<span class="comment">/*$1*/</span>')
+      .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')
+      .replace(/(\d+)/gm, '<span class="number">$1</span>')
+      .replace(/\bnew *(\w+)/gm, '<span class="keyword">new</span> <span class="init">$1</span>')
+      .replace(/\b(function|new|throw|return|var|if|else)\b/gm, '<span class="keyword">$1</span>');
+  };
+
 
   /**
    * Menu view. Renders menus

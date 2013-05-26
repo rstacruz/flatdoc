@@ -554,6 +554,19 @@ a.big.button:hover:visited {
 .menu a.active:hover {
   color: #505050 !important;
 }
+code .string,
+code .number {
+  color: #2badad;
+}
+code .init {
+  color: #383;
+}
+code .keyword {
+  font-weight: bold;
+}
+code .comment {
+  color: #adadcc;
+}
 .title-area {
   min-height: 500px;
 }

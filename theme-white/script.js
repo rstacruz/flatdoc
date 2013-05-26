@@ -45,18 +45,18 @@
     var $header = $('.header');
     var headerHeight = $header.length ? $header.outerHeight() : 0;
 
-    $window.on('resize.title-card', function() {
-      var windowWidth = $window.width();
+    $window
+      .on('resize.title-card', function() {
+        var windowWidth = $window.width();
 
-      if (windowWidth < 480) {
-        $card.css('height', '');
-      } else {
-        var height = $window.height();
-        $card.css('height', height - headerHeight);
-      }
-    });
-
-    $window.trigger('resize.title-card');
+        if (windowWidth < 480) {
+          $card.css('height', '');
+        } else {
+          var height = $window.height();
+          $card.css('height', height - headerHeight);
+        }
+      })
+      .trigger('resize.title-card');
   });
 
   /*
@@ -65,14 +65,18 @@
 
   $(function() {
     var $sidebar = $('.menubar');
-    var elY = $sidebar.offset().top;
+    var elY;
 
-    $window.on('scroll.sidestick', function() {
-      var scrollY = $window.scrollTop();
-      $sidebar.toggleClass('fixed', (scrollY >= elY));
-    });
-
-    $window.trigger('scroll.sidestick');
+    $window
+      .on('resize.sidestick', function() {
+        elY = $sidebar.offset().top;
+      })
+      .on('scroll.sidestick', function() {
+        var scrollY = $window.scrollTop();
+        $sidebar.toggleClass('fixed', (scrollY >= elY));
+      })
+      .trigger('resize.sidestick')
+      .trigger('scroll.sidestick');
   });
 
 })(jQuery);
