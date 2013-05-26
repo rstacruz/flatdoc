@@ -7,6 +7,8 @@
   "dependencies": {
     "uglify-js": "2.3.6",
     "stylus": "0.32.1",
-    "nib": "0.9.1"
+    "nib": "0.9.1",
+    "commander": "1.1.1",
+    "dox": "0.4.3"
   }
 }

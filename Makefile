@@ -1,6 +1,6 @@
 UGLIFY := ./node_modules/.bin/uglifyjs --comments "/^!/"
 STYLUS := ./node_modules/.bin/stylus -U -u nib
-DOX := dox
+DOX := ./node_modules/.bin/dox
 
 all: \
 	flatdoc.js \
@@ -25,7 +25,7 @@ theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/
 	cat $^ > $@
 
 Reference.md: src/flatdoc.js
-	$(DOX) -a < $< | sed "s/^## \(.*\.\)/### \1/g" > $@
+	$(DOX) -r < $< | node support/dox2md.js > $@
 
 # $ make v/0.1.0
 # Makes a distribution.

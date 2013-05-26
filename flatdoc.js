@@ -20,13 +20,20 @@ Also includes:
   var marked;
 
   /**
-   * Flatdoc.
+   * Basic Flatdoc module.
+   *
+   * The main entry point is `Flatdoc.run()`, which invokes the [Runner].
+   *
+   *     Flatdoc.run({
+   *       fetcher: Flatdoc.github('rstacruz/backbone-patterns');
+   *     });
    */
 
   var Flatdoc = exports.Flatdoc = {};
 
   /**
-   * Runs.
+   * Creates a runner.
+   * See [Flatdoc].
    */
 
   Flatdoc.run = function(options) {
@@ -81,14 +88,14 @@ Also includes:
    * Parses a given Markdown document and returns a JSON object with data
    * on the Markdown document.
    *
-   *   var data = Flatdoc.parser.parse('markdown source here');
-   *   console.log(data);
-   *
-   *   data == {
-   *     title: 'My Project',
-   *     content: '<p>This project is a...',
-   *     menu: {...}
-   *   }
+   *     var data = Flatdoc.parser.parse('markdown source here');
+   *     console.log(data);
+   *   
+   *     data == {
+   *       title: 'My Project',
+   *       content: '<p>This project is a...',
+   *       menu: {...}
+   *     }
    */
 
   var Parser = Flatdoc.parser = {};
@@ -130,8 +137,8 @@ Also includes:
    * This takes care of any HTML mangling needed.  The main entry point is
    * `.mangle()` which applies all transformations needed.
    *
-   *   var $content = $("<p>Hello there, this is a docu...");
-   *   Flatdoc.transformer.mangle($content);
+   *     var $content = $("<p>Hello there, this is a docu...");
+   *     Flatdoc.transformer.mangle($content);
    *
    * If you would like to change any of the transformations, decorate any of
    * the functions in `Flatdoc.transformer`.
@@ -159,7 +166,7 @@ Also includes:
     $content.find('h1, h2, h3').each(function() {
       var $el = $(this);
       var text = $el.text();
-      var id = text.toLowerCase().match(/[a-z0-9]+/g).join('-');
+      var id = slugify(text);
       $el.attr('id', id);
     });
   };
@@ -167,13 +174,13 @@ Also includes:
   /**
    * Returns menu data for a given HTML.
    *
-   *   menu = Flatdoc.transformer.getMenu($content);
-   *   menu == {
-   *     level: 0,
-   *     items: [{
-   *       section: "Getting started",
-   *       level: 1,
-   *       items: [...]}, ...]}
+   *     menu = Flatdoc.transformer.getMenu($content);
+   *     menu == {
+   *       level: 0,
+   *       items: [{
+   *         section: "Getting started",
+   *         level: 1,
+   *         items: [...]}, ...]}
    */
 
   Transformer.getMenu = function($content) {
@@ -237,8 +244,8 @@ Also includes:
    * You may add or change more highlighters via the `Flatdoc.highlighters`
    * object.
    *
-   *   Flatdoc.highlighters.js = function(code) {
-   *   };
+   *     Flatdoc.highlighters.js = function(code) {
+   *     };
    *
    * Each of these functions
    */
@@ -251,8 +258,7 @@ Also includes:
    * Thanks @visionmedia!
    */
 
-  Highlighters.javascript =
-  Highlighters.js = function(code) {
+  Highlighters.js = Highlighters.javascript = function(code) {
     return code
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -330,10 +336,10 @@ Also includes:
   /**
    * A runner module that fetches via a `fetcher` function.
    *
-   *   var runner = new Flatdoc.runner({
-   *     fetcher: Flatdoc.url('readme.txt')
-   *   });
-   *   runner.run();
+   *     var runner = new Flatdoc.runner({
+   *       fetcher: Flatdoc.url('readme.txt')
+   *     });
+   *     runner.run();
    *
    * The following options are available:
    *
@@ -419,6 +425,10 @@ Also includes:
     a = a.replace(/\.\.\./g, "\u2026");                         // ellipses
     a = a.replace(/--/g, "\u2014");                             // em-dashes
     return a;
+  }
+
+  function slugify(text) {
+    return text.toLowerCase().match(/[a-z0-9]+/g).join('-');
   }
 })(jQuery);
 /*!
