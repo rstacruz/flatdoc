@@ -214,7 +214,7 @@ a
   .content
     padding: $minipad
 
-.inset-box
+inset-box()
   background: $offwhite
   border: solid 1px $offwhite*0.95
   border-top: solid 1px $offwhite*0.9
@@ -227,11 +227,11 @@ a
   scrollbar($offwhite)
 
 body.no-literate .content pre > code
-  @extends .inset-box
+  inset-box()
 
 @media (max-width: 1180px) /* Small desktop */
   .content pre > code
-    @extends .inset-box
+    inset-box()
     
 // ----------------------------------------------------------------------------
 // Buttons
