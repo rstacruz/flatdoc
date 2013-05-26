@@ -295,19 +295,29 @@ a
 
   .left
     float: left
+
   .right
+    text-align: right
     position: absolute
     right: 15px
     top: 15px
+
+    iframe
+      display: inline-block
+      vertical-align: middle
 
   h1
     antialias()
     font-weight: bold
     font-family: montserrat, sans-serif
-    color: $grey
     font-size: 13px
 
-  a
+    &, a, a:visited
+      color: $grey
+    a:hover
+      color: $txt
+
+  li a
     font-size: 0.88em
     color: $grey
     display: block
@@ -336,7 +346,7 @@ a
       &:last-child
         border-right: 0
 
-    a
+    li a
       padding: 0 15px
 
 @media (max-width: 480px) /* Mobile */

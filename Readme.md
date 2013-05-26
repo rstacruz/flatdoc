@@ -176,6 +176,6 @@ License](http://www.opensource.org/licenses/mit-license.php).
 
 [GitHub pages]: https://pages.github.com
 [project]: https://github.com/rstacruz/flatdoc
-[template]: https://github.com/rstacruz/flatdoc/blob/gh-pages/template.html
+[template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/template.html
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked
