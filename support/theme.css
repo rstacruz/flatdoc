@@ -1,0 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+.title-card {
+  background: url(blur.jpg);
+  background-size: 120% auto;
+  color: #ccc;
+  text-align: center;
+
+  position: relative;
+  z-index: 1;
+
+  text-shadow: 0 0 4px rgba(black, 0.3); }
+
+.title-card .headline {
+  line-height: 1.7; }
+
+.title-card h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 4.3em;
+  font-weight: 100;
+  color: #fff; }
+
+.title-card p {
+  font-family: montserrat, sans-serif;
+  color: #fff;
+  opacity: 0.5;
+  font-size: 1.2em; }
+
+/* body, td, textarea, input {
+  font-size: 11pt;
+  font-family: proxima nova; } */
+

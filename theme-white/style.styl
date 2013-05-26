@@ -28,6 +28,9 @@ $sidebar-width = 230px
 $content-width = 550px
 $pre-width = 380px
 
+// ----------------------------------------------------------------------------
+// Mixins
+
 scrollbar($bg=white)
   &
     -webkit-overflow-scrolling: touch
@@ -41,6 +44,10 @@ scrollbar($bg=white)
   &:hover::-webkit-scrollbar-thumb
     background: #999
     box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.2)
+
+antialias()
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
 
 // ----------------------------------------------------------------------------
 // Fonts
@@ -82,6 +89,13 @@ a
   ol > li
     list-style-type: decimal
 
+  strong, b
+    font-weight: bold
+
+  i, em
+    font-style: italic
+    color: $grey
+
   code
     font-family: $mono-font
     background: $offwhite
@@ -110,6 +124,7 @@ a
   max-width: 700px
 
   h1, h2, h3
+    antialias()
     font-family: montserrat
     padding-bottom: 0
 
@@ -170,6 +185,37 @@ a
       overflow: auto
       scrollbar($offwhite)
     
+// ----------------------------------------------------------------------------
+// Buttons
+
+.content
+  .button
+    antialias()
+    font-family: montserrat, sans-serif
+    letter-spacing: -1px
+    font-weight: bold
+
+    display: inline-block
+    padding: 3px 25px
+
+    border: solid 2px $accent
+    border-radius: 20px
+
+    margin-right: 15px
+
+    &, &:visited
+      background: $accent
+      color: white
+
+    &:hover
+      border-color: #111
+      background: #111
+      color: white
+
+  .button + em
+    color: $grey
+
+
 // ----------------------------------------------------------------------------
 // Literate mode content
 
@@ -239,6 +285,7 @@ a
     top: 15px
 
   h1
+    antialias()
     font-weight: bold
     font-family: montserrat, sans-serif
     color: $grey
@@ -250,7 +297,7 @@ a
     display: block
 
     &:hover
-      color: $grey*0.6
+      color: $grey*0.4
 
   @media (min-width: 480px) /* Tablet & Desktop */
     h1
@@ -285,6 +332,7 @@ a
 // Sidebar
 
 .menubar
+  antialias()
   .section
     padding: $sidepad $sidepad
     box-sizing: border-box
@@ -351,6 +399,7 @@ a.big.button
 
   a
     box-sizing: border-box
+    position: relative
 
     display: block
     padding-top: 1px
@@ -384,7 +433,19 @@ a.big.button
     &, &:visited, &:hover
       color: $txt !important
     font-weight: bold !important
-    border-right: solid 3px $accent
+    // border-right: solid 3px $accent
+    
+    &:after
+      content: ''
+      display: block
+      box-sizing: border-box
+
+      absolute: top 5px right $sidepad
+
+      width: 9px
+      height: 9px
+      border-radius: 4px
+      border: solid 2px $accent
 
 // ----------------------------------------------------------------------------
 // Syntax highlighting
@@ -405,17 +466,7 @@ code
   min-height: 100px
   padding: 50px 0
   box-sizing: border-box
-
-.title-card
-  background: #222
-  color: #ccc
+  antialias()
   text-align: center
+  border-bottom: solid 1px $line
 
-  position: relative
-  z-index: 1
-
-@media (min-width: 480px) /* Tablet & Desktop */
-  .title-area
-    min-height: 500px
-  .title-card
-    padding: 200px 0

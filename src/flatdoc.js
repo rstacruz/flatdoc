@@ -62,6 +62,7 @@
 
     // Mangle content
     Transformer.addIDs(html);
+    Transformer.buttonize(html);
     var menu = Transformer.getMenu(html);
 
     return { title: title, content: html, menu: menu };
@@ -126,6 +127,15 @@
     });
 
     return re;
+  };
+
+  Transformer.buttonize = function($content) {
+    $content.find('a').each(function() {
+      var $a = $(this);
+
+      var m = $a.text().match(/^(.*) >$/);
+      if (m) $a.text(m[1]).addClass('button');
+    });
   };
 
   /**

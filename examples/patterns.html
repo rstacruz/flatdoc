@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="viewport" content="width=device-width">
 
-  <title>Flatdoc</title>
+  <title>Bankbone Patterns</title>
+  <base href='..'>
 
   <!-- Flatdoc -->
   <script src='vendor/jquery.js'></script>
@@ -15,12 +16,14 @@
   <!-- Flatdoc theme -->
   <link  href='theme-white/style.css' rel='stylesheet'>
   <script src='theme-white/script.js'></script>
-  <link  href='support/theme.css' rel='stylesheet'>
 
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('Readme.md')
+      fetcher: Flatdoc.file('support/patterns.md')
+    });
+    $document.on('flatdoc:done', function() {
+      $('li.level-1:first-child').remove();
     });
   </script>
   <style>
@@ -29,10 +32,7 @@
 <body role='flatdoc'>
 
   <div class='title-area title-card'>
-    <div class='headline'>
-      <h1>Documentation is easy.</h1>
-      <p>Flatdoc is the fastest way to create a site for your open source project.</h5>
-    </div>
+    Backbone Patterns
   </div>
 
   <div class='header'>
@@ -44,14 +44,12 @@
       </ul>
     </div>
     <div class='right'>
-      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;type=follow&amp;count=true"
-7       allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
       <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;repo=jquery.transit&amp;type=watch&amp;count=true"
         allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
 
-  <div class='content-root'>
+  <div role='flatdoc' class='content-root'>
     <div class='menubar'>
       <div class='section'>
         <a class='big button' href='https://github.com/rstacruz/backbone-patterns'>View in GitHub</a>

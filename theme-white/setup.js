@@ -18,15 +18,6 @@
   });
 
  /*
-  * Remove the first section.
-  * No one really needs the first section on the menu.
-  */
-
- $document.on('flatdoc:done', function() {
-   $('ul.level-1 > li:first-child').remove();
- });
-
- /*
   * Anchor jump links.
   */
 
