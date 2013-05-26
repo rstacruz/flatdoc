@@ -23,24 +23,37 @@
     });
   </script>
 </head>
-<body>
+<body role='flatdoc'>
 
   <div class='header'>
     <div class='left'>
-      My documentation
+      <h1 role='flatdoc-title'></h1>
+      <ul>
+        <li><a href='https://github.com/r'>View on Github</a></li>
+        <li><a href='https://github.com/r'>View source</a></li>
+      </ul>
     </div>
     <div class='right'>
-      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&repo=jquery.transit&type=watch&count=true"
+      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;repo=jquery.transit&amp;type=watch&amp;count=true"
         allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
 
   <div role='flatdoc' class='content-root'>
     <div class='sidebar'>
-      <div role='flatdoc-title'></div>
-      <div role='flatdoc-menu'></div>
+      <div role='flatdoc-menu'>
+        <ul class='level-1'>
+          <li><a href='#'>Backbone Patterns</a>
+            <ul class='level-2'>
+              <li><a href='#'>Introduction</a></li>
+              <li><a href='#'>Messages</a></li>
+              <li><a href='#'>So and so</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div role='flatdoc-content' class='content literate'></div>
+    <div role='flatdoc-content' class='content'></div>
   </div>
 
 </body>

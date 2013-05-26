@@ -1,4 +1,4 @@
-# [Backbone patterns](http://ricostacruz.com/backbone-patterns)
+# [Backbone Patterns](http://ricostacruz.com/backbone-patterns)
 
 Here, I try to document the good practices that our team has learned along the
 way building [Backbone][bb] applications.
