@@ -22,13 +22,13 @@
     Flatdoc.run({
       fetcher: Flatdoc.file('Readme.md')
     });
-    $(document).on('flatdoc:done', function() {
+    $(document).on('flatdoc:ready', function() {
       // Remove some sections I don't want
       $("#misc").remove();
     });
   </script>
 </head>
-<body role='flatdoc'>
+<body role='flatdoc' class='big-h3'>
 
   <div class='title-area title-card'>
     <div class='headline'>

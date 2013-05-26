@@ -22,27 +22,27 @@ you're all good to go.
 
 ``` html
 <html>
-<head>
-  <!-- Doclet -->
-  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/legacy.js'></script>
-  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
+  <head>
+    <!-- Doclet -->
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/legacy.js'></script>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
 
-  <!-- Doclet theme (optional) -->
-  <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/style.css' rel='stylesheet'>
-  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/script.js'></script>
+    <!-- Doclet theme (optional) -->
+    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/style.css' rel='stylesheet'>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/script.js'></script>
 
-  <!-- Initializer -->
-  <script>
-    Doclet.run({
-      fetcher: Doclet.github('USER/REPO')
-    });
-  </script>
-</head>
+    <!-- Initializer -->
+    <script>
+      Doclet.run({
+        fetcher: Doclet.github('USER/REPO')
+      });
+    </script>
+  </head>
 
-<body role='flatdoc'>
-  <div role='flatdoc-menu'></div>
-  <div role='flatdoc-content'></div>
-</body>
+  <body role='flatdoc'>
+    <div role='flatdoc-menu'></div>
+    <div role='flatdoc-content'></div>
+  </body>
 </html>
 ```
 
@@ -108,8 +108,7 @@ Simply create a Markdown document.
 
 > See:
 >
-> [foo][project]  
-> [bar][project]
+> [dox][https://github.com/visionmedia/dox]  
 
 Markdown extras
 ---------------
@@ -146,6 +145,44 @@ Customizing
 
 You can customize it to your needs.
 
+### Theme options
+
+For the default theme (*theme-white*), You can set theme options by adding
+clasess to the `<body>` element. The available options are:
+
+
+#### big-h3
+Makes 3rd-level headings bigger.
+
+``` html
+<body class='big-h3'>
+```
+
+### Adding more markup
+
+You have full control over the HTML file, just add markup wherever you see fit.
+As long as you leave `role='flatdoc-content'` and `role='flatdoc-menu'` empty as
+they are, you'll be fine.
+
+Here are some ideas to get you started.
+
+ * Add a CSS file to make your own CSS adjustments.
+ * Add a 'Tweet' button on top.
+ * Add Google Analytics.
+ * Use CSS to style the IDs in menus (`#acknowledgements + p`).
+
+### JavaScript hooks
+
+Flatdoc emits the events `flatdoc:loading` and `flatdoc:ready` to help you make
+custom behavior when the document loads.
+
+``` js
+$(document).on('flatdoc:ready', function() {
+  // I don't like this section to appear
+  $("#acknowledgements").remove();
+});
+```
+
 Misc
 ====
 
@@ -155,6 +192,19 @@ Changelog
 #### v0.8.0 - May 26, 2013
 
 First version.
+
+Inspirations
+------------
+
+The following projects have inspired Flatdoc.
+
+ * [Backbone.js] - Jeremy's projects have always adopted this "one page
+ documentation" approach which I really love.
+
+ * [Docco] - Jeremy's Docco introduced me to the world of literate programming,
+ and side-by-side documentation in general.
+
+ * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
 
 Acknowledgements
 ----------------
@@ -179,3 +229,7 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/template.html
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked
+[Backbone.js]: http://backbonejs.org
+[dox]: https://github.com/visionmedia/dox
+[Stripe]: https://stripe.com/docs/api
+[Docco]: http://jashkenas.github.com/docco

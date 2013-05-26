@@ -377,7 +377,7 @@ Also includes:
       }
       var data = Flatdoc.parser.parse(markdown);
       doc.applyData(data, doc);
-      $(doc.root).trigger('flatdoc:done');
+      $(doc.root).trigger('flatdoc:ready');
     });
   };
 

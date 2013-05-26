@@ -22,7 +22,7 @@
     Flatdoc.run({
       fetcher: Flatdoc.file('support/patterns.md')
     });
-    $document.on('flatdoc:done', function() {
+    $document.on('flatdoc:ready', function() {
       $('li.level-1:first-child').remove();
     });
   </script>
