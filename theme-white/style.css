@@ -263,12 +263,12 @@ a:hover {
 .content.literate > h3:before {
   display: block;
   content: '';
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.4, rgba(0,0,0,0.15)), color-stop(0.9, rgba(0,0,0,0)));
-  background: -webkit-linear-gradient(left, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 90%);
-  background: -moz-linear-gradient(left, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 90%);
-  background: -o-linear-gradient(left, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 90%);
-  background: -ms-linear-gradient(left, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 90%);
-  background: linear-gradient(left, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 90%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0.4, #d4d4db), color-stop(0.9, rgba(212,212,219,0)));
+  background: -webkit-linear-gradient(left, #d4d4db 40%, rgba(212,212,219,0) 90%);
+  background: -moz-linear-gradient(left, #d4d4db 40%, rgba(212,212,219,0) 90%);
+  background: -o-linear-gradient(left, #d4d4db 40%, rgba(212,212,219,0) 90%);
+  background: -ms-linear-gradient(left, #d4d4db 40%, rgba(212,212,219,0) 90%);
+  background: linear-gradient(left, #d4d4db 40%, rgba(212,212,219,0) 90%);
   width: 100%;
   height: 1px;
   position: relative;
@@ -289,7 +289,7 @@ a:hover {
 }
 .header {
   background: #ececf3;
-  border-bottom: solid 1px rgba(0,0,0,0.15);
+  border-bottom: solid 1px #d4d4db;
   padding: 15px 15px 15px 40px;
   zoom: 1;
 }
@@ -317,7 +317,7 @@ a:hover {
   top: 0;
   bottom: 0;
   width: 230px;
-  border-right: solid 1px rgba(0,0,0,0.15);
+  border-right: solid 1px #d4d4db;
   padding: 40px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
