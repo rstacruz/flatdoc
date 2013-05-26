@@ -68,6 +68,9 @@ body, td, textarea, input
   font-size: 13px
   color:$txt
 
+  @media (max-width: 480px) /* Mobile */
+    font-size: 12px
+
 a
   color: $accent
   text-decoration: none
@@ -184,11 +187,19 @@ a
       content: ''
       background: linear-gradient(left, rgba($line, 1.0) 80%, rgba($line, 0.0))
       box-shadow: 0 1px 0 rgba(white, 0.4)
-      width: 100%
       height: 1px
       position: relative
       top: $pad * -1
       left: $pad * -1
+      width: 100%
+
+    @media (max-width: 768px) /* Mobile and tablet */
+      padding-top: $minipad * 2
+      &:before
+        background: $line
+        left: $minipad * -1
+        top: $minipad * -1
+        width: 120% // Lolhax
 
   // Small headings
   h4, h5, .small-heading
@@ -211,9 +222,21 @@ a
     &:before
       display: none
 
+@media (max-width: 768px) /* Tablet */
+  .content
+    h4, h5, .small-heading, body:not(.big-h3) & h3
+      padding-top: $vmargin * 2
+
 @media (max-width: 480px) /* Mobile */
   .content
     padding: $minipad
+    padding-top: $minipad * 2
+
+    h4, h5, .small-heading, body:not(.big-h3) & h3
+      padding-top: $vmargin
+
+// ----------------------------------------------------------------------------
+// Code blocks
 
 inset-box()
   background: $offwhite
@@ -537,7 +560,6 @@ code
         font-size: 1.3em
         font-family: Open Sans, sans-serif
         font-weight: 300
-
 
 // ----------------------------------------------------------------------------
 

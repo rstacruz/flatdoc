@@ -27,3 +27,9 @@
   font-family: proxima nova; } */
 
 /* http://www.flickr.com/photos/rao_anirudh/3971267496/ */
+
+
+@media (max-width: 480px) /* Mobile */ {
+  .title-card {
+    display: none; } }
+

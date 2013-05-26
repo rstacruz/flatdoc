@@ -106,6 +106,14 @@ input {
   font-size: 13px;
   color: #505050;
 }
+@media (max-width: 480px) /* Mobile */ {
+  body,
+  td,
+  textarea,
+  input {
+    font-size: 12px;
+  }
+}
 a {
   color: #2badad;
   text-decoration: none;
@@ -274,11 +282,28 @@ body.big-h3 .content h3:before {
   background: linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
   -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   box-shadow: 0 1px 0 rgba(255,255,255,0.4);
-  width: 100%;
   height: 1px;
   position: relative;
   top: -40px;
   left: -40px;
+  width: 100%;
+}
+@media (max-width: 768px) /* Mobile and tablet */ {
+  .content h1,
+  .content h2,
+  .content .big-heading,
+body.big-h3 .content h3 {
+    padding-top: 40px;
+  }
+  .content h1:before,
+  .content h2:before,
+  .content .big-heading:before,
+body.big-h3 .content h3:before {
+    background: #dfe2e7;
+    left: -20px;
+    top: -20px;
+    width: 120%;
+  }
 }
 .content h4,
 .content h5,
@@ -303,9 +328,24 @@ body:not(.big-h3) .content h3 {
 .content h1:first-child:before {
   display: none;
 }
+@media (max-width: 768px) /* Tablet */ {
+  .content h4,
+  .content h5,
+  .content .small-heading,
+  body:not(.big-h3) .content h3 {
+    padding-top: 20px;
+  }
+}
 @media (max-width: 480px) /* Mobile */ {
   .content {
     padding: 20px;
+    padding-top: 40px;
+  }
+  .content h4,
+  .content h5,
+  .content .small-heading,
+  body:not(.big-h3) .content h3 {
+    padding-top: 10px;
   }
 }
 body.no-literate .content pre > code {
