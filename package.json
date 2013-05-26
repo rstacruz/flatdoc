@@ -3,7 +3,7 @@
   "description": "",
   "keywords": [""],
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "dependencies": {
     "uglify-js": "2.3.6",
     "stylus": "0.32.1",

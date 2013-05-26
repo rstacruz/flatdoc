@@ -31,5 +31,6 @@ v/%: all
 	$(UGLIFY) < legacy.js > $@/legacy.js
 	mkdir -p $@/theme-white
 	cp theme-white/style.css $@/theme-white
+	cp theme-white/script.js $@/theme-white
 
 .PHONY: watch

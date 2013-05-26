@@ -8,6 +8,8 @@ easiest way to make open source documentation from *Readme* files.
 Flatdoc has no server-side components or any build process needed. Simply create
 an HTML file and deploy.
 
+*Current version: 0.8.0*
+
 Getting started
 ---------------
 
@@ -22,12 +24,12 @@ you're all good to go.
 <html>
 <head>
   <!-- Doclet -->
-  <script src='http://rstacruz.github.io/flatdoc/v/1.0/legacy.js'></script>
-  <script src='http://rstacruz.github.io/flatdoc/v/1.0/flatdoc.js'></script>
+  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/legacy.js'></script>
+  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
 
   <!-- Doclet theme (optional) -->
-  <link  href='http://rstacruz.github.io/flatdoc/v/1.0/theme.white/style.css' rel='stylesheet'>
-  <script src='http://rstacruz.github.io/flatdoc/v/1.0/theme.white/script.js'></script>
+  <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/style.css' rel='stylesheet'>
+  <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/script.js'></script>
 
   <!-- Initializer -->
   <script>
@@ -97,11 +99,10 @@ up as buttons.
 
 > [View in GitHub >][project]
 
-
 Customizing
 -----------
 
-You can customize it to your seeds.
+You can customize it to your needs.
 
 Misc
 ====
@@ -109,7 +110,7 @@ Misc
 Changelog
 ---------
 
-#### v0.1.0 - Jan 23, 2013
+#### v0.8.0 - May 26, 2013
 
 First version.
 
