@@ -286,10 +286,9 @@
   Runner.prototype.run = function() {
     var doc = this;
     $(doc.root).trigger('flatdoc:loading');
-    console.log(doc);
     doc.fetcher(function(err, markdown) {
       if (err) {
-        console.err('[Flatdoc] fetching Markdown data failed.', err);
+        console.error('[Flatdoc] fetching Markdown data failed.', err);
         return;
       }
       var data = Flatdoc.parser.parse(markdown);

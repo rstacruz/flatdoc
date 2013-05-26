@@ -56,16 +56,16 @@
 
   $(function() {
     var $sidebar = $('.menubar');
-    var elY;
+    var elTop;
 
     $window
       .on('resize.sidestick', function() {
-        elY = $sidebar.offset().top;
+        elTop = $sidebar.offset().top;
         $window.trigger('scroll.sidestick');
       })
       .on('scroll.sidestick', function() {
         var scrollY = $window.scrollTop();
-        $sidebar.toggleClass('fixed', (scrollY >= elY));
+        $sidebar.toggleClass('fixed', (scrollY >= elTop));
       })
       .trigger('resize.sidestick');
   });

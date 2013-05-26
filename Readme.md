@@ -18,7 +18,7 @@ scripts, and a link to a theme. It will look something like this (not exact).
 For GitHub projects, simply place this file in your [GitHub pages] branch and
 you're all good to go.
 
-[Download template >][template] *Opens in new window*
+[Download template >][template]
 
 ``` html
 <html>
@@ -34,7 +34,7 @@ you're all good to go.
   <!-- Initializer -->
   <script>
     Doclet.run({
-      fetcher: Doclet.github('rstacruz/reponame')
+      fetcher: Doclet.github('USER/REPO')
     });
   </script>
 </head>
@@ -45,6 +45,38 @@ you're all good to go.
 </body>
 </html>
 ```
+
+#### Via GitHub
+
+To fetch a Github Repository's readme file, use the `Doclet.github` fetcher.
+This will fetch the Readme file of the repository's default branch.
+
+``` javascript
+Doclet.run({
+  fetcher: Doclet.github('USER/REPO')
+});
+```
+
+#### Via a file
+
+You may also fetch a file. In this example, this fetches the file `Readme.md` in
+the same folder as the HTML file.
+
+``` javascript
+Doclet.run({
+  fetcher: Doclet.file('Readme.md')
+});
+```
+
+You may actually supply any URL here. It will be fetched via AJAX. This is
+useful for local testing.
+
+``` javascript
+Doclet.run({
+  fetcher: Doclet.file('http://yoursite.com/Readme.md')
+});
+```
+
 
 How it works
 ------------
@@ -134,6 +166,6 @@ License](http://www.opensource.org/licenses/mit-license.php).
 
 [GitHub pages]: https://pages.github.com
 [project]: https://github.com/rstacruz/flatdoc
-[template]: https://github.com/rstacruz/flatdoc/blob/master/template.html
+[template]: https://github.com/rstacruz/flatdoc/blob/gh-pages/template.html
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked
