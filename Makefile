@@ -18,4 +18,14 @@ legacy.js: vendor/html5shiv.js vendor/respond.js
 %.css: %.styl
 	$(STYLUS) < $< > $@
 
+# $ make v/0.1.0
+# Makes a distribution.
+#
+v/%: flatdoc.js
+	mkdir -p $@
+	cp flatdoc.js $@/flatdoc.js
+	cp legacy.js $@/legacy.js
+	mkdir -p $@/theme-white
+	cp theme-white/*.{css,js} $@/theme-white
+
 .PHONY: watch
