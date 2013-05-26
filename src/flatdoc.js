@@ -56,7 +56,7 @@
     marked.setOptions({});
 
     var html = $("<div>" + marked(source));
-    var h1 = html.find('h1').eq(0).remove();
+    var h1 = html.find('h1').eq(0);
     var title = h1.text();
     return { title: title, content: html };
   };

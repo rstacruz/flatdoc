@@ -9,15 +9,19 @@ $mono-font = Menlo, monospace
 
 // Margins
 $pad = 40px      // Space between things
+$sidepad = 30px  // Padding to the left of the sidebar
 $minipad = 20px  // Space for mobile
 $vmargin = 10px  // Margin between blocks
 
 // Colors
-$offwhite = #f3f3f7
-$grey = #a0a0b0
+$offwhite = #f3f6fb
+$grey = #9090aa
 $txt = #505050
-$accent = #3ad
-$line = $offwhite * 0.9
+$accent = #3cc
+$line = #e4e7ec
+
+// Misc
+$shadow-str = 0.1
 
 // Dimensions
 $sidebar-width = 230px
@@ -63,7 +67,6 @@ a
 
   ol > li
     list-style-type: decimal
-
 
   code
     font-family: $mono-font
@@ -113,7 +116,8 @@ a
     &:before
       display: block
       content: ''
-      background: linear-gradient(left, rgba($line, 1.0) 40%, rgba($line, 0.0) 90%)
+      background: linear-gradient(left, rgba($line, 1.0) 80%, rgba($line, 0.0))
+      box-shadow: 0 1px 0 rgba(white, 0.4)
       width: 100%
       height: 1px
       position: relative
@@ -126,6 +130,13 @@ a
     color: $grey
     padding-top: $vmargin * 3
     padding-bottom: 10px
+
+  h1:first-child
+    padding-top: 0
+    &, a, a:visited
+      color: $txt
+    &:before
+      display: none
 
 @media (max-width: 480px) /* Mobile */
   .content
@@ -151,7 +162,7 @@ a
   .content-root
     background-color: $offwhite
     $w = ($sidebar-width + $content-width)
-    box-shadow: inset $w 0 white, inset ($w + 1) 0 rgba(black, 0.1), inset ($w + 10) 0 10px -10px rgba(black, 0.1)
+    box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 10px -10px rgba(black, $shadow-str)
 
 // Literate mode
 @media (min-width: 1180px) /* Big desktop */
@@ -199,21 +210,24 @@ a
   background: $offwhite
   text-shadow: 0 1px 0 rgba(white, 0.5)
   border-bottom: solid 1px $line
-  padding: 15px 15px 15px $pad
+  padding: 15px 15px 15px $sidepad
   clearfix()
 
   line-height: 20px
+  position: relative
 
   .left
     float: left
   .right
-    float: right
+    position: absolute
+    right: 15px
+    top: 15px
 
   h1
     font-weight: bold
     font-family: montserrat, sans-serif
-    font-size: 16px
-    margin-right: 15px
+    color: $grey
+    font-size: 13px
 
   a
     font-size: 0.88em
@@ -226,12 +240,18 @@ a
   @media (min-width: 480px) /* Tablet & Desktop */
     h1
       float: left
+
     ul, li
       display: block
       float: left
 
     ul
+      margin-left: -15px
+
+    h1 + ul
       border-left: solid 1px $line
+      margin-left: 15px
+
     li
       border-left: solid 1px rgba(white, 0.5)
       border-right: solid 1px $line
@@ -249,20 +269,52 @@ a
 // ----------------------------------------------------------------------------
 // Sidebar
 
-.sidebar
-  padding: $pad
-  box-sizing: border-box
+.menu
+  .section
+    padding: $sidepad $sidepad
+    box-sizing: border-box
+
+  .section + .section
+    border-top: solid 1px $line
+
+a.big.button
+  &, .menu &
+    display: block
+    padding: 10px 20px
+    text-align: center
+
+    font-weight: bold
+    font-size: 1.1em
+
+    background: transparent
+    border: solid 3px $accent
+    border-radius: 30px
+    font-family: montserrat, sans-serif
+
+    &, &:visited
+      color: $accent
+      text-decoration: none
+
+    &:hover
+      background: $accent
+      &, &:visited
+        color: white
+
 
 @media (max-width: 480px) /* Mobile */
-  .sidebar
+  .menu
     padding: $minipad
     border-bottom: solid 1px $line
+
+@media (max-width: 768px) /* Mobile and tablet */
+  .menu
+    display: none
 
 @media (min-width: 768px) /* Desktop */
   .content-root
     padding-left: $sidebar-width
 
-  .sidebar
+  .menu
     position: absolute
     left: 0
     top: 0
@@ -270,8 +322,49 @@ a
     width: $sidebar-width
     border-right: solid 1px $line
 
-  .sidebar.fixed
+  .menu.fixed
     position: fixed
+    -webkit-overflow-scrolling: touch
+    overflow-y: auto
 
+// Menu items
+.menu
+  font-size: 0.9em
+
+  .level-1
+    margin-bottom: 20px
+
+  a
+    display: block
+    padding-top: 2px
+    padding-bottom: 2px
+
+    &, &:visited
+      color: $accent
+    &:hover
+      color: $accent*0.8
+
+  .level-1 > li > a
+    font-family: montserrat, sans-serif
+    text-transform: uppercase
+    font-size: 0.9em
+    font-weight: bold
+    &, &:visited
+      color: $grey
+    &:hover
+      color: $grey*0.6
+
+  .level-2 > li > a
+    font-weight: normal
+
+  .level-3 > li > a
+    font-weight: normal
+    font-size: 0.9em
+    padding-left: 10px
+
+  a.active
+    &, &:visited, &:hover
+      color: $txt !important
+    font-weight: bold !important
 
 

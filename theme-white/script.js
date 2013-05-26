@@ -2,7 +2,7 @@
   var $window = $(window);
 
   $(function() {
-    var $sidebar = $('.sidebar');
+    var $sidebar = $('.menu');
     var elY = $sidebar.offset().top;
 
     $window.on('scroll.sidestick', function() {

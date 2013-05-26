@@ -27,7 +27,7 @@
 
   <div class='header'>
     <div class='left'>
-      <h1 role='flatdoc-title'></h1>
+      <!-- <h1 role='flatdoc-title'></h1> -->
       <ul>
         <li><a href='https://github.com/r'>View on Github</a></li>
         <li><a href='https://github.com/r'>View source</a></li>
@@ -40,14 +40,24 @@
   </div>
 
   <div role='flatdoc' class='content-root'>
-    <div class='sidebar'>
-      <div role='flatdoc-menu'>
+    <div class='menu'>
+      <div class='section'>
+        <a class='big button' href='https://github.com/'>Download</a>
+      </div>
+      <div class='section' role='flatdoc-menu'>
         <ul class='level-1'>
           <li><a href='#'>Backbone Patterns</a>
             <ul class='level-2'>
               <li><a href='#'>Introduction</a></li>
               <li><a href='#'>Messages</a></li>
-              <li><a href='#'>So and so</a></li>
+              <li><a href='#'>So and so</a>
+                <ul class='level-3'>
+                  <li><a href='#'>View patterns</a></li>
+                  <li><a href='#'>Model events</a></li>
+                  <li><a href='#'>Router concerns</a></li>
+                  <li><a href='#'>General</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
