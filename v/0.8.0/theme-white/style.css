@@ -306,7 +306,6 @@ body:not(.big-h3) .content h3 {
     padding: 20px;
   }
 }
-.inset-box,
 body.no-literate .content pre > code {
   background: #f3f6fb;
   border: solid 1px #e7eaee;
@@ -318,30 +317,54 @@ body.no-literate .content pre > code {
   border-radius: 2px;
   overflow: auto;
 }
-.inset-box,
-body.no-literate .content pre > code,
 body.no-literate .content pre > code {
   -webkit-overflow-scrolling: touch;
 }
-.inset-box::-webkit-scrollbar,
 body.no-literate .content pre > code::-webkit-scrollbar {
   width: 15px;
   height: 15px;
 }
-.inset-box::-webkit-scrollbar-thumb,
 body.no-literate .content pre > code::-webkit-scrollbar-thumb {
   background: #ddd;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   border: solid 4px #f3f6fb;
 }
-.inset-box:hover::-webkit-scrollbar-thumb,
 body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   background: #999;
   -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
 }
 @media (max-width: 1180px) /* Small desktop */ {
+  .content pre > code {
+    background: #f3f6fb;
+    border: solid 1px #e7eaee;
+    border-top: solid 1px #dbdde2;
+    border-left: solid 1px #e2e5e9;
+    display: block;
+    padding: 10px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    overflow: auto;
+  }
+  .content pre > code {
+    -webkit-overflow-scrolling: touch;
+  }
+  .content pre > code::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+  .content pre > code::-webkit-scrollbar-thumb {
+    background: #ddd;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: solid 4px #f3f6fb;
+  }
+  .content pre > code:hover::-webkit-scrollbar-thumb {
+    background: #999;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+  }
 }
 .content .button {
   -webkit-font-smoothing: antialiased;
@@ -712,6 +735,8 @@ code .comment {
 }
 .title-area > img.bg {
   z-index: 0;
+  position: absolute;
+  left: -9999px;
 }
 .title-area > div {
   position: relative;

@@ -46,6 +46,7 @@ v/%: all
 	mkdir -p $@
 	$(UGLIFY) < flatdoc.js > $@/flatdoc.js
 	$(UGLIFY) < legacy.js > $@/legacy.js
+	cp template.html blank.html $@/
 	mkdir -p $@/theme-white
 	cp theme-white/style.css $@/theme-white
 	cp theme-white/script.js $@/theme-white
