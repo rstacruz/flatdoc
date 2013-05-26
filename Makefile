@@ -6,7 +6,8 @@ all: \
 	flatdoc.js \
 	legacy.js \
 	theme-white/style.css \
-	theme-white/script.js
+	theme-white/script.js \
+	Reference.md
 
 watch:
 	while true; do make all | grep -v "Nothing"; sleep 1; done
@@ -23,7 +24,7 @@ legacy.js: vendor/html5shiv.js vendor/respond.js
 theme-white/script.js: theme-white/setup.js vendor/jquery.scrollagent.js vendor/jquery.anchorjump.js
 	cat $^ > $@
 
-Reference.md: src/flatdoc.js Makefile
+Reference.md: src/flatdoc.js
 	$(DOX) -a < $< | sed "s/^## \(.*\.\)/### \1/g" > $@
 
 # $ make v/0.1.0

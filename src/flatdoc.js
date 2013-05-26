@@ -65,11 +65,17 @@
 
   /**
    * Parser module.
-   * Parses a given markdown.
+   * Parses a given Markdown document and returns a JSON object with data
+   * on the Markdown document.
    *
    *   var data = Flatdoc.parser.parse('markdown source here');
    *   console.log(data);
-   *   //=> { title: '..', content: '..', menu: '..' }
+   *
+   *   data == {
+   *     title: 'My Project',
+   *     content: '<p>This project is a...',
+   *     menu: {...}
+   *   }
    */
 
   var Parser = Flatdoc.parser = {};
@@ -88,9 +94,7 @@
     var title = h1.text();
 
     // Mangle content
-    Transformer.addIDs(html);
-    Transformer.buttonize(html);
-    Transformer.smartquotes(html);
+    Transformer.mangle(html);
     var menu = Transformer.getMenu(html);
 
     return { title: title, content: html, menu: menu };
@@ -109,14 +113,33 @@
   };
 
   /**
-   * Transformer.
-   * Mangles HTML.
+   * Transformer module.
+   * This takes care of any HTML mangling needed.  The main entry point is
+   * `.mangle()` which applies all transformations needed.
+   *
+   *   var $content = $("<p>Hello there, this is a docu...");
+   *   Flatdoc.transformer.mangle($content);
+   *
+   * If you would like to change any of the transformations, decorate any of
+   * the functions in `Flatdoc.transformer`.
    */
 
   var Transformer = Flatdoc.transformer = {};
 
   /**
-   * Adds sections.
+   * Takes a given HTML `$content` and improves the markup of it by executing
+   * the transformations.
+   *
+   * > See: [Transformer](#transformer)
+   */
+  Transformer.mangle = function($content) {
+    this.addIDs($content);
+    this.buttonize($content);
+    this.smartquotes($content);
+  };
+
+  /**
+   * Adds IDs to headings.
    */
 
   Transformer.addIDs = function($content) {
@@ -188,8 +211,8 @@
    */
 
   Transformer.smartquotes = function ($content) {
-    var nodes = getTextNodesIn($content);
-    for (var i=0; i<nodes.length; i++) {
+    var nodes = getTextNodesIn($content), len = nodes.length;
+    for (var i=0; i<len; i++) {
       var node = nodes[i];
       node.nodeValue = quotify(node.nodeValue);
     }
@@ -368,8 +391,9 @@
 
   // http://stackoverflow.com/questions/298750/how-do-i-select-text-nodes-with-jquery
   function getTextNodesIn(el) {
-    return $(el).find(":not(iframe,pre,code)").andSelf().contents().filter(function() {
-      return this.nodeType == 3;
+    var exclude = 'iframe,pre,code';
+    return $(el).find(':not('+exclude+')').andSelf().contents().filter(function() {
+      return this.nodeType == 3 && $(this).closest(exclude).length === 0;
     });
   }
 

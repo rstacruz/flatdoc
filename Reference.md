@@ -1,21 +1,4 @@
-  - [Flatdoc](#flatdoc)
-  - [Flatdoc.run()](#flatdocrun)
-  - [Flatdoc.file()](#flatdocfile)
-  - [Flatdoc.github()](#flatdocgithub)
-  - [Parser](#parser)
-  - [Parser.parse()](#parserparse)
-  - [Transformer](#transformer)
-  - [Transformer.addIDs()](#transformeraddids)
-  - [Transformer.getMenu()](#transformergetmenu)
-  - [Transformer.buttonize()](#transformerbuttonize)
-  - [Transformer.smartquotes()](#transformersmartquotes)
-  - [Highlighters](#highlighters)
-  - [MenuView](#menuview)
-  - [Runner](#runner)
-  - [Runner.run()](#runnerrun)
-  - [Runner.applyData()](#runnerapplydata)
-
-## Flatdoc
+# Flatdoc
 
   Flatdoc.
 
@@ -45,12 +28,21 @@
 ## Parser
 
   Parser module.
-  Parses a given markdown.
+  Parses a given Markdown document and returns a JSON object with data
+  on the Markdown document.
   
 ```js
 var data = Flatdoc.parser.parse('markdown source here');
 console.log(data);
-//=> { title: '..', content: '..', menu: '..' }
+```
+
+  
+```js
+data == {
+  title: 'My Project',
+  content: '<p>This project is a...',
+  menu: {...}
+}
 ```
 
 ### Parser.parse()
@@ -60,12 +52,29 @@ console.log(data);
 
 ## Transformer
 
-  Transformer.
-  Mangles HTML.
+  Transformer module.
+  This takes care of any HTML mangling needed.  The main entry point is
+  `.mangle()` which applies all transformations needed.
+  
+```js
+var $content = $("<p>Hello there, this is a docu...");
+Flatdoc.transformer.mangle($content);
+```
+
+  
+  If you would like to change any of the transformations, decorate any of
+  the functions in `Flatdoc.transformer`.
+
+### Transformer.mangle()
+
+  Takes a given HTML `$content` and improves the markup of it by executing
+  the transformations.
+  
+  > See: [Transformer](#transformer)
 
 ### Transformer.addIDs()
 
-  Adds sections.
+  Adds IDs to headings.
 
 ### Transformer.getMenu()
 
