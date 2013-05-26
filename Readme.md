@@ -1,4 +1,4 @@
-Doclet
+Flatdoc
 ======
 
 Documentation generator.
@@ -13,24 +13,24 @@ Make a file that looks like this.
 <html>
 <head>
   <meta charset='utf-8'>
-  <!-- Doclet -->
+  <!-- Flatdoc -->
   <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-  <script src='http://rstacruz.github.io/doclet/doclet.build.js'></script>
+  <script src='http://rstacruz.github.io/flatdoc/flatdoc.build.js'></script>
 
-  <!-- Doclet theme -->
-  <link  href='http://rstacruz.github.io/doclet/theme.white/style.css' rel='stylesheet'>
-  <script src='http://rstacruz.github.io/doclet/theme.white/script.js'></script>
+  <!-- Flatdoc theme -->
+  <link  href='http://rstacruz.github.io/flatdoc/theme.white/style.css' rel='stylesheet'>
+  <script src='http://rstacruz.github.io/flatdoc/theme.white/script.js'></script>
 
   <!-- Initializer -->
   <script>
-    Doclet.run({
-      fetcher: Doclet.github('rstacruz/reponame')
+    Flatdoc.run({
+      fetcher: Flatdoc.github('rstacruz/reponame')
     });
   </script>
 </head>
 <body>
-  <div role='doclet-menu'></div>
-  <div role='doclet-content'></div>
+  <div role='flatdoc-menu'></div>
+  <div role='flatdoc-content'></div>
 </body>
 ```
 
@@ -42,7 +42,7 @@ Options
 A fetcher function.
 
 ``` js
-fetcher: Doclet.ajax('Readme.md')
+fetcher: Flatdoc.ajax('Readme.md')
 ```
 
 ### super

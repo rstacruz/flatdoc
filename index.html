@@ -5,21 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="viewport" content="width=device-width">
 
-  <title>Doclet</title>
+  <title>Flatdoc</title>
 
-  <!-- Doclet -->
+  <!-- Flatdoc -->
   <script src='vendor/jquery.js'></script>
   <script src='legacy.js'></script>
-  <script src='doclet.js'></script>
+  <script src='flatdoc.js'></script>
 
-  <!-- Doclet theme -->
+  <!-- Flatdoc theme -->
   <link  href='theme-white/style.css' rel='stylesheet'>
   <script src='theme-white/script.js'></script>
 
   <!-- Initializer -->
   <script>
-    Doclet.run({
-      fetcher: Doclet.file('support/patterns.md')
+    Flatdoc.run({
+      fetcher: Flatdoc.file('support/patterns.md')
     });
   </script>
 </head>
@@ -35,12 +35,12 @@
     </div>
   </div>
 
-  <div role='doclet' class='content-root'>
+  <div role='flatdoc' class='content-root'>
     <div class='sidebar'>
-      <div role='doclet-title'></div>
-      <div role='doclet-menu'></div>
+      <div role='flatdoc-title'></div>
+      <div role='flatdoc-menu'></div>
     </div>
-    <div role='doclet-content' class='content literate'></div>
+    <div role='flatdoc-content' class='content literate'></div>
   </div>
 
 </body>

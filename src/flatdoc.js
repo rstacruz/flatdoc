@@ -1,4 +1,4 @@
-/*! Doclet (http://ricostacruz.com/doclet)
+/*! Flatdoc (http://ricostacruz.com/flatdoc)
  *  MIT licensed
  */
 (function($) {
@@ -7,24 +7,24 @@
   var marked;
 
   /**
-   * Doclet.
+   * Flatdoc.
    */
 
-  var Doclet = exports.Doclet = {};
+  var Flatdoc = exports.Flatdoc = {};
 
   /**
    * Runs.
    */
 
-  Doclet.run = function(options) {
-    $(function() { (new Doclet.runner(options)).run(); });
+  Flatdoc.run = function(options) {
+    $(function() { (new Flatdoc.runner(options)).run(); });
   };
 
   /**
    * File fetcher function.
    */
 
-  Doclet.file = function(url) {
+  Flatdoc.file = function(url) {
     return function(callback) {
       $.get(url, function(data) {
         callback(null, data);
@@ -32,7 +32,7 @@
     };
   };
 
-  Doclet.github = function(repo) {
+  Flatdoc.github = function(repo) {
     var url = 'https://api.github.com/repos/'+repo+'/readme';
   };
 
@@ -40,12 +40,12 @@
    * Parser module.
    * Parses a given markdown.
    *
-   *   var data = Doclet.parser.parse('markdown source here');
+   *   var data = Flatdoc.parser.parse('markdown source here');
    *   console.log(data);
    *   //=> { title: '..', content: '..', menu: '..' }
    */
 
-  var Parser = Doclet.parser = {};
+  var Parser = Flatdoc.parser = {};
 
   /**
    * Parses a given Markdown document.
@@ -66,7 +66,7 @@
    * Mangles HTML.
    */
 
-  var Transformer = Doclet.transformer = {};
+  var Transformer = Flatdoc.transformer = {};
 
   /**
    * Adds sections.
@@ -78,7 +78,7 @@
   /**
    * Returns menu data for a given HTML.
    *
-   *   menu = Doclet.transformer.getMenu($content);
+   *   menu = Flatdoc.transformer.getMenu($content);
    *   menu == {
    *     items: [{
    *       section: "Getting started",
@@ -91,14 +91,14 @@
   /**
    * Runner.
    */
-  var Runner = Doclet.runner = function(options) {
+  var Runner = Flatdoc.runner = function(options) {
     this.initialize(options);
   };
 
-  Runner.prototype.root    = '[role~="doclet"]';
-  Runner.prototype.menu    = '[role~="doclet-menu"]';
-  Runner.prototype.title   = '[role~="doclet-title"]';
-  Runner.prototype.content = '[role~="doclet-content"]';
+  Runner.prototype.root    = '[role~="flatdoc"]';
+  Runner.prototype.menu    = '[role~="flatdoc-menu"]';
+  Runner.prototype.title   = '[role~="flatdoc-title"]';
+  Runner.prototype.content = '[role~="flatdoc-content"]';
 
   Runner.prototype.initialize = function(options) {
     $.extend(this, options);
@@ -111,11 +111,11 @@
 
   Runner.prototype.run = function() {
     var doc = this;
-    $(doc.root).trigger('doclet:loading');
+    $(doc.root).trigger('flatdoc:loading');
     doc.fetcher(function(err, markdown) {
-      var data = Doclet.parser.parse(markdown);
+      var data = Flatdoc.parser.parse(markdown);
       doc.applyData(data, doc);
-      $(doc.root).trigger('doclet:done');
+      $(doc.root).trigger('flatdoc:done');
     });
   };
 
