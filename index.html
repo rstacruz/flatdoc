@@ -22,10 +22,14 @@
     Flatdoc.run({
       fetcher: Flatdoc.file('Readme.md')
     });
+
     $(document).on('flatdoc:ready', function() {
       $("#misc").remove();
     });
   </script>
+
+  <!-- Analytics -->
+  <script>if (location.hostname.match(/ricostacruz\.com/)){var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-20473929-1"]);_gaq.push(["_trackPageview"]);!function(){var ga=document.createElement("script");ga.type="text/javascript";ga.async=true;ga.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga,s)}();}</script>
 </head>
 <body role='flatdoc' class='big-h3'>
 
@@ -41,7 +45,7 @@
     <div class='left'>
       <h1><a href='.'>Flatdoc</a></h1>
       <ul>
-        <li><a href='https://github.com/rstacruz/flatdoc'>View on Github</a></li>
+        <li><a href='https://github.com/rstacruz/flatdoc'>View on GitHub</a></li>
         <li><a href='https://github.com/rstacruz/flatdoc/issues'>Issues</a></li>
         <li><a href='reference.html'>API reference</a></li>
       </ul>
@@ -55,7 +59,8 @@
   <div class='content-root'>
     <div class='menubar'>
       <div class='section'>
-        <a class='big button' href='https://github.com/rstacruz/flatdoc' target='_blank'>View in GitHub</a>
+        <a class='big button' href='https://raw.github.com/rstacruz/flatdoc/gh-pages/template.html' target='_blank'>Download</a>
+        <!-- <a href='https://github.com/rstacruz/flatdoc' target='_blank'>View in GitHub</a> -->
       </div>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
