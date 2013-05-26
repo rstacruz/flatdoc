@@ -276,6 +276,14 @@ body.no-literate .content pre > code
 
 // Literate mode
 @media (min-width: 1180px) /* Big desktop */
+  small-heading()
+    margin-left: $pad
+    width: $content-width - $pad * 2
+    margin-bottom: 3px
+
+    padding-left: 0
+    padding-right: 0
+
   body:not(.no-literate)
     .content
       padding-left: 0
@@ -307,12 +315,11 @@ body.no-literate .content pre > code
           clear: left
 
         h4, h5, .small-heading, body:not(.big-h3) & h3
-          margin-left: $pad
-          width: $content-width - $pad * 2
-          margin-bottom: 3px
+          small-heading()
 
-          padding-left: 0
-          padding-right: 0
+  body:not(.no-literate):not(.big-h3)
+    .content > h3
+      small-heading()
 
 // ----------------------------------------------------------------------------
 // Header

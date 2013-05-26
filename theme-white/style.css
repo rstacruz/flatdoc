@@ -472,6 +472,13 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     padding-left: 0;
     padding-right: 0;
   }
+  body:not(.no-literate):not(.big-h3) .content > h3 {
+    margin-left: 40px;
+    width: 470px;
+    margin-bottom: 3px;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .header {
   background: #f3f6fb;
