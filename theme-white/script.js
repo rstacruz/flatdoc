@@ -268,34 +268,30 @@
         if (!this.complete) return;
         var $img = $(this);
 
+        var parent = { height: $parent.innerHeight(), width: $parent.innerWidth() };
         var imageRatio     = $img.width() / $img.height();
-        var containerRatio = $parent.width() / $parent.height();
+        var containerRatio = parent.width / parent.height;
+
+        var css = {
+          position: 'absolute',
+          left: 0, top: 0, right: 'auto', bottom: 'auto'
+        };
 
         // If image is wider than the container
         if (imageRatio > containerRatio) {
-          $img.css({
-            'position': 'absolute',
-            'left': Math.round(($parent.width() - imageRatio * $parent.height()) / 2) + 'px',
-            'top': '0',
-            'right': 'auto',
-            'bottom': 'auto',
-            'width': 'auto',
-            'height': '100%'
-          });
+          css.left = Math.round((parent.width - imageRatio * parent.height) / 2) + 'px';
+          css.width = 'auto';
+          css.height = '100%';
         }
 
         // If the container is wider than the image
         else {
-          $img.css({
-            'position': 'absolute',
-            'top': Math.round(($parent.height() - ($parent.width() / $img.width() * $img.height())) / 2) + 'px',
-            'left': '0',
-            'right': 'auto',
-            'bottom': 'auto',
-            'height': 'auto',
-            'width': '100%'
-          });
+          css.top = Math.round((parent.height - (parent.width / $img.width() * $img.height())) / 2) + 'px';
+          css.height = 'auto';
+          css.width = '100%';
         }
+
+        $img.css(css);
       });
     }
 

@@ -8,12 +8,17 @@
   text-shadow: 0 0 4px rgba(black, 0.3); }
 
 .title-card .headline {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 0 auto;
+  max-width: 800px;
   line-height: 1.7; }
 
 .title-card h1 {
   font-family: 'Open Sans', sans-serif;
   font-size: 3.3em;
   font-weight: 100;
+  line-height: 1.4;
   color: #fff; }
 
 .title-card p {
@@ -22,14 +27,18 @@
   opacity: 0.5;
   font-size: 1.2em; }
 
+@media (max-width: 480px) /* Mobile */ {
+  .title-card .headline { }
+  .title-card h1 {
+    font-size: 2.2em; }
+  .title-card p {
+    font-size: 1.1em; }
+}
+
 /* body, td, textarea, input {
   font-size: 11pt;
   font-family: proxima nova; } */
 
 /* http://www.flickr.com/photos/rao_anirudh/3971267496/ */
 
-
-@media (max-width: 480px) /* Mobile */ {
-  .title-card {
-    display: none; } }
 
