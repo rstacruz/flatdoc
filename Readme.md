@@ -154,11 +154,20 @@ Customizing
 Basic
 -----
 
+### Code highlighting
+
+You can use Markdown code fences to make syntax-highlighted text. Simply
+surround your text with three backticks. This works in GitHub as well.
+See [GitHub Syntax Highlighting][fences] for more info.
+
+    ``` html
+    <strong>Hola, mundo</strong>
+    ```
+
 ### Theme options
 
 For the default theme (*theme-white*), You can set theme options by adding
 clasess to the `<body>` element. The available options are:
-
 
 #### big-h3
 Makes 3rd-level headings bigger.
@@ -287,3 +296,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [Docco]: http://jashkenas.github.com/docco
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/blank.html
 [dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.0
+[fences]: https://help.github.com/articles/github-flavored-markdown#syntax-highlighting
