@@ -266,36 +266,31 @@ body.no-literate .content pre > code
 // ----------------------------------------------------------------------------
 // Buttons
 
-.content
-  .button
-    antialias()
-    font-family: montserrat, sans-serif
-    letter-spacing: -1px
-    font-weight: bold
+.button
+  antialias()
+  font-family: montserrat, sans-serif
+  letter-spacing: -1px
+  font-weight: bold
 
-    display: inline-block
-    padding: 3px 25px
+  display: inline-block
+  padding: 3px 25px
 
-    border: solid 2px $accent
-    border-radius: 20px
+  border: solid 2px $accent
+  border-radius: 20px
 
-    margin-right: 15px
+  margin-right: 15px
 
-    &, &:visited
-      background: $accent
-      color: white
-      text-shadow: none
+  &, &:visited
+    background: $accent
+    color: white
+    text-shadow: none
 
-    &:hover
-      border-color: #111
-      background: #111
-      color: white
+  &:hover
+    border-color: #111
+    background: #111
+    color: white
 
-  .button + em
-    color: $grey
-
-  .button.light
-
+  &.light
     &, &:visited
       background: transparent
       color: $grey
@@ -307,6 +302,10 @@ body.no-literate .content pre > code
       background: $grey
       color: white
     
+.content
+  .button + em
+    color: $grey
+
 
 // ----------------------------------------------------------------------------
 // Literate mode content
@@ -450,6 +449,10 @@ body.no-literate .content pre > code
 
   .section + .section
     border-top: solid 1px $line
+
+  .section.no-line
+    border-top: 0
+    padding-top: 0
 
 a.big.button
   display: block

@@ -420,7 +420,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   }
 }
-.content .button {
+.button {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: montserrat, sans-serif;
@@ -433,31 +433,31 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   border-radius: 20px;
   margin-right: 15px;
 }
-.content .button,
-.content .button:visited {
+.button,
+.button:visited {
   background: #2badad;
   color: #fff;
   text-shadow: none;
 }
-.content .button:hover {
+.button:hover {
   border-color: #111;
   background: #111;
   color: #fff;
 }
-.content .button + em {
-  color: #9090aa;
-}
-.content .button.light,
-.content .button.light:visited {
+.button.light,
+.button.light:visited {
   background: transparent;
   color: #9090aa;
   border-color: #9090aa;
   text-shadow: none;
 }
-.content .button.light:hover {
+.button.light:hover {
   border-color: #9090aa;
   background: #9090aa;
   color: #fff;
+}
+.content .button + em {
+  color: #9090aa;
 }
 @media (min-width: 1180px) /* Big desktop */ {
   body:not(.no-literate) .content-root {
@@ -643,6 +643,10 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 .menubar .section + .section {
   border-top: solid 1px #dfe2e7;
+}
+.menubar .section.no-line {
+  border-top: 0;
+  padding-top: 0;
 }
 a.big.button {
   display: block;
