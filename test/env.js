@@ -14,7 +14,7 @@ module.exports = function(done) {
   jsdom.env({
     html: getFile('test/fixtures/context.html'),
     src: [
-      getFile('vendor/jquery.js'),
+      getFile('support/vendor/jquery.js'),
       getFile('flatdoc.js')
     ],
     done: function(errors, window) {

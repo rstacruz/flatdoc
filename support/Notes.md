@@ -15,7 +15,7 @@ This will (re-) build auto-generated files (stylus, etc).
 ### Update vendor files
 This will download files.
 
-    $ cd vendor; make *.js
+    $ cd support/vendor/; make *.js
 
 ### Make a release
 This will concat/compress things into a build in `/v/0.8.0`.

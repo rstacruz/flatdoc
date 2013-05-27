@@ -15,15 +15,15 @@ watch:
 # Main distribution
 flatdoc.js: \
 	src/flatdoc.js \
-	vendor/marked.js \
-	vendor/base64.js
+	support/vendor/marked.js \
+	support/vendor/base64.js
 	cat $^ > $@
 
 # Legacy shims for IE
 legacy.js: \
 	support/legacy-header.js \
-	vendor/html5shiv.js \
-	vendor/respond.js
+	support/vendor/html5shiv.js \
+	support/vendor/respond.js
 	cat $^ > $@
 
 %.css: %.styl
@@ -31,9 +31,9 @@ legacy.js: \
 
 theme-white/script.js: \
 	theme-white/setup.js \
-	vendor/jquery.scrollagent.js \
-	vendor/jquery.anchorjump.js \
-	vendor/jquery.fillsize.js
+	support/vendor/jquery.scrollagent.js \
+	support/vendor/jquery.anchorjump.js \
+	support/vendor/jquery.fillsize.js
 	cat $^ > $@
 
 Reference.md: src/flatdoc.js
