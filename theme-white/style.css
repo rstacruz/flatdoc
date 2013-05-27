@@ -650,6 +650,10 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 a.big.button {
   display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
   padding: 10px 20px;
   text-align: center;
   font-weight: bold;
