@@ -14,6 +14,8 @@ way to make open source documentation from *Readme* files.
 
 *Current version: [0.8.0][dist]*
 
+[![Build Status](https://travis-ci.org/rstacruz/flatdoc.png?branch=gh-pages)](https://travis-ci.org/rstacruz/flatdoc)
+
 Getting started
 ---------------
 
