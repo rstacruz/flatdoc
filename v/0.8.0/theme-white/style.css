@@ -1,4 +1,10 @@
+/* ----------------------------------------------------------------------------
+ * Fonts
+ */
 @import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
+/* ----------------------------------------------------------------------------
+ * Base
+ */
 html,
 body,
 div,
@@ -121,6 +127,9 @@ a {
 a:hover {
   color: #228a8a;
 }
+/* ----------------------------------------------------------------------------
+ * Content styling
+ */
 .content p,
 .content ul,
 .content ol,
@@ -210,6 +219,9 @@ a:hover {
 .content blockquote :last-child {
   padding-bottom: 0;
 }
+/* ----------------------------------------------------------------------------
+ * Content
+ */
 .content-root {
   min-height: 90%;
   position: relative;
