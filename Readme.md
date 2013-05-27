@@ -292,15 +292,16 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [c]:   http://github.com/rstacruz/flatdoc/contributors
 [nd]:  http://nadarei.co
 
-[GitHub pages]: https://pages.github.com
-[project]: https://github.com/rstacruz/flatdoc
-[template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/template.html
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked
 [Backbone.js]: http://backbonejs.org
 [dox]: https://github.com/visionmedia/dox
 [Stripe]: https://stripe.com/docs/api
 [Docco]: http://jashkenas.github.com/docco
-[blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/blank.html
+[GitHub pages]: https://pages.github.com
+
+[project]: https://github.com/rstacruz/flatdoc
+[template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
+[blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
 [dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.0
 [fences]: https://help.github.com/articles/github-flavored-markdown#syntax-highlighting
