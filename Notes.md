@@ -1,10 +1,16 @@
 Development notes
 =================
 
+### One-time setup
+You probably want to install the toolchain:
+
+    $ npm install
+
 ### Auto-generate files
 This will (re-) build auto-generated files (stylus, etc).
 
-    $ make [-B]
+    $ make
+    $ make -B       # Recompiles things
 
 ### Update vendor files
 This will download files.
@@ -16,17 +22,7 @@ This will concat/compress things into a build in `/v/0.8.0`.
 
     $ make v/0.8.0
 
-Todo
-----
+To do
+-----
 
 - Sectioning
-- Titlecard (in progress)
-- Actual readme (in progress)
-
-Done:
-
-- Menus
-- IDs
-- Syntax highlighting
-- GitHub fetch
-- Error handling
