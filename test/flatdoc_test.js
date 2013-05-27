@@ -1,14 +1,5 @@
 describe("Flatdoc", function() {
-  var $, Flatdoc, window;
-
-  beforeEach(function(done) {
-    require('./env')(function(errors, _window) {
-      window = _window;
-      $ = window.jQuery;
-      Flatdoc = window.Flatdoc;
-      done();
-    });
-  });
+  beforeEach(require('./env'));
 
   it("Should be present", function() {
     assert.equal('object', typeof window.Flatdoc);

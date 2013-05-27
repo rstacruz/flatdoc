@@ -17,6 +17,11 @@ module.exports = function(done) {
       getFile('vendor/jquery.js'),
       getFile('flatdoc.js')
     ],
-    done: done
+    done: function(errors, window) {
+      global.window = window;
+      global.$ = window.jQuery;
+      global.Flatdoc = window.Flatdoc;
+      done(errors);
+    }
   });
 };

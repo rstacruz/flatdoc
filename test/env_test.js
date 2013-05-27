@@ -1,12 +1,5 @@
 describe("jsdom", function() {
-  var $;
-
-  beforeEach(function(done) {
-    require('./env')(function(errors, _window) {
-      $ = _window.jQuery;
-      done();
-    });
-  });
+  beforeEach(require('./env'));
 
   it("environment should work", function() {
     $('body').append('<a id="aaa">hello</a>');
