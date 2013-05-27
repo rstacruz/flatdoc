@@ -1,5 +1,5 @@
 describe("Flatdoc", function() {
-  beforeEach(require('./env'));
+  beforeEach(require('./setup'));
 
   it("Should be present", function() {
     assert.equal('object', typeof window.Flatdoc);

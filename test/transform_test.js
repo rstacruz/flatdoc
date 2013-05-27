@@ -1,7 +1,7 @@
 describe("Flatdoc.transformer", function() {
   var trans;
 
-  beforeEach(require('./env'));
+  beforeEach(require('./setup'));
   beforeEach(function() {
     trans = Flatdoc.transformer;
   });
