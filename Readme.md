@@ -261,6 +261,9 @@ The following projects have inspired Flatdoc.
 
  * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
 
+ * [DocumentUp] - This service has the same idea but does a hosted readme 
+ parsing approach.
+
 Attributions
 ------------
 
@@ -299,9 +302,10 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [Stripe]: https://stripe.com/docs/api
 [Docco]: http://jashkenas.github.com/docco
 [GitHub pages]: https://pages.github.com
+[fences]:https://help.github.com/articles/github-flavored-markdown#syntax-highlighting
+[DocumentUp]: http://documentup.com
 
 [project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
 [dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.0
-[fences]: https://help.github.com/articles/github-flavored-markdown#syntax-highlighting
