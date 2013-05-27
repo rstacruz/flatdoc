@@ -1,6 +1,4 @@
-global.chai = require('chai');
-global.assert = chai.assert;
-chai.should();
+process.stdout.write('Starting test environment');
 
 global.getFile = function(filepath) {
   var path = require('path');
@@ -8,7 +6,13 @@ global.getFile = function(filepath) {
   return fs.readFileSync(path.resolve(__dirname, '..', filepath)).toString();
 };
 
+global.chai = require('chai');
+global.assert = chai.assert;
+chai.should();
+process.stdout.write('.');
+
 var jsdom = require('jsdom');
+process.stdout.write('. OK\n');
 
 module.exports = function(done) {
   jsdom.env({
