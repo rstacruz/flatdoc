@@ -578,13 +578,12 @@ code
 
 // ----------------------------------------------------------------------------
 
-.large-brief
-  .content
-    > h1:first-child
-      & + p
-        font-size: 1.3em
-        font-family: Open Sans, sans-serif
-        font-weight: 300
+.content
+  .large-brief & > h1:first-child + p,
+  > p.brief
+    font-size: 1.3em
+    font-family: Open Sans, sans-serif
+    font-weight: 300
 
 // ----------------------------------------------------------------------------
 

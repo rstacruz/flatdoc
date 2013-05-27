@@ -802,7 +802,8 @@ code .keyword {
 code .comment {
   color: #adadcc;
 }
-.large-brief .content > h1:first-child + p {
+.large-brief .content > h1:first-child + p,
+.content > p.brief {
   font-size: 1.3em;
   font-family: Open Sans, sans-serif;
   font-weight: 300;

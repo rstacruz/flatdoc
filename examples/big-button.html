@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="viewport" content="width=device-width">
 
-  <title>Bankbone Patterns</title>
+  <title>Examples</title>
   <base href='..'>
 
   <!-- Flatdoc -->
@@ -20,10 +20,7 @@
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('examples/patterns.md')
-    });
-    $document.on('flatdoc:ready', function() {
-      $('li.level-1:first-child').remove();
+      fetcher: Flatdoc.file('examples/examples.md')
     });
   </script>
   <style>
@@ -31,28 +28,16 @@
 </head>
 <body role='flatdoc'>
 
-  <div class='title-area title-card'>
-    Backbone Patterns
-  </div>
-
   <div class='header'>
     <div class='left'>
       <h1 role='flatdoc-title'></h1>
-      <ul>
-        <li><a href='https://github.com/r'>View on Github</a></li>
-        <li><a href='https://github.com/r'>Issues</a></li>
-      </ul>
-    </div>
-    <div class='right'>
-      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;repo=jquery.transit&amp;type=watch&amp;count=true"
-        allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
 
   <div role='flatdoc' class='content-root'>
     <div class='menubar'>
       <div class='section'>
-        <a class='big button' href='https://github.com/rstacruz/backbone-patterns'>View in GitHub</a>
+        <a class='big button' href='https://github.com/rstacruz/backbone-patterns'>Big Button</a>
       </div>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
