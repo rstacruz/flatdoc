@@ -1,7 +1,6 @@
 support-for-ie = true
 
 @import 'nib'
-global-reset()
 
 // Fonts
 $body-font = Helvetica Neue, Open Sans, sans-serif
@@ -29,6 +28,11 @@ $content-width = 550px
 $pre-width = 380px
 
 // ----------------------------------------------------------------------------
+// Fonts
+
+@import url('http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300')
+
+// ----------------------------------------------------------------------------
 // Mixins
 
 scrollbar($bg=white)
@@ -50,15 +54,13 @@ antialias()
   text-rendering: optimizeLegibility
 
 // ----------------------------------------------------------------------------
-// Fonts
-
-@import url('http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans')
-
-// ----------------------------------------------------------------------------
 // Base
+
+global-reset()
 
 html, body
   height: 100%
+
 html
   overflow-x: hidden
 
