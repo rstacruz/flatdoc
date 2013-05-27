@@ -4,7 +4,13 @@
   "keywords": [""],
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "version": "0.8.0",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R spec"
+  },
   "dependencies": {
+    "mocha": "1.10.0",
+    "chai": "1.6.0",
+    "jsdom": "*",
     "uglify-js": "2.3.6",
     "stylus": "0.32.1",
     "nib": "0.9.1",
