@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
 html,
 body,
 div,
@@ -89,7 +90,6 @@ td {
 a img {
   border: none;
 }
-@import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans");
 html,
 body {
   height: 100%;
