@@ -16,6 +16,8 @@
 .title-card .headline {
   vertical-align: middle;
   display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 
@@ -55,13 +57,15 @@
 
 @media (max-width: 768px) /* Tablet */ {
   .title-card h5 {
-    margin-top: 100px;
+    margin-top: 100px; }
 }
 
 @media (max-width: 480px) /* Mobile */ {
   .title-card {
     padding: 50px 0; }
   .title-card .headline {
+    padding-left: 10px;
+    padding-right: 10px;
     min-height: none; }
   .title-card h1 {
     font-size: 2.2em; }
@@ -71,9 +75,3 @@
     margin-top: 40px;
     font-size: 0.9em; }
 }
-/* body, td, textarea, input {
-  font-size: 11pt;
-  font-family: proxima nova; } */
-
-http://www.flickr.com/photos/doug88888/2953428679/
-
