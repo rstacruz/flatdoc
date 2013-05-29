@@ -31,18 +31,18 @@ you're all good to go.
 ``` html
 <html>
   <head>
-    <!-- Doclet -->
+    <!-- Flatdoc -->
     <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/legacy.js'></script>
     <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
 
-    <!-- Doclet theme (optional) -->
+    <!-- Flatdoc theme (optional) -->
     <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/style.css' rel='stylesheet'>
     <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/script.js'></script>
 
     <!-- Initializer -->
     <script>
-      Doclet.run({
-        fetcher: Doclet.github('USER/REPO')
+      Flatdoc.run({
+        fetcher: Flatdoc.github('USER/REPO')
       });
     </script>
   </head>
@@ -56,12 +56,12 @@ you're all good to go.
 
 ### Via GitHub
 
-To fetch a Github Repository's readme file, use the `Doclet.github` fetcher.
+To fetch a Github Repository's readme file, use the `Flatdoc.github` fetcher.
 This will fetch the Readme file of the repository's default branch.
 
 ``` javascript
-Doclet.run({
-  fetcher: Doclet.github('USER/REPO')
+Flatdoc.run({
+  fetcher: Flatdoc.github('USER/REPO')
 });
 ```
 
@@ -69,8 +69,8 @@ You may also fetch another file other than the Readme file, just specify it as
 the 2nd parameter.
 
 ``` javascript
-Doclet.run({
-  fetcher: Doclet.github('USER/REPO', 'Changelog.md')
+Flatdoc.run({
+  fetcher: Flatdoc.github('USER/REPO', 'Changelog.md')
 });
 ```
 
@@ -84,8 +84,8 @@ You may also fetch a file. In this example, this fetches the file `Readme.md` in
 the same folder as the HTML file.
 
 ``` javascript
-Doclet.run({
-  fetcher: Doclet.file('Readme.md')
+Flatdoc.run({
+  fetcher: Flatdoc.file('Readme.md')
 });
 ```
 
@@ -93,8 +93,8 @@ You may actually supply any URL here. It will be fetched via AJAX. This is
 useful for local testing.
 
 ``` javascript
-Doclet.run({
-  fetcher: Doclet.file('http://yoursite.com/Readme.md')
+Flatdoc.run({
+  fetcher: Flatdoc.file('http://yoursite.com/Readme.md')
 });
 ```
 
@@ -235,8 +235,8 @@ the blank template and customize as you see fit.
     <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
     <!-- Initializer -->
     <script>
-      Doclet.run({
-        fetcher: Doclet.github('USER/REPO')
+      Flatdoc.run({
+        fetcher: Flatdoc.github('USER/REPO')
       });
     </script>
   </head>
