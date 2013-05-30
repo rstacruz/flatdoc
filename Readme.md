@@ -36,8 +36,8 @@ you're all good to go.
     <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
 
     <!-- Flatdoc theme (optional) -->
-    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/style.css' rel='stylesheet'>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme.white/script.js'></script>
+    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme-white/script.js'></script>
 
     <!-- Initializer -->
     <script>
