@@ -170,7 +170,7 @@ Basic
 ### Theme options
 
 For the default theme (*theme-white*), You can set theme options by adding
-clasess to the `<body>` element. The available options are:
+classes to the `<body>` element. The available options are:
 
 #### big-h3
 Makes 3rd-level headings bigger.
