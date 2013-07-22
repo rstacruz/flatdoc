@@ -428,7 +428,9 @@ Also includes:
   }
 
   function slugify(text) {
-    return text.toLowerCase().match(/[a-z0-9]+/g).join('-');
+    var match = text.toLowerCase().match(/[a-z0-9]+/g);
+    match = (match===null) ? [new Date().getTime()] : match;
+    return match.join('-');
   }
 })(jQuery);
 /*!
