@@ -56,17 +56,17 @@
    * Sidebar stick.
    */
 
-  $(function () {
-    var $sidebar = $('.menubar'),
-      elTop;
+  $(function() {
+    var $sidebar = $('.menubar');
+    var elTop;
 
     $window
-      .on('resize.sidestick', function () {
+      .on('resize.sidestick', function() {
         $sidebar.removeClass('fixed');
         elTop = $sidebar.offset().top;
         $window.trigger('scroll.sidestick');
       })
-      .on('scroll.sidestick', function () {
+      .on('scroll.sidestick', function() {
         var scrollY = $window.scrollTop();
         $sidebar.toggleClass('fixed', (scrollY >= elTop));
       })
