@@ -56,22 +56,22 @@
    * Sidebar stick.
    */
 
-    $(function () {
-      var $sidebar = $('.menubar'),
-        elTop;
+  $(function () {
+    var $sidebar = $('.menubar'),
+      elTop;
 
-      $window
-        .on('resize.sidestick', function () {
-          $sidebar.removeClass('fixed');
-          elTop = $sidebar.offset().top;
-          $window.trigger('scroll.sidestick');
-        })
-        .on('scroll.sidestick', function () {
-          var scrollY = $window.scrollTop();
-          $sidebar.toggleClass('fixed', (scrollY >= elTop));
-        })
-        .trigger('resize.sidestick');
-    });
+    $window
+      .on('resize.sidestick', function () {
+        $sidebar.removeClass('fixed');
+        elTop = $sidebar.offset().top;
+        $window.trigger('scroll.sidestick');
+      })
+      .on('scroll.sidestick', function () {
+        var scrollY = $window.scrollTop();
+        $sidebar.toggleClass('fixed', (scrollY >= elTop));
+      })
+      .trigger('resize.sidestick');
+  });
 
 })(jQuery);
 /*! jQuery.scrollagent (c) 2012, Rico Sta. Cruz. MIT License.
