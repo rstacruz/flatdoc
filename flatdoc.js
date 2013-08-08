@@ -84,6 +84,43 @@ Also includes:
   };
 
   /**
+   * Bitbucket fetcher.
+   * Fetches from repo `repo` (in format 'user/repo').
+   * 
+   * If the parameter `filepath` is supplied, it fetches the contents of that
+   * given file in the repo.
+   *
+   * See [Runner#run()] for a description of fetcher functions.
+   *
+   * See: https://confluence.atlassian.com/display/BITBUCKET/src+Resources#srcResources-GETrawcontentofanindividualfile 
+   * See: http://ben.onfabrik.com/posts/embed-bitbucket-source-code-on-your-website
+   * Bitbucket appears to have stricter restrictions on 
+   * Access-Control-Allow-Origin, and so the method here is a bit 
+   * more complicated than for Github
+   */
+  Flatdoc.bitbucket = function(repo, filepath) {
+    var url;
+    if (!filepath) {
+      filepath = 'readme.md'
+    } 
+    url = 'https://bitbucket.org/api/1.0/repositories/' + repo+'/src/default/'+filepath;
+
+     return function(callback) {
+       $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            error: function(xhr, status, error) {
+                alert(error);
+            },
+            success: function(response) { 
+                           var markdown = response.data;
+                           callback(null, markdown);
+            }
+        });
+    };
+  };
+
+  /**
    * Parser module.
    * Parses a given Markdown document and returns a JSON object with data
    * on the Markdown document.
