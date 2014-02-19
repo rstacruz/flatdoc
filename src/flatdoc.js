@@ -428,6 +428,10 @@ Also includes:
   }
 
   function slugify(text) {
-    return text.toLowerCase().match(/[a-z0-9]+/g).join('-');
+    //update by ken support chinese
+    text = text.toLowerCase();
+    text = text.split(' ').join('-');
+    return text;
+    //return text.toLowerCase().match(/[a-z0-9]+/g).join('-');
   }
 })(jQuery);
