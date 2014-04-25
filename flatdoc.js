@@ -58,7 +58,7 @@ Also includes:
   /**
    * Github fetcher.
    * Fetches from repo `repo` (in format 'user/repo').
-   * 
+   *
    * If the parameter `filepath` is supplied, it fetches the contents of that
    * given file in the repo.
    *
@@ -84,13 +84,61 @@ Also includes:
   };
 
   /**
+   * Bitbucket fetcher.
+   * Fetches from repo `repo` (in format 'user/repo').
+   *
+   * If the parameter `filepath` is supplied, it fetches the contents of that
+   * given file in the repo.
+   *
+   * See [Runner#run()] for a description of fetcher functions.
+   *
+   * See: https://confluence.atlassian.com/display/BITBUCKET/src+Resources#srcResources-GETrawcontentofanindividualfile
+   * See: http://ben.onfabrik.com/posts/embed-bitbucket-source-code-on-your-website
+   * Bitbucket appears to have stricter restrictions on
+   * Access-Control-Allow-Origin, and so the method here is a bit
+   * more complicated than for Github
+   *
+   * If you don't pass a branch name, then 'default' for Hg repos is assumed
+   * For git, you should pass 'master'. In both cases, you should also be able
+   * to pass in a revision number here -- in Mercurial, this also includes
+   * things like 'tip' or the repo-local integer revision number
+   * Default to Mercurial because Git users historically tend to use GitHub
+   */
+  Flatdoc.bitbucket = function(repo, filepath, branch) {
+    var url;
+    if (!filepath) {
+      filepath = 'readme.md'
+    }
+
+    if (!branch) {
+        branch = 'default';
+    }
+
+    url = 'https://bitbucket.org/api/1.0/repositories/'+repo+'/src/'+branch+'/'+filepath;
+
+     return function(callback) {
+       $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            error: function(xhr, status, error) {
+                alert(error);
+            },
+            success: function(response) {
+                           var markdown = response.data;
+                           callback(null, markdown);
+            }
+        });
+    };
+  };
+
+  /**
    * Parser module.
    * Parses a given Markdown document and returns a JSON object with data
    * on the Markdown document.
    *
    *     var data = Flatdoc.parser.parse('markdown source here');
    *     console.log(data);
-   *   
+   *
    *     data == {
    *       title: 'My Project',
    *       content: '<p>This project is a...',
@@ -1627,11 +1675,11 @@ if (typeof exports === 'object') {
         return b.replace(/[\s\S]{1,3}/g, cb_encode);
     };
     var _encode = buffer
-        ? function (u) { return (new buffer(u)).toString('base64') } 
+        ? function (u) { return (new buffer(u)).toString('base64') }
     : function (u) { return btoa(utob(u)) }
     ;
     var encode = function(u, urisafe) {
-        return !urisafe 
+        return !urisafe
             ? _encode(u)
             : _encode(u).replace(/[+\/]/g, function(m0) {
                 return m0 == '+' ? '-' : '_';
