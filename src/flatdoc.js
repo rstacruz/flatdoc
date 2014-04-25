@@ -279,7 +279,7 @@ Also includes:
       .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
       .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
       .replace(/&lt;!--(.*)--&gt;/g, '<span class="comment">&lt;!--$1--&gt;</span>')
-      .replace(/&lt;([^!][^ ]*)/g, '&lt;<span class="keyword">$1</span>');
+      .replace(/&lt;([^!][^\s&]*)/g, '&lt;<span class="keyword">$1</span>');
   };
 
   Highlighters.generic = function(code) {
