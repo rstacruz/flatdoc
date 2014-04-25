@@ -18,6 +18,10 @@ To build .styl from .css
 
     npm install
 
+    # update prescribed versions
+    perl -p -i -e "s/0\.8\.0/0\.8\.1/g" templates/*.html Readme.md
+    git diff
+
     # build files
     make
     make v/0.8.1
@@ -25,9 +29,6 @@ To build .styl from .css
     # update version
     bump package.json
 
-    # update versions
-    perl -p -i -e "s/0\.8\.0/0\.8\.1/g" templates/*.html Readme.md
-
     # add release date
     vim History.md
-    git release
+    git release 0.8.1

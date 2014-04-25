@@ -3,7 +3,7 @@
   "description": "",
   "keywords": [""],
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "repository": {
      "type": "git",
      "url": "https://github.com/rstacruz/flatdoc.git"
