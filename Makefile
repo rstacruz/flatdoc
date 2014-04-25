@@ -19,7 +19,7 @@ legacy.js: \
 	cat $^ > $@
 
 %.css: %.styl
-	$(STYLUS) < $< > $@
+	(echo "/*\n\nPlease don't edit this file directly.\nInstead, edit the stylus (.styl) files and compile it to CSS on your machine.\n\n*/" ; $(STYLUS) < $<) > $@
 
 theme-white/script.js: \
 	theme-white/setup.js \
