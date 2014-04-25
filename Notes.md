@@ -24,6 +24,7 @@ To build .styl from .css
 
     # build files
     make
+    make v/0.8
     make v/0.8.1
 
     # update version
