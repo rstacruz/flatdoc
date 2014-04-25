@@ -3,7 +3,6 @@ STYLUS := ./node_modules/.bin/stylus -U -u nib
 DOX := ./node_modules/.bin/dox
 
 all: \
-	flatdoc.js \
 	legacy.js \
 	theme-white/style.css \
 	theme-white/script.js \
@@ -11,13 +10,6 @@ all: \
 
 watch:
 	while true; do make all | grep -v "Nothing"; sleep 1; done
-
-# Main distribution
-flatdoc.js: \
-	src/flatdoc.js \
-	support/vendor/marked.js \
-	support/vendor/base64.js
-	cat $^ > $@
 
 # Legacy shims for IE
 legacy.js: \
