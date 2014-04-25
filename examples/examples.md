@@ -13,6 +13,16 @@ Flatdoc examples
 ### Backbone Patterns
 [View example >](examples/patterns.html)
 
+Random table
+==============
+header|header|header
+------|------|------
+cell  |cell  |cell
+cell  |cell  |cell
+cell  |cell  |cell
+cell  |cell  |cell
+cell  |cell  |cell
+cell  |cell  |cell
 Pointless text
 ==============
 

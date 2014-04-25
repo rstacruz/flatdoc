@@ -219,6 +219,43 @@ a:hover {
 .content blockquote :last-child {
   padding-bottom: 0;
 }
+.content table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+  border-collapse: collapse;
+  clear: both;
+}
+.content table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.content table tr :nth-child(2n) {
+  background-color: #f8f8f8;
+}
+.content table tr th {
+  text-align: auto;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 6px 13px;
+}
+.content table tr td {
+  text-align: auto;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 6px 13px;
+}
+.content table tr th :first-child,
+.content table tr td :first-child {
+  margin-top: 0;
+}
+.content table tr th :last-child,
+.content table tr td :last-child {
+  margin-bottom: 0;
+}
 /* ----------------------------------------------------------------------------
  * Content
  */
@@ -286,12 +323,11 @@ body.big-h3 .content h3 {
 body.big-h3 .content h3:before {
   display: block;
   content: '';
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.8, #dfe2e7), color-stop(1, rgba(223,226,231,0)));
-  background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -moz-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -o-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -ms-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
+  background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -moz-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -o-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -ms-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: linear-gradient(to right, #dfe2e7 80%, rgba(223,226,231,0));
   -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   height: 1px;
@@ -304,6 +340,7 @@ body.big-h3 .content h3:before {
   .content h1,
   .content h2,
   .content .big-heading,
+body.big-h3 .content h3,
 body.big-h3 .content h3 {
     padding-top: 40px;
   }
@@ -537,6 +574,11 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
+  }
+  body:not(.no-literate) .content > table {
+    margin-left: 40px;
+    margin-right: 40px;
+    max-width: 470px;
   }
   body:not(.no-literate):not(.big-h3) .content > h3 {
     margin-left: 40px;
@@ -828,4 +870,3 @@ code .comment {
   position: relative;
   z-index: 1;
 }
-
