@@ -1,12 +1,33 @@
 Developer notes
 ===============
 
-__Updating files__: flatdoc.js is actually a combination of many others, so 
-just:
+### Notes on structure
+
+ * Distributions are stored in `/v/{version}/*`.
+ * CSS files are compiled from Stylus sources.
+ * Some js files (like the theme files) are concatenated from other sources.
+ * GNU make is used to do compile files.
+
+### Updating files
+
+To build .styl from .css
 
     make
 
-Updating versions
+### Releasing a new version
 
     npm install
+
+    # build files
+    make
     make v/0.8.1
+
+    # update version
+    bump package.json
+
+    # update versions
+    perl -p -i -e "s/0\.8\.0/0\.8\.1/g" templates/*.html Readme.md
+
+    # add release date
+    vim History.md
+    git release
