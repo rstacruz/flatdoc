@@ -1,6 +1,22 @@
 Developer notes
 ===============
 
+### Distributions
+
+There are 3 official ways to point to flatdoc releases. That is:
+
+    # Specific versions
+    http://rstacruz.github.io/flatdoc/v/0.8.1/*
+
+    # Latest from the 0.8 series.
+    # Updated every time there's a 0.8 release.
+    http://rstacruz.github.io/flatdoc/v/0.8/*
+
+    # Latest
+    http://rstacruz.github.io/flatdoc/*
+
+...just replace `*` with `flatdoc.js` (or any of the other support files).
+
 ### Notes on structure
 
  * Distributions are stored in `/v/{version}/*`.
