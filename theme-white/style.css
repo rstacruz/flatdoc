@@ -7,7 +7,7 @@ Instead, edit the stylus (.styl) files and compile it to CSS on your machine.
 /* ----------------------------------------------------------------------------
  * Fonts
  */
-@import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
 /* ----------------------------------------------------------------------------
  * Base
  */
@@ -207,6 +207,11 @@ a:hover {
   font-style: italic;
   color: #9090aa;
 }
+
+.content img{
+  width:100%;
+}
+
 .content code {
   font-family: Menlo, monospace;
   background: #f3f6fb;
