@@ -476,6 +476,7 @@ Also includes:
   }
 
   function slugify(text) {
+    if (typeof text !== 'string') return "";
     return text.toLowerCase().match(/[a-z0-9]+/g).join('-');
   }
 })(jQuery);
