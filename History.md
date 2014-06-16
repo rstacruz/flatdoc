@@ -1,4 +1,4 @@
-## v0.8.2 - unreleased
+## v0.8.2 - June 16, 2014
 
  * Fix HTML keyword highlighting when tags don't have attributes. (#28, @oderwat)
  * Fix `slugify()` raising an error when the given text is not a string.
