@@ -211,11 +211,15 @@ Also includes:
    */
 
   Transformer.addIDs = function($content) {
+    var slugs = ['', '', ''];
     $content.find('h1, h2, h3').each(function() {
       var $el = $(this);
+      var num = parseInt(this.nodeName[1]);
       var text = $el.text();
-      var id = slugify(text);
-      $el.attr('id', id);
+      var slug = slugify(text);
+      slugs[num - 1] = slug;
+      if (num > 1) slug = slugs[num - 2] + '-' + slug;
+      $el.attr('id', slug);
     });
   };
 
