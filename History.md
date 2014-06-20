@@ -1,3 +1,7 @@
+## v0.8.3 - unreleased
+
+ * Fix issue with `h3` headings following `h1`s. (#34, @malthe)
+ 
 ## v0.8.2 - June 16, 2014
 
  * Fix HTML keyword highlighting when tags don't have attributes. (#28, @oderwat)
