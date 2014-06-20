@@ -236,14 +236,14 @@ Also includes:
     var cache = [root];
 
     function mkdir_p(level) {
-      var parent = (level > 1) ? mkdir_p(level-1) : root;
-      if (!cache[level]) {
+      var obj = cache[level];
+      if (!obj) {
+        var parent = (level > 1) ? mkdir_p(level-1) : root;
         var obj = { items: [], level: level };
         cache[level] = obj;
         parent.items.push(obj);
-        return obj;
       }
-      return cache[level];
+      return obj;
     }
 
     $content.find('h1, h2, h3').each(function() {
