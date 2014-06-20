@@ -217,8 +217,9 @@ Also includes:
       var num = parseInt(this.nodeName[1]);
       var text = $el.text();
       var slug = slugify(text);
-      slugs[num - 1] = slug;
       if (num > 1) slug = slugs[num - 2] + '-' + slug;
+      slugs.length = num - 1;
+      slugs = slugs.concat([slug, slug]);
       $el.attr('id', slug);
     });
   };
