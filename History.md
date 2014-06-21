@@ -2,6 +2,7 @@
 
  * Use `jQuery.fn.addBack()` instead of `andSelf()`. (#24, @jonschlinkert)
  * Fix JS error in older versions of IE.  (#30, @vijayakumarrg)
+ * Fix sticky sidebar glitches when resizing. (#14, @grmlin)
 
 ## v0.8.3 - June 21, 2014
 
