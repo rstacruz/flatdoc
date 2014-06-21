@@ -7,7 +7,7 @@ Instead, edit the stylus (.styl) files and compile it to CSS on your machine.
 /* ----------------------------------------------------------------------------
  * Fonts
  */
-@import url("http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
+@import url("//fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300");
 /* ----------------------------------------------------------------------------
  * Base
  */
@@ -118,7 +118,7 @@ input {
   font-size: 13px;
   color: #505050;
 }
-@media (max-width: 480px) /* Mobile */ {
+@media (max-width: 480px) {
   body,
   td,
   textarea,
@@ -343,7 +343,7 @@ body.big-h3 .content h3:before {
   left: -40px;
   width: 100%;
 }
-@media (max-width: 768px) /* Mobile and tablet */ {
+@media (max-width: 768px) {
   .content h1,
   .content h2,
   .content .big-heading,
@@ -383,7 +383,7 @@ body:not(.big-h3) .content h3 {
 .content h1:first-child:before {
   display: none;
 }
-@media (max-width: 768px) /* Tablet */ {
+@media (max-width: 768px) {
   .content h4,
   .content h5,
   .content .small-heading,
@@ -391,7 +391,7 @@ body:not(.big-h3) .content h3 {
     padding-top: 20px;
   }
 }
-@media (max-width: 480px) /* Mobile */ {
+@media (max-width: 480px) {
   .content {
     padding: 20px;
     padding-top: 40px;
@@ -432,7 +432,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
 }
-@media (max-width: 1180px) /* Small desktop */ {
+@media (max-width: 1180px) {
   .content pre > code {
     background: #f3f6fb;
     border: solid 1px #e7eaee;
@@ -502,14 +502,14 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 .content .button + em {
   color: #9090aa;
 }
-@media (min-width: 1180px) /* Big desktop */ {
+@media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
     -webkit-box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
     box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
   }
 }
-@media (min-width: 1180px) /* Big desktop */ {
+@media (min-width: 1180px) {
   body:not(.no-literate) .content {
     padding-left: 0;
     padding-right: 0;
@@ -647,7 +647,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 .header li a:hover {
   color: #3a3a44;
 }
-@media (min-width: 480px) /* Tablet & Desktop */ {
+@media (min-width: 480px) {
   .header h1 {
     float: left;
   }
@@ -674,7 +674,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     padding: 0 15px;
   }
 }
-@media (max-width: 480px) /* Mobile */ {
+@media (max-width: 480px) {
   .right {
     display: none;
   }
@@ -724,18 +724,18 @@ a.big.button:hover,
 a.big.button:hover:visited {
   color: #fff;
 }
-@media (max-width: 480px) /* Mobile */ {
+@media (max-width: 480px) {
   .menubar {
     padding: 20px;
     border-bottom: solid 1px #dfe2e7;
   }
 }
-@media (max-width: 768px) /* Mobile and tablet */ {
+@media (max-width: 768px) {
   .menubar {
     display: none;
   }
 }
-@media (min-width: 768px) /* Desktop */ {
+@media (min-width: 768px) {
   .content-root {
     padding-left: 230px;
   }
