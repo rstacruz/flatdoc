@@ -62,6 +62,7 @@
 
     $window
       .on('resize.sidestick', function() {
+        $sidebar.removeClass('fixed');
         elTop = $sidebar.offset().top;
         $window.trigger('scroll.sidestick');
       })

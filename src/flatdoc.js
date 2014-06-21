@@ -202,7 +202,7 @@ Also includes:
       var $el = $(this);
       var level = +(this.nodeName.substr(1));
 
-      parent = mkdir_p(level-1);
+      var parent = mkdir_p(level-1);
 
       var obj = { section: $el.text(), items: [], level: level, id: $el.attr('id') };
       parent.items.push(obj);
