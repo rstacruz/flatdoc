@@ -1,7 +1,7 @@
 {
   "name": "flatdoc",
   "description": "",
-  "keywords": [""],
+  "keywords": ["documentation", "markdown"],
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "version": "0.8.2",
   "repository": {
@@ -11,6 +11,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec"
   },
+  "main": "flatdoc.js",
   "devDependencies": {
     "mocha": "1.10.0",
     "chai": "1.6.0",
