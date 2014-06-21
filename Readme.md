@@ -279,16 +279,14 @@ Acknowledgements
 License](http://www.opensource.org/licenses/mit-license.php).
 
 **Flatdoc** is authored and maintained by [Rico Sta. Cruz][rsc] with help from its 
-[contributors][c]. It is sponsored by my startup, [Nadarei, Inc][nd].
+[contributors][c].
 
  * [My website](http://ricostacruz.com) (ricostacruz.com)
- * [Nadarei, Inc.](http://nadarei.co) (nadarei.co)
  * [Github](http://github.com/rstacruz) (@rstacruz)
  * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
 
 [rsc]: http://ricostacruz.com
 [c]:   http://github.com/rstacruz/flatdoc/contributors
-[nd]:  http://nadarei.co
 
 [GitHub API]: http://github.com/api
 [marked]: https://github.com/chjj/marked
