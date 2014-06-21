@@ -20,22 +20,29 @@ There are 3 official ways to point to flatdoc releases. That is:
 
 ...just replace `*` with `flatdoc.js` (or any of the other support files).
 
+### GNU make
+
+This project uses GNU make (`Makefile`) to manage the builds.
+
+ * `make` - builds the latest version
+ * `make v/0.x.x` - builds a given version distribution
+ * `make watch` - keep rebuilding as needed (useful for development)
+
 ### Notes on structure
 
+ * `flatdoc.js` is the main script.
  * Distributions are stored in `/v/{version}/*`.
  * CSS files are compiled from Stylus sources.
- * Some js files (like the theme files) are concatenated from other sources.
- * GNU make is used to do compile files.
+ * Theme js files are concatenated from other sources.
 
 ### Updating files
 
-To build .styl from .css
-
+    # build files
     make
 
-### Releasing a new version
-
+    # ensure it works, and install build tools
     npm install
+    npm test
 
     # update prescribed versions
     perl -p -i -e "s/v\/\d+\.\d+\.\d+/v\/0.9.0/g" templates/*.html Readme.md
