@@ -11,7 +11,7 @@ describe("Flatdoc.transformer", function() {
     trans.addIDs($html);
 
     $html.find('h1').attr('id').should.equal('hello');
-    $html.find('h2').attr('id').should.equal('one-two-three');
+    $html.find('h2').attr('id').should.equal('hello-one-two-three');
   });
 
   it(".buttonize()", function() {
