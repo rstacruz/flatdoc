@@ -1,6 +1,6 @@
 {
   "name": "flatdoc",
-  "description": "",
+  "description": "Fetch Markdown files and render them as full pages.",
   "keywords": ["documentation", "markdown"],
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "version": "0.8.3",
