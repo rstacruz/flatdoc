@@ -272,17 +272,10 @@ Attributions
 [Photo](http://www.flickr.com/photos/doug88888/2953428679/) taken from Flickr,
 licensed under Creative Commons.
 
-Changelog
----------
-
-#### v0.8.2 - May 26, 2013
-
-First version.
-
 Acknowledgements
 ----------------
 
-© 2013, Rico Sta. Cruz. Released under the [MIT 
+© 2013, 2014, Rico Sta. Cruz. Released under the [MIT 
 License](http://www.opensource.org/licenses/mit-license.php).
 
 **Flatdoc** is authored and maintained by [Rico Sta. Cruz][rsc] with help from its 
