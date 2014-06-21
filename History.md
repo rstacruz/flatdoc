@@ -1,3 +1,7 @@
+## v0.8.4 - unreleased
+
+ * Use `jQuery.fn.addBack()` instead of `andSelf()`. (#24, @jonschlinkert)
+
 ## v0.8.3 - June 21, 2014
 
  * Fix issue with `h3` headings following `h1`s. (#34, @malthe)
