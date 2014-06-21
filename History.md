@@ -1,6 +1,7 @@
 ## v0.8.4 - unreleased
 
  * Use `jQuery.fn.addBack()` instead of `andSelf()`. (#24, @jonschlinkert)
+ * Fix JS error in older versions of IE.  (#30, @vijayakumarrg)
 
 ## v0.8.3 - June 21, 2014
 
