@@ -9,7 +9,7 @@
      "url": "https://github.com/rstacruz/flatdoc.git"
    },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R spec"
+    "test": "mocha"
   },
   "main": "flatdoc.js",
   "devDependencies": {
