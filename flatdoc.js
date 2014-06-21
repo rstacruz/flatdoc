@@ -105,31 +105,25 @@ Also includes:
    * Default to Mercurial because Git users historically tend to use GitHub
    */
   Flatdoc.bitbucket = function(repo, filepath, branch) {
-    var url;
-    if (!filepath) {
-      filepath = 'readme.md'
-    }
+    if (!filepath) filepath = 'readme.md';
+    if (!branch) branch = 'default';
 
-    if (!branch) {
-        branch = 'default';
-    }
+    var url = 'https://bitbucket.org/api/1.0/repositories/'+repo+'/src/'+branch+'/'+filepath;
 
-    url = 'https://bitbucket.org/api/1.0/repositories/'+repo+'/src/'+branch+'/'+filepath;
-
-     return function(callback) {
-       $.ajax({
-            url: url,
-            dataType: 'jsonp',
-            error: function(xhr, status, error) {
-                alert(error);
-            },
-            success: function(response) {
-                           var markdown = response.data;
-                           callback(null, markdown);
-            }
-        });
-    };
-  };
+   return function(callback) {
+     $.ajax({
+      url: url,
+      dataType: 'jsonp',
+      error: function(xhr, status, error) {
+        alert(error);
+      },
+      success: function(response) {
+        var markdown = response.data;
+        callback(null, markdown);
+      }
+  });
+};
+};
 
   /**
    * Parser module.
@@ -244,7 +238,7 @@ Also includes:
       var obj = cache[level];
       if (!obj) {
         var parent = (level > 1) ? mkdir_p(level-1) : root;
-        var obj = { items: [], level: level };
+        obj = { items: [], level: level };
         cache.length = level + 1;
         cache = cache.concat([obj, obj]);
         parent.items.push(obj);
