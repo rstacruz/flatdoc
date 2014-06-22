@@ -56,5 +56,5 @@ This project uses GNU make (`Makefile`) to manage the builds.
 
     # add release date
     vim History.md
-    git release 0.8.3
+    git release v0.8.3
     npm publish
