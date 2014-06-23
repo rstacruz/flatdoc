@@ -1,3 +1,7 @@
+## v0.8.5 - unreleased
+
+ * Fix a minor issue where navigation would break. (#36, @malthe)
+
 ## v0.8.4 - June 22, 2014
 
  * Use `jQuery.fn.addBack()` instead of `andSelf()`. (#24, @jonschlinkert)
