@@ -13,7 +13,7 @@
 
  * Fix issue with `h3` headings following `h1`s. (#34, @malthe)
  * Fix issues with multiple headings that have the same text. (#33, #32, @malthe)
- * Fix issue with HTTPS errors concerning Google Fonts. (#27)
+ * Fix issue with HTTPS errors concerning Google Fonts. (#27, #29)
  
 ## v0.8.2 - June 16, 2014
 
