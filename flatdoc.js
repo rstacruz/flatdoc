@@ -426,6 +426,11 @@ Also includes:
       }
       var data = Flatdoc.parser.parse(markdown);
       doc.applyData(data, doc);
+      var id = location.hash.substr(1);
+      if (id) {
+        var el = document.getElementById(id);
+        if (el) el.scrollIntoView(true);
+      };
       $(doc.root).trigger('flatdoc:ready');
     });
   };
