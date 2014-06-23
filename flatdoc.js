@@ -236,11 +236,11 @@ Also includes:
     var cache = [root];
 
     function mkdir_p(level) {
+      cache.length = level + 1;
       var obj = cache[level];
       if (!obj) {
         var parent = (level > 1) ? mkdir_p(level-1) : root;
         obj = { items: [], level: level };
-        cache.length = level + 1;
         cache = cache.concat([obj, obj]);
         parent.items.push(obj);
       }
