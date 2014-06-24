@@ -26,6 +26,8 @@ you're all good to go.
 
 *In short: just download this file and upload it somewhere.*
 
+The main JS and CSS files are also available in [npm] and [bower].
+
 [Download template >][template]
 
 ``` html
@@ -53,6 +55,9 @@ you're all good to go.
   </body>
 </html>
 ```
+
+[bower]: http://bower.io/search/?q=flatdoc
+[npm]: https://www.npmjs.org/package/flatdoc
 
 ### Via GitHub
 
