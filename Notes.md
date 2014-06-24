@@ -33,7 +33,6 @@ This project uses GNU make (`Makefile`) to manage the builds.
  * `flatdoc.js` is the main script.
  * Distributions are stored in `/v/{version}/*`.
  * CSS files are compiled from Stylus sources.
- * Theme js files are concatenated from other sources.
 
 ### Updating files
 
