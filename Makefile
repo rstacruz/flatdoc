@@ -21,12 +21,6 @@ legacy.js: \
 %.css: %.styl
 	(echo "/*\n\nPlease don't edit this file directly.\nInstead, edit the stylus (.styl) files and compile it to CSS on your machine.\n\n*/" ; $(STYLUS) < $<) > $@
 
-theme-white/script.js: \
-	theme-white/setup.js \
-	support/vendor/jquery.scrollagent.js \
-	support/vendor/jquery.anchorjump.js
-	cat $^ > $@
-
 Reference.md: src/flatdoc.js
 	$(DOX) -r < $< | node support/dox2md.js --default-level 3 > $@
 
