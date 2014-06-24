@@ -1,4 +1,4 @@
-## v0.8.5 - unreleased
+## v0.8.5 - June 24, 2014
 
  * Fix a minor issue where navigation would break. (#36, @malthe)
  * Fix issue where linking to a location hash doesn't scroll the document down. (#21, #35, @malthe)
