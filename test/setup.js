@@ -7,6 +7,7 @@ global.getFile = function(filepath) {
 };
 
 global.chai = require('chai');
+global.expect = chai.expect;
 global.assert = chai.assert;
 chai.should();
 process.stdout.write('.');
