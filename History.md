@@ -3,6 +3,7 @@
  * Fix a minor issue where navigation would break. (#36, @malthe)
  * Fix issue where linking to a location hash doesn't scroll the document down. (#21, #35, @malthe)
  * Add support for external highlighters. (#37, @malthe)
+ * Remove the *jQuery.fillsize* plugin from `theme-white`.
 
 ## v0.8.4 - June 22, 2014
 
