@@ -1,4 +1,11 @@
+## v0.8.6 - June 24, 2014
+
+ * Hotfix: fix JS syntax highlighting. (#37)
+ * Internal: add more unit tests.
+
 ## v0.8.5 - June 24, 2014
+
+Please use v0.8.6 instead.
 
  * Fix a minor issue where navigation would break. (#36, @malthe)
  * Fix issue where linking to a location hash doesn't scroll the document down. (#21, #35, @malthe)
