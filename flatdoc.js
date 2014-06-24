@@ -147,10 +147,10 @@ Also includes:
    * Parses a given Markdown document.
    * See `Parser` for more info.
    */
-  Parser.parse = function(source) {
+  Parser.parse = function(source, highlight) {
     marked = exports.marked;
 
-    Parser.setMarkedOptions();
+    Parser.setMarkedOptions(highlight);
 
     var html = $("<div>" + marked(source));
     var h1 = html.find('h1').eq(0);
@@ -163,12 +163,11 @@ Also includes:
     return { title: title, content: html, menu: menu };
   };
 
-  Parser.setMarkedOptions = function() {
+  Parser.setMarkedOptions = function(highlight) {
     marked.setOptions({
       highlight: function(code, lang) {
         if (lang) {
-          var fn = Flatdoc.highlighters[lang] || Flatdoc.highlighters.generic;
-          return fn(code);
+          return highlight(code, lang);
         }
         return code;
       }
@@ -288,61 +287,6 @@ Also includes:
   };
 
   /**
-   * Syntax highlighters.
-   *
-   * You may add or change more highlighters via the `Flatdoc.highlighters`
-   * object.
-   *
-   *     Flatdoc.highlighters.js = function(code) {
-   *     };
-   *
-   * Each of these functions
-   */
-
-  var Highlighters = Flatdoc.highlighters = {};
-
-  /**
-   * JavaScript syntax highlighter.
-   *
-   * Thanks @visionmedia!
-   */
-
-  Highlighters.js = Highlighters.javascript = function(code) {
-    return code
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
-      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
-      .replace(/\/\/(.*)/gm, '<span class="comment">//$1</span>')
-      .replace(/\/\*(.*)\*\//gm, '<span class="comment">/*$1*/</span>')
-      .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')
-      .replace(/(\d+)/gm, '<span class="number">$1</span>')
-      .replace(/\bnew *(\w+)/gm, '<span class="keyword">new</span> <span class="init">$1</span>')
-      .replace(/\b(function|new|throw|return|var|if|else)\b/gm, '<span class="keyword">$1</span>');
-  };
-
-  Highlighters.html = function(code) {
-    return code
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
-      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
-      .replace(/&lt;!--(.*)--&gt;/g, '<span class="comment">&lt;!--$1--&gt;</span>')
-      .replace(/&lt;([^!][^\s&]*)/g, '&lt;<span class="keyword">$1</span>');
-  };
-
-  Highlighters.generic = function(code) {
-    return code
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
-      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
-      .replace(/(\/\/|#)(.*)/gm, '<span class="comment">$1$2</span>')
-      .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')
-      .replace(/(\d+)/gm, '<span class="number">$1</span>');
-  };
-
-  /**
    * Menu view. Renders menus
    */
 
@@ -412,6 +356,32 @@ Also includes:
   };
 
   /**
+   * Syntax highlighting.
+   *
+   * You may define a custom highlight function such as `highlight` from
+   * the highlight.js library.
+   *
+   *     Flatdoc.run({
+   *       highlight: function (code, value) {
+   *         return hljs.highlight(lang, code).value;
+   *       },
+   *       ...
+   *     });
+   *
+   */
+
+  Runner.prototype.highlight = function(code, lang) {
+    return code
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("[^\"]*?")/g, '<span class="string">$1</span>')
+      .replace(/('[^\']*?')/g, '<span class="string">$1</span>')
+      .replace(/(\/\/|#)(.*)/gm, '<span class="comment">$1$2</span>')
+      .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')
+      .replace(/(\d+)/gm, '<span class="number">$1</span>');
+  };
+
+  /**
    * Loads the Markdown document (via the fetcher), parses it, and applies it
    * to the elements.
    */
@@ -424,7 +394,7 @@ Also includes:
         console.error('[Flatdoc] fetching Markdown data failed.', err);
         return;
       }
-      var data = Flatdoc.parser.parse(markdown);
+      var data = Flatdoc.parser.parse(markdown, doc.highlight);
       doc.applyData(data, doc);
       $(doc.root).trigger('flatdoc:ready');
     });
