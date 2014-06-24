@@ -1,3 +1,7 @@
+## v0.8.7 - unreleased
+
+ * Publish to Bower.
+
 ## v0.8.6 - June 24, 2014
 
  * Hotfix: fix JS syntax highlighting. (#37)
