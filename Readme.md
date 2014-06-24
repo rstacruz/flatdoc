@@ -12,7 +12,7 @@ way to make open source documentation from *Readme* files.
  * Gorgeous default theme (and it's responsive)
  * Just create an HTML file and deploy!
 
-*Current version: [v/0.8.5][dist]*
+*Current version: [v/0.8.6][dist]*
 
 [![Build Status](https://travis-ci.org/rstacruz/flatdoc.png?branch=gh-pages)](https://travis-ci.org/rstacruz/flatdoc)
 
@@ -32,12 +32,12 @@ you're all good to go.
 <html>
   <head>
     <!-- Flatdoc -->
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.5/legacy.js'></script>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.5/flatdoc.js'></script>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.6/legacy.js'></script>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.6/flatdoc.js'></script>
 
     <!-- Flatdoc theme (optional) -->
-    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.5/theme-white/style.css' rel='stylesheet'>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.5/theme-white/script.js'></script>
+    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.6/theme-white/style.css' rel='stylesheet'>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.6/theme-white/script.js'></script>
 
     <!-- Initializer -->
     <script>
@@ -232,7 +232,7 @@ the blank template and customize as you see fit.
 <html>
   <head>
     <script src='jquery.js'></script>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.5/flatdoc.js'></script>
+    <script src='http://rstacruz.github.io/flatdoc/v/0.8.6/flatdoc.js'></script>
     <!-- Initializer -->
     <script>
       Flatdoc.run({
@@ -301,4 +301,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
-[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.5
+[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.8.6
