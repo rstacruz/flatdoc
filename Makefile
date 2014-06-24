@@ -24,8 +24,7 @@ legacy.js: \
 theme-white/script.js: \
 	theme-white/setup.js \
 	support/vendor/jquery.scrollagent.js \
-	support/vendor/jquery.anchorjump.js \
-	support/vendor/jquery.fillsize.js
+	support/vendor/jquery.anchorjump.js
 	cat $^ > $@
 
 Reference.md: src/flatdoc.js
