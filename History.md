@@ -1,6 +1,7 @@
 ## v0.8.7 - unreleased
 
  * Publish to Bower.
+ * Fix issue where linking to a location hash doesn't scroll the document down. (#21, #35, @malthe)
 
 ## v0.8.6 - June 24, 2014
 
@@ -12,7 +13,6 @@
 Please use v0.8.6 instead.
 
  * Fix a minor issue where navigation would break. (#36, @malthe)
- * Fix issue where linking to a location hash doesn't scroll the document down. (#21, #35, @malthe)
  * Add support for external highlighters. (#37, @malthe)
  * theme-white: Remove the *jQuery.fillsize* plugin.
  * theme-white: Simplify the JS file.
