@@ -110,10 +110,10 @@
         (options.offset || 0);
 
       offsets.push({
-        top: $(this).offset().top + offset,
         id: $(this).attr('id'),
         index: i,
-        el: this
+        el: this,
+        offset: offset
       });
     });
 
@@ -139,7 +139,7 @@
       for (var i in offsets) {
         if (offsets.hasOwnProperty(i)) {
           var offset = offsets[i];
-          if (offset.top < y) latest = offset;
+          if ($(offset.el).offset().top + offset.offset < y) latest = offset;
         }
       }
 
