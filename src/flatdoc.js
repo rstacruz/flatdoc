@@ -48,11 +48,18 @@ Also includes:
    */
 
   Flatdoc.file = function(url) {
+    function loadData(locations, response, callback) {
+      if (locations.length === 0) callback(null, response);
+      else $.get(locations.shift()).done(function (data) {
+        loadData(locations, response + data, callback);
+      }).fail(function(data) {
+        callback(data, null)
+      });
+    }
+
     return function(callback) {
-      $.get(url)
-        .fail(function(e) { callback(e, null); })
-        .done(function(data) {  callback(null, data); });
-    };
+      loadData(locations instanceof Array ? locations : [locations], '', callback);
+    }
   };
 
   /**
