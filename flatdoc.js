@@ -50,18 +50,23 @@
    * Fetches from repo `repo` (in format 'user/repo').
    *
    * If the parameter `filepath` is supplied, it fetches the contents of that
-   * given file in the repo.
+   * given file in the repo's default branch. To fetch the contents of
+   * `filepath` from a different branch, the parameter `ref` should be
+   * supplied with the target branch name.
    *
    * See [Runner#run()] for a description of fetcher functions.
    *
    * See: http://developer.github.com/v3/repos/contents/
    */
-  Flatdoc.github = function(repo, filepath) {
+  Flatdoc.github = function(repo, filepath, ref) {
     var url;
     if (filepath) {
       url = 'https://api.github.com/repos/'+repo+'/contents/'+filepath;
     } else {
       url = 'https://api.github.com/repos/'+repo+'/readme';
+    }
+    if (ref) {
+      url += '?ref='+ref;
     }
     return function(callback) {
       $.get(url)
