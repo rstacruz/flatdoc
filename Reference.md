@@ -31,7 +31,9 @@ Github fetcher.
 Fetches from repo `repo` (in format 'user/repo').
 
 If the parameter `filepath` is supplied, it fetches the contents of that
-given file in the repo.
+given file in the repo's default branch. To fetch the contents of
+`filepath` from a different branch, the parameter `ref` should be
+supplied with the target branch name.
 
 See [Runner#run()] for a description of fetcher functions.
 
