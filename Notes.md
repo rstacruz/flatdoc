@@ -3,11 +3,14 @@ Developer notes
 
 ### Distributions
 
-There are 3 official ways to point to flatdoc releases. That is:
+There are 4 official ways to point to flatdoc releases. That is:
+
+    # via cdnjs:
+    https://cdn.rawgit.com/rstacruz/flatdoc/v0.8.6/flatdoc.js
 
     # Specific versions
     # (built using `make v/0.8.1`)
-    http://rstacruz.github.io/flatdoc/v/0.8.1/*
+    http://rstacruz.github.io/flatdoc/v/0.8.6/*
 
     # Latest from the 0.8 series.
     # Updated every time there's a 0.8 release.
