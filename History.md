@@ -3,6 +3,8 @@
  * Changed prescribed URLs to use [https://cdn.rawgit.com](http://rawgit.com), supporting HTTPS. (#27)
  * Support multiple markdown files. (#15, #45, @gjong)
  * Fix readme example to be workable. (#7)
+ * Deprecate `src/`, making PR's a bit easier to manage.
+ * Fix navbar offset with images. (#31, #44, @UziTech)
 
 ## v0.8.7 - unreleased
 
