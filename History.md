@@ -1,3 +1,8 @@
+## v0.9.0 - November 9, 2014
+
+ * Changed prescribed URLs to use [https://cdn.rawgit.com](http://rawgit.com), supporting HTTPS. (#27)
+ * Support multiple markdown files. (#15, #45, @gjong)
+
 ## v0.8.7 - unreleased
 
  * Publish to Bower.

@@ -51,7 +51,7 @@ The main JS and CSS files are also available in [npm] and [bower].
 
   <body role='flatdoc'>
     <div role='flatdoc-menu'></div>
-    <div role='flatdoc-content'></div>
+    <div role='flatdoc-content' class='content'></div>
   </body>
 </html>
 ```
