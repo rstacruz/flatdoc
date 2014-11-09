@@ -17,6 +17,17 @@
    *     Flatdoc.run({
    *       fetcher: Flatdoc.github('rstacruz/backbone-patterns');
    *     });
+   *
+   * These fetcher functions are available:
+   *
+   *     Flatdoc.github('owner/repo')
+   *     Flatdoc.github('owner/repo', 'API.md')
+   *     Flatdoc.github('owner/repo', 'API.md', 'branch')
+   *     Flatdoc.bitbucket('owner/repo')
+   *     Flatdoc.bitbucket('owner/repo', 'API.md')
+   *     Flatdoc.bitbucket('owner/repo', 'API.md', 'branch')
+   *     Flatdoc.file('http://path/to/url')
+   *     Flatdoc.file([ 'http://path/to/url', ... ])
    */
 
   var Flatdoc = exports.Flatdoc = {};
@@ -38,10 +49,23 @@
    */
 
   Flatdoc.file = function(url) {
+    function loadData(locations, response, callback) {
+      if (locations.length === 0) callback(null, response);
+
+      else $.get(locations.shift())
+        .fail(function(e) {
+          callback(e, null);
+        })
+        .done(function (data) {
+          if (response.length > 0) response += '\n\n';
+          response += data;
+          loadData(locations, response, callback);
+        });
+    }
+
     return function(callback) {
-      $.get(url)
-        .fail(function(e) { callback(e, null); })
-        .done(function(data) {  callback(null, data); });
+      loadData(url instanceof Array ?
+        url : [url], '', callback);
     };
   };
 
@@ -443,7 +467,7 @@
       if (id) {
         var el = document.getElementById(id);
         if (el) el.scrollIntoView(true);
-      };
+      }
       $(doc.root).trigger('flatdoc:ready');
     });
   };
