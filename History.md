@@ -2,6 +2,7 @@
 
  * Changed prescribed URLs to use [https://cdn.rawgit.com](http://rawgit.com), supporting HTTPS. (#27)
  * Support multiple markdown files. (#15, #45, @gjong)
+ * Fix readme example to be workable. (#7)
 
 ## v0.8.7 - unreleased
 
