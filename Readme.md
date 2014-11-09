@@ -34,12 +34,12 @@ The main JS and CSS files are also available in [npm] and [bower].
 <html>
   <head>
     <!-- Flatdoc -->
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.8.6/legacy.js'></script>
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.8.6/flatdoc.js'></script>
+    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js'></script>
+    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js'></script>
 
     <!-- Flatdoc theme (optional) -->
-    <link  href='https://cdn.rawgit.com/rstacruz/flatdoc/v0.8.6/theme-white/style.css' rel='stylesheet'>
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.8.6/theme-white/script.js'></script>
+    <link  href='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/style.css' rel='stylesheet'>
+    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/script.js'></script>
 
     <!-- Initializer -->
     <script>
