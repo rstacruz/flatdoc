@@ -5,7 +5,7 @@ describe("Slugify", function () {
   assert("Hey", "hey");
   assert("With Spaces", "with-spaces");
   assert("with numbers (200)", "with-numbers-200");
-  assert("french raison d'être", "french-raison-d-etre");
+  assert("french raison d'être", "french-raison-detre");
   assert("greek γιαούρτι", "greek-giaoyrti"); // actually giaourti?
 
   function assert(input, output) {
