@@ -28,9 +28,9 @@ you're all good to go.
 
 The main JS and CSS files are also available in [npm] and [bower].
 
-[Blank template >][blank]
-
 [Default theme template >][template]
+
+[Blank template >][blank]
 
 [bower]: http://bower.io/search/?q=flatdoc
 [npm]: https://www.npmjs.org/package/flatdoc
@@ -209,25 +209,6 @@ the blank template and customize as you see fit.
 
 [Get blank template >][template]
 
-``` html
-<html>
-  <head>
-    <script src='jquery.js'></script>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.6/flatdoc.js'></script>
-    <!-- Initializer -->
-    <script>
-      Flatdoc.run({
-        fetcher: Flatdoc.github('USER/REPO')
-      });
-    </script>
-  </head>
-
-  <body role='flatdoc'>
-    <div role='flatdoc-menu'></div>
-    <div role='flatdoc-content'></div>
-  </body>
-</html>
-```
 Misc
 ====
 
