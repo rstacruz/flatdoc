@@ -28,33 +28,9 @@ you're all good to go.
 
 The main JS and CSS files are also available in [npm] and [bower].
 
-[Download template >][template]
+[Blank template >][blank]
 
-``` html
-<html>
-  <head>
-    <!-- Flatdoc -->
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js'></script>
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js'></script>
-
-    <!-- Flatdoc theme (optional) -->
-    <link  href='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/style.css' rel='stylesheet'>
-    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/script.js'></script>
-
-    <!-- Initializer -->
-    <script>
-      Flatdoc.run({
-        fetcher: Flatdoc.github('USER/REPO')
-      });
-    </script>
-  </head>
-
-  <body role='flatdoc'>
-    <div role='flatdoc-menu'></div>
-    <div role='flatdoc-content' class='content'></div>
-  </body>
-</html>
-```
+[Default theme template >][template]
 
 [bower]: http://bower.io/search/?q=flatdoc
 [npm]: https://www.npmjs.org/package/flatdoc
