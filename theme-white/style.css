@@ -231,6 +231,7 @@ a:hover {
   padding: 0;
   border-collapse: collapse;
   clear: both;
+  float: left;
 }
 .content table tr {
   border-top: 1px solid #ccc;
@@ -329,12 +330,11 @@ body.big-h3 .content h3 {
 body.big-h3 .content h3:before {
   display: block;
   content: '';
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.8, #dfe2e7), color-stop(1, rgba(223,226,231,0)));
-  background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -moz-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -o-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: -ms-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
-  background: linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
+  background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -moz-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -o-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: -ms-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
+  background: linear-gradient(to right, #dfe2e7 80%, rgba(223,226,231,0));
   -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   height: 1px;
@@ -876,4 +876,3 @@ code .comment {
   position: relative;
   z-index: 1;
 }
-
