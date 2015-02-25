@@ -458,6 +458,7 @@
     $(doc.root).trigger('flatdoc:loading');
     doc.fetcher(function(err, markdown) {
       if (err) {
+        $(doc.root).trigger('flatdoc:error', err);
         console.error('[Flatdoc] fetching Markdown data failed.', err);
         return;
       }
