@@ -82,18 +82,20 @@
    *
    * See: http://developer.github.com/v3/repos/contents/
    */
-  Flatdoc.github = function(repo, filepath, ref) {
+  Flatdoc.github = function(opts) {
+    opts = opts || {};
     var url;
-    if (filepath) {
-      url = 'https://api.github.com/repos/'+repo+'/contents/'+filepath;
+    if (opts.filepath) {
+      url = 'https://api.github.com/repos/'+opts.repo+'/contents/'+filepath;
     } else {
-      url = 'https://api.github.com/repos/'+repo+'/readme';
+      url = 'https://api.github.com/repos/'+opts.repo+'/readme';
     }
-    if (ref) {
-      url += '?ref='+ref;
+    var data = {access_token: opts.token};
+    if (opts.ref) {
+      data.ref = opts.ref;
     }
     return function(callback) {
-      $.get(url)
+      $.get(url, data)
         .fail(function(e) { callback(e, null); })
         .done(function(data) {
           var markdown = exports.Base64.decode(data.content);
