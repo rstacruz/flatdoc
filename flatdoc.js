@@ -83,14 +83,22 @@
    * See: http://developer.github.com/v3/repos/contents/
    */
   Flatdoc.github = function(opts) {
-    opts = opts || {};
+    if (typeof opts === 'string') {
+      opts = {
+        repo: arguments[0],
+        filepath: arguments[1]
+      };
+    }
     var url;
     if (opts.filepath) {
       url = 'https://api.github.com/repos/'+opts.repo+'/contents/'+filepath;
     } else {
       url = 'https://api.github.com/repos/'+opts.repo+'/readme';
     }
-    var data = {access_token: opts.token};
+    var data = {};
+    if (opts.token) {
+      data.access_token = opts.token;
+    }
     if (opts.ref) {
       data.ref = opts.ref;
     }
@@ -125,11 +133,18 @@
    * things like 'tip' or the repo-local integer revision number
    * Default to Mercurial because Git users historically tend to use GitHub
    */
-  Flatdoc.bitbucket = function(repo, filepath, branch) {
-    if (!filepath) filepath = 'readme.md';
-    if (!branch) branch = 'default';
+  Flatdoc.bitbucket = function(opts) {
+    if (typeof opts === 'string') {
+      opts = {
+        repo: arguments[0],
+        filepath: arguments[1],
+        branch: arguments[2]
+      };
+    }
+    if (!opts.filepath) opts.filepath = 'readme.md';
+    if (!opts.branch) opts.branch = 'default';
 
-    var url = 'https://bitbucket.org/api/1.0/repositories/'+repo+'/src/'+branch+'/'+filepath;
+    var url = 'https://bitbucket.org/api/1.0/repositories/'+opts.repo+'/src/'+opts.branch+'/'+opts.filepath;
 
    return function(callback) {
      $.ajax({
