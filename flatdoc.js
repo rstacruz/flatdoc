@@ -91,7 +91,7 @@
     }
     var url;
     if (opts.filepath) {
-      url = 'https://api.github.com/repos/'+opts.repo+'/contents/'+filepath;
+      url = 'https://api.github.com/repos/'+opts.repo+'/contents/'+opts.filepath;
     } else {
       url = 'https://api.github.com/repos/'+opts.repo+'/readme';
     }
