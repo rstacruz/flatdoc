@@ -47,6 +47,9 @@ if ( typeof Object.create !== 'function' ) {
       // Fix bug #1
       if ( self.headers.length !== 0 ) {
         self.first = parseInt( self.headers.prop( 'nodeName' ).substring( 1 ), null );
+
+        $( '#root-item li:has(a[href="#' + $(self.headers[0]).attr('id') + '"])' ).addClass( 'active' );
+        $( '#root-item a[href="#' + $(self.headers[0]).attr('id') + '"]' ).addClass( 'current' );
       }
 
       if ( self.opt.spy ) {
@@ -103,22 +106,23 @@ if ( typeof Object.create !== 'function' ) {
 
 				if ( current && current.length ) {
 					// get all li tag that contains href of # ( all the parents )
-
 					list = $( '#root-item  li:has(a[href="#' + current.attr( 'id' ) + '"])' );
-          currAhref = 	$(list).find( 'a[href="#' + current.attr( 'id' ) + '"]' );
+          currAhref = $(list).find( 'a[href="#' + current.attr( 'id' ) + '"]' );
 
-					if ( prevList !== undefined ) {
-						prevList.removeClass( 'active' );
+					if (list.length !==0) {
+            if (prevList !== undefined) {
+						  prevList.removeClass( 'active' );
+            }
+            list.addClass( 'active' );
+            prevList = list;
 					}
-          if ( prevAhref !== undefined ) {
-            prevAhref.removeClass( 'current' );
+          if (currAhref.length !==0) {
+            if (prevAhref !== undefined) {
+              prevAhref.removeClass( 'current' );
+            }
+            currAhref.addClass( 'current' );
+            prevAhref = currAhref;
           }
-
-          list.addClass( 'active' );
-          currAhref.addClass( 'current' );
-
-          prevAhref = currAhref;
-					prevList = list;
 				}
 			});
 		}
