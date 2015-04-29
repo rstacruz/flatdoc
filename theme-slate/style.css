@@ -236,7 +236,7 @@ a:hover {
   margin: 0;
   padding: 0;
 }
-.content table tr :nth-child(2n) {
+.content table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 .content table tr th {
