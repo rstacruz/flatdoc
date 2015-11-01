@@ -47,9 +47,6 @@ if ( typeof Object.create !== 'function' ) {
       // Fix bug #1
       if ( self.headers.length !== 0 ) {
         self.first = parseInt( self.headers.prop( 'nodeName' ).substring( 1 ), null );
-
-        $( '#root-item li:has(a[href="#' + $(self.headers[0]).attr('id') + '"])' ).addClass( 'active' );
-        $( '#root-item a[href="#' + $(self.headers[0]).attr('id') + '"]' ).addClass( 'current' );
       }
 
       if ( self.opt.spy ) {
@@ -100,9 +97,9 @@ if ( typeof Object.create !== 'function' ) {
 						return this;
 					}
 				});
-				// get only the latest header on the viewport
 
-				current = $( current ).eq( current.length - 1 );
+				// get only the latest header on the viewport
+				current = $( current ).last() || self.headers [0];
 
 				if ( current && current.length ) {
 					// get all li tag that contains href of # ( all the parents )
