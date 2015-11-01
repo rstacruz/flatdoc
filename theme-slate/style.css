@@ -189,7 +189,7 @@ a:hover {
   background: #fff;
   border: solid 1px #9090aa;
 }
-.content li > :first-child {
+.content li > *:first-child {
   padding-top: 0;
 }
 .content strong,
@@ -252,12 +252,12 @@ a:hover {
   margin: 0;
   padding: 6px 13px;
 }
-.content table tr th :first-child,
-.content table tr td :first-child {
+.content table tr th:first-child,
+.content table tr td:first-child {
   margin-top: 0;
 }
-.content table tr th :last-child,
-.content table tr td :last-child {
+.content table tr th:last-child,
+.content table tr td:last-child {
   margin-bottom: 0;
 }
 /* ----------------------------------------------------------------------------
