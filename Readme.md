@@ -190,7 +190,7 @@ Here are some ideas to get you started.
 
 ### JavaScript hooks
 
-Flatdoc emits the events `flatdoc:loading` and `flatdoc:ready` to help you make
+Flatdoc emits the events `flatdoc:loading`, `flatdoc:error` and `flatdoc:ready` to help you make
 custom behavior when the document loads.
 
 ``` js
