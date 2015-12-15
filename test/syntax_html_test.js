@@ -31,6 +31,6 @@ describe("Syntax highlight: HTML", function() {
   });
 
   it("Have the correct text", function() {
-    expect($('pre').text()).eql('<span class="x">hi</span>');
+    expect($('pre').text()).eql('<span class="x">hi</span>\n');
   });
 });
