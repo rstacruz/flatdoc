@@ -19,6 +19,6 @@ describe("Syntax highlight: JS", function() {
   });
 
   it("Have the correct text", function() {
-    expect($('pre').text()).eql('function() { x }');
+    expect($('pre').text()).eql('function() { x }\n');
   });
 });
