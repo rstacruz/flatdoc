@@ -20,8 +20,12 @@
 
   <!-- Initializer -->
   <script>
+	file = location.href.match(/[a-zA-Z0-9]*\.md$/g)  
+
+	if (file == null || file.length < 1) file = 'Readme.md'; else file = file[0];
+    
     Flatdoc.run({
-      fetcher: Flatdoc.file('Readme.md')
+      fetcher: Flatdoc.file(file)
     });
   </script>
 
@@ -54,7 +58,7 @@
       <ul>
         <li><a href='https://github.com/rstacruz/flatdoc'>View on GitHub</a></li>
         <li><a href='https://github.com/rstacruz/flatdoc/issues'>Issues</a></li>
-        <li><a href='reference.html'>API reference</a></li>
+        <li><a href='index.html?Reference.md'>API reference</a></li>
       </ul>
     </div>
     <div class='right'>
