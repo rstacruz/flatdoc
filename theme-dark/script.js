@@ -35,6 +35,17 @@
       });
  });
 
+
+$(window).on('hashchange', function() {
+    var file  = window.location.hash.replace('#', "");    
+    // file   = file.match(/[a-zA-Z0-9]*\.md$/g);
+    if (file == null || file.length < 1) file = '../Readme.md'; else file = file;
+      
+    Flatdoc.run({
+      fetcher: Flatdoc.file(file)
+    });
+});
+
  /*
   * Title card.
   */

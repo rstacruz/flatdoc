@@ -32,6 +32,8 @@ The main JS and CSS files are also available in [npm] and [bower].
 
 [Blank template >][blank]
 
+[Dark theme template >][dark-theme] * **new** (current theme)
+
 [bower]: http://bower.io/search/?q=flatdoc
 [npm]: https://www.npmjs.org/package/flatdoc
 
@@ -263,4 +265,5 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
+[dark-theme]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template-dark.html
 [dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.0

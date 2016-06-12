@@ -115,7 +115,7 @@ textarea,
 input {
   font-family: Helvetica Neue, Open Sans, sans-serif;
   line-height: 1.6;
-  font-size: 13px;
+  font-size: 15px;
   color: #272724;
   background: #272724;
 }
@@ -281,7 +281,7 @@ a:hover {
  * Content
  */
 .content-root {
-  min-height: 90%;
+  min-height: calc( 100% + 70px );
   position: relative;
 }
 .content {
@@ -305,8 +305,9 @@ a:hover {
     margin-left: 230px;
     top: 0;
     left: 0;
+    bottom: 0;
     width: calc( 60% - 138px );
-    height: 100%;
+    height: calc( 100% + 160px );
     background-color: white;
     z-index: -1;
 }
@@ -340,7 +341,7 @@ a:hover {
 .content h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 .content h3 {
   font-size: 1.2em;
@@ -777,7 +778,7 @@ a.big.button:hover:visited {
     top: 0;
     bottom: 0;
     width: 230px;
-    border-right: solid 1px #dfe2e7;
+    /* border-right: solid 1px #dfe2e7; */
   }
   .menubar.fixed {
     position: fixed;
@@ -791,10 +792,10 @@ a.big.button:hover:visited {
     height: 15px;
   }
   .menubar.fixed::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: rgba(255,255,255,0.25);
     -webkit-border-radius: 8px;
-    border-radius: 8px;
-    border: solid 4px #fff;
+    border-radius:8px;
+    border: solid 5px #272724;
   }
   .menubar.fixed:hover::-webkit-scrollbar-thumb {
     background: #999;
@@ -844,7 +845,7 @@ a.big.button:hover:visited {
 }
 .menu a.level-3 {
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 1em;
   padding-left: 10px;
 }
 .menu a.active {
@@ -888,6 +889,20 @@ code .comment {
   font-size: 1.3em;
   font-family: Open Sans, sans-serif;
   font-weight: 300;
+}
+.title-card:before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: rgba(23, 56, 56, 0.85);
+  background-position: center center;
+  background-size: cover;
+  color: #ccc;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: table;
 }
 .title-area {
   min-height: 100px;
