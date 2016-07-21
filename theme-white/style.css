@@ -127,7 +127,7 @@ input {
   }
 }
 a {
-  color: #2badad;
+  color: #333333;
   text-decoration: none;
 }
 a:hover {
@@ -471,14 +471,14 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   font-weight: bold;
   display: inline-block;
   padding: 3px 25px;
-  border: solid 2px #2badad;
+  border: solid 2px #333333;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   margin-right: 15px;
 }
 .button,
 .button:visited {
-  background: #2badad;
+  background: #333333;
   color: #fff;
   text-shadow: none;
 }
@@ -707,18 +707,18 @@ a.big.button {
   font-weight: bold;
   font-size: 1.1em;
   background: transparent;
-  border: solid 3px #2badad;
+  border: solid 3px #333333;
   -webkit-border-radius: 30px;
   border-radius: 30px;
   font-family: montserrat, sans-serif;
 }
 a.big.button,
 a.big.button:visited {
-  color: #2badad;
+  color: #333333;
   text-decoration: none;
 }
 a.big.button:hover {
-  background: #2badad;
+  background: #333333;
 }
 a.big.button:hover,
 a.big.button:hover:visited {
@@ -788,7 +788,7 @@ a.big.button:hover:visited {
 }
 .menu a,
 .menu a:visited {
-  color: #2badad;
+  color: #333333;
 }
 .menu a:hover {
   color: #228a8a;
@@ -835,7 +835,7 @@ a.big.button:hover:visited {
   height: 3px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  background: #2badad;
+  background: #333333;
 }
 code .string,
 code .number {
