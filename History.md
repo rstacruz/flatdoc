@@ -1,3 +1,7 @@
+## v0.9.1 - July 21, 2016
+
+ * Replace text color.
+
 ## v0.9.0 - November 9, 2014
 
  * Changed prescribed URLs to use [https://cdn.rawgit.com](http://rawgit.com), supporting HTTPS. (#27)
@@ -36,7 +40,7 @@ Please use v0.8.6 instead.
  * Fix issue with `h3` headings following `h1`s. (#34, @malthe)
  * Fix issues with multiple headings that have the same text. (#33, #32, @malthe)
  * Fix issue with HTTPS errors concerning Google Fonts. (#27, #29)
- 
+
 ## v0.8.2 - June 16, 2014
 
  * Fix HTML keyword highlighting when tags don't have attributes. (#28, @oderwat)

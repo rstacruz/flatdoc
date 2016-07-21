@@ -12,7 +12,7 @@ way to make open source documentation from *Readme* files.
  * Gorgeous default theme (and it's responsive)
  * Just create an HTML file and deploy!
 
-*Current version: [v0.9.0][dist]*
+*Current version: [v0.9.1][dist]*
 
 [![Build Status](https://travis-ci.org/rstacruz/flatdoc.svg?branch=gh-pages)](https://travis-ci.org/rstacruz/flatdoc)
 
@@ -225,7 +225,7 @@ The following projects have inspired Flatdoc.
 
  * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
 
- * [DocumentUp] - This service has the same idea but does a hosted readme 
+ * [DocumentUp] - This service has the same idea but does a hosted readme
  parsing approach.
 
 Attributions
@@ -237,10 +237,10 @@ licensed under Creative Commons.
 Acknowledgements
 ----------------
 
-© 2013, 2014, Rico Sta. Cruz. Released under the [MIT 
+© 2013, 2014, Rico Sta. Cruz. Released under the [MIT
 License](http://www.opensource.org/licenses/mit-license.php).
 
-**Flatdoc** is authored and maintained by [Rico Sta. Cruz][rsc] with help from its 
+**Flatdoc** is authored and maintained by [Rico Sta. Cruz][rsc] with help from its
 [contributors][c].
 
  * [My website](http://ricostacruz.com) (ricostacruz.com)
@@ -263,4 +263,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
-[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.0
+[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.1

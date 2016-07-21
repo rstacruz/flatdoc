@@ -47,14 +47,14 @@ This project uses GNU make (`Makefile`) to manage the builds.
     npm test
 
     # update prescribed versions
-    perl -p -i -e "s/v\d+\.\d+\.\d+/v0.9.0/g" templates/*.html Readme.md
+    perl -p -i -e "s/v\d+\.\d+\.\d+/v0.9.1/g" templates/*.html Readme.md
     bump package.json
     git diff
 
     # build files
     make
     make v/0.9
-    make v/0.9.0
+    make v/0.9.1
 
     # add release date
     vim History.md
