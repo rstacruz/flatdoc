@@ -478,7 +478,10 @@
         console.error('[Flatdoc] fetching Markdown data failed.', err);
         return;
       }
-      var data = Flatdoc.parser.parse(markdown, doc.highlight);
+      var fetched = {markdown: markdown};
+      $(doc.root).trigger("flatdoc:fetched", [fetched]);
+      var data = Flatdoc.parser.parse(fetched.markdown, doc.highlight);
+      $(doc.root).trigger("flatdoc:parsed", [data]);
       doc.applyData(data, doc);
       var id = location.hash.substr(1);
       if (id) {
