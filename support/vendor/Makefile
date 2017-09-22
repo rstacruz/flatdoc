@@ -8,7 +8,7 @@ respond.js:
 	wget "https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.src.js" -q -O $@
 
 jquery.js:
-	wget "http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" -q -O $@
+	wget "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" -q -O $@
 
 jquery-migrate-3.0.0.js:
 	wget "https://code.jquery.com/jquery-migrate-3.0.0.js" -q -O $@
