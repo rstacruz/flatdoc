@@ -263,4 +263,4 @@ License](http://www.opensource.org/licenses/mit-license.php).
 [project]: https://github.com/rstacruz/flatdoc
 [template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
 [blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
-[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.0
+[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.1
