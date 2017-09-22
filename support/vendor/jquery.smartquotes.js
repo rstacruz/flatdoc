@@ -22,20 +22,19 @@
 
   // http://stackoverflow.com/questions/298750/how-do-i-select-text-nodes-with-jquery
   function getTextNodesIn(el) {
-    return $(el).find(":not(iframe,pre,code)").andSelf().contents().filter(function() {
-      return this.nodeType == 3;
+    var exclude = 'iframe,pre,code';
+    return $(el).find(':not('+exclude+')').andSelf().contents().filter(function() {
+      return this.nodeType == 3 && $(this).closest(exclude).length === 0;
     });
   }
 
   $.fn.smartquotes = function(fn) {
     if (!fn) fn = $.smartquotes;
 
-    var nodes = getTextNodesIn(this);
-    for (var i in nodes) {
-      if (nodes.hasOwnProperty(i)) {
-        var node = nodes[i];
-        node.nodeValue = fn(node.nodeValue);
-      }
+    var nodes = getTextNodesIn(this), len = nodes.length;
+    for (var i=0; i<len; i++) {
+      var node = nodes[i];
+      node.nodeValue = fn(node.nodeValue);
     }
   };
 })(jQuery);

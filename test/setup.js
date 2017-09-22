@@ -12,7 +12,8 @@ global.assert = chai.assert;
 chai.should();
 process.stdout.write('.');
 
-var jsdom = require('jsdom');
+// JSDOM API change issue: https://github.com/tmpvar/jsdom/issues/1820
+var jsdom = require("jsdom/lib/old-api.js"); // jsdom >= 10.x
 process.stdout.write('. OK\n');
 
 module.exports = function(done) {
@@ -20,6 +21,7 @@ module.exports = function(done) {
     html: getFile('test/fixtures/context.html'),
     src: [
       getFile('support/vendor/jquery.js'),
+      getFile('support/vendor/jquery-migrate-3.0.0.js'),
       getFile('flatdoc.js')
     ],
     done: function(errors, window) {
