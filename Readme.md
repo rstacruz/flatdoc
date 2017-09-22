@@ -12,7 +12,7 @@ way to make open source documentation from *Readme* files.
  * Gorgeous default theme (and it's responsive)
  * Just create an HTML file and deploy!
 
-*Current version: [v0.9.0][dist]*
+*Current version: [v0.9.1][dist]*
 
 [![Build Status](https://travis-ci.org/rstacruz/flatdoc.svg?branch=gh-pages)](https://travis-ci.org/rstacruz/flatdoc)
 
