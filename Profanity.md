@@ -2,10 +2,13 @@
 
 This function will take a string and return a HTML formatted string with tags that decorate profane words.
 
-| Field     | Type       | Description                                  |
-|-----------|------------|----------------------------------------------|
-|  text     | string     | the string to be formatted                   |
-|           |            |                                              |
+## Parameters
+
+| Field | Type   | Description                         |
+|-------|--------|-------------------------------------|
+| text  | string | the field to be formatted into HTML |
+|       |        |                                     |
+|       |        |                                     |
 
 
 > Endpoint: versus_profanity_filter

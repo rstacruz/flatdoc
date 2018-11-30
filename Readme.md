@@ -37,6 +37,7 @@ This has functions for sending out emails
  * Dashboard Ready: Notify an admin that the Versus Sentiment dashboard has data for viewing
  * Designated Primary Email: Notify an admin that they have been designated as a primary contact
  * Designated Team Member: Notify someone that they have been added as a team member to Versus Sentiment
+ * Request a Demo: Let a potential user request a demo
  * Respond to Article: Notify a recipient to respond to a social media post
  * Welcome to Versus: Notify the recipient that their Versus Sentiment account has been created
  * Your Report: Dispatch a periodic report
