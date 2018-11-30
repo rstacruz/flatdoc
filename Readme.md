@@ -1,5 +1,4 @@
 # Versus API Endpoints
-=======
 
 This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
 
@@ -12,7 +11,6 @@ This documentation lists the API endpoints required for engineers on the Versus 
 
 
 # Clients
-----------------
 
 This has functions for managing clients
 1. Create Client: create a new Versus Sentiment Client
@@ -21,7 +19,6 @@ This has functions for managing clients
 4. Create Member: register someone who was added to the list of team members
 
 # Dasboard
-----------------
 
 This has functions for retrieving mentions
 1. Today Summary: Today's mentions on social media, news, and other sources
@@ -34,7 +31,6 @@ This has functions for retrieving mentions
 8. All Time Details: Mentions from social media, news, and other sources grouped by source for all content on our systems
 
 # Email Templates
-----------------
 
 This has functions for sending out emails
 1. Custom Alerts: Notify an admin that custom alerts have been set for their account
@@ -46,18 +42,17 @@ This has functions for sending out emails
 7. Your Report: Dispatch a periodic report
 
 # Profanity Filter
-----------------
 
 This function will take a string and return a HTML formattted string with tags that decorate profane words.
 
 
 # Getting started
----------------
 
 All endpoints are REST. The default method is POST unless otherwise specified. There is a base URL to which you will need to append the endpoint.
 
 > Method: POST
-> Base_URL: 
+
+> Base_URL: https://us-central1-versus-dev-212614.cloudfunctions.net/
 
 
 ### Via GitHub

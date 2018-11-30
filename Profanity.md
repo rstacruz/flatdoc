@@ -1,44 +1,19 @@
-Versus API Endpoints
-=======
+# Profanity Filter
 
-This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
-
- * Clients
- * Dashboard
- * Email Templates
- * Profanity Filter
-
-*Current version: [v0.1.0][dist]*
+This function will take a string and return a HTML formattted string with tags that decorate profane words.
 
 
-Getting started
----------------
+> Endpoint: versus_profanity_filter
 
-Create a file based on the template, which has a bare DOM, link to the
-scripts, and a link to a theme. It will look something like this (not exact).
-For GitHub projects, simply place this file in your [GitHub pages] branch and
-you're all good to go.
-
-*In short: just download this file and upload it somewhere.*
-
-The main JS and CSS files are also available in [npm] and [bower].
-
-[Default theme template >][template]
-
-[Blank template >][blank]
-
-[bower]: http://bower.io/search/?q=flatdoc
-[npm]: https://www.npmjs.org/package/flatdoc
-
-### Via GitHub
-
-To fetch a Github Repository's readme file, use the `Flatdoc.github` fetcher.
-This will fetch the Readme file of the repository's default branch.
+> Payload
 
 ``` javascript
-Flatdoc.run({
-  fetcher: Flatdoc.github('USER/REPO')
-});
+{"text": "What the hell"}
+```
+
+> Result
+``` html
+what the <STRONG CLASS="blacklist">hell</STRONG>
 ```
 
 You may also fetch another file other than the Readme file, just specify it as
