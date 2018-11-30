@@ -1,8 +1,6 @@
 # Profanity Filter
 
-This function will take a string and return a HTML formatted string with tags that decorate profane words.
-
-## Parameters
+This function will take a string and return a HTML formatted string with tags that decorate profane words. The payload has the following parameters.
 
 | Field | Type   | Description                         |
 |-------|--------|-------------------------------------|
