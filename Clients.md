@@ -1,4 +1,4 @@
-# Versus API Endpoints
+Versus API Endpoints
 =======
 
 This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
@@ -11,54 +11,24 @@ This documentation lists the API endpoints required for engineers on the Versus 
 *Current version: [v0.1.0][dist]*
 
 
-# Clients
-----------------
-
-This has functions for managing clients
-1. Create Client: create a new Versus Sentiment Client
-2. Get Client: get details about a Versus Sentiment Client
-3. Update Client: onboard a Versus Sentiment Client
-4. Create Member: register someone who was added to the list of team members
-
-# Dasboard
-----------------
-
-This has functions for retrieving mentions
-1. Today Summary: Today's mentions on social media, news, and other sources
-2. Week Summary: This week's mentions on social media, news, and other sources
-3. Month Summary: This month's mentions on social media, news, and other sources
-4. All Time Summary: Total aggregate on our systems of mentions on social media, news, and other sources
-5. Today Details: Mentions from social media, news, and other sources grouped by source for today
-6. Week Details: Mentions from social media, news, and other sources grouped by source for the past week
-7. Today Details: Mentions from social media, news, and other sources grouped by source for the past month
-8. All Time Details: Mentions from social media, news, and other sources grouped by source for all content on our systems
-
-# Email Templates
-----------------
-
-This has functions for sending out emails
-1. Custom Alerts: Notify an admin that custom alerts have been set for their account
-2. Dashboard Ready: Notify an admin that the Versus Sentiment dashboard has data for viewing
-3. Designated Primary Email: Notify an admin that they have been designated as a primary contact
-4. Designated Team Member: Notify someone that they have been added as a team member to Versus Sentiment
-5. Respond to Article: Notify a recipient to respond to a social media post
-6. Welcome to Versus: Notify the recipient that their Versus Sentiment account has been created
-7. Your Report: Dispatch a periodic report
-
-# Profanity Filter
-----------------
-
-This function will take a string and return a HTML formattted string with tags that decorate profane words.
-
-
-# Getting started
+Getting started
 ---------------
 
-All endpoints are REST. The default method is POST unless otherwise specified. There is a base URL to which you will need to append the endpoint.
+Create a file based on the template, which has a bare DOM, link to the
+scripts, and a link to a theme. It will look something like this (not exact).
+For GitHub projects, simply place this file in your [GitHub pages] branch and
+you're all good to go.
 
-> Method: POST
-> Base_URL: 
+*In short: just download this file and upload it somewhere.*
 
+The main JS and CSS files are also available in [npm] and [bower].
+
+[Default theme template >][template]
+
+[Blank template >][blank]
+
+[bower]: http://bower.io/search/?q=flatdoc
+[npm]: https://www.npmjs.org/package/flatdoc
 
 ### Via GitHub
 
