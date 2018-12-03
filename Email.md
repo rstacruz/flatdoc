@@ -177,6 +177,11 @@ Notify a recipient to respond to a social media post. The payload has the follow
 ## Welcome to Versus: 
 Notify the recipient that their Versus Sentiment account has been created. The payload has the following fields.
 
+| Field      | Type   | Description                            |
+|------------|--------|----------------------------------------|
+| recipient  | string | the email address of the recipient     |
+| inviteLink | string | the URL from which to begin onboarding |
+
 > Endpoint: email_welcome_to_versus
 
 > Payload

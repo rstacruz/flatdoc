@@ -1,261 +1,1063 @@
-Versus API Endpoints
-=======
+# Dashboard
 
-This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
+Endpoints responsible for the charts and components that render on the  Versus dashboard.
 
- * Clients
- * Dashboard
- * Email Templates
- * Profanity Filter
+## All Time Detail
 
-*Current version: [v0.1.0][dist]*
+> Endpoint: versus_dashboard_all_time_detail
 
-
-Getting started
----------------
-
-Create a file based on the template, which has a bare DOM, link to the
-scripts, and a link to a theme. It will look something like this (not exact).
-For GitHub projects, simply place this file in your [GitHub pages] branch and
-you're all good to go.
-
-*In short: just download this file and upload it somewhere.*
-
-The main JS and CSS files are also available in [npm] and [bower].
-
-[Default theme template >][template]
-
-[Blank template >][blank]
-
-[bower]: http://bower.io/search/?q=flatdoc
-[npm]: https://www.npmjs.org/package/flatdoc
-
-### Via GitHub
-
-To fetch a Github Repository's readme file, use the `Flatdoc.github` fetcher.
-This will fetch the Readme file of the repository's default branch.
+> Payload
 
 ``` javascript
-Flatdoc.run({
-  fetcher: Flatdoc.github('USER/REPO')
-});
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
 ```
 
-You may also fetch another file other than the Readme file, just specify it as
-the 2nd parameter.
+> Response
 
 ``` javascript
-Flatdoc.run({
-  fetcher: Flatdoc.github('USER/REPO', 'Changelog.md')
-});
+{
+  "socialMedia": [
+    {
+      "type": "bar",
+      "x": [
+        19,
+        12,
+        35
+      ],
+      "y": [
+        "Twitter",
+        "Facebook",
+        "Telegram"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "news": [
+    {
+      "type": "bar",
+      "x": [
+        3,
+        5,
+        1,
+        2
+      ],
+      "y": [
+        "CNN",
+        "Business Times",
+        "Time Magazine",
+        "Fortune"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "other": [
+    {
+      "type": "bar",
+      "x": [
+        200,
+        50,
+        35
+      ],
+      "y": [
+        "Nairaland",
+        "Y Naija",
+        "Guardian Newspapers"
+      ],
+      "orientation": "h"
+    }
+  ]
+}
 ```
 
-After you've done this, you probably want to deploy it via [GitHub Pages].
+## All Time Summary
 
-[GitHub Pages guide >][GitHub Pages]
+> Endpoint: versus_dashboard_all_time_summary
 
-### Via a file
-
-You may also fetch a file. In this example, this fetches the file `Readme.md` in
-the same folder as the HTML file.
+> Payload
 
 ``` javascript
-Flatdoc.run({
-  fetcher: Flatdoc.file('Readme.md')
-});
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
 ```
 
-You may actually supply any URL here. It will be fetched via AJAX. This is
-useful for local testing.
+> Response
 
 ``` javascript
-Flatdoc.run({
-  fetcher: Flatdoc.file('http://yoursite.com/Readme.md')
-});
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        5,
+        2,
+        1
+      ],
+      "y": [
+        "Social Media",
+        "News",
+        "Other"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "total": 8
+}
 ```
 
-How it works
-------------
+## Channel Sentiments
 
-Flatdoc is a hosted `.js` file (along with a theme and its assets) that you can
-add into any page hosted anywhere.
+> Endpoint: versus_dashboard_channel_sentiments
 
-#### All client-side
+> Payload
 
-There are no build scripts or 3rd-party services involved. Everything is done in
-the browser. Worried about performance? Oh, It's pretty fast.
-
-Flatdoc utilizes the [GitHub API] to fetch your project's Readme files. You may
-also configure it to fetch any arbitrary URL via AJAX.
-
-#### Lightning-fast parsing
-
-Next, it uses [marked], an extremely fast Markdown parser that has support for
-GitHub flavored Markdown.
-
-Flatdoc then simply renders *menu* and *content* DOM elements to your HTML
-document. Flatdoc also comes with a default theme to style your page for you, or
-you may opt to create your own styles.
-
-Markdown extras
----------------
-
-Flatdoc offers a few harmless, unobtrusive extras that come in handy in building
-documentation sites.
-
-#### Code highlighting
-
-You can use Markdown code fences to make syntax-highlighted text. Simply
-surround your text with three backticks. This works in GitHub as well.
-See [GitHub Syntax Highlighting][fences] for more info.
-
-    ``` html
-    <strong>Hola, mundo</strong>
-    ```
-
-#### Blockquotes
-
-Blockquotes show up as side figures. This is useful for providing side
-information or non-code examples.
-
-> Blockquotes are blocks that begin with `>`.
-
-#### Smart quotes
-
-Single quotes, double quotes, and double-hyphens are automatically replaced to
-their typographically-accurate equivalent. This, of course, does not apply to
-`<code>` and `<pre>` blocks to leave code alone.
-
-> "From a certain point onward there is no longer any turning back. That is the
-> point that must be reached."  
-> --Franz Kafka
-
-#### Buttons
-
-If your link text has a `>` at the end (for instance: `Continue >`), they show
-up as buttons.
-
-> [View in GitHub >][project]
-
-Customizing
-===========
-
-Basic
------
-
-### Theme options
-
-For the default theme (*theme-white*), You can set theme options by adding
-classes to the `<body>` element. The available options are:
-
-#### big-h3
-Makes 3rd-level headings bigger.
-
-``` html
-<body class='big-h3'>
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
 ```
 
-#### no-literate
-Disables "literate" mode, where code appears on the right and content text
-appear on the left.
+> Response
 
-``` html
-<body class='no-literate'>
+``` javascript
+[
+  {
+    "x": [
+      14,
+      23,
+      11
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "Positive",
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "neutral",
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "x": [
+      18,
+      29,
+      25
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "Negative",
+    "type": "bar",
+    "orientation": "h"
+  }
+]
 ```
 
-#### large-brief
-Makes the opening paragraph large.
+## Month Detail
 
-``` html
-<body class='large-brief'>
+> Endpoint: versus_dashboard_month_detail
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
 ```
 
-### Adding more markup
+> Response
 
-You have full control over the HTML file, just add markup wherever you see fit.
-As long as you leave `role='flatdoc-content'` and `role='flatdoc-menu'` empty as
-they are, you'll be fine.
-
-Here are some ideas to get you started.
-
- * Add a CSS file to make your own CSS adjustments.
- * Add a 'Tweet' button on top.
- * Add Google Analytics.
- * Use CSS to style the IDs in menus (`#acknowledgements + p`).
-
-### JavaScript hooks
-
-Flatdoc emits the events `flatdoc:loading` and `flatdoc:ready` to help you make
-custom behavior when the document loads.
-
-``` js
-$(document).on('flatdoc:ready', function() {
-  // I don't like this section to appear
-  $("#acknowledgements").remove();
-});
+``` javascript
+{
+  "socialMedia": [
+    {
+      "type": "bar",
+      "x": [
+        19,
+        12,
+        35
+      ],
+      "y": [
+        "Twitter",
+        "Facebook",
+        "Telegram"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "news": [
+    {
+      "type": "bar",
+      "x": [
+        3,
+        5,
+        1,
+        2
+      ],
+      "y": [
+        "CNN",
+        "Business Times",
+        "Time Magazine",
+        "Fortune"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "other": [
+    {
+      "type": "bar",
+      "x": [
+        200,
+        50,
+        35
+      ],
+      "y": [
+        "Nairaland",
+        "Y Naija",
+        "Guardian Newspapers"
+      ],
+      "orientation": "h"
+    }
+  ]
+}
 ```
 
-Full customization
-------------------
+## Month Sentiments
 
-You don't have to be restricted to the given theme. Flatdoc is just really one
-`.js` file that expects 2 HTML elements (for *menu* and *content*). Start with
-the blank template and customize as you see fit.
+> Endpoint: versus_dashboard_month_sentiments
 
-[Get blank template >][template]
+> Payload
 
-Misc
-====
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
 
-Inspirations
-------------
+> Response
 
-The following projects have inspired Flatdoc.
+``` javascript
+[
+  {
+    "x": [
+      "Sep 30",
+      "Oct 01",
+      "Oct 02",
+      "Oct 03",
+      "Oct 04",
+      "Oct 05",
+      "Oct 06",
+      "Oct 07",
+      "Oct 08",
+      "Oct 09",
+      "Oct 10",
+      "Oct 11",
+      "Oct 12",
+      "Oct 13",
+      "Oct 14",
+      "Oct 15",
+      "Oct 16",
+      "Oct 17",
+      "Oct 18",
+      "Oct 19",
+      "Oct 20",
+      "Oct 21",
+      "Oct 22",
+      "Oct 23",
+      "Oct 24",
+      "Oct 25",
+      "Oct 26",
+      "Oct 27",
+      "Oct 28",
+      "Oct 29"
+    ],
+    "y": [
+      1111,
+      688,
+      4000,
+      1105,
+      599,
+      3200,
+      2195,
+      1900,
+      2650,
+      3718,
+      613,
+      552,
+      323,
+      1466,
+      1577,
+      1777,
+      955,
+      2131,
+      1262,
+      3280,
+      1229,
+      2324,
+      1625,
+      1886,
+      2785,
+      3191,
+      2334,
+      1255,
+      3666,
+      918
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "Social Media"
+  },
+  {
+    "x": [
+      "Sep 30",
+      "Oct 01",
+      "Oct 02",
+      "Oct 03",
+      "Oct 04",
+      "Oct 05",
+      "Oct 06",
+      "Oct 07",
+      "Oct 08",
+      "Oct 09",
+      "Oct 10",
+      "Oct 11",
+      "Oct 12",
+      "Oct 13",
+      "Oct 14",
+      "Oct 15",
+      "Oct 16",
+      "Oct 17",
+      "Oct 18",
+      "Oct 19",
+      "Oct 20",
+      "Oct 21",
+      "Oct 22",
+      "Oct 23",
+      "Oct 24",
+      "Oct 25",
+      "Oct 26",
+      "Oct 27",
+      "Oct 28",
+      "Oct 29"
+    ],
+    "y": [
+      11,
+      6,
+      15,
+      20,
+      22,
+      24,
+      25,
+      6,
+      5,
+      11,
+      9,
+      20,
+      18,
+      13,
+      2,
+      3,
+      4,
+      5,
+      7,
+      9,
+      11,
+      22,
+      24,
+      25,
+      6,
+      5,
+      11,
+      9,
+      20,
+      18
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "News"
+  },
+  {
+    "x": [
+      "Sep 30",
+      "Oct 01",
+      "Oct 02",
+      "Oct 03",
+      "Oct 04",
+      "Oct 05",
+      "Oct 06",
+      "Oct 07",
+      "Oct 08",
+      "Oct 09",
+      "Oct 10",
+      "Oct 11",
+      "Oct 12",
+      "Oct 13",
+      "Oct 14",
+      "Oct 15",
+      "Oct 16",
+      "Oct 17",
+      "Oct 18",
+      "Oct 19",
+      "Oct 20",
+      "Oct 21",
+      "Oct 22",
+      "Oct 23",
+      "Oct 24",
+      "Oct 25",
+      "Oct 26",
+      "Oct 27",
+      "Oct 28",
+      "Oct 29"
+    ],
+    "y": [
+      111,
+      68,
+      566,
+      110,
+      99,
+      200,
+      195,
+      900,
+      250,
+      718,
+      613,
+      552,
+      323,
+      466,
+      577,
+      777,
+      955,
+      131,
+      262,
+      280,
+      229,
+      2324,
+      625,
+      886,
+      785,
+      191,
+      2334,
+      255,
+      666,
+      918
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "Others"
+  }
+]
+```
 
- * [Backbone.js] - Jeremy's projects have always adopted this "one page
- documentation" approach which I really love.
+## Month Summary
 
- * [Docco] - Jeremy's Docco introduced me to the world of literate programming,
- and side-by-side documentation in general.
+> Endpoint: versus_dashboard_month_summary
 
- * [Stripe] - Flatdoc took inspiration on the look of their API documentation.
+> Payload
 
- * [DocumentUp] - This service has the same idea but does a hosted readme 
- parsing approach.
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
 
-Attributions
-------------
+> Response
 
-[Photo](http://www.flickr.com/photos/doug88888/2953428679/) taken from Flickr,
-licensed under Creative Commons.
+``` javascript
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        5,
+        2,
+        1
+      ],
+      "y": [
+        "Social Media",
+        "News",
+        "Other"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "total": 8
+}
+```
 
-Acknowledgements
-----------------
+## News Mentions
 
-© 2013, 2014, Rico Sta. Cruz. Released under the [MIT 
-License](http://www.opensource.org/licenses/mit-license.php).
+> Endpoint: versus_dashboard_news_mentions
 
-**Flatdoc** is authored and maintained by [Rico Sta. Cruz][rsc] with help from its 
-[contributors][c].
+> Payload
 
- * [My website](http://ricostacruz.com) (ricostacruz.com)
- * [Github](http://github.com/rstacruz) (@rstacruz)
- * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
 
-[rsc]: http://ricostacruz.com
-[c]:   http://github.com/rstacruz/flatdoc/contributors
+> Response
 
-[GitHub API]: http://github.com/api
-[marked]: https://github.com/chjj/marked
-[Backbone.js]: http://backbonejs.org
-[dox]: https://github.com/visionmedia/dox
-[Stripe]: https://stripe.com/docs/api
-[Docco]: http://jashkenas.github.com/docco
-[GitHub pages]: https://pages.github.com
-[fences]:https://help.github.com/articles/github-flavored-markdown#syntax-highlighting
-[DocumentUp]: http://documentup.com
+``` javascript
+{
+  "mentions": 14,
+  "data": [
+    {
+      "sentiment": -1,
+      "outlet": "Guardian",
+      "views": 890,
+      "title": "Lorem dolor ipsum",
+      "content": "Mauris lobortis eleifend tempor. Etiam et imperdiet sem. Aliquam eu mattis purus. Vivamus et molestie nunc, ultricies viverra justo. Praesent lacinia in quam sit amet blandit. Vestibulum placerat, enim at cursus dignissim, nisl risus ultricies dolor, condimentum finibus justo dolor at purus. Aenean in fringilla dolor, vitae hendrerit lectus. Etiam gravida dolor eu auctor faucibus. Nulla eu orci laoreet sapien vulputate semper non a nunc. Nam condimentum lorem mattis tellus efficitur vulputate. Aliquam erat volutpat. Vivamus ac elit eu nibh gravida egestas. Curabitur sed ligula arcu. Aliquam hendrerit enim id elementum faucibus. Duis placerat at sapien eget tincidunt.",
+      "url": "http://www.guardian.com"
+    },
+    {
+      "sentiment": 1,
+      "outlet": "Time Magazine",
+      "views": 221,
+      "title": "Sit amet dolor",
+      "content": "Nullam faucibus luctus ultricies. Cras ac faucibus arcu. Donec varius facilisis nisi. Quisque posuere libero nec consectetur ornare. Cras ullamcorper euismod tellus, posuere pharetra est blandit eu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean justo lacus, maximus nec egestas vel, semper sit amet neque. Aenean efficitur tincidunt arcu, vel tincidunt nibh sodales id. Suspendisse potenti. Phasellus sagittis consectetur placerat. Vestibulum nec tempor est.",
+      "url": "http://www.time.com"
+    },
+    {
+      "sentiment": 1,
+      "platform": "Newsweek",
+      "views": 832,
+      "title": "ut orci vel finibus",
+      "content": "Nullam venenatis ut orci vel finibus. Phasellus efficitur dui risus, at ultricies augue semper et. Donec sed rutrum massa, a dignissim urna. Nulla viverra, sapien et blandit laoreet, urna diam aliquam velit, vel interdum nisl libero a odio. Donec ut interdum risus. Vestibulum tempus elit eget urna pretium tincidunt. Integer at convallis ipsum.",
+      "url": "http://www.newsweek.com"
+    },
+    {
+      "sentiment": -1,
+      "platform": "Time Magazine",
+      "views": 930,
+      "title": "In efficitur erat",
+      "content": "In efficitur erat egestas magna finibus, nec lacinia velit sollicitudin. Phasellus id mattis dolor, in hendrerit elit. Phasellus at tortor placerat, maximus elit sit amet, sodales velit. Mauris ligula leo, posuere eu risus ut, hendrerit consequat sapien. Mauris convallis tortor ut est porta sagittis. Mauris sed mi purus. Nulla in fermentum massa, nec vestibulum eros.",
+      "url": "http://www.time.com"
+    },
+    {
+      "sentiment": 1,
+      "platform": "Time Magazine",
+      "views": 384,
+      "title": "Duis molestie dignissim mauris",
+      "content": "Nam a est mi. Duis molestie dignissim mauris, in scelerisque quam eleifend at. Fusce consequat, quam et tincidunt tincidunt, tellus leo consectetur diam, gravida vestibulum orci nisl vel nulla. Etiam ac elit dignissim ex accumsan bibendum et eu lorem. Ut in vulputate sem, vel finibus nulla. Suspendisse semper sit amet sem id tempus. Praesent vulputate mattis nisi, ut interdum nulla suscipit eu. Suspendisse potenti.",
+      "url": "http://www.time.com"
+    }
+  ]
+}
+```
 
-[project]: https://github.com/rstacruz/flatdoc
-[template]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/template.html
-[blank]: https://github.com/rstacruz/flatdoc/raw/gh-pages/templates/blank.html
-[dist]: https://github.com/rstacruz/flatdoc/tree/gh-pages/v/0.9.0
+## Other Mentions
+
+> Endpoint: versus_dashboard_other_mentions
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "mentions": 14,
+  "data": [
+    {
+      "sentiment": -1,
+      "outlet": "Punch",
+      "views": 890,
+      "title": "Lorem dolor ipsum",
+      "content": "Mauris lobortis eleifend tempor. Etiam et imperdiet sem. Aliquam eu mattis purus. Vivamus et molestie nunc, ultricies viverra justo. Praesent lacinia in quam sit amet blandit. Vestibulum placerat, enim at cursus dignissim, nisl risus ultricies dolor, condimentum finibus justo dolor at purus. Aenean in fringilla dolor, vitae hendrerit lectus. Etiam gravida dolor eu auctor faucibus. Nulla eu orci laoreet sapien vulputate semper non a nunc. Nam condimentum lorem mattis tellus efficitur vulputate. Aliquam erat volutpat. Vivamus ac elit eu nibh gravida egestas. Curabitur sed ligula arcu. Aliquam hendrerit enim id elementum faucibus. Duis placerat at sapien eget tincidunt.",
+      "url": "http://www.punch.com"
+    },
+    {
+      "sentiment": 1,
+      "outlet": "Yello Magazine",
+      "views": 221,
+      "title": "Sit amet dolor",
+      "content": "Nullam faucibus luctus ultricies. Cras ac faucibus arcu. Donec varius facilisis nisi. Quisque posuere libero nec consectetur ornare. Cras ullamcorper euismod tellus, posuere pharetra est blandit eu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean justo lacus, maximus nec egestas vel, semper sit amet neque. Aenean efficitur tincidunt arcu, vel tincidunt nibh sodales id. Suspendisse potenti. Phasellus sagittis consectetur placerat. Vestibulum nec tempor est.",
+      "url": "http://www.yello.com"
+    },
+    {
+      "sentiment": 1,
+      "platform": "Naija",
+      "views": 832,
+      "title": "ut orci vel finibus",
+      "content": "Nullam venenatis ut orci vel finibus. Phasellus efficitur dui risus, at ultricies augue semper et. Donec sed rutrum massa, a dignissim urna. Nulla viverra, sapien et blandit laoreet, urna diam aliquam velit, vel interdum nisl libero a odio. Donec ut interdum risus. Vestibulum tempus elit eget urna pretium tincidunt. Integer at convallis ipsum.",
+      "url": "http://www.naija.com"
+    },
+    {
+      "sentiment": -1,
+      "platform": "Other Magazine",
+      "views": 930,
+      "title": "In efficitur erat",
+      "content": "In efficitur erat egestas magna finibus, nec lacinia velit sollicitudin. Phasellus id mattis dolor, in hendrerit elit. Phasellus at tortor placerat, maximus elit sit amet, sodales velit. Mauris ligula leo, posuere eu risus ut, hendrerit consequat sapien. Mauris convallis tortor ut est porta sagittis. Mauris sed mi purus. Nulla in fermentum massa, nec vestibulum eros.",
+      "url": "http://www.other.com"
+    },
+    {
+      "sentiment": 1,
+      "platform": "Other Magazine",
+      "views": 384,
+      "title": "Duis molestie dignissim mauris",
+      "content": "Nam a est mi. Duis molestie dignissim mauris, in scelerisque quam eleifend at. Fusce consequat, quam et tincidunt tincidunt, tellus leo consectetur diam, gravida vestibulum orci nisl vel nulla. Etiam ac elit dignissim ex accumsan bibendum et eu lorem. Ut in vulputate sem, vel finibus nulla. Suspendisse semper sit amet sem id tempus. Praesent vulputate mattis nisi, ut interdum nulla suscipit eu. Suspendisse potenti.",
+      "url": "http://www.other.com"
+    }
+  ]
+}
+```
+
+## Social Mentions
+
+> Endpoint: versus_dashboard_social_mentions
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "mentions": 25,
+  "data": [
+    {
+      "sentiment": -1,
+      "content": "Mauris lobortis eleifend tempor. Etiam et imperdiet sem. Aliquam eu mattis purus. Vivamus et molestie nunc, ultricies viverra justo. Praesent lacinia in quam sit amet blandit. Vestibulum placerat, enim at cursus dignissim, nisl risus ultricies dolor, condimentum finibus justo dolor at purus. Aenean in fringilla dolor, vitae hendrerit lectus. Etiam gravida dolor eu auctor faucibus. Nulla eu orci laoreet sapien vulputate semper non a nunc. Nam condimentum lorem mattis tellus efficitur vulputate. Aliquam erat volutpat. Vivamus ac elit eu nibh gravida egestas. Curabitur sed ligula arcu. Aliquam hendrerit enim id elementum faucibus. Duis placerat at sapien eget tincidunt.",
+      "url": "http://www.fb.me/asdf",
+      "platform": "facebook",
+      "handle": "asdf",
+      "followers": 890
+    },
+    {
+      "sentiment": 1,
+      "content": "Nullam faucibus luctus ultricies. Cras ac faucibus arcu. Donec varius facilisis nisi. Quisque posuere libero nec consectetur ornare. Cras ullamcorper euismod tellus, posuere pharetra est blandit eu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean justo lacus, maximus nec egestas vel, semper sit amet neque. Aenean efficitur tincidunt arcu, vel tincidunt nibh sodales id. Suspendisse potenti. Phasellus sagittis consectetur placerat. Vestibulum nec tempor est.",
+      "url": "http://www.twitter.com",
+      "platform": "twitter",
+      "handle": "@ien",
+      "followers": 221
+    },
+    {
+      "sentiment": 1,
+      "platform": "twitter",
+      "content": "Nullam venenatis ut orci vel finibus. Phasellus efficitur dui risus, at ultricies augue semper et. Donec sed rutrum massa, a dignissim urna. Nulla viverra, sapien et blandit laoreet, urna diam aliquam velit, vel interdum nisl libero a odio. Donec ut interdum risus. Vestibulum tempus elit eget urna pretium tincidunt. Integer at convallis ipsum.",
+      "url": "http://www.twitter.com",
+      "handle": "@doe",
+      "followers": 832
+    },
+    {
+      "sentiment": -1,
+      "platform": "twitter",
+      "content": "In efficitur erat egestas magna finibus, nec lacinia velit sollicitudin. Phasellus id mattis dolor, in hendrerit elit. Phasellus at tortor placerat, maximus elit sit amet, sodales velit. Mauris ligula leo, posuere eu risus ut, hendrerit consequat sapien. Mauris convallis tortor ut est porta sagittis. Mauris sed mi purus. Nulla in fermentum massa, nec vestibulum eros.",
+      "url": "http://www.twitter.com",
+      "handle": "@eod_",
+      "followers": 930
+    },
+    {
+      "sentiment": 1,
+      "platform": "facebook",
+      "content": "Nam a est mi. Duis molestie dignissim mauris, in scelerisque quam eleifend at. Fusce consequat, quam et tincidunt tincidunt, tellus leo consectetur diam, gravida vestibulum orci nisl vel nulla. Etiam ac elit dignissim ex accumsan bibendum et eu lorem. Ut in vulputate sem, vel finibus nulla. Suspendisse semper sit amet sem id tempus. Praesent vulputate mattis nisi, ut interdum nulla suscipit eu. Suspendisse potenti.",
+      "url": "http://www.fb.me/_ee__",
+      "handle": "_ee__",
+      "followers": 384
+    }
+  ]
+}
+```
+
+## Today Detail
+
+> Endpoint: versus_dashboard_today_detail
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "socialMedia": [
+    {
+      "type": "bar",
+      "x": [
+        19,
+        12,
+        35
+      ],
+      "y": [
+        "Twitter",
+        "Facebook",
+        "Telegram"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "news": [
+    {
+      "type": "bar",
+      "x": [
+        3,
+        5,
+        1,
+        2
+      ],
+      "y": [
+        "CNN",
+        "Business Times",
+        "Time Magazine",
+        "Fortune"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "other": [
+    {
+      "type": "bar",
+      "x": [
+        200,
+        50,
+        35
+      ],
+      "y": [
+        "Nairaland",
+        "Y Naija",
+        "Guardian Newspapers"
+      ],
+      "orientation": "h"
+    }
+  ]
+}
+```
+
+## Today Summary
+
+> Endpoint: versus_dashboard_today_summary
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        5,
+        2,
+        1
+      ],
+      "y": [
+        "Social Media",
+        "News",
+        "Other"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "total": 8
+}
+```
+
+## Topic Sentiments
+
+> Endpoint: versus_dashboard_topic_sentiments
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "x": [
+      14,
+      23,
+      11
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "Positive",
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "neutral",
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "x": [
+      18,
+      29,
+      25
+    ],
+    "y": [
+      "Social Media",
+      "News",
+      "Other"
+    ],
+    "name": "Negative",
+    "type": "bar",
+    "orientation": "h"
+  }
+]
+```
+
+## Week Detail
+
+> Endpoint: versus_dashboard_week_detail
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "socialMedia": [
+    {
+      "type": "bar",
+      "x": [
+        19,
+        12,
+        35
+      ],
+      "y": [
+        "Twitter",
+        "Facebook",
+        "Telegram"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "news": [
+    {
+      "type": "bar",
+      "x": [
+        3,
+        5,
+        1,
+        2
+      ],
+      "y": [
+        "CNN",
+        "Business Times",
+        "Time Magazine",
+        "Fortune"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "other": [
+    {
+      "type": "bar",
+      "x": [
+        200,
+        50,
+        35
+      ],
+      "y": [
+        "Nairaland",
+        "Y Naija",
+        "Guardian Newspapers"
+      ],
+      "orientation": "h"
+    }
+  ]
+}
+```
+
+## Week Sentiments
+
+> Endpoint: versus_dashboard_week_sentiments
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "x": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "y": [
+      11,
+      6,
+      15,
+      20,
+      22,
+      24,
+      25
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "Social Media"
+  },
+  {
+    "x": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "y": [
+      16,
+      5,
+      11,
+      9,
+      20,
+      18,
+      13
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "News"
+  },
+  {
+    "x": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "y": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      9,
+      11
+    ],
+    "mode": "lines",
+    "line": {
+      "shape": "spline"
+    },
+    "name": "Others"
+  }
+]
+```
+
+## Week Summary
+
+> Endpoint: versus_dashboard_week_summary
+
+> Payload
+
+``` javascript
+{
+  "docRef": "68CgvyEYhGlLcAlDFdol"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        5,
+        2,
+        1
+      ],
+      "y": [
+        "Social Media",
+        "News",
+        "Other"
+      ],
+      "orientation": "h"
+    }
+  ],
+  "total": 8
+}
+```
