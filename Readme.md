@@ -2,21 +2,44 @@
 
 This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
 
- * Clients
- * Dashboard
- * Email Templates
- * Profanity Filter
+1. Clients
+
+2. Dashboard
+
+3. Email Templates
+
+4. Profanity Filter
 
 *Current version: [v0.1.0][dist]*
 
 
 # Clients
 
-This has functions for managing clients
- * Create Client: create a new Versus Sentiment Client
- * Get Client: get details about a Versus Sentiment Client
- * Update Client: onboard a Versus Sentiment Client
- * Create Member: register someone who was added to the list of team members
+This has functions for managing clients.
+
+1. Add Comparison
+
+2. Add Member
+
+3. Create Client
+
+4. Create Member
+
+5. Delete Comparison
+
+6. Delete Member
+
+7. Edit Client
+
+8. Get Client
+
+9. Get Comparisons
+
+10. Get DocRef
+
+11. Get Members
+
+12. Update Client
 
 # Dasboard
 
