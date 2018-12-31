@@ -27,25 +27,33 @@ This has functions for managing clients.
 
 * Add Question
 
-3. Create Client
+* Create Client
 
-4. Create Member
+* Create Member
 
-5. Delete Comparison
+* Delete Comparison
 
-6. Delete Member
+* Delete Member
 
-7. Edit Client
+* Edit Client
 
-8. Get Client
+* Generate Report
 
-9. Get Comparisons
+* Get Campaigns
 
-10. Get DocRef
+* Get Client
 
-11. Get Members
+* Get Comparisons
 
-12. Update Client
+* Get DocRef
+
+* Get Members
+
+* Get Questions
+
+* Get Responses
+
+* Update Client
 
 # Dashboard
 
@@ -75,6 +83,23 @@ This has functions for sending out emails
 
 This function will take a string and return a HTML formattted string with tags that decorate profane words.
 
+# Scouts
+
+This has functions required for scouts to interact with campaigns:
+
+* Add Response
+
+* Create Scout
+
+* Get Campaigns
+
+* Get DocRef
+
+* Get Questions
+
+* Get Responses
+
+* Get Scout
 
 # Getting started
 
