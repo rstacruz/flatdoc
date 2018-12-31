@@ -2,13 +2,15 @@
 
 This documentation lists the API endpoints required for engineers on the Versus team to interface with Versus Backend. The API endpoints are generally grouped into the following.
 
-1. Clients
+* Clients
 
-2. Dashboard
+* Dashboard
 
-3. Email Templates
+* Email Templates
 
-4. Profanity Filter
+* Profanity Filter
+
+* Scouts
 
 *Current version: [v0.1.0][dist]*
 
@@ -17,9 +19,13 @@ This documentation lists the API endpoints required for engineers on the Versus 
 
 This has functions for managing clients.
 
-1. Add Comparison
+* Add Campaign
 
-2. Add Member
+* Add Comparison
+
+* Add Member
+
+* Add Question
 
 3. Create Client
 
@@ -41,7 +47,7 @@ This has functions for managing clients.
 
 12. Update Client
 
-# Dasboard
+# Dashboard
 
 This has functions for retrieving mentions
  * Today Summary: Today's mentions on social media, news, and other sources
