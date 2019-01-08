@@ -2,6 +2,46 @@
 
 This has endpoints for managing clients
 
+## Add Campaign
+
+This creates a new campaign under the client account.
+
+> Endpoint: versus_add_campaign
+
+> Payload
+
+``` javascript
+{
+  "docRef": "nqaXKB0SzWN6xh7RVyzl",
+  "clientName": "clientName",
+  "campaignName": "campaignName",
+  "description": "description",
+  "startDate": "2019-01-01",
+  "endDate": "2019-06-30",
+  "country": "NG",
+  "startAge": 18,
+  "endAge": 60
+}
+```
+
+> Response
+
+``` javascript
+{
+  "campaign": {
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "clientName": "clientName",
+    "campaignName": "campaignName",
+    "description": "description",
+    "startDate": "2019-01-01",
+    "endDate": "2019-06-30",
+    "country": "NG",
+    "startAge": 18,
+    "endAge": 60
+  }
+}
+```
+
 
 ## Add Comparison
 
@@ -46,6 +86,33 @@ This adds a new user to a client account.
 
 ``` javascript
 
+```
+
+## Add Question
+
+This adds a question to a campaign.
+
+> Endpoint: versus_add_question
+
+> Payload
+
+``` javascript
+{
+  "docRef": "nqaXKB0SzWN6xh7RVyzl",
+  "question": "Please pick an option",
+  "options": "One, Two, Three"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "question": {
+    "question": "Please pick an option",
+    "options": "One, Two, Three"
+  }
+}
 ```
 
 ## Create Client
@@ -175,6 +242,53 @@ This edits the details on a client's account.
 }
 ```
 
+## Get Campaigns
+
+Returns a list of campaigns belonging to a client
+
+> Endpoint: versus_get_campaigns
+
+> Payload
+
+``` javascript
+{
+  "docRef": "nqaXKB0SzWN6xh7RVyzl"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "campaigns": [
+    {
+      "startDate": "2019-01-01",
+      "description": "description",
+      "campaignName": "campaignName",
+      "startAge": 18,
+      "country": "NG",
+      "endAge": 60,
+      "clientName": "clientName",
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "endDate": "2019-06-30",
+      "docRef": "NuYgN5IyhPpeEDq9bxoz"
+    },
+    {
+      "endAge": 65,
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "clientName": "The Enterprise",
+      "endDate": "2019-03-30",
+      "startDate": "2019-01-01",
+      "description": "Campaign for McScoutie",
+      "campaignName": "First Campaign",
+      "startAge": 18,
+      "country": "Nigeria",
+      "docRef": "WXGj5wfVS6DKpyecChYm"
+    }
+  ]
+}
+```
+
 ## Get Client
 
 Returns the details associated with a client account
@@ -300,6 +414,62 @@ Returns the list of users associated with a client account.
       "email": "kemdi.ebi@gmail.com",
       "clientRef": "68CgvyEYhGlLcAlDFdol",
       "canEdit": true
+    }
+  ]
+}
+```
+
+## Get Questions
+
+Get a list of questions under a campaign
+
+> Endpoint: versus_get_questions
+
+> Payload
+
+``` javascript
+{
+  "docRef": "WXGj5wfVS6DKpyecChYm"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "questions": [
+    {
+      "options": "Yes, No",
+      "question": "Are you a scout?",
+      "docRef": "kVjTjvEEwk18sLH5RmZX"
+    }
+  ]
+}
+```
+
+## Get Responses
+
+Get all the responses that have been provided to a question.
+
+> Endpoint:  versus_get_responses
+
+> Payload
+
+``` javascript
+{
+  "cRef": "WXGj5wfVS6DKpyecChYm",
+  "qRef": "kVjTjvEEwk18sLH5RmZX"
+}
+```
+
+> Response
+
+``` javascript
+{
+  "responses": [
+    {
+      "value": "Yes",
+      "docRef": "4XhTtoWg0Yg7q4PSVXOU"
     }
   ]
 }
