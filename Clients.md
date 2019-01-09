@@ -531,7 +531,8 @@ Complete the onboarding process for a client.
     }
   ],
   "topics": "Pricing, experience",
-  "twitterHandle": "twitter"
+  "twitterHandle": "twitter",
+  "instagramHandle":"@2019Oby"
 }
 ```
 
