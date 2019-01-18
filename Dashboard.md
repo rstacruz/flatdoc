@@ -516,7 +516,8 @@ Endpoints responsible for the charts and components that render on the  Versus d
 
 ``` javascript
 {
-  "docRef": "68CgvyEYhGlLcAlDFdol"
+  "docRef": "68CgvyEYhGlLcAlDFdol",
+  "when": "2019-01-10"
 }
 ```
 
@@ -578,7 +579,8 @@ Endpoints responsible for the charts and components that render on the  Versus d
 
 ``` javascript
 {
-  "docRef": "68CgvyEYhGlLcAlDFdol"
+  "docRef": "68CgvyEYhGlLcAlDFdol",
+  "when": "2019-01-10"
 }
 ```
 
@@ -640,7 +642,8 @@ Endpoints responsible for the charts and components that render on the  Versus d
 
 ``` javascript
 {
-  "docRef": "68CgvyEYhGlLcAlDFdol"
+  "docRef": "68CgvyEYhGlLcAlDFdol",
+  "when": "2019-01-10"
 }
 ```
 

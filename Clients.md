@@ -303,6 +303,48 @@ Returns the details associated with a client account
 }
 ```
 
+## Get Clients
+
+Returns an array of objects showing the name and docRef of clients in a specified category
+
+> Endpoint: versus_get_clients
+
+> Payload
+
+``` javascript
+{"category":"Banking"}
+```
+
+> Response
+
+``` javascript
+
+{
+  "clients": [
+    {
+      "docRef": "68CgvyEYhGlLcAlDFdol",
+      "name": "Kemdi Limited"
+    },
+    {
+      "docRef": "mvPKqA09G4Fm09RMxs4a",
+      "name": null
+    },
+    {
+      "docRef": "nqaXKB0SzWN6xh7RVyzl",
+      "name": "The Enterprise"
+    },
+    {
+      "docRef": "uDs47BUH4v1EWXP0lPf7",
+      "name": "Amaka Limited"
+    },
+    {
+      "docRef": "xzfTjhjSw7UHOSbtRKXS",
+      "name": "Chika Limited"
+    }
+  ]
+}
+```
+
 > Response
 
 ``` javascript

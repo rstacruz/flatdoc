@@ -102,7 +102,7 @@ Notify someone that they have been added as a team member to Versus Sentiment. T
   "recipient": "kemdi@enterfive.com",
   "firstName": "kemdi",
   "organizationName": "Enterfive",
-  "inviteLink": "https://app.versus.ng/"
+  "inviteLink": "https://versus-dev-212614.appspot.com/create-profile?ref=undefined&email=kemdi@enterfive.com"
 }
 ```
 
