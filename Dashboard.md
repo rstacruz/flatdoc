@@ -171,6 +171,61 @@ Endpoints responsible for the charts and components that render on the  Versus d
 ]
 ```
 
+## Compare Mentions
+
+Compare the number of mentions across channels for up to three clients
+
+> Endpoint: versus_dashboard_compare_month
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "type": "bar",
+    "x": [
+      103,
+      165,
+      337
+    ],
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "orientation": "h",
+    "marker": {
+      "color": [
+        "#9775fa",
+        "#4dabf7",
+        "#38d9a9"
+      ]
+    }
+  }
+]
+```
+
 ## Month Detail
 
 > Endpoint: versus_dashboard_month_detail
