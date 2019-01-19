@@ -336,6 +336,186 @@ Compare the number of mentions in a month across channels for up to three client
 ]
 ```
 
+## Compare News
+
+Compare sentiment across news sources for clients
+
+> Endpoint: versus_dashboard_compare_news
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "type": "bar",
+    "x": [
+      100,
+      100,
+      100
+    ],
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "orientation": "h",
+    "marker": {
+      "color": "#40C057"
+    },
+    "name": "Positive"
+  },
+  {
+    "showlegend": true,
+    "name": "Neutral",
+    "marker": {
+      "color": "#FAB005"
+    },
+    "hoverinfo": "y",
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "name": "Negative",
+    "marker": {
+      "color": "#FA5252"
+    },
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  }
+]
+```
+
+## Compare Other
+
+Compare sentiment across other news sources for clients
+
+> Endpoint: versus_dashboard_compare_other
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "type": "bar",
+    "x": [
+      100,
+      100,
+      100
+    ],
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "orientation": "h",
+    "marker": {
+      "color": "#40C057"
+    },
+    "name": "Positive"
+  },
+  {
+    "showlegend": true,
+    "name": "Neutral",
+    "marker": {
+      "color": "#FAB005"
+    },
+    "hoverinfo": "y",
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "name": "Negative",
+    "marker": {
+      "color": "#FA5252"
+    },
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  }
+]
+```
+
 ## Compare Pie
 
 Compare the number of mentions in a month across channels for up to three clients as a Pie Chart
@@ -393,7 +573,7 @@ Compare the number of mentions in a month across channels for up to three client
 
 ## Compare Social
 
-Compare the number of mentions in a month across channels for up to three clients as a Pie Chart
+Compare sentiment across social channels for clients
 
 > Endpoint: versus_dashboard_compare_social
 
