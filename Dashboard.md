@@ -391,6 +391,96 @@ Compare the number of mentions in a month across channels for up to three client
 ]
 ```
 
+## Compare Social
+
+Compare the number of mentions in a month across channels for up to three clients as a Pie Chart
+
+> Endpoint: versus_dashboard_compare_social
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "type": "bar",
+    "x": [
+      100,
+      100,
+      100
+    ],
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "orientation": "h",
+    "marker": {
+      "color": "#40C057"
+    },
+    "name": "Positive"
+  },
+  {
+    "showlegend": true,
+    "name": "Neutral",
+    "marker": {
+      "color": "#FAB005"
+    },
+    "hoverinfo": "y",
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  },
+  {
+    "name": "Negative",
+    "marker": {
+      "color": "#FA5252"
+    },
+    "y": [
+      "Client 1",
+      "Client 2",
+      "Client 3"
+    ],
+    "x": [
+      0,
+      0,
+      0
+    ],
+    "type": "bar",
+    "orientation": "h"
+  }
+]
+```
+
 ## Month Detail
 
 > Endpoint: versus_dashboard_month_detail
