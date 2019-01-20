@@ -661,6 +661,248 @@ Compare sentiment across social channels for clients
 ]
 ```
 
+## Compare Month Sentiment
+
+Compare weekly positive sentiment count over a period of one month for clients
+
+> Endpoint: versus_dashboard_compare_month_sentiments
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      0,
+      0,
+      100,
+      100,
+      100,
+      0
+    ],
+    "marker": {
+      "color": "rgb(151, 117, 250)"
+    },
+    "line": {
+      "color": "rgb(151, 117, 250)",
+      "shape": "spline"
+    },
+    "mode": "markers+lines",
+    "name": "Client 1"
+  },
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      100,
+      100,
+      100,
+      100,
+      100,
+      0
+    ],
+    "marker": {
+      "color": "rgb(77, 171, 247)"
+    },
+    "line": {
+      "color": "rgb(77, 171, 247)",
+      "shape": "spline"
+    },
+    "mode": "markers+lines",
+    "name": "Client 2"
+  },
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "line": {
+      "color": "rgb(56, 217, 169)",
+      "shape": "spline"
+    },
+    "marker": {
+      "color": "rgb(56, 217, 169)"
+    },
+    "mode": "markers+lines",
+    "name": "Client 3"
+  }
+]
+```
+
+## Compare Week Sentiment
+
+Compare weekly positive sentiment count over a period of one week for clients
+
+> Endpoint: versus_dashboard_compare_week_sentiments
+
+> Payload
+
+``` javascript
+{
+  "clients": [
+    {
+      "name": "Client 1",
+      "id": "68CgvyEYhGlLcAlDFdol"
+    },
+    {
+      "name": "Client 2",
+      "id": "mvPKqA09G4Fm09RMxs4a"
+    },
+    {
+      "name": "Client 3",
+      "id": "nqaXKB0SzWN6xh7RVyzl"
+    }
+  ]
+}
+```
+
+> Response
+
+``` javascript
+[
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      0,
+      0,
+      100,
+      100,
+      100,
+      0
+    ],
+    "marker": {
+      "color": "rgb(151, 117, 250)"
+    },
+    "line": {
+      "color": "rgb(151, 117, 250)",
+      "shape": "spline"
+    },
+    "mode": "markers+lines",
+    "name": "Client 1"
+  },
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      100,
+      100,
+      100,
+      100,
+      100,
+      0
+    ],
+    "marker": {
+      "color": "rgb(77, 171, 247)"
+    },
+    "line": {
+      "color": "rgb(77, 171, 247)",
+      "shape": "spline"
+    },
+    "mode": "markers+lines",
+    "name": "Client 2"
+  },
+  {
+    "x": [
+      "2019-01-14",
+      "2019-01-15",
+      "2019-01-16",
+      "2019-01-17",
+      "2019-01-18",
+      "2019-01-19",
+      "2019-01-20"
+    ],
+    "y": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "line": {
+      "color": "rgb(56, 217, 169)",
+      "shape": "spline"
+    },
+    "marker": {
+      "color": "rgb(56, 217, 169)"
+    },
+    "mode": "markers+lines",
+    "name": "Client 3"
+  }
+]
+```
+
 ## Month Detail
 
 > Endpoint: versus_dashboard_month_detail
