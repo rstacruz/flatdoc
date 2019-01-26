@@ -5,8 +5,6 @@ This function will take a string and return a HTML formatted string with tags th
 | Field | Type   | Description                         |
 |-------|--------|-------------------------------------|
 | text  | string | the field to be formatted into HTML |
-|       |        |                                     |
-|       |        |                                     |
 
 
 > Endpoint: versus_profanity_filter
