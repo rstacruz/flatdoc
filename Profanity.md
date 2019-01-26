@@ -13,7 +13,7 @@ This function will take a string and return a HTML formatted string with tags th
 
 > Payload
 
-``` prettyprint linenums:1
+``` javascript
 {
     "text": "What the hell"
 }
