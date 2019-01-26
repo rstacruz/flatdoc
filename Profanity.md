@@ -13,12 +13,14 @@ This function will take a string and return a HTML formatted string with tags th
 
 > Payload
 
-``` javascript
-{"text": "What the hell"}
+```prettyprint linenums:1
+{
+    "text": "What the hell"
+}
 ```
 
 > Result
-``` html
+```html
 what the <STRONG CLASS="blacklist">hell</STRONG>
 ```
 
