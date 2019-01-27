@@ -24,14 +24,18 @@ Add a response to a question.
 ``` javascript
 {
   "response": {
-    "value": ""
+    "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+    "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
+    "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+    "response": "response",
+    "clientRef": "clientRef"
   }
 }
 ```
 
 ## Create Scout
 
-Add a scout
+Add a scout - firstName, lastName and phoneNumber are required
 
 
 > Endpoint: scout_create_scout
@@ -40,19 +44,30 @@ Add a scout
 
 ``` javascript
 {
-  "firstName": "Kemdi",
-  "lastName": "Ebi",
-  "phoneNumber": "08136260795",
-  "bankName": "EcoBank",
-  "accountNumber": "07097533321",
-  "bvn": "202020202020"
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "phoneNumber": "phoneNumber",
+    "bankName": "bankName",
+    "bankCode": "bankCode",
+    "accountNumber": "accountNumber",
+    "bvn": "bvn",
+    "emailAddress": "emailAddress",
+    "dob": "dob",
+    "gender": "gender",
+    "education": "education",
+    "maritalStatus": "maritalStatus",
+    "religion": "religion",
+    "occupation": "occupation",
+    "country": "country",
+    "state": "state",
+    "language": "language"
 }
 ```
 
 > Result
 ``` javascript
 {
-  "docRef": "APeORvgxRox2YwzESeZK"
+  "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
 }
 ```
 
@@ -74,16 +89,21 @@ Get all campaigns on the system
 {
   "campaigns": [
     {
-      "startDate": "2019-01-01",
-      "description": "Campaign for McScoutie",
-      "campaignName": "First Campaign",
-      "startAge": 18,
-      "country": "Nigeria",
-      "endAge": 65,
-      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "campaignName": "Biq Query",
+      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
       "clientName": "The Enterprise",
-      "endDate": "2019-03-30",
-      "docRef": "WXGj5wfVS6DKpyecChYm"
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "country": "NG",
+      "description": "Big query",
+      "education": null,
+      "endAge": 60,
+      "endDate": "2020-10-10 00:00:00",
+      "gender": null,
+      "maritalStatus": null,
+      "occupation": null,
+      "religion": null,
+      "startAge": 20,
+      "startDate": "2000-10-10 00:00:00"
     }
   ]
 }
@@ -108,7 +128,32 @@ Get a Scout reference given a phoneNumber.
 ``` javascript
 {
   "scouts": [
-    "4XhTtoWg0Yg7q4PSVXOU"
+    {
+        "firstName": "firstName",
+        "lastName": "lastName",
+        "phoneNumber": "phoneNumber",
+        "bankName": "bankName",
+        "bankCode": "bankCode",
+        "accountNumber": "accountNumber",
+        "bvn": "bvn",
+        "emailAddress": "emailAddress",
+        "dob": "dob",
+        "gender": "gender",
+        "education": "education",
+        "maritalStatus": "maritalStatus",
+        "religion": "religion",
+        "occupation": "occupation",
+        "country": "country",
+        "state": "state",
+        "language": "language",
+        "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+        "versusCredits: {
+            "canCashOut": false,
+            "amount": 0
+        },
+        "verified": false,
+        "twoFA": false
+    }
   ]
 }
 ```
@@ -124,7 +169,7 @@ Get the questions associated with a campaign.
 
 ``` javascript
 {
-  "docRef": "WXGj5wfVS6DKpyecChYm"
+  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9"
 }
 ```
 
@@ -133,9 +178,43 @@ Get the questions associated with a campaign.
 {
   "questions": [
     {
-      "question": "Are you a scout?",
-      "options": "Yes, No",
-      "docRef": "kVjTjvEEwk18sLH5RmZX"
+      "campaignName": "campaignRef",
+      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+      "clientName": "clientName",
+      "clientRef": "clientRef",
+      "options": "1,2,3",
+      "question": "Big question",
+      "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
+    }
+  ]
+}
+```
+
+## Get Responses
+
+Get the responses associated with a question.
+
+
+> Endpoint: scout_get_questions
+
+> Payload
+
+``` javascript
+{
+  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9"
+}
+```
+
+> Result
+``` javascript
+{
+  "questions": [
+    {
+      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+      "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
+      "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+      "response": "response",
+      "clientRef": "clientRef"
     }
   ]
 }
@@ -152,33 +231,36 @@ Get a scout given the docRef
 
 ``` javascript
 {
-  "docRef": "APeORvgxRox2YwzESeZK"
+  "docRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
 }
 ```
 
 > Result
 ``` javascript
 {
-  "gender": "",
-  "bvn": "202020202020",
-  "religion": "",
-  "occupation": "",
-  "firstName": "Kemdi",
-  "country": "",
-  "bankName": "EcoBank",
-  "emailAddress": "",
-  "lastName": "Ebi",
-  "accountNumber": "07097533321",
-  "age": "",
-  "education": "",
-  "twoFA": false,
-  "maritalStatus": "",
-  "state": "",
-  "verified": false,
-  "versusCredits": {
-    "amount": 0,
-    "canCashOut": false
-  },
-  "phoneNumber": "08136260795"
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "phoneNumber": "phoneNumber",
+    "bankName": "bankName",
+    "bankCode": "bankCode",
+    "accountNumber": "accountNumber",
+    "bvn": "bvn",
+    "emailAddress": "emailAddress",
+    "dob": "dob",
+    "gender": "gender",
+    "education": "education",
+    "maritalStatus": "maritalStatus",
+    "religion": "religion",
+    "occupation": "occupation",
+    "country": "country",
+    "state": "state",
+    "language": "language",
+    "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+    "versusCredits: {
+        "canCashOut": false,
+        "amount": 0
+    },
+    "verified": false,
+    "twoFA": false
 }
 ```
