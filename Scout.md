@@ -17,7 +17,7 @@ Add a response to a question.
   "qRef": "",
   "sRef": "",
   "response": "",
-  "clientRef: ""
+  "clientRef": ""
 }
 ```
 
@@ -148,7 +148,7 @@ Get a Scout reference given a phoneNumber.
         "state": "state",
         "language": "language",
         "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
-        "versusCredits: {
+        "versusCredits": {
             "canCashOut": false,
             "amount": 0
         },
@@ -257,7 +257,7 @@ Get a scout given the docRef
     "state": "state",
     "language": "language",
     "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
-    "versusCredits: {
+    "versusCredits": {
         "canCashOut": false,
         "amount": 0
     },
@@ -265,3 +265,32 @@ Get a scout given the docRef
     "twoFA": false
 }
 ```
+
+## Create Scout Wallet
+
+Create a Stellar Wallet associated with a Scout.
+
+| Field               | Type   | Description                                                                        |
+|---------------------|--------|------------------------------------------------------------------------------------|
+| sourceStellarSeed   | string | A Stellar Account funded in XLM to provide the mimimum balance needed for a wallet |
+| scoutRef            | string | A unique string to identify a scout, a wallet is created once for each scoutRef    | 
+
+> Endpoint: scout_create_wallet 
+
+> Payload
+
+```json
+{
+  "sourceStellarSeed": "SCY5QWUU7IGWGVUWYFSPBA2CAYQFYR63QALEIIX3ITYDPLV2AUIY6Q5S",
+  "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
+}
+```
+
+> Result
+
+```json
+{
+  "walletRef": "FQ0upRkKXT3xdwzzKs6X"
+}
+```
+
