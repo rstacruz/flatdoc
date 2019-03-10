@@ -294,3 +294,32 @@ Create a Stellar Wallet associated with a Scout.
 }
 ```
 
+## Fund a Scout Wallet
+
+Create a Stellar Wallet associated with a Scout.
+
+| Field               | Type   | Description                                                 |
+|---------------------|--------|-------------------------------------------------------------|
+| sourceStellarSeed   | string | A Stellar Issuing Account to provide at transaction fee     |
+| scoutRef            | string | A unique string to used to create a wallet for the scout    | 
+| versusCoinCredit    | string | VersusCoin amount formatted as a string to fund the wallet  | 
+
+> Endpoint: scout_fund_wallet
+
+> Payload
+
+```json
+{
+  "sourceStellarSeed": "SCY5QWUU7IGWGVUWYFSPBA2CAYQFYR63QALEIIX3ITYDPLV2AUIY6Q5S",
+  "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+  "versusCoinCredit": "1.05"
+}
+```
+
+> Result
+
+```json
+{
+  "status": "ok"
+}
+```
