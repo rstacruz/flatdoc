@@ -52,7 +52,7 @@
     function loadData(locations, response, callback) {
       if (locations.length === 0) callback(null, response);
 
-      else $.get(locations.shift())
+      else $.get(locations.shift(), null, null, 'text')
         .fail(function(e) {
           callback(e, null);
         })
