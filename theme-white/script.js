@@ -7,7 +7,7 @@
   */
 
  $document.on('flatdoc:ready', function() {
-    $("h2, h3").scrollagent(function(cid, pid, currentElement, previousElement) {
+    $("h2, h3").scrollagent(function(cid, pid) {
       if (pid) {
        $("[href='#"+pid+"']").removeClass('active');
       }
@@ -81,7 +81,7 @@
 //
 // Example:
 //
-//      $("h2").scrollagent(function(cid, pid, currentElement, previousElement) {
+//      $("h2").scrollagent(function(cid, pid, $currentElement, $previousElement) {
 //        if (pid) {
 //          $("[href='#"+pid+"']").removeClass('active');
 //        }
@@ -105,22 +105,21 @@
     // Find the top offsets of each section
     var offsets = [];
     $sections.each(function(i) {
-      var offset = $(this).attr('data-anchor-offset') ?
-        parseInt($(this).attr('data-anchor-offset'), 10) :
+      var $el = $(this)
+      var offset = $el.attr('data-anchor-offset') ?
+        parseInt($el.attr('data-anchor-offset'), 10) :
         (options.offset || 0);
 
       offsets.push({
-        id: $(this).attr('id'),
+        id: $el.attr('id'),
         index: i,
-        el: this,
+        $el: $el,
         offset: offset
       });
     });
 
     // State
     var current = null;
-    var height = null;
-    var range = null;
 
     // Save the height. Do this only whenever the window is resized so we don't
     // recalculate often.
@@ -131,24 +130,24 @@
 
     // Find the current active section every scroll tick.
     $parent.on('scroll', function() {
-      var y = $parent.scrollTop();
-      y += height * (0.3 + 0.7 * Math.pow(y/range, 2));
+      var y = $parent.scrollTop();      
 
       var latest = null;
 
       for (var i in offsets) {
-        if (offsets.hasOwnProperty(i)) {
-          var offset = offsets[i];
-          if ($(offset.el).offset().top + offset.offset < y) latest = offset;
-        }
+        var offset = offsets[i];        
+        if (offset.$el.offset().top + offset.offset >= y) {
+          latest = offset;
+          break;
+        };
       }
 
       if (latest && (!current || (latest.index !== current.index))) {
         callback.call($sections,
           latest ? latest.id : null,
           current ? current.id : null,
-          latest ? latest.el : null,
-          current ? current.el : null);
+          latest ? latest.$el : null,
+          current ? current.$el : null);
         current = latest;
       }
     });
