@@ -106,7 +106,7 @@
       $.get(url, data)
         .fail(function(e) { callback(e, null); })
         .done(function(data) {
-          var markdown = atob(data.content);
+          var markdown = window.atob(data.content.replace(/\s/g, ''));
           callback(null, markdown);
         });
     };
