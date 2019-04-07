@@ -519,7 +519,7 @@
   // http://stackoverflow.com/questions/298750/how-do-i-select-text-nodes-with-jquery
   function getTextNodesIn(el) {
     var exclude = 'iframe,pre,code';
-    return $(el).find(':not('+exclude+')').andSelf().contents().filter(function() {
+    return $(el).find(':not('+exclude+')').addBack().contents().filter(function() {
       return this.nodeType == 3 && $(this).closest(exclude).length === 0;
     });
   }
