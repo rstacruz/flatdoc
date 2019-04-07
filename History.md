@@ -1,3 +1,12 @@
+## Unreleased
+
+ * Remove support for legacy IE
+ * Use browser native base64 decoder
+ * Update jquery to v3
+ * Remove usage of makefiles in favor of npm scripts
+ * Fix menu item highlight on scroll
+ * Remove bower.json
+
 ## v0.9.0 - November 9, 2014
 
  * Changed prescribed URLs to use [https://cdn.rawgit.com](http://rawgit.com), supporting HTTPS. (#27)
