@@ -45,23 +45,23 @@ Add a scout - firstName, lastName and phoneNumber are required
 
 ``` javascript
 {
-    "firstName": "firstName",
-    "lastName": "lastName",
-    "phoneNumber": "phoneNumber",
-    "bankName": "bankName",
-    "bankCode": "bankCode",
-    "accountNumber": "accountNumber",
+    "firstName": "James",
+    "lastName": "Austin",
+    "phoneNumber": "+2347023004000",
+    "bankName": "Prudential",
+    "bankCode": "002",
+    "accountNumber": "10-2-200-5",
     "bvn": "bvn",
-    "emailAddress": "emailAddress",
-    "dob": "dob",
-    "gender": "gender",
+    "emailAddress": "a@test.com",
+    "dob": "2017-12-31",
+    "gender": "Female",
     "education": "education",
     "maritalStatus": "maritalStatus",
     "religion": "religion",
     "occupation": "occupation",
     "country": "country",
     "state": "state",
-    "language": "language"
+    "language": "English"
 }
 ```
 
