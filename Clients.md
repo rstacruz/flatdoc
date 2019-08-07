@@ -98,19 +98,28 @@ This adds a question to a campaign.
 
 ``` javascript
 {
-  "docRef": "nqaXKB0SzWN6xh7RVyzl",
-  "question": "Please pick an option",
-  "options": "One, Two, Three"
+  "campaignRef": "86fea0f1-7c00-4ab7-bbc0-6125a4326125",
+  "question": "Test Question 1",
+  "options": "Positive, Neutral, Negative",
+  "campaignName":"Test Campaign 1",
+  "clientRef":"nqaXKB0SzWN6xh7RVyzl",
+  "clientName":"The Enterprise"
 }
 ```
 
 > Response
 
 ``` javascript
+
 {
   "question": {
-    "question": "Please pick an option",
-    "options": "One, Two, Three"
+    "question": "Test Question 1",
+    "options": "Positive, Neutral, Negative",
+    "campaignRef": "86fea0f1-7c00-4ab7-bbc0-6125a4326125",
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "campaignName": "Test Campaign 1",
+    "clientName": "The Enterprise",
+    "questionRef": "0899c86d-cbf6-4490-872f-269dcedad05d"
   }
 }
 ```
