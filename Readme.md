@@ -117,6 +117,11 @@ This has functions required for scouts to interact with campaigns:
 
 * Get Scout
 
+# Tixy API Endpoints
+
+This documentation lists the API endpoints required for engineers on the Tixy team to interface with Tixy Backend. The API endpoints are generally grouped into the following.
+* To-do: edit the bullet points for Tixy docs
+
 # Getting started
 
 All endpoints are REST. The default method is POST unless otherwise specified. There is a base URL to which you will need to append the endpoint.
