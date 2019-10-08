@@ -323,3 +323,160 @@ Create a Stellar Wallet associated with a Scout.
   "status": "ok"
 }
 ```
+
+## Get Banks
+
+Get a list of banks supported by cashout in Nigeria
+
+
+> Endpoint: scout_get_banks
+
+> Payload
+
+``` javascript
+{
+  "authstring": "authentication string"
+}
+```
+
+> Result
+``` javascript
+{
+  "msg":"Successfully obtained banks list",
+  "banks":[
+    {"name":"Access Bank",
+    "slug":"access-bank",
+    "code":"044",
+    "longcode":"044150149",
+    "gateway":"emandate",
+    "pay_with_bank":false,
+    "active":true,
+    "is_deleted":null,
+    "country":"Nigeria",
+    "currency":"NGN",
+    "type":"nuban",
+    "id":1,
+    "createdAt":"2016-07-14T10:04:29.000Z",
+    "updatedAt":"2019-06-18T10:52:46.000Z"
+    }
+    .
+    .
+    .
+  ]
+}
+```
+
+## Convert Scout Credits
+
+Convert scout credits to amount in local currency
+
+
+> Endpoint: scout_convert_amount
+
+> Payload
+
+``` javascript
+{
+  "authstring": "authentication string",
+  "amount": "scout credits to be converted",
+  "country": "Two letter alpha-2 ISO code of country for which credit amount is to be converted e.g 'NG'"
+}
+```
+
+> Result
+``` javascript
+
+{
+  "message":
+  "Successfully converted scout credit",
+  "convertedAmount":1628,
+  "currency":"NGN"
+}
+```
+
+## Verify Account Number
+
+Verify that scout bank account number is correct and can recieve funds
+
+> Endpoint: scout_verify_account_number
+
+> Payload
+
+``` javascript
+{
+  "authstring": "authentication string",
+  "accountNumber": "bank account number",
+  "bankCode": "bank code - returned from scout_getbanks",
+  "bankName": "name of bank - returned from scout_getbanks",
+  "phoneNumber": "scount phone number"
+}
+```
+
+> Result
+``` javascript
+{
+  "message":"Sucessfully verified account number",
+  "account": {
+    "account_number":"1234567890",
+    "account_name":"JOHN DOE"
+  }
+}
+```
+
+## Verify Account Number
+
+Verify that scout bank account number is correct and can recieve funds
+
+> Endpoint: scout_verify_account_number
+
+> Payload
+
+``` javascript
+{
+  "authstring": "authentication string",
+  "accountNumber": "bank account number",
+  "bankCode": "bank code - returned from scout_getbanks",
+  "bankName": "name of bank - returned from scout_getbanks",
+  "phoneNumber": "scount phone number"
+}
+```
+
+> Result
+``` javascript
+{
+  "message":"Sucessfully verified account number",
+  "account": {
+    "account_number":"1234567890",
+    "account_name":"JOHN DOE"
+  }
+}
+```
+
+## Cashout
+
+Cashout scout credits to local currency
+
+> Endpoint: scout_cashout
+
+> Payload
+
+``` javascript
+{
+  "authstring": "authentication string",
+  "accountNumber": "bank account number",
+  "amount": "credit amount to be cashed out",
+  "country": "NG",
+  "phoneNumber": "+2348045634567"
+}
+```
+
+> Result
+``` javascript
+{
+  "message":"Successfully transferred money to recipient",
+  "credits":"50",
+  "amount":2714,
+  "currency":"NGN",
+  "referenceNumber":"b96f5fc7-722b-4f9e-bf81-a114d45f8dc6"
+}
+```
