@@ -416,10 +416,8 @@ Verify that scout bank account number is correct and can recieve funds
 ``` javascript
 {
   "message":"Sucessfully verified account number",
-  "account": {
-    "account_number":"1234567890",
-    "account_name":"JOHN DOE"
-  }
+  "accountNumber":"1234567890",
+  "accountName":"JOHN DOE"
 }
 ```
 
