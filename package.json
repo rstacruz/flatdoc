@@ -16,7 +16,7 @@
     "mocha": "1.10.0",
     "chai": "1.6.0",
     "jsdom": "*",
-    "uglify-js": "2.3.6",
+    "uglify-js": "3.6.5",
     "stylus": "0.46.3",
     "nib": "0.9.1",
     "commander": "1.1.1",
