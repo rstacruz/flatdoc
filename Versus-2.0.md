@@ -30,7 +30,10 @@ This is called after a scout has answered all campaign questions. It calculates 
 ```
 
 > Errors
+
+```
 * 401 - Failed authentication. Authstring invalid or not found in request body
 * 403 - Missing required parameters
 * 404 - Scout does not exist
 * 500 - Backend service error
+```
