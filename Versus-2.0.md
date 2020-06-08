@@ -300,3 +300,1200 @@ Obtain a list of banks with their codes.
 
 * 401 - Failed authentication. Authstring invalid or not found in request body
 * 500 - Backend service error
+
+# Dashboard
+
+These are endpoints called by v2.0 dashbboard components. 
+
+## Add Campaign
+
+Add a new campaign
+
+> Endpoint: versus_v2_add_campaign
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "description": "Let’s get you started with a simple demographics survey! This will help us send you surveys that are more appropriate for you.",
+  "endDate": 2571212464693,
+  "startDate": 1546300800,
+  "campaignName": "Demographics Survey",
+  "isDemographicSurvey": true,
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+  "country": "NG",
+  "stateOrRegion": "Lagos",
+  "endAge": 65,
+  "startAge": 16,
+  "gender": "female",
+  "numberOfRespondents": 500
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully added new client campaign",
+  "campaignRef": "47b73826-e9b2-412f-b8b4-c055eeec778b"
+}
+```
+
+> Errors
+
+* 401 - User is not authorized to make this request || Error authenticating user
+* 402 - Insufficient versus credit balance
+* 403 - Missing required parameters
+* 404 - Client does not exist
+* 500 - Backend service error
+
+## Add Client
+
+Add a new client on signup
+
+> Endpoint: versus_v2_add_client
+
+> Payload
+
+``` json
+{
+  "email": "abc@def.ghi",
+  "firstName": "Xavier",
+  "lastName": "Stan",
+  "organizationName": "Enterfive",
+  "OrganizationSector": "Software and Internet",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully added new client",
+  "clientRef": "47b73826-e9b2-412f-b8b4-c055eeec778b"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Client does not exist
+* 409 - Email already exists
+* 500 - Backend service error
+
+## Add Question
+
+Add a new campaign question
+
+> Endpoint: versus_v2_add_question
+
+> Payload
+
+``` json
+{
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "question": "Which snack do you like best?",
+  "optionsType": "multiplechoice",
+  "optionsList": [
+    {"text": "Biscuits"},
+    {"text": "Chocolate"},
+    {"text": "Groundnuts"}
+  ],
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully added new question",
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 402 - Insufficient versus credit balance
+* 404 - Campaign does not exist
+* 500 - Backend service error
+
+## Confirm Team Member
+
+Confirm a new team member who is onboarding and creating a profile 
+
+> Endpoint: versus_v2_confirm_team_member
+
+> Payload
+
+``` json
+{
+  "email": "xavi@stan.dev",
+  "token": "bfbbc055eeec778b",
+  "firstName": "Xavier",
+  "lastName": "Stan",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully confirmed team"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - Invalid team token
+* 402 - Insufficient versus credit balance
+* 404 - Team not found
+* 500 - Backend service error
+
+## Edit Campaign
+
+Update a campaign
+
+> Endpoint: versus_v2_edit_campaign
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully updated client campaign",
+  "campaignRef": "47b73826-e9b2-412f-b8b4-c055eeec778b"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Client does not exist
+* 500 - Backend service error
+
+## Edit Client
+
+Update client data
+
+> Endpoint: versus_v2_edit_client
+
+> Payload
+
+``` json
+{
+  "email": "xavier@stan.dev",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "clientData": {
+    "logoURL": "https://clientlogo.png"
+  }
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully updated client data"
+}
+```
+
+> Errors
+
+* 401 - Team member does not have edit capability || Error authenticating user
+* 402 - Insufficient versus credit balance
+* 403 - Missing required parameters
+* 404 - Team not found || Client does not exist
+* 500 - Backend service error
+
+## Get All Campaign Data **
+
+Get all campaign-related data
+
+** To be deprecated soon
+
+> Endpoint: versus_v2_get_all_campaign_data
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained all campaign data",
+  "campaign": {
+    "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+  },
+  "questions": [],
+  "reponses": [],
+  "respondents": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Campaign does not exist
+* 500 - Backend service error
+
+## Get All Surveys **
+
+Get all surveys
+
+** To be deprecated soon
+
+> Endpoint: versus_v2_add_campaign
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained all campaigns",
+  "campaigns": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Client does not exist
+* 500 - Backend service error
+
+## Get Campaign **
+
+Get campaign data
+
+** To be deprecated soon
+
+> Endpoint: versus_v2_get_campaign
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained campaign data",
+  "campaign": {},
+  "questionsData": [],
+  "responsesData": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Campaign does not exist
+* 500 - Backend service error
+
+## Get Campaigns **
+
+Get all campaigns
+
+** To be deprecated soon
+
+> Endpoint: versus_v2_get_campaigns
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained campaigns data",
+  "campaign": [],
+  "questionsData": [],
+  "responsesData": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Chart Data
+
+Get processed chart data and labels
+
+> Endpoint: versus_v2_get_chart_data
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today",
+  "sources": {
+    "news": [],
+    "others": [],
+    "socialmedia": []
+  }
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained chart data",
+  "chartData": {
+    "labels": [],
+    "mentions": [],
+    "positive": [],
+    "negative": [],
+    "neutral": []
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Client
+
+Get client data
+
+> Endpoint: versus_v2_get_client
+
+> Payload
+
+``` json
+{
+  "email": "xavier@stan.dev",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained client",
+  "client": {},
+  "team": {}
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Client or Team does not exist
+* 500 - Backend service error
+
+## Get Filtered Mentions
+
+Get mentions for specific set of filters
+
+> Endpoint: versus_v2_get_filtered_mentions
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained mentions",
+  "classifiedNewsMentions": {
+    "positiveMentions": [],
+    "negativeMentions": []
+  },
+  "classifiedOthersMentions": {
+    "positiveMentions": [],
+    "negativeMentions": []
+  },
+  "classifiedTwitterMentions": {
+    "positiveMentions": [],
+    "negativeMentions": []
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Mentions Summary
+
+Get a summary of mentions distribution for a period
+
+> Endpoint: versus_v2_get_mentions_summary
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "last 30 days",
+  "sentiment": "positive",
+  "sources": {
+    "categories": ["news", "others", "socialmedia"],
+    "news": [],
+    "others": [],
+    "socialmedia": []
+  }
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained mentions summary",
+  "sentiment": "positive",
+  "sources": {},
+  "total": 90,
+  "news": 20,
+  "tweets": 60,
+  "others": 10,
+  "percentagePositive": 100,
+  "percentageNegative": 0,
+  "percentageNeutral": 0
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Most Popular Mentions
+
+Obtain most popular mentions
+
+> Endpoint: versus_v2_get_most_popular_mentions
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "last 7 days"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained most popular mentions",
+  "popularMentions": {
+    "positive": [],
+    "negative": []
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Client does not exist
+* 500 - Backend service error
+
+## Get Newsfeed
+
+Get social media and news mentions details for newsfeed
+
+> Endpoint: versus_v2_get_newsfeed
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today",
+  "sentiment": "negative",
+  "sources": {
+    "news": [],
+    "others": [],
+    "socialmedia": []
+  }
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained newsfeed",
+  "newsfeed": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get News Mentions Sources
+
+Obtain sources of news mentions
+
+> Endpoint: versus_v2_get_news_mentions_sources
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today",
+  "sentiment": "positive"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained news mentions sources",
+  "totalSources": 10,
+  "sources": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Others Mentions Sources
+
+Obtain sources of other mentions
+
+> Endpoint: versus_v2_get_others_mentions_sources
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today",
+  "sentiment": "positive"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained others mentions sources",
+  "totalSources": 10,
+  "sources": []
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Socialmedia Mentions Sources
+
+Obtain sources of social media mentions
+
+> Endpoint: versus_v2_get_socialmedia_mentions_sources
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today",
+  "sentiment": "positive"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained socialmedia mentions sources",
+  "totalTwitterMentions": 20
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Offboard Client
+
+Obtain details of client that has not yet onboarded
+
+> Endpoint: versus_v2_get_offboard_client
+
+> Payload
+
+``` json
+{
+  "onboardingToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained client",
+  "client": {}
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 404 - Client does not exist
+* 500 - Backend service error
+
+## Get Team Members
+
+Get client team members 
+
+> Endpoint: versus_v2_get_team_members
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained team members",
+  "teamMembers": [
+    {
+      "email": "deji@enterfive.com",
+      "canEdit": false,
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "accepted": true
+    }
+  ]
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
+## Get Top Influencers
+
+Obtain a list of top influencers
+
+> Endpoint: versus_v2_get_top_influencers
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "period": "today"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained top influencers",
+  "topInfluencers": {
+    "positive": [],
+    "negative": []
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Total Questions
+
+Get a count of total questions for a client 
+
+> Endpoint: versus_v2_get_total_questions
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total questions",
+  "totalQuestions": 320
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Total Responses
+
+Get a count of total responses for a client 
+
+> Endpoint: versus_v2_get_total_responses
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total responses",
+  "totalQuestions": 320
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Total Survey Questions
+
+Get a count of total survey questions for each campaign
+
+> Endpoint: versus_v2_get_total_survey_questions
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total survey questions",
+  "totalSurveyQuestions": 6
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Total Survey Responses
+
+Get a count of total survey responses for each campaign
+
+> Endpoint: versus_v2_get_total_survey_responses
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total survey responses",
+  "totalSurveyResponses": 6
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Total Surveys
+
+Obtain a count of all the surveys for a client
+
+> Endpoint: versus_v2_get_total_surveys
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total surveys data",
+  "totalSurveys": 14
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Launch campaign
+
+CHange the status pf a campaign from draft to live
+
+> Endpoint: versus_v2_launch_campaign
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully launched client campaign",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Mark Irrelevant Mentions
+
+Register a mention as irrlevant and notify project team
+
+> Endpoint: versus_v2_mark_irrelevant_mention
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "mention": {},
+  "brandName": 
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully sent email"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Onboard Client
+
+Onboard client
+
+> Endpoint: versus_v2_onboard_client
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "officeAddress": "35 Oju Omega Avenue, Ikoyi, Lagos",
+  "onboardingToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "brandName": "Enterfive",
+  "otherBrandNames": "e5",
+  "responseEmails": "pr@e5.com, hr@e5.com",
+  "comparisonBrands": [],
+  "teamMembers": [],
+  "filterProfanity": true
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully onboarded client",
+  "clientRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - Client is not approved for onboarding
+* 500 - Backend service error
+
+## Respond To Mention
+
+Notify client designated responder of a mention they should act on
+
+> Endpoint: versus_v2_respond_to_mention
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "mentionUrl": "https://twitter.com/user/234455/status/098734",
+  "brandName": "Enterfive",
+  "emailAddress": "pr@e5.co"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully sent email"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Retag Mention
+
+Register a mention which sentiment is to be retagged and notify project team
+
+> Endpoint: versus_v2_retag_mention
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "mention": {},
+  "brandName": "e5",
+  "retaggedSentiment": "neutral"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully sent email"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Versus Credits
+
+Obtain client's current value of versus credit
+
+> Endpoint: versus_v2_get_versus_credits
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained client versus credits",
+  "versusCredits": 5500
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Verify Signup Access
+
+Validate tokenized signup link
+
+> Endpoint: versus_v2_verify_signup_access
+
+> Payload
+
+``` json
+{
+  "tk": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully verified signup"
+}
+```
+
+> Errors
+
+* 400 - Missing required parameters
+* 401 - Invalid signup token
+* 500 - Backend service error
