@@ -529,6 +529,8 @@ Update client data
 
 Get all campaign-related data
 
+** To be deprecated soon
+
 > Endpoint: versus_v2_get_all_campaign_data
 
 > Payload
@@ -563,9 +565,11 @@ Get all campaign-related data
 * 404 - Campaign does not exist
 * 500 - Backend service error
 
-## Get All Surveys**
+## Get All Surveys **
 
 Get all surveys
+
+** To be deprecated soon
 
 > Endpoint: versus_v2_add_campaign
 
@@ -598,6 +602,8 @@ Get all surveys
 ## Get Campaign **
 
 Get campaign data
+
+** To be deprecated soon
 
 > Endpoint: versus_v2_get_campaign
 
@@ -633,6 +639,8 @@ Get campaign data
 ## Get Campaigns **
 
 Get all campaigns
+
+** To be deprecated soon
 
 > Endpoint: versus_v2_get_campaigns
 
