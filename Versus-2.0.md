@@ -31,9 +31,9 @@ This is called after a scout has answered all campaign questions. It calculates 
 > Errors
 
 * 401 - Failed authentication. Authstring invalid or not found in request body
-* 403 - Missing required parameters
+* 403 - Missing required parameters || Scout has already completed this campaign
 * 404 - Scout does not exist
-* 500 - Backend service error
+* 500 - Backend service error || Oops! Something happened from our end
 
 ## Get Campaigns
 
@@ -73,9 +73,9 @@ To obtain campaigns that match a scout's demographic.
 
 > Errors
 
-* 403 - Missing required parameters
+* 403 - Missing required param: phoneNumber 
 * 404 - Scout does not exist
-* 500 - Backend service error
+* 500 - Backend service error || Oops! Something broke from our end 
 
 ## Get Partners
 
@@ -133,7 +133,7 @@ Get current scout partners.
 
 * 400 - Missing authstring in request body
 * 401 - Failed authentication. Invalid authstring
-* 500 - Backend service error
+* 500 - Backend service error || Oops! Something broke from our end
 
 ## Convert Amount
 
@@ -164,7 +164,7 @@ Convert scout credit amount to equivalent cash.
 
 > Errors
 
-* 400 - Missing required parameters
+* 400 - Missing body parameters... || We do not yet support cashout in that country || Error converting scout credit
 * 401 - Failed authentication. Authstring invalid or not found in request body
 * 500 - Backend service error
 
@@ -198,9 +198,10 @@ This endpoint verifies scout bank account number and creates a Paystack recipien
 
 > Errors
 
-* 400 - Missing required parameters || other errors
+* 400 - Missing body parameters ... || Error verifying account number || Error creating recipient
 * 401 - Failed authentication. Authstring invalid or not found in request body
-* 500 - Backend service error
+* 404 - Scout does not exist
+* 500 - Backend service error || Error verifying account || Error obtaining scout
 
 ## Cashout
 
@@ -234,8 +235,9 @@ Initiate transfer of funds to scout bank account.
 
 > Errors
 
-* 400 - Missing required parameters || other errors
+* 400 - Missing required parameters || That country is not yet supported for cashout || Error converting scout credit for transfer || Error initiating transfer to scout || Error checking transfer status || Failed to transfer money to recipient
 * 401 - Failed authentication. Authstring invalid or not found in request body
+* 403 - The given account number is invalid, please verify bank account || Insufficient scout credit balance || Cashout is disabled for this scout. Less than 33 credits || Scout does not have a verified bank account
 * 404 - Scout does not exist
 * 500 - Backend service error
 
@@ -298,6 +300,7 @@ Obtain a list of banks with their codes.
 
 > Errors
 
+* 400 - Error obtaining banks list
 * 401 - Failed authentication. Authstring invalid or not found in request body
 * 500 - Backend service error
 
