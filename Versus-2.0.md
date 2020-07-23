@@ -1,3 +1,37 @@
+# General
+
+These are general purpose endpoints that are not necessarily attached to scout or dashboard functions
+
+## Send SMS
+
+This function leverages Twilio APIs to send SMS to a phone number. 
+Please use the endpoint and sample _authstring_ as is.
+
+> Endpoint: https://us-central1-versus-dev-212614.cloudfunctions.net/versus_v2_send_sms
+
+> Payload
+
+```json
+{
+  "phoneNumber": "+2348123456789",
+  "message": "Text message to be sent",
+  "authstring": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully sent SMS"
+}
+```
+
+> Errors
+
+* 400 - Missing parameter phoneNumber, message, authstring || Failed authentication. Invalid authstring || Message exceeds allowed number of characters 150/140
+* 500 - Failed to send SMS
+
 # Scout
 
 This has endpoints for managing scout actions that are unique to Versus 2.0. For other actions refer to v1 docs. 
