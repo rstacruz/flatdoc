@@ -338,6 +338,51 @@ Obtain a list of banks with their codes.
 * 401 - Failed authentication. Authstring invalid or not found in request body
 * 500 - Backend service error
 
+
+## Save Device Token
+
+To save a scout device registration token. It handles both creation of a new record and update of an existing one.
+
+> Endpoint: scout_save_device_token
+
+> Payload
+
+``` json
+{
+  "scoutRef": "+2348123456789",
+  "deviceRegistrationToken": "47b73826-e9b2-412f-b8b4-c055eeec778b",
+  "authstring": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully created new device registration token record",
+  "scoutRef": "+2348123456789",
+  "deviceRegistrationToken": "47b73826-e9b2-412f-b8b4-c055eeec778b",
+  "deviceRegistrationTokenRef": "dccfb068-de00-40a8-b033-8488430136f3"
+}
+```
+
+``` json
+{
+  "message": "Successfully updated device registration token",
+  "scoutRef": "+2348123456789",
+  "deviceRegistrationToken": "47b73826-e9b2-412f-b8b4-c055eeec778b",
+  "deviceRegistrationTokenRef": "dccfb068-de00-40a8-b033-8488430136f3"
+}
+```
+
+> Errors
+
+* 400 - Missing parameter scoutRef, deviceRegistrationToken
+* 401 - Failed authentication. Authstring invalid or not found in request body
+* 403 - Only POST requests are allowed
+* 500 - Error creating new device registration token record || Error updating existing device registration token record || Error fetching token record
+
+
 # Dashboard
 
 These are endpoints called by v2.0 dashbboard components. 
