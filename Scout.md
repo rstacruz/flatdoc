@@ -262,7 +262,8 @@ Get a scout given the docRef
         "amount": 0
     },
     "verified": false,
-    "twoFA": false
+    "twoFA": false,
+    "requiresBankUpdate": false
 }
 ```
 
