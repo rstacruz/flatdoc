@@ -107,6 +107,7 @@ To obtain campaigns that match a scout's demographic.
 
 > Errors
 
+* 400 - Scout is not verified
 * 403 - Missing required param: phoneNumber 
 * 404 - Scout does not exist
 * 500 - Backend service error || Oops! Something broke from our end 
