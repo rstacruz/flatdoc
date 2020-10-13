@@ -1678,3 +1678,38 @@ Generates and downloads Versus comparison pdf report based on filter parameters
 * 400 - Missing required parameters
 * 401 - Invalid signup token
 * 500 - Backend service error
+
+## Get Subscription Plan
+
+Obtain details of a subscription plan
+
+> Endpoint: versus_v2_get_subscription_plan
+
+> Payload
+
+``` json
+{
+  "subscriptionPlanRef": "081d4b17-a1f3-4600-920f-6f46d3919873"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained subscription plan",
+  "subscriptionPlan": {
+    "countriesAllowed": 12,
+    "mentionsAllowed": 100000,
+    "subscriptionPlanName": "Max",
+    "languagesAllowed": 1,
+    "subscriptionPlanRef": "081d4b17-a1f3-4600-920f-6f46d3919873"
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing parameter subscriptionPlanRef
+* 403 - Only POST requests are allowed
+* 500 - Backend service error
