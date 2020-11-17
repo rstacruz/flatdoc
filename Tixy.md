@@ -61,7 +61,7 @@ Endpoint for Tixy
 
 ```json
 {
-    "email": "email",
+    "email": "email"
 }
 ```
 
@@ -87,7 +87,7 @@ Endpoint for Tixy
                 "username": "username", 
                 "no_tickets_sold": 62,
                 "revenue": 186000, 
-                "status": "status"},
+                "status": "status"}
 
 }
 ```
@@ -126,7 +126,7 @@ Endpoint for Tixy
                 "username": "username", 
                 "no_tickets_sold": 62,
                 "revenue": 186000, 
-                "status": "status"},
+                "status": "status"}
 
 }
 ```
@@ -165,7 +165,7 @@ Endpoint for Tixy
                 "username": "username", 
                 "no_tickets_sold": 62,
                 "revenue": 186000, 
-                "status": "status"},
+                "status": "status"}
 
 }
 ```
@@ -236,6 +236,7 @@ Endpoint for Tixy
          "amount": 6000,
          "event_name": "Teker Expo", 
          "purchase_date": "2019-05-04T12:30:30.001Z"} 
+}
 
 ```
 

@@ -479,3 +479,195 @@ Cashout scout credits to local currency
   "referenceNumber":"b96f5fc7-722b-4f9e-bf81-a114d45f8dc6"
 }
 ```
+
+
+## get image requests
+
+Get a list of image multimedia requests
+
+> Endpoint: scout_get_image_requests
+
+> Payload
+
+``` python
+{
+  "authstring": "authentication string",
+  "phoneNumber": "+2348045634567"
+}
+```
+
+> Result
+``` python
+{
+  "message": "Successfully obtained image requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "image",
+        "status": "live"
+      }
+    .
+    .
+    .
+  ]
+}
+```
+
+## get audio requests
+
+Get a list of audio multimedia requests
+
+> Endpoint: scout_get_audio_requests
+
+> Payload
+
+``` python
+{
+  "authstring": "authentication string",
+  "phoneNumber": "+2348045634567"
+}
+```
+
+> Result
+``` python
+{
+  "message": "Successfully obtained audio requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "audio",
+        "status": "live"
+      }
+    .
+    .
+    .
+  ]
+}
+```
+
+## get video requests
+
+Get a list of audio multimedia requests
+
+> Endpoint: scout_get_video_requests
+
+> Payload
+
+``` python
+{
+  "authstring": "authentication string",
+  "phoneNumber": "+2348045634567"
+}
+```
+
+> Result
+``` python
+{
+  "message": "Successfully obtained video requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "audio",
+        "status": "live"
+      }
+    .
+    .
+    .
+  ]
+}
+```
+
+## Multimedia responses
+
+Post multimedia request responses
+
+> Endpoint: scout_add_multimedia_request_response
+
+> Payload
+
+``` python
+{
+  "requestRef": "12345",
+  "scoutRef": "239485855559",
+  "mediaUrls":["https://google.api.com/235617"],
+  "mediaType":"audio",
+}
+```
+
+> Result
+``` python
+{
+  "message":"Successfully added multimedia request response",
+  "responseRef": "9596869640495837"
+}
+```
+
+## History
+
+Get completed request responses arranged from the most recent.
+
+> Endpoint: scout_get_request_response_history
+
+> Payload
+
+``` python
+{
+  "authstring": "authentication string",
+  "phoneNumber": "+2348045634567"
+}
+```
+
+> Result
+``` python
+{
+  "message": "Successfully obtained request responses",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "requestRef": "12345",
+        "scoutRef": "+2340927738929",
+        "mediaUrls":["https://google.api.com/235617"],
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+        "mediaType":"audio",
+        "status": "pending"
+      }
+    .
+    .
+    .
+  ]
+}
+```
+
+
+
+
