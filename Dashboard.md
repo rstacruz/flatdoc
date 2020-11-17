@@ -2105,3 +2105,27 @@ Get a list of responses for a request.
   "requestResponsesZipUrl": "https://all-the-responses.zip"
 }
 ```
+
+# Download request responses..
+
+> Endpoint: versus_v2_download_request_responses
+
+> Payload
+
+``` python
+{
+  "clientRef": "12345",
+  "requestRef": "1234566",
+  "uid": "6789",
+  "idToken": "101112"
+}
+
+
+```
+> Response
+
+``` python
+{
+  
+}
+```
