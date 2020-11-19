@@ -485,16 +485,16 @@ Cashout scout credits to local currency
 
 Get a list of image multimedia requests
 
-> Endpoint: scout_get_image_requests
+> Endpoint: scout_get_image_requests?phoneNumber={phoneNumber}&authString={authString}
 
-> Payload
+> Query params
 
-``` python
-{
-  "authstring": "authentication string",
-  "phoneNumber": "+2348045634567"
-}
-```
+
+| parameters | 
+| -----------| 
+| authstring |
+| phoneNumber| 
+
 
 > Result
 ``` python
@@ -527,16 +527,16 @@ Get a list of image multimedia requests
 
 Get a list of audio multimedia requests
 
-> Endpoint: scout_get_audio_requests
+> Endpoint: scout_get_audio_requests?phoneNumber={phoneNumber}&authString={authString}
 
-> Payload
+> Query params
 
-``` python
-{
-  "authstring": "authentication string",
-  "phoneNumber": "+2348045634567"
-}
-```
+
+| Parameters  | 
+| ----------- | 
+| authstring  |
+| phoneNumber | 
+
 
 > Result
 ``` python
@@ -567,18 +567,17 @@ Get a list of audio multimedia requests
 
 ## get video requests
 
-Get a list of audio multimedia requests
+Get a list of video multimedia requests
 
-> Endpoint: scout_get_video_requests
+> Endpoint: scout_get_video_requests?phoneNumber={phoneNumber}&authString={authString}
 
-> Payload
+> Query params
 
-``` python
-{
-  "authstring": "authentication string",
-  "phoneNumber": "+2348045634567"
-}
-```
+| Parameters  | 
+| ----------- | 
+| authstring  |
+| phoneNumber | 
+
 
 > Result
 ``` python
@@ -636,16 +635,15 @@ Post multimedia request responses
 
 Get completed request responses arranged from the most recent.
 
-> Endpoint: scout_get_request_response_history
+> Endpoint: scout_get_request_response_history?phoneNumber={phoneNumber}&authString={authString}
 
-> Payload
+> Query params
 
-``` python
-{
-  "authstring": "authentication string",
-  "phoneNumber": "+2348045634567"
-}
-```
+| Parameters  | 
+| ----------- | 
+| authstring  |
+| phoneNumber | 
+
 
 > Result
 ``` python

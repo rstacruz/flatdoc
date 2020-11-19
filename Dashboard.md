@@ -1820,7 +1820,7 @@ Get total number of requests for a client.
 }
 ```
 
-## total number of client request respondents.
+## Number of Client Request Respondents.
 Get total number of client request respondents.
 
 > Endpoint: versus_v2_get_total_client_request_respondents
@@ -1845,7 +1845,7 @@ Get total number of client request respondents.
 ```
 
 
-##  get requests
+##  Get Requests
 Get a list of requests belonging to a client
 
 > Endpoint: versus_v2_get_requests 
@@ -1888,7 +1888,7 @@ Get a list of requests belonging to a client
 }
 ```
 
-## total number of respondents for a request.
+## Number Of Respondents For A Request.
 Get total number of respondents for a request.
 
 > Endpoint: versus_v2_get_total_request_respondents
@@ -1914,7 +1914,7 @@ Get total number of respondents for a request.
 }
 ```
 
-##  create requests
+##  Create Requests
 Create a new request.
 
 > Endpoint: versus_v2_create_new_request
@@ -1963,7 +1963,7 @@ Create a new request.
 }
 ```
 
-##  get requests responses
+##  Get Requests Responses
 Get a list of responses for a request.
 
 > Endpoint: versus_v2_get_request_responses 
@@ -2000,7 +2000,7 @@ Get a list of responses for a request.
 }
 ```
 
-## Approve request response
+## Approve Request Response
 
 > Endpoint: versus_v2_approve_request_response
 
@@ -2027,7 +2027,7 @@ Get a list of responses for a request.
 }
 ```
 
-## Reject request response.
+## Reject Request Response.
 
 > Endpoint: versus_v2_reject_request_response
 
@@ -2056,7 +2056,7 @@ Get a list of responses for a request.
 }
 ```
 
-## Batch approve request responses.
+## Batch Approve Request Responses.
 
 > Endpoint: versus_v2_reject_request_response
 
@@ -2081,7 +2081,7 @@ Get a list of responses for a request.
   "responseRefs": ["123456", "789081", "213634", "234879"],
 }
 ```
-# Share request responses.
+# Share Request Responses.
 
 > Endpoint: versus_v2_share_request_responses
 
@@ -2106,7 +2106,7 @@ Get a list of responses for a request.
 }
 ```
 
-# Download request responses..
+# Download Request Responses..
 
 > Endpoint: versus_v2_download_request_responses
 
