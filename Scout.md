@@ -509,6 +509,7 @@ Get a list of image multimedia requests
         "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
         "country": "NG",
         "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
         "endAge": 65,
         "startAge": 16,
         "gender": "female",
@@ -551,6 +552,7 @@ Get a list of audio multimedia requests
         "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
         "country": "NG",
         "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
         "endAge": 65,
         "startAge": 16,
         "gender": "female",
@@ -592,11 +594,55 @@ Get a list of video multimedia requests
         "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
         "country": "NG",
         "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
         "endAge": 65,
         "startAge": 16,
         "gender": "female",
         "numberOfRespondents": 500,
         "mediaType": "audio",
+        "status": "live"
+      }
+    .
+    .
+    .
+  ]
+}
+```
+## Get A List Of Multimedia Requests A Scout Is Eligible To Send Responses
+Request
+
+Get a list of image multimedia requests
+
+> Endpoint: scout_get_multimedia_requests?phoneNumber={phoneNumber}&authString={authString}
+
+> Query params
+
+
+| parameters | 
+| -----------| 
+| authstring |
+| phoneNumber| 
+
+
+> Result
+``` python
+{
+  "message": "Successfully obtained image requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "image",
         "status": "live"
       }
     .
@@ -631,11 +677,11 @@ Post multimedia request responses
 }
 ```
 
-## History
+## Responses
 
 Get completed request responses arranged from the most recent.
 
-> Endpoint: scout_get_request_response_history?phoneNumber={phoneNumber}&authString={authString}
+> Endpoint: scout_get_request_response?phoneNumber={phoneNumber}&authString={authString}
 
 > Query params
 
