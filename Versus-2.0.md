@@ -2040,6 +2040,47 @@ Get a list of responses for a request.
 }
 ```
 
+##  Get Requests Responses
+Get a list of responses for a request.
+
+> Endpoint: versus_v2_get_request_responses 
+
+> Payload
+
+``` python
+{
+  "clientRef": "12345",
+  "requestRef": "12345",
+  "uid": "6789",
+  "idToken": "101112"
+}
+
+```
+
+> Response
+
+``` python
+{
+  "message":"Successfully obtained request",
+  "request": {
+       "clientRef": "12345",
+       "clientName": "The Enterprise",
+       "requestName": "Footage of the Lekki Protest",
+       "description": "Let’s get you started with a simple photo request.",
+       "requestRef": "001a0ad177c-a6d0-44a4-8662-7f2851093b81",
+       "country": "NG",
+       "stateOrRegion": "Lagos",
+       "endAge": 65,
+       "startAge": 16,
+       "gender": "female",
+       "numberOfRespondents": 500,
+       "mediaType": "audio",
+       "status": "live",
+       "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+  }
+}
+```
+
 > Errors
 
 * 400 - Missing parameter subscriptionPlanRef

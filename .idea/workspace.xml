@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="961d0b92-ea17-47b9-a7f7-a474e5e59d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.md" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Versus-2.0.md" beforeDir="false" afterPath="$PROJECT_DIR$/Versus-2.0.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,11 +12,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="830" />
   </component>
   <component name="ProjectId" id="1kMnmI8NJqFENbUnHHlahoxkjFU" />
   <component name="ProjectViewState">
