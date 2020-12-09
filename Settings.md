@@ -77,3 +77,84 @@ Update scout settings.
 * 403 - Only POST requests are allowed
 * 404 - Scout does not exist
 * 500 - Error updating scout settings
+
+
+## Get Client Settings
+
+Obtains client settings.
+
+> Endpoint: get_client_settings
+
+> Method: POST
+
+> Payload
+
+```json
+{
+  "uid": "7gPJM7CHa5divxg0BPMdknW8hi03",
+  "idToken": "NlY3VyZXRva2VuLmdvb2dsZS5jb20vdmVyc3VzLXNjb3V0LWRldiIsImF1ZCI6InZlcnN1cy1zY291dC1kZXYiLCJhdXRo"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained client settings",
+  "clientSettings": {
+    "creditsPerQuestion_audio": 2,
+    "creditsPerQuestion_video": 2,
+    "exchangeRate_NGNperUSD": 360,
+    "usdPerCredit": 0.05,
+    "usdPerRespondent_interact": 0.5,
+    "creditsPerQuestion_image": 2,
+    "creditsPerQuestion_text": 1
+  }
+}
+```
+
+> Errors
+
+* 400 - Missing parameter idToken, uid
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed
+* 500 - Error getting client settings
+
+
+## Update Client Settings
+
+Update client settings.
+
+> Endpoint: update_client_settings
+
+> Method: POST
+
+> Payload
+
+``` json
+{
+  "uid": "7gPJM7CHa5divxg0BPMdknW8hi03",
+  "idToken": "NlY3VyZXRva2VuLmdvb2dsZS5jb20vdmVyc3VzLXNjb3V0LWRldiIsImF1ZCI6InZlcnN1cy1zY291dC1kZXYiLCJhdXRo",
+  "creditsPerQuestion_audio": 2,
+  // and more client settings
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully updated client settings",
+    "update": {
+      "creditsPerQuestion_audio": 2
+    }
+}
+```
+
+> Errors
+
+* 400 - Missing auth parameter(s) idToken, uid | No required values included for update
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed
+* 404 - Scout does not exist
+* 500 - Error updating client settings
