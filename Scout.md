@@ -652,15 +652,24 @@ Get a list of image multimedia requests
 }
 ```
 
-## Multimedia responses
+## Add Multimedia Response
 
-Post multimedia request responses
+Add multimedia request responses
+
+| Field | Type | Description |
+| - | - | - |
+| requestRef | string | A unique identifier of the request for which a response is to be sent |
+| scoutRef | string | A unique identifier of the scout sending the response |
+| mediaType | string | The type of media the response is made of. `image`, `audio` or `video`
+| mediaUrls | array | An array of (string) URL(s) pointing to the location which the response media is stored | 
 
 > Endpoint: scout_add_multimedia_request_response
 
-> Payload
+> Method: POST
 
-``` python
+> Sample payload
+
+``` json
 {
   "requestRef": "12345",
   "scoutRef": "239485855559",
@@ -670,12 +679,18 @@ Post multimedia request responses
 ```
 
 > Result
-``` python
+``` json
 {
   "message":"Successfully added multimedia request response",
   "responseRef": "9596869640495837"
 }
 ```
+
+> Errors
+* 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio
+* 403 - Only POST requests are allowed
+* 404 - Multimedia request does not exist
+* 500 - Error adding multimedia request response | Error obtaining multimedia request
 
 ## Responses
 
