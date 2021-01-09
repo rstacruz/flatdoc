@@ -612,11 +612,13 @@ Get a list of video multimedia requests
 
 Get a list of multimedia requests a scout is eligible to send responses.
 
-> Endpoint: scout_get_multimedia_requests
+**Endpoint** 
+scout_get_multimedia_requests
 
-> Method: GET
+**Method** 
+GET
 
-> Query params
+**Query params**
 
 | Field | Type | Description |
 | - | - | - |
@@ -652,7 +654,7 @@ Get a list of multimedia requests a scout is eligible to send responses.
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Only GET requests are allowed | Missing query parameter | Invalid param
 * 401 - Invalid authstring
