@@ -608,49 +608,57 @@ Get a list of video multimedia requests
   ]
 }
 ```
-## Get A List Of Multimedia Requests A Scout Is Eligible To Send Responses
-Request
+## Get Multimedia Requests
 
-Get a list of image multimedia requests
+Get a list of multimedia requests a scout is eligible to send responses.
 
-> Endpoint: scout_get_multimedia_requests?phoneNumber={phoneNumber}&authString={authString}
+> Endpoint: scout_get_multimedia_requests
+
+> Method: GET
 
 > Query params
 
-
-| parameters | 
-| -----------| 
-| authstring |
-| phoneNumber| 
+| Field | Type | Description |
+| - | - | - |
+| phoneNumber | string | Scout unique identifier |
+| authString | string | Authentication string |
 
 
 > Result
-``` python
+``` json
 {
   "message": "Successfully obtained image requests",
-   "requests":[
-      {
-        "clientRef": "12345",
-        "clientName": "The Enterprise",
-        "requestName": "Footage of the Lekki Protest",
-        "description": "Let’s get you started with a simple photo request.",
-        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-        "country": "NG",
-        "stateOrRegion": "Lagos",
-        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-        "endAge": 65,
-        "startAge": 16,
-        "gender": "female",
-        "numberOfRespondents": 500,
-        "mediaType": "image",
-        "status": "live"
-      }
+  "requests":[
+    {
+      "clientRef": "12345",
+      "clientName": "The Enterprise",
+      "requestName": "Footage of the Lekki Protest",
+      "description": "Let’s get you started with a simple photo request.",
+      "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+      "country": "NG",
+      "stateOrRegion": "Lagos",
+      "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+      "endAge": 65,
+      "startAge": 16,
+      "gender": "female",
+      "numberOfRespondents": 500,
+      "mediaType": "image",
+      "status": "live"
+    }
     .
     .
     .
   ]
 }
 ```
+
+> Errors
+* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+* 401 - Invalid authstring
+* 403 - Scout is unverified | Scout is missing demographic field
+* 404 - Scout does not exist | There are no multimedia requests
+* 500 - Error obtaining multimedia requests
+
 
 ## Add Multimedia Response
 
