@@ -653,6 +653,7 @@ Get a list of multimedia requests a scout is eligible to send responses.
 ```
 
 > Errors
+
 * 400 - Only GET requests are allowed | Missing query parameter | Invalid param
 * 401 - Invalid authstring
 * 403 - Scout is unverified | Scout is missing demographic field
@@ -695,6 +696,7 @@ Add multimedia request responses
 ```
 
 > Errors
+
 * 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio
 * 403 - Only POST requests are allowed
 * 404 - Multimedia request does not exist
