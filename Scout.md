@@ -733,41 +733,45 @@ Add multimedia request responses
 * 404 - Multimedia request does not exist
 * 500 - Error adding multimedia request response | Error obtaining multimedia request
 
-## Responses
+## Get Multimedia Responses
 
 Get completed request responses arranged from the most recent.
 
-> Endpoint: scout_get_request_response?phoneNumber={phoneNumber}&authString={authString}
+**Endpoint** 
+scout_get_request_responses
 
-> Query params
+**Method** 
+GET
 
-| Parameters  | 
-| ----------- | 
-| authstring  |
-| phoneNumber | 
+**Query params**
+
+| Field | Type | Description |
+| - | - | - |
+| phoneNumber | string | Scout unique identifier |
+| authString | string | Authentication string |
 
 
 > Result
-``` python
+``` json
 {
   "message": "Successfully obtained request responses",
-   "requests":[
-      {
-        "clientRef": "12345",
-        "requestRef": "12345",
-        "scoutRef": "+2340927738929",
-        "mediaUrls":["https://google.api.com/235617"],
-        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-        "mediaType":"audio",
-        "status": "pending"
-      }
-    .
-    .
-    .
+  "responses":[
+    {
+      "clientRef": "12345",
+      "requestRef": "12345",
+      "scoutRef": "+2340927738929",
+      "mediaUrls":["https://google.api.com/235617"],
+      "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+      "mediaType":"audio",
+      "status": "pending"
+    }
   ]
 }
 ```
 
+**Errors**
 
-
+* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+* 401 - Invalid authstring
+* 500 - Error fetching request responses
 
