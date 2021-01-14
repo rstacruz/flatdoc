@@ -1707,6 +1707,7 @@ Obtain details of a subscription plan
   }
 }
 ```
+
 ## Get Total Requests
 Get total number of requests for a client.
 
@@ -1731,6 +1732,15 @@ Get total number of requests for a client.
 }
 ```
 
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining multimedia requests | Error obtaining client team for authorization
+
+
 ## Get Total Client Request Respondents
 Get total number of client request respondents.
 
@@ -1754,6 +1764,14 @@ Get total number of client request respondents.
   "totalNumberOfClientRequestRespondents": 7
 }
 ```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of client request responses | Error obtaining client team for authorization
 
 
 ##  Get Requests
@@ -1800,6 +1818,7 @@ Get a list of requests belonging to a client
 ```
 
 ## Get Total Request Respondents
+
 Get total number of respondents for a request.
 
 **Endpoint** versus_v2_get_total_request_respondents
@@ -1824,6 +1843,14 @@ Get total number of respondents for a request.
   "totalNumberOfRequestRespondents": 7
 }
 ```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of request respondents | Error obtaining client team for authorization
 
 ##  Create Request
 Create a new multimedia request.
