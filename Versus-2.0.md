@@ -1707,13 +1707,15 @@ Obtain details of a subscription plan
   }
 }
 ```
-## Total Requests
+
+## Get Total Requests
 Get total number of requests for a client.
-> Endpoint: versus_v2_get_total_requests
+
+**Endpoint** versus_v2_get_total_requests
 
 > Payload
 
-``` python
+``` json
 {
   "clientRef": "12345",
   "uid": "6789",
@@ -1723,21 +1725,30 @@ Get total number of requests for a client.
 
 > Response
 
-``` python
+``` json
 {
   "message":"Successfully obtained total number of requests",
   "totalNumberOfRequests": 7
 }
 ```
 
-## Number of Client Request Respondents.
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining multimedia requests | Error obtaining client team for authorization
+
+
+## Get Total Client Request Respondents
 Get total number of client request respondents.
 
-> Endpoint: versus_v2_get_total_client_request_respondents
+**Endpoint** versus_v2_get_total_client_request_respondents
 
 > Payload
 
-``` python
+``` json
 {
   "clientRef": "12345",
   "uid": "6789",
@@ -1747,12 +1758,20 @@ Get total number of client request respondents.
 
 > Response
 
-``` python
+``` json
 {
   "message":"Successfully obtained total number of request respondents",
   "totalNumberOfClientRequestRespondents": 7
 }
 ```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of client request responses | Error obtaining client team for authorization
 
 
 ##  Get Requests
@@ -1798,14 +1817,15 @@ Get a list of requests belonging to a client
 }
 ```
 
-## Number Of Respondents For A Request.
+## Get Total Request Respondents
+
 Get total number of respondents for a request.
 
-> Endpoint: versus_v2_get_total_request_respondents
+**Endpoint** versus_v2_get_total_request_respondents
 
 > Payload
 
-``` python
+``` json
 {
   "clientRef": "12345",
   "requestRef": "12345",
@@ -1817,24 +1837,32 @@ Get total number of respondents for a request.
 
 > Response
 
-``` python
+``` json
 {
   "message":"Successfully obtained total number of request respondents",
   "totalNumberOfRequestRespondents": 7
 }
 ```
 
-##  Create Requests
-Create a new request.
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of request respondents | Error obtaining client team for authorization
+
+##  Create Request
+Create a new multimedia request.
 
 > Endpoint: versus_v2_create_new_request
 
-
 > Payload
 
-``` python
+``` json
 {
   "clientRef": "12345",
+  "clientName": "The enterprise",
   "uid": "6789",
   "idToken": "101112",
   "requestName": "Footage of the Lekki Protest",
@@ -1852,35 +1880,29 @@ Create a new request.
 
 > Response
 
-``` python
+``` json
 {
   "message":"Successfully created new request",
-  "request": {
-    "clientRef": "12345",
-    "clientName": "The Enterprise",
-    "requestName": "Footage of the Lekki Protest",
-    "description": "Let’s get you started with a simple photo request.",
-    "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-    "country": "NG",
-    "stateOrRegion": "Lagos",
-    "endAge": 65,
-    "startAge": 16,
-    "gender": "female",
-    "numberOfRespondents": 500,
-    "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-    "status": "live"
-  }
+  "requestRef": "1234567890-09876543234567890-0987654"
 }
 ```
 
-##  Get Requests Responses
+> Errors
+
+* 400 - Missing parameter clientRef, clientName, requestName, etc | Invalid param description. Should be type string
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed
+* 500 - Error creating new request
+
+##  Get Request Responses
+
 Get a list of responses for a request.
 
-> Endpoint: versus_v2_get_request_responses 
+**Endpoint** versus_v2_get_request_responses 
 
 > Payload
 
-``` python
+``` json
 {
   "clientRef": "12345",
   "requestRef": "12345",
@@ -1892,7 +1914,7 @@ Get a list of responses for a request.
 
 > Response
 
-``` python
+``` json
 {
   "message":"Successfully obtained request responses",
     "responses": [
@@ -1903,12 +1925,18 @@ Get a list of responses for a request.
       "mediaUrls":["https://google.api.com/235617"],
       "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
       "mediaType":"audio"
-    },
-    .
-    .
+    }
   ]
 }
 ```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining request responses | Error obtaining client team for authorization
 
 ## Approve Request Response
 
