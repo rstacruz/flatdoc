@@ -702,6 +702,7 @@ Add multimedia request responses
 | scoutRef | string | A unique identifier of the scout sending the response |
 | mediaType | string | The type of media the response is made of. `image`, `audio` or `video`
 | mediaUrls | array | An array of (string) URL(s) pointing to the location which the response media is stored | 
+| authString | string | Authentication string |
 
 > Endpoint: scout_add_multimedia_request_response
 
@@ -728,7 +729,7 @@ Add multimedia request responses
 
 > Errors
 
-* 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio
+* 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio | Failed authentication. Authstring invalid or not found in request body
 * 403 - Only POST requests are allowed
 * 404 - Multimedia request does not exist
 * 500 - Error adding multimedia request response | Error obtaining multimedia request
