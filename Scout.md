@@ -163,20 +163,29 @@ Get a Scout reference given a phoneNumber.
 
 Get the questions associated with a campaign.
 
+| Field | Type | Required | Description |
+| - | - | - | - |
+| docRef | string | required | A unique identifier of the campaign |
+| scoutRef | string | optional | Scout unique identifier |
+|
 
-> Endpoint: scout_get_questions
 
-> Payload
+**Endpoint** scout_get_questions
 
-``` javascript
+**Method** POST
+ 
+> Sample payload
+``` json
 {
-  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9"
+  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+  "scoutRef": "+2341234567890"
 }
 ```
 
 > Result
-``` javascript
+``` json
 {
+  "message": "Successfully obtained questions",
   "questions": [
     {
       "campaignName": "campaignRef",
@@ -190,6 +199,11 @@ Get the questions associated with a campaign.
   ]
 }
 ```
+
+**Errors**
+* 400 - Invalid param | Missing docRef
+* 404 - Scout does not exist
+* 500 - Error obtaining scout | error encountered while reading from db
 
 ## Get Responses
 
