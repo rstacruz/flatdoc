@@ -167,14 +167,14 @@ Get the questions associated with a campaign.
 | - | - | - | - |
 | docRef | string | required | A unique identifier of the campaign |
 | scoutRef | string | optional | Scout unique identifier |
-|
+
 
 
 **Endpoint** scout_get_questions
 
 **Method** POST
  
-> Sample payload
+**Sample payload**
 ``` json
 {
   "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
@@ -182,7 +182,7 @@ Get the questions associated with a campaign.
 }
 ```
 
-> Result
+**Result**
 ``` json
 {
   "message": "Successfully obtained questions",
@@ -201,9 +201,11 @@ Get the questions associated with a campaign.
 ```
 
 **Errors**
+
 * 400 - Invalid param | Missing docRef
 * 404 - Scout does not exist
 * 500 - Error obtaining scout | error encountered while reading from db
+
 
 ## Get Responses
 
