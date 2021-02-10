@@ -2114,3 +2114,33 @@ Get a list of responses for a request.
 * 400 - Missing parameter subscriptionPlanRef
 * 403 - Only POST requests are allowed
 * 500 - Backend service error
+
+
+## Pause Request If Capped
+
+Pause multimedia request when allotment is reached.
+
+**Endpoint** versus_v2_pause_request_if_capped
+
+**Method** POST
+
+> Sample payload
+```json
+{
+  "requestRef": "1234567890987654321"
+}
+```
+
+> Sample response
+```json
+{ 
+  "message": "Successfully paused client multimedia request",
+  "requestRef": "123567890987654321"
+}
+```
+
+**Errors**
+
+* 400 - Only POST requests are allowed | Missing parameter requestRef
+* 404 - Request does not exist
+* 500 - Error updating request status | Error obtaining number of request respondents
