@@ -515,7 +515,7 @@ GET
 | authString | string | Authentication string |
 
 
-> Result
+> Sample response
 ``` json
 {
   "message": "Successfully obtained image requests",
@@ -533,12 +533,10 @@ GET
       "startAge": 16,
       "gender": "female",
       "numberOfRespondents": 500,
+      "spotsLeft": 500,
       "mediaType": "image",
       "status": "live"
     }
-    .
-    .
-    .
   ]
 }
 ```
@@ -550,6 +548,7 @@ GET
 * 403 - Scout is unverified | Scout is missing demographic field
 * 404 - Scout does not exist | There are no image requests
 * 500 - Error obtaining image requests
+
 
 ## Get Audio Requests
 
@@ -569,7 +568,7 @@ GET
 | authString | string | Authentication string |
 
 
-> Result
+> Sample response
 ``` json
 {
   "message": "Successfully obtained image requests",
@@ -587,6 +586,7 @@ GET
       "startAge": 16,
       "gender": "female",
       "numberOfRespondents": 500,
+      "spotsLeft": 500,
       "mediaType": "audio",
       "status": "live"
     }
@@ -601,6 +601,7 @@ GET
 * 403 - Scout is unverified | Scout is missing demographic field
 * 404 - Scout does not exist | There are no audio requests
 * 500 - Error obtaining audio requests
+
 
 ## Get Video Requests
 
@@ -620,7 +621,7 @@ GET
 | authString | string | Authentication string |
 
 
-> Result
+> Sample response
 ``` json
 {
   "message": "Successfully obtained image requests",
@@ -638,6 +639,7 @@ GET
       "startAge": 16,
       "gender": "female",
       "numberOfRespondents": 500,
+      "spotsLeft": 500,
       "mediaType": "video",
       "status": "live"
     }
@@ -671,7 +673,7 @@ GET
 | authString | string | Authentication string |
 
 
-> Result
+> Sample response
 ``` json
 {
   "message": "Successfully obtained multimedia requests",
@@ -689,12 +691,10 @@ GET
       "startAge": 16,
       "gender": "female",
       "numberOfRespondents": 500,
+      "spotsLeft": 500,
       "mediaType": "image",
       "status": "live"
     }
-    .
-    .
-    .
   ]
 }
 ```
@@ -736,7 +736,7 @@ Add multimedia request responses
 }
 ```
 
-> Result
+> Sample response
 ``` json
 {
   "message":"Successfully added multimedia request response",
@@ -744,12 +744,13 @@ Add multimedia request responses
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio | Failed authentication. Authstring invalid or not found in request body
 * 403 - Only POST requests are allowed
 * 404 - Multimedia request does not exist
 * 500 - Error adding multimedia request response | Error obtaining multimedia request
+
 
 ## Get Multimedia Responses
 
@@ -769,7 +770,7 @@ GET
 | authString | string | Authentication string |
 
 
-> Result
+> Sample Response
 ``` json
 {
   "message": "Successfully obtained request responses",

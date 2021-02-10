@@ -1887,7 +1887,7 @@ Create a new multimedia request.
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing parameter clientRef, clientName, requestName, etc | Invalid param description. Should be type string
 * 401 - User is not authorized to make this request | Error authenticating user
@@ -1900,7 +1900,7 @@ Get a list of responses for a request.
 
 **Endpoint** versus_v2_get_request_responses 
 
-> Payload
+> Sample payload
 
 ``` json
 {
@@ -1912,7 +1912,7 @@ Get a list of responses for a request.
 
 ```
 
-> Response
+> Sample response
 
 ``` json
 {
@@ -1940,11 +1940,13 @@ Get a list of responses for a request.
 
 ## Approve Request Response
 
-> Endpoint: versus_v2_approve_request_response
+**Endpoint**
 
-> Payload
+versus_v2_approve_request_response
 
-``` python
+> Sample payload
+
+```json
 {
   "clientRef": "12345",
   "requestRef": "123456",
@@ -1952,13 +1954,11 @@ Get a list of responses for a request.
   "uid": "6789",
   "idToken": "101112"
 }
-
-
 ```
 
-> Response
+> Sample response
 
-``` python
+```json
 {
   "message":"Successfully approved request response",
   "responseRef": "12345"
@@ -1967,11 +1967,13 @@ Get a list of responses for a request.
 
 ## Reject Request Response.
 
-> Endpoint: versus_v2_reject_request_response
+**Endpoint** 
 
-> Payload
+versus_v2_reject_request_response
 
-``` python
+> Sample payload
+
+```json
 {
   "clientRef": "12345",
   "requestRef": "123456",
@@ -1981,13 +1983,11 @@ Get a list of responses for a request.
   "uid": "6789",
   "idToken": "101112"
 }
-
-
 ```
 
-> Response
+> Sample response
 
-``` python
+```json
 {
   "message":"Successfully rejected request response",
   "responseRef": "78900"
