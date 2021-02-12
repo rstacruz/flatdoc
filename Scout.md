@@ -104,7 +104,8 @@ Get all campaigns on the system
       "occupation": null,
       "religion": null,
       "startAge": 20,
-      "startDate": "2000-10-10 00:00:00"
+      "startDate": "2000-10-10 00:00:00",
+      "versusCreditsAccruing": 0
     }
   ]
 }
@@ -519,24 +520,27 @@ GET
 ``` json
 {
   "message": "Successfully obtained image requests",
-  "requests":[
-    {
-      "clientRef": "12345",
-      "clientName": "The Enterprise",
-      "requestName": "Footage of the Lekki Protest",
-      "description": "Let’s get you started with a simple photo request.",
-      "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-      "country": "NG",
-      "stateOrRegion": "Lagos",
-      "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-      "endAge": 65,
-      "startAge": 16,
-      "gender": "female",
-      "numberOfRespondents": 500,
-      "spotsLeft": 500,
-      "mediaType": "image",
-      "status": "live"
-    }
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "image",
+        "status": "live",
+        "versusCreditsAccruing": 2
+      }
+    .
+    .
+    .
   ]
 }
 ```
@@ -560,36 +564,31 @@ scout_get_audio_requests
 **Method** 
 GET
 
-**Query params**
-
-| Field | Type | Description |
-| - | - | - |
-| phoneNumber | string | Scout unique identifier |
-| authString | string | Authentication string |
-
-
-> Sample response
-``` json
+> Result
+``` python
 {
-  "message": "Successfully obtained image requests",
-  "requests":[
-    {
-      "clientRef": "12345",
-      "clientName": "The Enterprise",
-      "requestName": "Footage of the Lekki Protest",
-      "description": "Let’s get you started with a simple photo request.",
-      "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-      "country": "NG",
-      "stateOrRegion": "Lagos",
-      "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-      "endAge": 65,
-      "startAge": 16,
-      "gender": "female",
-      "numberOfRespondents": 500,
-      "spotsLeft": 500,
-      "mediaType": "audio",
-      "status": "live"
-    }
+  "message": "Successfully obtained audio requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "audio",
+        "status": "live",
+        "versusCreditsAccruing": 2
+      }
+    .
+    .
+    .
   ]
 }
 ```
@@ -610,39 +609,31 @@ Get a list of multimedia requests of mediaType _video_ a scout is eligible to se
 **Endpoint** 
 scout_get_video_requests
 
-**Method** 
-GET
-
-**Query params**
-
-| Field | Type | Description |
-| - | - | - |
-| phoneNumber | string | Scout unique identifier |
-| authString | string | Authentication string |
-
-
-> Sample response
-``` json
+> Result
+``` python
 {
-  "message": "Successfully obtained image requests",
-  "requests":[
-    {
-      "clientRef": "12345",
-      "clientName": "The Enterprise",
-      "requestName": "Footage of the Lekki Protest",
-      "description": "Let’s get you started with a simple photo request.",
-      "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-      "country": "NG",
-      "stateOrRegion": "Lagos",
-      "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-      "endAge": 65,
-      "startAge": 16,
-      "gender": "female",
-      "numberOfRespondents": 500,
-      "spotsLeft": 500,
-      "mediaType": "video",
-      "status": "live"
-    }
+  "message": "Successfully obtained video requests",
+   "requests":[
+      {
+        "clientRef": "12345",
+        "clientName": "The Enterprise",
+        "requestName": "Footage of the Lekki Protest",
+        "description": "Let’s get you started with a simple photo request.",
+        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+        "country": "NG",
+        "stateOrRegion": "Lagos",
+        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+        "endAge": 65,
+        "startAge": 16,
+        "gender": "female",
+        "numberOfRespondents": 500,
+        "mediaType": "audio",
+        "status": "live",
+        "versusCreditsAccruing": 2
+      }
+    .
+    .
+    .
   ]
 }
 ```
@@ -693,7 +684,8 @@ GET
       "numberOfRespondents": 500,
       "spotsLeft": 500,
       "mediaType": "image",
-      "status": "live"
+      "status": "live",
+      "versusCreditsAccruing": 2
     }
   ]
 }
@@ -793,4 +785,260 @@ GET
 * 400 - Only GET requests are allowed | Missing query parameter | Invalid param
 * 401 - Invalid authstring
 * 500 - Error fetching request responses
+
+
+## Get Scouts Paystack Cashout
+
+Get scouts Paystack Cashouts and Chart.
+
+> Endpoint: scout_get_scouts_paystack_cashouts
+
+> Payload
+``` python
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "period": "lastMonth"
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": "Successful",
+  "totalPages": 12,
+  "totalCashouts": 114,
+  "pageSize": 10,
+  "currentPage": 1,
+   "cashouts": [
+      {
+          "scoutRef": "+2349017766085",
+          "data": {
+              "updatedAt": "2020-09-12T15:24:10.805Z",
+              "reference": "009f685e-604f-4140-9b6f-00408eaadb56",
+              "status": "success",
+              "recipient": 8758390,
+              "amount": 189000,
+              "reason": "Redeem Versus scout credits",
+              "integration": 146241,
+              "domain": "test",
+              "source": "balance",
+              "currency": "NGN",
+              "transfer_code": "TRF_63y76ctdr8a8cr7",
+              "createdAt": "2020-09-12T15:24:10.805Z",
+              "id": 32768223
+          },
+          "message": "Transfer has been queued",
+          "status": true
+      }
+    .
+    .
+    .
+  ],
+  "cashoutsChart": [
+    {
+        "date": "Dec 25",
+        "successfulCount": 2,
+        "successfulAmount": 70100,
+        "failedCount": 0,
+        "failedAmount": 0
+    }
+    .
+    .
+    .
+  ]
+}
+```
+
+
+## Get Scouts Paga Cashout
+
+Get scouts Paga Cashouts and Chart.
+
+> Endpoint: scout_get_scouts_paga_cashouts
+
+> Payload
+``` python
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "period": "lastMonth"
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": "Successful",
+  "totalPages": 12,
+  "totalCashouts": 114,
+  "pageSize": 10,
+  "currentPage": 1,
+   "cashouts": [
+      {
+          "updatedAt": "2021-01-05T11:13:35.252Z",
+          "exchangeRate": null,
+          "amount": 54,
+          "responseCode": 0,
+          "withdrawalCode": null,
+          "receiverRegistrationStatus": "UNREGISTERED",
+          "referenceNumber": "3cdf95cc-54fc-4e1b-bb68-23a0e912ee89",
+          "message": "You have successfully sent N54.00 to +2347030287520. Paga Txn ID: WG7H2. Thank you for using Paga!",
+          "transactionId": "WG7H2",
+          "currency": "NGN",
+          "fee": 150
+      }
+    .
+    .
+    .
+  ],
+  "cashoutsChart": [
+    {
+        "date": "Dec 25",
+        "successfulCount": 2,
+        "successfulAmount": 70100,
+        "failedCount": 0,
+        "failedAmount": 0
+    }
+    .
+    .
+    .
+  ]
+}
+```
+
+## Get Scout Statistics
+
+Get scouts statistics.
+
+> Endpoint: scout_get_scouts_statistics
+
+> Payload
+``` python
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa..."
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": 'Successful',
+  "data": {
+    "scouts": {
+      "total": 1222,
+      "usingPayStack": 600,
+      "usingPaga": 622
+    },
+    "tokens": {
+      "total": 1222,
+      "usingPayStack": 600,
+      "usingPaga": 62
+    },
+    "naira": {
+      "total": 1222,
+      "usingPayStack": 600,
+      "usingPaga": 622
+    }
+  }
+}
+```
+
+
+
+## Missing Data Notification
+
+Get scouts statistics.
+
+> Endpoint: scout_missing_data_notification
+
+> Payload
+``` python
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "scoutRef": "+23480343233
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": 'Successfully notified scout',
+}
+```
+
+
+
+## Missing Data Notification
+
+Notify scout with missing responses in demographic survey
+
+> Endpoint: scout_missing_data_notification
+
+> Payload
+``` python
+{
+    "authString": "dfbeavt4h463234255dsR"
+    "scoutRef": "+23480343233
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": 'Successfully notified scout',
+}
+```
+
+## Get Missing Data
+Get missing responses in demographic survey
+
+> Endpoint: scout_get_missing_data
+
+> Payload
+``` python
+{
+    "authString": "dfbeavt4h463234255dsR"
+    "scoutRef": "+23480343233
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": "Successfully obtained missing questions",
+  "questions": []
+}
+```
+
+
+## Image Is Safe
+Verify that an image is suitable for upload
+
+> Endpoint: scout_image_is_safe
+
+> Payload
+``` python
+{
+    "authString": "dfbeavt4h463234255dsR"
+    "scoutRef": "+23480343233
+}
+```
+
+> Result
+``` python
+{
+  "status": true,
+  "message": "Image is suitable for submission"
+}
+```
+
 
