@@ -99,7 +99,8 @@ To obtain campaigns that match a scout's demographic.
       "clientName": "The Enterprise",
       "clientRef": "nqaXKB0SzWN6xh7RVyzlzl",
       "endAge": 65,
-      "startAge": 16
+      "startAge": 16,
+      "versusCreditsAccruing": 0
     }
   ]
 }
