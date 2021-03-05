@@ -77,7 +77,7 @@ Update scout settings.
 * 403 - Only POST requests are allowed
 * 404 - Scout does not exist
 * 500 - Error updating scout settings
-## Get Scout Settings (scout-admin)
+## Get Scout Settings
 
 Obtains scout settings.
 
@@ -117,7 +117,7 @@ Obtains scout settings.
 * 500 - Error getting scout settings
 
 
-## Update Scout Settings (scout-admin)
+## Update Scout Settings
 
 Update scout settings.
 
@@ -282,7 +282,7 @@ Obtains client settings.
 * 500 - Error getting client settings
 
 
-## Update Client Settings (scout-admin)
+## Update Client Settings
 
 Update client settings.
 
@@ -323,7 +323,7 @@ Update client settings.
 * 403 - Only POST requests are allowed
 * 404 - Scout does not exist
 * 500 - Error updating client settings
-## Get Subscription Plans (scout-admin)
+## Get Subscription Plans
 
 Obtains subpsrciption plans.
 
@@ -372,7 +372,7 @@ Obtains subpsrciption plans.
 * 500 - Error getting client settings
 
 
-## Update Subscription Plans (scout-admin)
+## Update Subscription Plans
 
 Update Subscription Plans.
 
