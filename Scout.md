@@ -973,30 +973,6 @@ Get scouts statistics.
 }
 ```
 
-
-
-## Missing Data Notification
-
-Notify scout with missing responses in demographic survey
-
-> Endpoint: scout_missing_data_notification
-
-> Payload
-``` python
-{
-    "authString": "dfbeavt4h463234255dsR"
-    "scoutRef": "+23480343233
-}
-```
-
-> Result
-``` python
-{
-  "status": true,
-  "message": 'Successfully notified scout',
-}
-```
-
 ## Get Missing Data
 Get missing responses in demographic survey
 
