@@ -787,6 +787,87 @@ GET
 * 500 - Error fetching request responses
 
 
+## Get Scouts
+
+Get scouts.
+
+> Endpoint: scout_get_all_scouts
+
+> Payload
+``` json
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "page": 1,
+    "size": 10,
+    "filter": "verified" | "unverified" | "blacklisted" | "whitelisted"
+
+}
+```
+
+> Result
+``` json
+{
+  "status": true,
+  "message": "Successful",
+  "totalPages": 4,
+  "totalScouts": 40,
+  "pageSize": 10,
+  "currentPage": 1,
+  "data": [],
+}
+```
+## Edit Scouts
+
+Edit scout.
+
+> Endpoint: scout_edit_scout
+
+> Payload
+``` json
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "peopleInHousehold": 3,
+    "maritalStatus": "single",
+    // other scout properties
+}
+```
+
+> Result
+``` json
+{
+  "status": true,
+  "message": "Successful",
+}
+```
+## Bulk Edit Scouts
+
+Edit multiple scouts.
+
+> Endpoint: scout_bulk_edit_scouts
+
+> Payload
+``` json
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIs...",
+    "uid": "db3aLSS5AtalI7xqCa...",
+    "scoutRefs": [],
+    "blacklisted": false,
+    "blacklistReason": "",
+    "blacklistContext": "",
+    "verified": false,
+}
+```
+
+> Result
+``` json
+{
+  "status": true,
+  "message": "Successful",
+}
+```
+
 ## Get Scouts Paystack Cashout
 
 Get scouts Paystack Cashouts and Chart.
@@ -794,7 +875,7 @@ Get scouts Paystack Cashouts and Chart.
 > Endpoint: scout_get_scouts_paystack_cashouts
 
 > Payload
-``` python
+``` json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa...",
@@ -803,7 +884,7 @@ Get scouts Paystack Cashouts and Chart.
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
   "message": "Successful",
@@ -859,7 +940,7 @@ Get scouts Paga Cashouts and Chart.
 > Endpoint: scout_get_scouts_paga_cashouts
 
 > Payload
-``` python
+``` json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa...",
@@ -868,7 +949,7 @@ Get scouts Paga Cashouts and Chart.
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
   "message": "Successful",
@@ -916,7 +997,7 @@ Get scouts statistics.
 > Endpoint: scout_get_scouts_statistics
 
 > Payload
-``` python
+``` json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa..."
@@ -924,10 +1005,10 @@ Get scouts statistics.
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
-  "message": 'Successful',
+  "message": "Successful",
   "data": {
     "scouts": {
       "total": 1222,
@@ -957,7 +1038,7 @@ Get scouts statistics.
 > Endpoint: scout_missing_data_notification
 
 > Payload
-``` python
+``` json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa...",
@@ -966,10 +1047,10 @@ Get scouts statistics.
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
-  "message": 'Successfully notified scout',
+  "message": "Successfully notified scout",
 }
 ```
 
@@ -979,7 +1060,7 @@ Get missing responses in demographic survey
 > Endpoint: scout_get_missing_data
 
 > Payload
-``` python
+``` json
 {
     "authString": "dfbeavt4h463234255dsR"
     "scoutRef": "+23480343233
@@ -987,7 +1068,7 @@ Get missing responses in demographic survey
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
   "message": "Successfully obtained missing questions",
@@ -1002,15 +1083,15 @@ Verify that an image is suitable for upload
 > Endpoint: scout_image_is_safe
 
 > Payload
-``` python
+``` json
 {
-    "authString": "dfbeavt4h463234255dsR"
-    "scoutRef": "+23480343233
+    "authString": "dfbeavt4h463234255dsR",
+    "scoutRef": "+23480343233"
 }
 ```
 
 > Result
-``` python
+``` json
 {
   "status": true,
   "message": "Image is suitable for submission"
