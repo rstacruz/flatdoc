@@ -1099,4 +1099,27 @@ Verify that an image is suitable for upload
 }
 ```
 
+## Redeem Credits
 
+Cashout via Paga (NG) or Beyonic (KE).
+
+> Endpoint: redeem_credits
+
+> Payload
+``` json
+{
+  "authstring": "eyJhbGciOiJSUzI1NiIs",
+  "country": "NG",
+  "phoneNumber": "+2347890123456",
+  "amount": "100",
+}
+```
+
+> Result
+``` json
+{
+  "message": "You have successfully sent N5,400.00 to +2347890123456. Paga Txn ID: 3QYS4. Thank you for using Paga!",
+  "referenceNumber": "f6812351-f857-43f1-87cd-2ce18d48d667",
+  "transactionId": "3QYS4"
+}
+```
