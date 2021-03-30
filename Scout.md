@@ -1086,7 +1086,8 @@ Verify that an image is suitable for upload
 ``` json
 {
     "authString": "dfbeavt4h463234255dsR",
-    "scoutRef": "+23480343233"
+    "scoutRef": "+23480343233",
+    "imageUrl": "http://some-image-url.jpeg"
 }
 ```
 
