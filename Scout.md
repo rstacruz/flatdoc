@@ -1123,3 +1123,11 @@ Cashout via Paga (NG) or Beyonic (KE).
   "transactionId": "3QYS4"
 }
 ```
+
+> Error
+* 400 - Missing body parameter(s) | Invalid format of parameter(s) | Error converting scout credit for transfer
+* 401 - Failed authentication. Authstring invalid or not found in request body
+* 403 - Cashout is disabled for this scout. Less than 8 credits | Insufficient scout credit balance
+* 404 - Scout does not exist | Country not found! We do not yet support that country
+* 500 - Unable to save transaction data in firestore
+
