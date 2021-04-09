@@ -1709,6 +1709,43 @@ Obtain details of a subscription plan
 }
 ```
 
+## Get Subscription Plans
+
+Obtain all subscription plans in db, sorted in ascending `sequence` order.
+
+**Endpoint** versus_v2_get_subscription_plans
+
+**Method** GET
+
+**Sample response** 200
+```json
+{
+  "message": "Successfully obtained subscription plans",
+  "subscriptionPlans": [
+    {
+      "blurb": "For innovative pre-launch brands looking to boldly track and test",
+      "countriesAllowed": 1,
+      "sequence": 1,
+      "price_monthly_USD": 0,
+      "subscriptionPlanRef": "facfa4f4-d5d9-47ad-a0d8-b84402065dc9",
+      "mentionsAllowed": 5000,
+      "subscriptionPlanName": "Starter",
+      "isFree": true,
+      "details": "Get access to up to 5,000 mentions from 12 African countries of your choice. Extra $25 starting Ask credits. No custom reporting & consultation included.",
+      "languagesAllowed": 1,
+      "startCredits": 50,
+      "price": "Free",
+      "stripePriceId": "price_1IdC4hFVq4cpBfbzQm9fMsaP"
+    }
+  ]
+}
+```
+**Errors**
+* 400 - Only GET requests are allowed
+* 404 - There are no subscription plans
+* 500 - Error obtaining subscription plans
+
+
 ## Get Total Requests
 Get total number of requests for a client.
 
@@ -2145,3 +2182,110 @@ Pause multimedia request when allotment is reached.
 * 400 - Only POST requests are allowed | Missing parameter requestRef
 * 404 - Request does not exist
 * 500 - Error updating request status | Error obtaining number of request respondents
+
+
+## Add SME client
+
+Add a new client and team on signup. This is the first step before setting up a subscription and onboarding the client.
+
+**Endpoint** versus_v2_add_sme_client
+
+**Method** POST
+
+**Required Params**
+| Field | Type | Description |
+| - | - | - |
+| email | String | Client admin email |
+| firstName | String | Client admin first name |
+| lastName | String | Client admin last name |
+| organizationName | String | Client organization name |
+| organizationSector | String | Client organization sector |
+| subscriptionPlanRef | String | Selected subscription plan ref |
+| subscriptionPlanName | String | Selected subscription plan name |
+
+**Sample response** 200
+```json
+{
+  "message": "Successfully added new SME client",
+  "client": {
+    "clientRef": "d103d4ab-5f9b-45cd-985d-7a27cdd1b37f",
+    "firstName": "Steve",
+    "lastName": "Tanner",
+    "email": "st-test@st.co",
+    "onboardingToken": "f0365e46-fc8d-406b-be56-fa8a7bf6596f"
+  }
+}
+```
+**Errors**
+* 400 - Missing parameter
+* 409 - Client already exists and has onboarded
+* 500 - Error creating new team | Error creating new SME client | Error getting client by email
+
+
+## Stripe Create Checkout Session
+
+Securely create a checkout session for subscription payments via Stripe.
+
+**Endpoint** versus_v2_stripe_create_checkout_session
+
+**Method** POST
+
+**Required Params**
+| Field | Type | Description |
+| - | - | - |
+| client | Object | The standard client object complete with properties including email, firstName, etc  |
+| subscriptionPlan | String | Selected subscription plan ref |
+
+**Sample response** 200
+```json
+{
+  "message": "Successfully created Stripe checkout session",
+  "sessionId": "MvW5EVMqiVZW23JTKx8ui6worLLHdMJlVERPObuj",
+}
+```
+**Errors**
+* 400 - Missing parameter
+* 403 - Only POST requests are allowed
+* 404 - Subscription plan does not exist
+* 500 - Error creating Stripe checkout session | Error obtaining subscription plan
+
+
+## Stripe Webhook
+
+Securely handles subscription and other payment events from Stripe. It adds the appropriate value (new subscription plan or versus credits) to client after a successful payment event is received.
+
+**Endpoint** versus_v2_stripe_webhook
+
+**Method** POST
+
+**Errors**
+* 400 - Webhook error
+* Logs only - Error adding subscription plan to client | Error adding purchased versus credits for client
+
+
+## Subscribe Free Plan
+
+Subscribes client to free plan. This subscription is processed outside of Stripe.
+
+**Endpoint** versus_v2_subscribe_free_plan
+
+**Method** POST
+
+**Required Params**
+| Field | Type | Description |
+| - | - | - |
+| client | Object | The standard client object complete with properties including email, firstName, etc  |
+| subscriptionPlan | String | Selected subscription plan ref |
+
+**Sample response** 200
+```json
+{
+  "message": "ccessfully subscribed client to free plan",
+  "subscriptionPlan": "MvW5E-VMqiV-ZWorL-LHdMJ-lVERP-Obuj",
+}
+```
+**Errors**
+* 400 - Missing parameter | Invalid param . Should be type | Subscription plan is not free
+* 403 - Only POST requests are allowed
+* 404 - Subscription plan does not exist
+* 500 - Error subscribing client to free plan | Error obtaining subscription plan
