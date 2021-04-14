@@ -11,12 +11,14 @@ Fetches news articles in a similar way to [NewsAPI](https://newsapi.org/) but fr
 **METHOD**: POST
 
 **Required params**
+
 | Field | Type | Location | Description |
 | - | - | - | - |
 | keywords | Array | body | An array of strings containing the keywords to search  |
 | X-Api-Key | String | headers | API Key |
 
 **Optional params**
+
 | Field | Type | Description |
 | - | - | - |
 | from | String | Search can be limited to this start date "YYYY-MM-DD"  |
@@ -50,6 +52,7 @@ Fetches news articles in a similar way to [NewsAPI](https://newsapi.org/) but fr
 }
 ```
 **Errors**
+
 | Status Code | Error Code | Message |
 | - | - | - |
 | 400 | parameterMissing | Required parameter keywords is missing from the request and it cannot be completed. |
@@ -57,4 +60,4 @@ Fetches news articles in a similar way to [NewsAPI](https://newsapi.org/) but fr
 | 401 | apiKeyMissing | Your API key is missing. Use the x-api-key HTTP header
 | 401 | apiKeyInvalid | Your API key hasn't been entered correctly. Double check it and try again. |
 | 403 | requestMethodInvalid | Only POST requests are allowed |
-| 500 | unexpectedError | This shouldn\'t happen, and if it does then it\'s our fault, not yours. Try the request again shortly. |
+| 500 | unexpectedError | This shouldn't happen, and if it does then it's our fault, not yours. Try the request again shortly. |
