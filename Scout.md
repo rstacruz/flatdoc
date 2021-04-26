@@ -38,35 +38,37 @@ Add a response to a question.
 
 Add a scout - firstName, lastName and phoneNumber are required
 
+**Endpoint**: scout_create_scout
 
-> Endpoint: scout_create_scout
+**Method**: POST
 
-> Payload
+**Payload**
 
-``` javascript
+```json
 {
-    "firstName": "James",
-    "lastName": "Austin",
-    "phoneNumber": "+2347023004000",
-    "bankName": "Prudential",
-    "bankCode": "002",
-    "accountNumber": "10-2-200-5",
-    "bvn": "bvn",
-    "emailAddress": "a@test.com",
-    "dob": "2017-12-31",
-    "gender": "Female",
-    "education": "education",
-    "maritalStatus": "maritalStatus",
-    "religion": "religion",
-    "occupation": "occupation",
-    "country": "country",
-    "state": "state",
-    "language": "English"
+  "firstName": "James",
+  "lastName": "Austin",
+  "phoneNumber": "+2347023004000",
+  "bankName": "Prudential",
+  "bankCode": "002",
+  "accountNumber": "10-2-200-5",
+  "bvn": "bvn",
+  "emailAddress": "a@test.com",
+  "dob": "2017-12-31",
+  "gender": "Female",
+  "education": "education",
+  "maritalStatus": "maritalStatus",
+  "religion": "religion",
+  "occupation": "occupation",
+  "country": "country",
+  "state": "state",
+  "language": "English",
+  "source": "webApp" // enum "ussd", "androidApp"
 }
 ```
 
 > Result
-``` javascript
+```json
 {
   "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
 }
