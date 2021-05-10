@@ -75,7 +75,7 @@ This function takes an `article`, analyzes it, and returns a sentiment result
 | Field     | Type   | Description                         |
 |-----------|--------|-------------------------------------|
 | authtoken | string | The Authorization token             |
-| article   | array  | A string of tweets text             |
+| article   | string | A  tweet text                      |
 
 > Endpoint:  https://us-central1-versus-dev-212614.cloudfunctions.net/twitter_sentiment
 
