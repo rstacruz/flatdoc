@@ -6,6 +6,13 @@ This has two endpoints for getting sentiments analysis results for tweets
 
 This function analyzes `articles(tweets)` in bulk (it takes an array of tweets) and sends back their sentiment results in bulk (in array)
 
+**Required Parameters**
+
+| Field     | Type   | Description                         |
+|-----------|--------|-------------------------------------|
+| authtoken | string | The Authorization token             |
+| articles  | array  | An array of tweets texts            |
+
 
 > Endpoint: https://us-central1-versus-dev-212614.cloudfunctions.net/twitter_bulk_sentiment
 
@@ -62,6 +69,13 @@ The result is an array of objects, one object for each entry in the articles arr
 ## Twitter Sentiment
 
 This function takes an `article`, analyzes it, and returns a sentiment result
+
+**Required Parameters**
+
+| Field     | Type   | Description                         |
+|-----------|--------|-------------------------------------|
+| authtoken | string | The Authorization token             |
+| article   | array  | A string of tweets text             |
 
 > Endpoint:  https://us-central1-versus-dev-212614.cloudfunctions.net/twitter_sentiment
 
