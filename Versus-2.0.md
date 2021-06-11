@@ -2,6 +2,7 @@
 
 These are general purpose endpoints that are not necessarily attached to scout or dashboard functions
 
+
 ## Send SMS
 
 This function leverages Twilio APIs to send SMS to a phone number. 
@@ -448,7 +449,7 @@ Add a new client on signup
   "firstName": "Xavier",
   "lastName": "Stan",
   "organizationName": "Enterfive",
-  "OrganizationSector": "Software and Internet",
+  "OrganizationSector_id": 1,
 }
 ```
 
@@ -461,7 +462,7 @@ Add a new client on signup
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - User is not authorized to make this request || Error authenticating user
@@ -533,7 +534,7 @@ Confirm a new team member who is onboarding and creating a profile
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - Invalid team token
@@ -588,7 +589,15 @@ Update client data
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
   "clientData": {
-    "logoURL": "https://clientlogo.png"
+        "organizationSector_id": 5,
+        "firstName": "john",
+        "lastName": "doe",
+        "alertCriticalMentions": true,
+        "alertDaily": true,
+        "alertWeekly": false,
+        "alertMonthly": true
+        ...
+        ...
   }
 }
 ```
@@ -601,7 +610,7 @@ Update client data
 }
 ```
 
-> Errors
+**Errors**
 
 * 401 - Team member does not have edit capability || Error authenticating user
 * 402 - Insufficient versus credit balance
@@ -824,7 +833,7 @@ Get client data
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - User is not authorized to make this request || Error authenticating user
@@ -1119,10 +1128,162 @@ Obtain details of client that has not yet onboarded
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 404 - Client does not exist
+* 500 - Backend service error
+
+## Change Response Emails
+
+Change client response emails
+
+> Endpoint: versus_v2_change_response_emails
+
+> Payload
+
+``` json
+{
+  "email": "hi@mail.com",
+  "responseEmails": "new12@mail.com, new233@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully changed response emails",
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "responseEmails": "new12@mail.com, new233@mail.com",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist for email
+* 500 - Backend service error
+
+## Update Alert Options
+
+Update Client Alert Options
+
+> Endpoint: versus_v2_update_alert_options
+
+> Payload
+
+``` json
+{
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "email": "hi@mail.com",
+  "alertOptions": {
+        "alertCriticalMentions": true,
+        "alertMonthly": false,
+        "alertWeekly": false,
+        "alertDaily": true
+  },
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully updated alert options",
+    "clientRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+    "alertOptions": {
+        "alertCriticalMentions": true,
+        "alertMonthly": false,
+        "alertWeekly": false,
+        "alertDaily": true
+  },
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist || Client does not exist for email
+* 500 - Backend service error
+
+## Change Can Edit Privilege
+
+Change team member edit privilege
+
+> Endpoint: versus_v2_change_response_emails
+
+> Payload
+
+``` json
+{
+  "email": "hi@mail.com",
+  "teamRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully changed edit privileges of team member",
+    "teamRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+    "canEdit": false
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist || Client does not exist for email
+* 500 - Backend service error
+
+## Change Search Terms
+
+Change Client search terms. 
+
+> Endpoint: versus_v2_change_search_terms
+
+> Payload
+
+``` json
+{
+   "email": "newUser@gmail.com",
+    "searchTerms": {
+        "brandName": "enterfive",
+        "otherBrandNames": "e5, versus
+        ",
+        "twitterHandles": "@vwedesam",
+        "countriesToTrack": [ 2, 4, 6],
+        "languagesToTrack": [ "EN" , "FR" ]
+    },
+    "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjMwMjUxYWIxYTJmYzFkMzllNDMwMWNhYjc1OTZkNDQ5ZDgwNDI1ZjYiLCJ0eXAiOiJKV1QifQ."
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully updated search terms",
+    "clientRef": "6449-9f78-4cf4-9c91-49093e18137b",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
 * 500 - Backend service error
 
 ## Get Team Members
@@ -1148,21 +1309,136 @@ Get client team members
   "message": "Successfully obtained team members",
   "teamMembers": [
     {
-      "email": "deji@enterfive.com",
-      "canEdit": false,
       "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-      "accepted": true
+      "teamRef": "3ac9-4c77-b3b1-c7c53f113d5a",
+      "email": "deji@enterfive.com",
+      "firstName": "e5",
+      "lastName": "enter",
+      "canEdit": false,
+      "status": "pending",
+      "isAdmin": true
+    },
+    {
+      ...
+      ...
+      ...
     }
   ]
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - User is not authorized to make this request || Error authenticating user
 * 404 - Team does not exist
 * 500 - Backend service error
+
+## Remove Team Member
+
+Remove client team member 
+
+> Endpoint: versus_v2_remove_team_member
+
+> Payload
+
+``` json
+{
+  "email": "hi@mail.com",
+  "teamRef": "aXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully removed team member",
+    "teamRef": "aXKB0SzWN6xh7RVyzl",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 403 - You are not authorized to remove this team member
+* 404 - Client does not exist || Team does not exist
+* 500 - Backend service error
+
+## Invite New Team Member
+
+Invite new team member 
+
+> Endpoint: versus_v2_invite_new_team_member
+
+> Payload
+
+``` json
+{
+  "email": "hi@mail.com",
+  "newTeamMemberEmail": "new_member@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully added new team member",
+    "newTeamMember": {
+        "email": "new_member@mail.com", 
+        "inviteStatus": "pending",
+        "clientRef": "clkdydaXKB0SzWN6xh7RVyzl",
+        "teamRef": "aXKB0SzWN6xh7RVyzl",
+    }
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
+## Resend Team Member Invite
+
+resend team member invite. 
+
+> Endpoint: versus_v2_resend_team_member_invite
+
+> Payload
+
+``` json
+{
+  "email": "hi@mail.com",
+  "newTeamMemberEmail": "new_member@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully resent new team member invite",
+    "newTeamMemberEmail": "new_member@mail.com",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
 
 ## Get Top Influencers
 
@@ -1438,7 +1714,9 @@ Onboard client
   "responseEmails": "pr@e5.com, hr@e5.com",
   "comparisonBrands": [],
   "teamMembers": [],
-  "filterProfanity": true
+  "filterProfanity": true,
+  "countriesToTrack": [ 2, 4, 7],
+  "languagesToTrack":[ "EN", "FR" ]
 }
 ```
 
@@ -1451,7 +1729,7 @@ Onboard client
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - Client is not approved for onboarding
@@ -1548,7 +1826,7 @@ Obtain client's current value of versus credit
 }
 ```
 
-> Errors
+**Errors**
 
 * 400 - Missing required parameters
 * 401 - User is not authorized to make this request || Error authenticating user
@@ -1606,6 +1884,7 @@ Generates and downloads Versus pdf report based on filter parameters
     "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1"
 }
 ```
+
 ## Download Listen Report
 
 Generates and downloads Versus pdf report based on filter parameters
@@ -1740,7 +2019,9 @@ Obtain all subscription plans in db, sorted in ascending `sequence` order.
   ]
 }
 ```
+
 **Errors**
+
 * 400 - Only GET requests are allowed
 * 404 - There are no subscription plans
 * 500 - Error obtaining subscription plans
@@ -2193,15 +2474,16 @@ Add a new client and team on signup. This is the first step before setting up a 
 **Method** POST
 
 **Required Params**
-| Field | Type | Description |
-| - | - | - |
-| email | String | Client admin email |
-| firstName | String | Client admin first name |
-| lastName | String | Client admin last name |
-| organizationName | String | Client organization name |
-| organizationSector | String | Client organization sector |
-| subscriptionPlanRef | String | Selected subscription plan ref |
-| subscriptionPlanName | String | Selected subscription plan name |
+
+| Field | Type | Description.
+| --- | --- | --- 
+| email | String | Client admin email.
+|firstName | String | Client admin first name.
+| lastName | String | Client admin last name.
+| organizationName | String | Client organization name.
+| organizationSector_id | Integer | Client organization sector.
+| subscriptionPlanRef | String | Selected subscription plan ref.
+| subscriptionPlanName | String | Selected subscription plan name .
 
 **Sample response** 200
 ```json
@@ -2217,6 +2499,7 @@ Add a new client and team on signup. This is the first step before setting up a 
 }
 ```
 **Errors**
+
 * 400 - Missing parameter
 * 409 - Client already exists and has onboarded
 * 500 - Error creating new team | Error creating new SME client | Error getting client by email
@@ -2231,10 +2514,11 @@ Securely create a checkout session for subscription payments via Stripe.
 **Method** POST
 
 **Required Params**
-| Field | Type | Description |
-| - | - | - |
-| client | Object | The standard client object complete with properties including email, firstName, etc  |
-| subscriptionPlan | String | Selected subscription plan ref |
+
+| Field | Type | Description.
+| --- | --- | --- 
+| client | Object | The standard client object complete with properties including email, firstName, etc.
+| subscriptionPlan | String | Selected subscription plan ref.
 
 **Sample response** 200
 ```json
@@ -2244,6 +2528,7 @@ Securely create a checkout session for subscription payments via Stripe.
 }
 ```
 **Errors**
+
 * 400 - Missing parameter
 * 403 - Only POST requests are allowed
 * 404 - Subscription plan does not exist
@@ -2259,6 +2544,7 @@ Securely handles subscription and other payment events from Stripe. It adds the 
 **Method** POST
 
 **Errors**
+
 * 400 - Webhook error
 * Logs only - Error adding subscription plan to client | Error adding purchased versus credits for client
 
@@ -2272,6 +2558,7 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 **Method** POST
 
 **Required Params**
+
 | Field | Type | Description |
 | - | - | - |
 | client | Object | The standard client object complete with properties including email, firstName, etc  |
@@ -2285,6 +2572,7 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 }
 ```
 **Errors**
+
 * 400 - Missing parameter | Invalid param . Should be type | Subscription plan is not free
 * 403 - Only POST requests are allowed
 * 404 - Subscription plan does not exist
