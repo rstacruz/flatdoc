@@ -2272,12 +2272,14 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 **Method** POST
 
 **Required Params**
+
 | Field | Type | Description |
 | - | - | - |
 | client | Object | The standard client object complete with properties including email, firstName, etc  |
 | subscriptionPlan | String | Selected subscription plan ref |
 
 **Sample response** 200
+
 ```json
 {
   "message": "ccessfully subscribed client to free plan",
@@ -2285,7 +2287,55 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 }
 ```
 **Errors**
+
 * 400 - Missing parameter | Invalid param . Should be type | Subscription plan is not free
 * 403 - Only POST requests are allowed
 * 404 - Subscription plan does not exist
 * 500 - Error subscribing client to free plan | Error obtaining subscription plan
+
+
+## Publish Client Scraped News
+
+Fetches news items that match a client's search terms from the scraper project and publishes them to Pub Sub.
+
+**Endpoint** publish_client_scraped_news
+
+**Method** POST
+
+**Required parameters**
+
+| Field | Type | Description |
+| - | - | - |
+| clientRef | String | Client unique reference |
+| searchTerms | Array | An array of strings listing client search terms |
+| from | String | Datetime string indicating upper limit of when the search should cover |
+| to | String | Datetime string indicating lower limit of when the search should cover |
+
+**Sample response** 202
+
+```json
+{
+  "message": "Successfully fetched scraper news"
+}
+```
+
+**Errors**
+
+
+
+## Publish Clients Scraped News
+Asynchronously calls publish_client_scraped_news to fetch and publish hourly news articles matching clients search terms.
+
+**Endpoint** publish_clients_scraped_news
+
+**Method** POST
+
+**Sample response** 200
+
+```json
+{
+  "message": "Successfully started clients scraped news publishing"
+}
+```
+
+**Errors**
