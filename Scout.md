@@ -178,7 +178,7 @@ Get the questions associated with a campaign.
 **Sample payload**
 ``` json
 {
-  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+  "docRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
   "scoutRef": "+2341234567890"
 }
 ```
@@ -188,15 +188,41 @@ Get the questions associated with a campaign.
 {
   "message": "Successfully obtained questions",
   "questions": [
-    {
-      "campaignName": "campaignRef",
-      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
-      "clientName": "clientName",
-      "clientRef": "clientRef",
-      "options": "1,2,3",
-      "question": "Big question",
-      "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
-    }
+        {
+            "questionRef": "9d2eb846-41f9-4745-af85-6d0a9951ecdc",
+            "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+            "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+            "campaignName": "Demographics Survey",
+            "clientName": "The Enterprise",
+            "question": "What is your highest education level?",
+            "options": {
+                "range": [],
+                "options_list": [
+                    "No schooling completed",
+                    "Nursery school to 8th grade",
+                    "Some high school no diploma",
+                    "High school graduate diploma or the equivalent (for example: GED)",
+                    "Some college credit no degree",
+                    "Trade/technical/vocational training",
+                    "Associate degree",
+                    "Bachelors degree",
+                    "Masters degree",
+                    "Professional degree",
+                    "Doctorate degree"
+                ],
+                "unit": "single_select",
+                "type": "multiplechoice"
+            },
+            "sequence": null,
+            "optionsListNG": [],
+            "optionsListGH": [],
+            "optionsListKE": [],
+            "optionsUnitNG": null,
+            "optionsUnitGH": null,
+            "optionsUnitKE": null,
+            "optionsUnitTZ": null,
+            "optionsListTZ": []
+        }
   ]
 }
 ```
