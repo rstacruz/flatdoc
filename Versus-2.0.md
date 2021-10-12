@@ -2354,7 +2354,7 @@ Asynchronously calls publish_client_scraped_news to fetch and publish hourly new
 
 **Errors**
 
-## tweet reclassify by id
+## Tweet Reclassify By Id
 
 Update document retag sentiment by id.
 
@@ -2388,7 +2388,7 @@ Update document retag sentiment by id.
 - 104 - error
 - 404 - Wrong authtoken
 
-## tweet reclassify by screenname
+## Tweet Reclassify By Screenname
 
 Update document retag sentiment by screenname.
 
