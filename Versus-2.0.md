@@ -2353,3 +2353,71 @@ Asynchronously calls publish_client_scraped_news to fetch and publish hourly new
 ```
 
 **Errors**
+
+## tweet reclassify by id
+
+Update document retag sentiment by id.
+
+**Endpoint** tweet_reclassify_by_id
+
+**Method** POST
+
+> Sample payload (All the parameters here are required)
+
+```json
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "id_str": "1086372310163046400",
+  "old_class": 1,
+  "new_class": 1
+}
+```
+
+> Sample response
+
+```json
+{
+  "modified": 1
+}
+```
+
+**Errors**
+
+- 102 - missing required parameter
+- 103 - missing payload
+- 104 - error
+- 404 - Wrong authtoken
+
+## tweet reclassify by screenname
+
+Update document retag sentiment by screenname.
+
+**Endpoint** tweet_reclassify_by_screenname
+
+**Method** POST
+
+> Sample payload (All the parameters here are required)
+
+```json
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "screenname": "womenofpurpose",
+  "old_class": 1,
+  "new_class": 1
+}
+```
+
+> Sample response
+
+```json
+{
+  "modified": 1
+}
+```
+
+**Errors**
+
+- 102 - missing required parameter
+- 103 - missing payload
+- 104 - error
+- 404 - Wrong authtoken
