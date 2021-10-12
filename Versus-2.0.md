@@ -2356,7 +2356,7 @@ Asynchronously calls publish_client_scraped_news to fetch and publish hourly new
 
 ## Tweet Reclassify By Id
 
-Update document retag sentiment by id.
+Update sentiment retag requests by id.
 
 **Endpoint** tweet_reclassify_by_id
 
@@ -2390,7 +2390,7 @@ Update document retag sentiment by id.
 
 ## Tweet Reclassify By Screenname
 
-Update document retag sentiment by screenname.
+Update sentiment retag requests by screenname.
 
 **Endpoint** tweet_reclassify_by_screenname
 
