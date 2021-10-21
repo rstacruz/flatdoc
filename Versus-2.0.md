@@ -383,6 +383,92 @@ To save a scout device registration token. It handles both creation of a new rec
 - 403 - Only POST requests are allowed
 - 500 - Error creating new device registration token record || Error updating existing device registration token record || Error fetching token record
 
+## Update dob (Date of Birth)
+
+Updates a scout's date of birth.
+
+> Endpoint: scout_update_dob
+
+> Payload (All parameters are required)
+
+```json
+{
+   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+    "scoutRef": "+2348134959703",
+    "dob": "2021-10-01"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
+
+## Update People In Household
+
+Updates the range of the number of people in a scout's household.
+
+> Endpoint: scout_update_people_in_household
+
+> Payload (All parameters are required)
+
+```json
+{   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+    "scoutRef": "+2348134959703",
+    "people_in_household": "below_3"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
+
+## Update Children In Household
+
+Updates the range of the number of children in a scout's household.
+
+> Endpoint: scout_update_children_in_household
+
+> Payload (All parameters are required)
+
+```json
+{   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+    "scoutRef": "+2348134959703",
+    "children_in_household": "below_3"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
+
+
 # Dashboard
 
 These are endpoints called by v2.0 dashbboard components.
