@@ -2,6 +2,7 @@
 
 These are general purpose endpoints that are not necessarily attached to scout or dashboard functions
 
+
 ## Send SMS
 
 This function leverages Twilio APIs to send SMS to a phone number.
@@ -13,7 +14,7 @@ Please use the endpoint and sample _authstring_ as is.
 
 ```json
 {
-  "phoneNumber": "+2348123456789",
+  "phoneNumber": "+2348123456789, +23481....",
   "message": "Text message to be sent",
   "authstring": "55ad4986-b519-4e44-ab0b-890527299af6"
 }
@@ -27,7 +28,7 @@ Please use the endpoint and sample _authstring_ as is.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing parameter phoneNumber, message, authstring || Failed authentication. Invalid authstring || Message exceeds allowed number of characters 150/140
 - 500 - Failed to send SMS
@@ -62,12 +63,47 @@ This is called after a scout has answered all campaign questions. It calculates 
 }
 ```
 
-> Errors
+**Errors**
+
+* 401 - Failed authentication. Authstring invalid or not found in request body
+* 403 - Missing required parameters || Scout has already completed this campaign
+* 404 - Scout does not exist
+* 500 - Backend service error || Oops! Something happened from our end
+
+
+## End Campaign If Capped
+
+This is called before a response can be added to a scout account to check if the number of respondents alloted has be exceeded.
+
+> Endpoint: versus_v2_end_campaign_if_capped
+
+> Payload
+
+``` json
+{
+  "campaignRef": "47b73826-e9b2-412f-b8b4-c055eeec778b",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully ended client campaign",
+}
+or 
+{
+  "message": "Campaign allotment not exhausted"
+}
+```
+
+**Errors**
 
 - 401 - Failed authentication. Authstring invalid or not found in request body
 - 403 - Missing required parameters || Scout has already completed this campaign
 - 404 - Scout does not exist
 - 500 - Backend service error || Oops! Something happened from our end
+
 
 ## Get Campaigns
 
@@ -106,7 +142,7 @@ To obtain campaigns that match a scout's demographic.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Scout is not verified
 - 403 - Missing required param: phoneNumber
@@ -165,7 +201,7 @@ Get current scout partners.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing authstring in request body
 - 401 - Failed authentication. Invalid authstring
@@ -198,7 +234,7 @@ Convert scout credit amount to equivalent cash.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing body parameters... || We do not yet support cashout in that country || Error converting scout credit
 - 401 - Failed authentication. Authstring invalid or not found in request body
@@ -232,7 +268,7 @@ This endpoint verifies scout bank account number and creates a Paystack recipien
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing body parameters ... || Error verifying account number || Error creating recipient
 - 401 - Failed authentication. Authstring invalid or not found in request body
@@ -269,7 +305,7 @@ Initiate transfer of funds to scout bank account.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters || That country is not yet supported for cashout || Error converting scout credit for transfer || Error initiating transfer to scout || Error checking transfer status || Failed to transfer money to recipient
 - 401 - Failed authentication. Authstring invalid or not found in request body
@@ -334,7 +370,7 @@ Obtain a list of banks with their codes.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Error obtaining banks list
 - 401 - Failed authentication. Authstring invalid or not found in request body
@@ -376,7 +412,7 @@ To save a scout device registration token. It handles both creation of a new rec
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing parameter scoutRef, deviceRegistrationToken
 - 401 - Failed authentication. Authstring invalid or not found in request body
@@ -487,13 +523,11 @@ Add a new campaign
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
   "description": "Let’s get you started with a simple demographics survey! This will help us send you surveys that are more appropriate for you.",
-  "endDate": 2571212464693,
-  "startDate": 1546300800,
   "campaignName": "Demographics Survey",
   "isDemographicSurvey": true,
   "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-  "country": "NG",
-  "stateOrRegion": "Lagos",
+  "country": 160, // country id
+  "stateOrRegion": 6, // state or region id
   "endAge": 65,
   "startAge": 16,
   "gender": "female",
@@ -510,7 +544,7 @@ Add a new campaign
 }
 ```
 
-> Errors
+**Errors**
 
 - 401 - User is not authorized to make this request || Error authenticating user
 - 402 - Insufficient versus credit balance
@@ -532,7 +566,7 @@ Add a new client on signup
   "firstName": "Xavier",
   "lastName": "Stan",
   "organizationName": "Enterfive",
-  "OrganizationSector": "Software and Internet"
+  "OrganizationSector_id": 1,
 }
 ```
 
@@ -545,7 +579,7 @@ Add a new client on signup
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -567,10 +601,10 @@ Add a new campaign question
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
   "question": "Which snack do you like best?",
   "optionsType": "multiplechoice",
-  "optionsList": [
-    { "text": "Biscuits" },
-    { "text": "Chocolate" },
-    { "text": "Groundnuts" }
+  "optionsList": [ 
+    "Biscuits",
+    "Chocolate",
+    "Groundnuts"
   ],
   "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
 }
@@ -584,7 +618,7 @@ Add a new campaign question
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -617,7 +651,7 @@ Confirm a new team member who is onboarding and creating a profile
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - Invalid team token
@@ -638,7 +672,15 @@ Update a campaign
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
-  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+  "campaignName": "Demographics Survey",
+  "description": "Let’s get you started with a simple demographics survey!",
+  "gender": "male",
+  "startAge": 20,
+  "endAge": 29,
+  "country": 160,
+  "stateOrRegion": 20,
+  "startDate": "2021/07/23"
 }
 ```
 
@@ -651,7 +693,7 @@ Update a campaign
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -672,7 +714,15 @@ Update client data
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
   "clientData": {
-    "logoURL": "https://clientlogo.png"
+        "organizationSector_id": 5,
+        "firstName": "john",
+        "lastName": "doe",
+        "alertCriticalMentions": true,
+        "alertDaily": true,
+        "alertWeekly": false,
+        "alertMonthly": true
+        ...
+        ...
   }
 }
 ```
@@ -685,7 +735,7 @@ Update client data
 }
 ```
 
-> Errors
+**Errors**
 
 - 401 - Team member does not have edit capability || Error authenticating user
 - 402 - Insufficient versus credit balance
@@ -693,7 +743,43 @@ Update client data
 - 404 - Team not found || Client does not exist
 - 500 - Backend service error
 
-## Get All Campaign Data \*\*
+## Get Survey Data
+
+Get Survey data
+
+> Endpoint: versus_v2_get_survey_data
+
+> Payload
+
+``` json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained survey data",
+  "campaign": {
+    ...
+    ...
+  }
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Campaign does not exist
+* 500 - Backend service error
+
+## Get All Campaign Data **
 
 Get all campaign-related data
 
@@ -726,7 +812,7 @@ Get all campaign-related data
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -760,7 +846,7 @@ Get all surveys
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -792,12 +878,31 @@ Get campaign data
 {
   "message": "Successfully obtained campaign data",
   "campaign": {},
-  "questionsData": [],
-  "responsesData": []
+  "questionsData": [
+    {
+        "questionRef": "08f7af41-2774-4f7c-a33d-ba3e00b72723",
+        "campaignRef": "812fa6a9-3f68-4ec3-a74c-6f834045d151",
+        "question": "Which snack do you like best?",
+        "response_type": "multiplechoice",
+        "response_lower_range": null,
+        "response_upper_range": null,
+        "sequence": 1,
+        "options": {
+          "options_list": [
+            { "id": 234, "option": "always happy"}
+          ],
+          "type": "nps"
+        }
+    }
+  ],
+  "responsesData": {
+        "numberOfResponses": 5
+    },
+  "highestSequence": 1
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -828,12 +933,24 @@ Get all campaigns
 {
   "message": "Successfully obtained campaigns data",
   "campaign": [],
-  "questionsData": [],
-  "responsesData": []
+  "questionsData": [
+    {
+        "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+        "campaignRef": "70254780-fc7d-4f17-a2e9-daae7ac83d42",
+        "numberOfQuestions": 24
+    }, ....
+  ],
+  "responsesData": [
+    {
+        "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+        "campaignRef": "8f23b689-790d-4e0a-8cff-b03e07433278",
+        "numberOfResponses": 144
+    },
+  ]
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -876,7 +993,7 @@ Get processed chart data and labels
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -908,7 +1025,7 @@ Get client data
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -952,7 +1069,7 @@ Get mentions for specific set of filters
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -999,7 +1116,7 @@ Get a summary of mentions distribution for a period
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1034,7 +1151,7 @@ Obtain most popular mentions
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1073,7 +1190,7 @@ Get social media and news mentions details for newsfeed
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1107,7 +1224,7 @@ Obtain sources of news mentions
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1141,7 +1258,7 @@ Obtain sources of other mentions
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1174,7 +1291,7 @@ Obtain sources of social media mentions
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1203,15 +1320,167 @@ Obtain details of client that has not yet onboarded
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 404 - Client does not exist
 - 500 - Backend service error
 
+## Change Response Emails
+
+Change client response emails
+
+> Endpoint: versus_v2_change_response_emails
+
+> Payload
+
+```json
+{
+  "email": "hi@mail.com",
+  "responseEmails": "new12@mail.com, new233@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully changed response emails",
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "responseEmails": "new12@mail.com, new233@mail.com",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist for email
+* 500 - Backend service error
+
+## Update Alert Options
+
+Update Client Alert Options
+
+> Endpoint: versus_v2_update_alert_options
+
+> Payload
+
+```json
+{
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "email": "hi@mail.com",
+  "alertOptions": {
+        "alertCriticalMentions": true,
+        "alertMonthly": false,
+        "alertWeekly": false,
+        "alertDaily": true
+  },
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully updated alert options",
+    "clientRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+    "alertOptions": {
+        "alertCriticalMentions": true,
+        "alertMonthly": false,
+        "alertWeekly": false,
+        "alertDaily": true
+  },
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist || Client does not exist for email
+* 500 - Backend service error
+
+## Change Can Edit Privilege
+
+Change team member edit privilege
+
+> Endpoint: versus_v2_change_can_edit_privilege
+
+> Payload
+
+```json
+{
+  "email": "hi@mail.com",
+  "teamRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully changed edit privileges of team member",
+    "teamRef": "b4501e1b-a393-480a-828d-890f2ea75498",
+    "canEdit": false
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user || Team member does not have edit capabilities
+* 404 - Team does not exist || Client does not exist for email
+* 500 - Backend service error
+
+## Change Search Terms
+
+Change Client search terms. 
+
+> Endpoint: versus_v2_change_search_terms
+
+> Payload
+
+```json
+{
+   "email": "newUser@gmail.com",
+    "searchTerms": {
+        "brandName": "enterfive",
+        "otherBrandNames": "e5, versus
+        ",
+        "twitterHandles": "@vwedesam",
+        "countriesToTrack": [ 2, 4, 6],
+        "languagesToTrack": [ "EN" , "FR" ]
+    },
+    "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjMwMjUxYWIxYTJmYzFkMzllNDMwMWNhYjc1OTZkNDQ5ZDgwNDI1ZjYiLCJ0eXAiOiJKV1QifQ."
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully updated search terms",
+    "clientRef": "6449-9f78-4cf4-9c91-49093e18137b",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
 ## Get Team Members
 
-Get client team members
+Get client team members 
 
 > Endpoint: versus_v2_get_team_members
 
@@ -1232,21 +1501,135 @@ Get client team members
   "message": "Successfully obtained team members",
   "teamMembers": [
     {
-      "email": "deji@enterfive.com",
-      "canEdit": false,
       "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-      "accepted": true
+      "teamRef": "3ac9-4c77-b3b1-c7c53f113d5a",
+      "email": "deji@enterfive.com",
+      "firstName": "e5",
+      "lastName": "enter",
+      "canEdit": false,
+      "status": "pending",
+      "isAdmin": true
+    },
+    {
+      ...
+      ...
+      ...
     }
   ]
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
-- 404 - Team does not exist
 - 500 - Backend service error
+
+## Remove Team Member
+
+Remove client team member 
+
+> Endpoint: versus_v2_remove_team_member
+
+> Payload
+
+```json
+{
+  "email": "hi@mail.com",
+  "teamRef": "aXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully removed team member",
+    "teamRef": "aXKB0SzWN6xh7RVyzl",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 403 - You are not authorized to remove this team member
+* 404 - Client does not exist || Team does not exist
+* 500 - Backend service error
+
+## Invite New Team Member
+
+Invite new team member 
+
+> Endpoint: versus_v2_invite_new_team_member
+
+> Payload
+
+```json
+{
+  "email": "hi@mail.com",
+  "newTeamMemberEmail": "new_member@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully added new team member",
+    "newTeamMember": {
+        "email": "new_member@mail.com", 
+        "inviteStatus": "pending",
+        "clientRef": "clkdydaXKB0SzWN6xh7RVyzl",
+        "teamRef": "aXKB0SzWN6xh7RVyzl",
+    }
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
+## Resend Team Member Invite
+
+resend team member invite. 
+
+> Endpoint: versus_v2_resend_team_member_invite
+
+> Payload
+
+```json
+{
+  "email": "hi@mail.com",
+  "newTeamMemberEmail": "new_member@mail.com",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+    "message": "Successfully resent new team member invite",
+    "newTeamMemberEmail": "new_member@mail.com",
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 404 - Team does not exist
+* 500 - Backend service error
+
 
 ## Get Top Influencers
 
@@ -1261,7 +1644,9 @@ Obtain a list of top influencers
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
-  "period": "today"
+  "period": "today",
+  "mention": {},
+  "brandName":
 }
 ```
 
@@ -1277,7 +1662,7 @@ Obtain a list of top influencers
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1285,7 +1670,7 @@ Obtain a list of top influencers
 
 ## Get Total Questions
 
-Get a count of total questions for a client
+Get a count of total questions for a client 
 
 > Endpoint: versus_v2_get_total_questions
 
@@ -1308,15 +1693,15 @@ Get a count of total questions for a client
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
 - 500 - Backend service error
 
 ## Get Total Responses
 
-Get a count of total responses for a client
+Get a count of total responses for a client 
 
 > Endpoint: versus_v2_get_total_responses
 
@@ -1326,7 +1711,7 @@ Get a count of total responses for a client
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
-  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
 }
 ```
 
@@ -1339,7 +1724,43 @@ Get a count of total responses for a client
 }
 ```
 
-> Errors
+**Errors**
+
+- 400 - Missing required parameters
+- 401 - User is not authorized to make this request || Error authenticating user
+- 500 - Backend service error
+
+## Get Survey Questions
+
+Get questions for a campaign
+
+> Endpoint: versus_v2_get_survey_questions
+
+> Payload
+
+```json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained survey questions",
+  "questions": [
+    { }
+    ....
+    ...
+  ]
+}
+```
+
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
@@ -1371,11 +1792,42 @@ Get a count of total survey questions for each campaign
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
 - 500 - Backend service error
+
+## Get Total Survey Respondents
+
+Get total survey respondents for a campaign
+
+> Endpoint: versus_v2_get_total_survey_respondents
+
+> Payload
+
+```json
+{
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained total survey respondents",
+  "totalSurveyRespondents": 6
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Get Total Survey Responses
 
@@ -1385,7 +1837,7 @@ Get a count of total survey responses for each campaign
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
@@ -1396,18 +1848,18 @@ Get a count of total survey responses for each campaign
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully obtained total survey responses",
   "totalSurveyResponses": 6
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Get Total Surveys
 
@@ -1417,11 +1869,98 @@ Obtain a count of all the surveys for a client
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
-  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully obtained total surveys data",
+  "totalSurveys": 14
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## Get Survey Options Data
+
+Get Survey options data
+
+> Endpoint: versus_v2_get_survey_options_data
+
+> Payload
+
+``` json
+{
+  "questionRef": "8b6713e8-6ff7-4d32-90f6-2bddef574c0f",
+  "option": "yes",
+  "age": [1, 70],
+  "gender": ["female", "male", "other"],
+  "tribe": ["igbo", "hausa", "yoruba", "other"],
+  "educationLevel": ["Senior Secondary", "Primary"],
+  "religion": ["other", "christian"],
+  "relationshipStatus": ["Single", "Married"],
+  "employmentStatus": ["student"],
+  "childrenInHousehold": ["3_to_5", "5_to_10"],
+  "personsInHousehold": ["3_to_5"],
+  "householdEarningsMonthly": ["100_to_500_USD"],
+  "personalEarningsMonthly": ["100_to_500_USD"],
+  "childrenUnder18": ["yes"]
+}
+```
+
+> Response
+
+``` json
+{
+    "message": "Successfully obtained options data",
+    "totalResponses": 12,
+    "totalOptionResponses": 5,
+    "totalFiltered": 2,
+    "totalOptionFiltered": 0,
+}
+```
+
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
+
+## get Total Filtered Survey Respondents
+
+Get Total Filtered Survey Respondents
+
+> Endpoint: versus_v2_get_total_filtered_survey_respondents
+
+> Payload
+
+```json
+{
+  "questionRef": "8b6713e8-6ff7-4d32-90f6-2bddef574c0f",
+  "option": "yes",
+  "age": [1, 70],
+  "gender": ["female", "male", "other"],
+  "tribe": ["igbo", "hausa", "yoruba", "other"],
+  "educationLevel": ["Senior Secondary", "Primary"],
+  "religion": ["other", "christian"],
+  "relationshipStatus": ["Single", "Married"],
+  "employmentStatus": ["student"],
+  "childrenInHousehold": ["3_to_5", "5_to_10"],
+  "personsInHousehold": ["3_to_5"],
+  "householdEarningsMonthly": ["100_to_500_USD"],
+  "personalEarningsMonthly": ["100_to_500_USD"],
+  "childrenUnder18": ["yes"]
 }
 ```
 
@@ -1429,16 +1968,16 @@ Obtain a count of all the surveys for a client
 
 ```json
 {
-  "message": "Successfully obtained total surveys data",
-  "totalSurveys": 14
+    "message": "Successfully obtained total survey respondents",
+    "totalFilteredSurveyRespondents": 9,
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Launch campaign
 
@@ -1448,7 +1987,7 @@ CHange the status pf a campaign from draft to live
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
@@ -1459,18 +1998,18 @@ CHange the status pf a campaign from draft to live
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully launched client campaign",
   "campaignRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Mark Irrelevant Mentions
 
@@ -1480,29 +2019,29 @@ Register a mention as irrlevant and notify project team
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
   "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
   "mention": {},
-  "brandName":
+  "brandName": 
 }
 ```
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully sent email"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Onboard Client
 
@@ -1512,7 +2051,7 @@ Onboard client
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "officeAddress": "35 Oju Omega Avenue, Ikoyi, Lagos",
@@ -1522,24 +2061,26 @@ Onboard client
   "responseEmails": "pr@e5.com, hr@e5.com",
   "comparisonBrands": [],
   "teamMembers": [],
-  "filterProfanity": true
+  "filterProfanity": true,
+  "countriesToTrack": [ 2, 4, 7],
+  "languagesToTrack":[ "EN", "FR" ]
 }
 ```
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully onboarded client",
   "clientRef": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - Client is not approved for onboarding
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - Client is not approved for onboarding
+* 500 - Backend service error
 
 ## Respond To Mention
 
@@ -1549,7 +2090,7 @@ Notify client designated responder of a mention they should act on
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
@@ -1562,17 +2103,17 @@ Notify client designated responder of a mention they should act on
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully sent email"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Retag Mention
 
@@ -1582,7 +2123,7 @@ Register a mention which sentiment is to be retagged and notify project team
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
@@ -1595,17 +2136,17 @@ Register a mention which sentiment is to be retagged and notify project team
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully sent email"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Get Versus Credits
 
@@ -1615,7 +2156,7 @@ Obtain client's current value of versus credit
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "nqaXKB0SzWN6xh7RVyzl",
   "uid": "bfbbc055eeec778b",
@@ -1625,18 +2166,18 @@ Obtain client's current value of versus credit
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully obtained client versus credits",
   "versusCredits": 5500
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - User is not authorized to make this request || Error authenticating user
+* 500 - Backend service error
 
 ## Verify Signup Access
 
@@ -1646,7 +2187,7 @@ Validate tokenized signup link
 
 > Payload
 
-```json
+``` json
 {
   "tk": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
 }
@@ -1654,17 +2195,17 @@ Validate tokenized signup link
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully verified signup"
 }
 ```
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - Invalid signup token
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - Invalid signup token
+* 500 - Backend service error
 
 ## Download Report
 
@@ -1674,20 +2215,20 @@ Generates and downloads Versus pdf report based on filter parameters
 
 > Payload
 
-```json
+``` json
 {
-  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-  "brandName": "The New",
-  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
-  "period": "today",
-  "sentiment": "any sentiment",
-  "sources": {
-    "categories": [],
-    "socialmedia": [],
-    "news": [],
-    "others": []
-  },
-  "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1"
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "brandName": "The New",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
+    "period": "today",
+    "sentiment": "any sentiment",
+    "sources": {
+        "categories": [],
+        "socialmedia": [],
+        "news": [],
+        "others": []
+    },
+    "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1"
 }
 ```
 
@@ -1699,20 +2240,20 @@ Generates and downloads Versus pdf report based on filter parameters
 
 > Payload
 
-```json
+``` json
 {
-  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-  "brandName": "The New",
-  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
-  "period": "today",
-  "sentiment": "any sentiment",
-  "sources": {
-    "categories": [],
-    "socialmedia": [],
-    "news": [],
-    "others": []
-  },
-  "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1"
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "brandName": "The New",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
+    "period": "today",
+    "sentiment": "any sentiment",
+    "sources": {
+        "categories": [],
+        "socialmedia": [],
+        "news": [],
+        "others": []
+    },
+    "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1"
 }
 ```
 
@@ -1724,11 +2265,11 @@ Generates and downloads Versus pdf report based on filter parameters
 }
 ``` -->
 
-> Errors
+**Errors**
 
-- 400 - Missing required parameters
-- 401 - Invalid signup token
-- 500 - Backend service error
+* 400 - Missing required parameters
+* 401 - Invalid signup token
+* 500 - Backend service error
 
 ## Download Comparison Report
 
@@ -1738,34 +2279,32 @@ Generates and downloads Versus comparison pdf report based on filter parameters
 
 > Payload
 
-```json
+``` json
 {
-  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-  "brandName": "The New",
-  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
-  "period": "lastYear",
-  "sentiment": "any sentiment",
-  "sources": {
-    "categories": [],
-    "socialmedia": [],
-    "news": [],
-    "others": []
-  },
-  "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
-  "brands": [
-    "2a304e66-2392-4b25-bd84-f5b7cc6d6aa5",
-    "9da210aa-1033-49ce-aff8-b451b6bece85"
-  ]
+    "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+    "brandName": "The New",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzZjI3NjU0MmJmZmU0NWU5OGMyMGQ2MDNlYmUyYmExMTc2ZWRhMzMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVqaSBJYnJhaGltIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NvbG9ycy0yMWNiYyIsImF1ZCI6ImNvbG9ycy0yMWNiYyIsImF1dGhfdGltZSI6MTU5Mjk3OTk5NiwidXNlcl9pZCI6ImRLOElKNUc5WjFQZkg4RW5jbGN0NWx1MHZJazEiLCJzdWIiOiJkSzhJSjVHOVoxUGZIOEVuY2xjdDVsdTB2SWsxIiwiaWF0IjoxNTkyOTc5OTk2LCJleHAiOjE1OTI5ODM1OTYsImVtYWlsIjoiZGVqaS5hLmlicmFoaW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlamkuYS5pYnJhaGltQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.qTcj7_wouzdZCECKEbkVs_wreCenMpsPhezZcQJcnSL9w0cL3cVu0pJNWEWbKIRxdz7FsEBNkB8p6eQ52mQLnfsVFbLBzNnMBSOZgyOVtgMk46BhCzxWYINgVaLl7hkShf4iD4Q73IEIvtKMN7osFFPYpnn2qCKSUyymvDHyJEx-jhh9zbl6BqDtONvm-Jq-OTAMxtYl7SfE8_vJjg0ndPGhHdDz12pqwpCBPF06oz5HV5U0C53bscpRe1hxP33gqCfyvsN_SWUOPsaESMcaQv_LcDjO29_oDINl-_P83yTaTsTdNwKdFOf4gn71r98SgEVPwhhvjcdwXvGNIWnZQg",
+    "period": "lastYear",
+    "sentiment": "any sentiment",
+    "sources": {
+        "categories": [],
+        "socialmedia": [],
+        "news": [],
+        "others": []
+    },
+    "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "brands": ["2a304e66-2392-4b25-bd84-f5b7cc6d6aa5", "9da210aa-1033-49ce-aff8-b451b6bece85"]
 }
 ```
 
 > Response: Returns Pdf file for Download
 
-> Errors
 
-- 400 - Missing required parameters
-- 401 - Invalid signup token
-- 500 - Backend service error
+**Errors**
+
+* 400 - Missing required parameters
+* 401 - Invalid signup token
+* 500 - Backend service error
 
 ## Get Subscription Plan
 
@@ -1775,7 +2314,7 @@ Obtain details of a subscription plan
 
 > Payload
 
-```json
+``` json
 {
   "subscriptionPlanRef": "081d4b17-a1f3-4600-920f-6f46d3919873"
 }
@@ -1783,7 +2322,7 @@ Obtain details of a subscription plan
 
 > Response
 
-```json
+``` json
 {
   "message": "Successfully obtained subscription plan",
   "subscriptionPlan": {
@@ -1805,7 +2344,6 @@ Obtain all subscription plans in db, sorted in ascending `sequence` order.
 **Method** GET
 
 **Sample response** 200
-
 ```json
 {
   "message": "Successfully obtained subscription plans",
@@ -1831,19 +2369,19 @@ Obtain all subscription plans in db, sorted in ascending `sequence` order.
 
 **Errors**
 
-- 400 - Only GET requests are allowed
-- 404 - There are no subscription plans
-- 500 - Error obtaining subscription plans
+* 400 - Only GET requests are allowed
+* 404 - There are no subscription plans
+* 500 - Error obtaining subscription plans
+
 
 ## Get Total Requests
-
 Get total number of requests for a client.
 
 **Endpoint** versus_v2_get_total_requests
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "12345",
   "uid": "6789",
@@ -1853,30 +2391,30 @@ Get total number of requests for a client.
 
 > Response
 
-```json
+``` json
 {
-  "message": "Successfully obtained total number of requests",
+  "message":"Successfully obtained total number of requests",
   "totalNumberOfRequests": 7
 }
 ```
 
 **Errors**
 
-- 400 - Missing parameter | Invalid param ... Should be of type ...
-- 401 - User is not authorized to make this request | Error authenticating user
-- 403 - Only POST requests are allowed | Unauthorized request
-- 404 - Team does not exist for client | Multimedia requests do not exist
-- 500 - Error obtaining multimedia requests | Error obtaining client team for authorization
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining multimedia requests | Error obtaining client team for authorization
+
 
 ## Get Total Client Request Respondents
-
 Get total number of client request respondents.
 
 **Endpoint** versus_v2_get_total_client_request_respondents
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "12345",
   "uid": "6789",
@@ -1886,30 +2424,71 @@ Get total number of client request respondents.
 
 > Response
 
-```json
+``` json
 {
-  "message": "Successfully obtained total number of request respondents",
+  "message":"Successfully obtained total number of request respondents",
   "totalNumberOfClientRequestRespondents": 7
 }
 ```
 
 **Errors**
 
-- 400 - Missing parameter | Invalid param ... Should be of type ...
-- 401 - User is not authorized to make this request | Error authenticating user
-- 403 - Only POST requests are allowed | Unauthorized request
-- 404 - Team does not exist for client | Multimedia requests do not exist
-- 500 - Error obtaining total number of client request responses | Error obtaining client team for authorization
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of client request responses | Error obtaining client team for authorization
 
-## Get Requests
 
-Get a list of requests belonging to a client
 
-> Endpoint: versus_v2_get_requests
+##  Get Request
+Get a multimedia request/campaign
+
+> Endpoint: versus_v2_get_request 
 
 > Payload
 
-```python
+``` python
+{
+  "clientRef": "12345",
+  "uid": "6789",
+  "idToken": "101112",
+  "requestRef" "d34ffffeefefefefe"
+}
+```
+
+> Response
+
+``` python
+{
+  "message":"Successfully obtained multimedia request",
+  "request": {
+       "clientRef": "12345",
+       "requestName": "Footage of the Lekki Protest",
+       "description": "Let’s get you started with a simple photo request.",
+       "requestRef": "001a0ad177c-a6d0-44a4-8662-7f2851093b81",
+       "country": "NG",
+       "stateOrRegion": "Lagos",
+       "endAge": 65,
+       "startAge": 16,
+       "gender": "female",
+       "numberOfRespondents": 500,
+       "mediaType": "audio",
+       "status": "live",
+       "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
+    }
+}
+```
+
+
+##  Get Requests
+Get a list of requests belonging to a client
+
+> Endpoint: versus_v2_get_requests 
+
+> Payload
+
+``` python
 {
   "clientRef": "12345",
   "uid": "6789",
@@ -1919,13 +2498,12 @@ Get a list of requests belonging to a client
 
 > Response
 
-```python
+``` python
 {
   "message":"Successfully obtained requests",
   [
     {
        "clientRef": "12345",
-       "clientName": "The Enterprise",
        "requestName": "Footage of the Lekki Protest",
        "description": "Let’s get you started with a simple photo request.",
        "requestRef": "001a0ad177c-a6d0-44a4-8662-7f2851093b81",
@@ -1953,104 +2531,142 @@ Get total number of respondents for a request.
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "12345",
   "requestRef": "12345",
   "uid": "6789",
   "idToken": "101112"
 }
+
 ```
 
 > Response
 
-```json
+``` json
 {
-  "message": "Successfully obtained total number of request respondents",
+  "message":"Successfully obtained total number of request respondents",
   "totalNumberOfRequestRespondents": 7
 }
 ```
 
 **Errors**
 
-- 400 - Missing parameter | Invalid param ... Should be of type ...
-- 401 - User is not authorized to make this request | Error authenticating user
-- 403 - Only POST requests are allowed | Unauthorized request
-- 404 - Team does not exist for client | Multimedia requests do not exist
-- 500 - Error obtaining total number of request respondents | Error obtaining client team for authorization
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining total number of request respondents | Error obtaining client team for authorization
 
-## Create Request
-
+##  Create Request
 Create a new multimedia request.
 
 > Endpoint: versus_v2_create_new_request
 
 > Payload
 
-```json
+``` json
 {
   "clientRef": "12345",
-  "clientName": "The enterprise",
   "uid": "6789",
   "idToken": "101112",
   "requestName": "Footage of the Lekki Protest",
   "description": "Let’s get you started with a simple photo request.",
-  "country": "NG",
-  "stateOrRegion": "Lagos",
+  "country": "160", // country id
+  "stateOrRegion": "2", // state or region id
   "endAge": 65,
   "startAge": 16,
   "gender": "female",
   "numberOfRespondents": 500,
   "mediaType": "image"
 }
+
 ```
 
 > Response
 
-```json
+``` json
 {
-  "message": "Successfully created new request",
+  "message":"Successfully created new request",
   "requestRef": "1234567890-09876543234567890-0987654"
 }
 ```
 
 **Errors**
 
-- 400 - Missing parameter clientRef, clientName, requestName, etc | Invalid param description. Should be type string
-- 401 - User is not authorized to make this request | Error authenticating user
-- 403 - Only POST requests are allowed
-- 500 - Error creating new request
+* 400 - Missing parameter clientRef, clientName, requestName, etc | Invalid param description. Should be type string
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed
+* 500 - Error creating new request
 
-## Get Request Responses
 
-Get a list of responses for a request.
+##  End MultiMedia Request
 
-**Endpoint** versus_v2_get_request_responses
+end multimedia request.
+
+**Endpoint** versus_v2_get_request_responses 
 
 > Sample payload
 
-```json
+``` json
 {
   "clientRef": "12345",
   "requestRef": "12345",
   "uid": "6789",
   "idToken": "101112"
 }
+
 ```
 
 > Sample response
 
-```json
+``` json
 {
-  "message": "Successfully obtained request responses",
-  "responses": [
+  "message":"Successfully obtained request responses",
+   
+}
+```
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining request responses | Error obtaining client team for authorization
+
+
+##  Get Request Responses
+
+Get a list of responses for a request.
+
+**Endpoint** versus_v2_get_request_responses 
+
+> Sample payload
+
+``` json
+{
+  "clientRef": "12345",
+  "requestRef": "12345",
+  "uid": "6789",
+  "idToken": "101112"
+}
+
+```
+
+> Sample response
+
+``` json
+{
+  "message":"Successfully obtained request responses",
+    "responses": [
     {
       "clientRef": "12345",
+      "responseRef": "2",
       "requestRef": "12345",
       "scoutRef": "+2349484757484",
-      "mediaUrls": ["https://google.api.com/235617"],
+      "mediaUrls":["https://google.api.com/235617"],
       "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-      "mediaType": "audio"
+      "mediaType":"audio"
     }
   ]
 }
@@ -2058,11 +2674,11 @@ Get a list of responses for a request.
 
 **Errors**
 
-- 400 - Missing parameter | Invalid param ... Should be of type ...
-- 401 - User is not authorized to make this request | Error authenticating user
-- 403 - Only POST requests are allowed | Unauthorized request
-- 404 - Team does not exist for client | Multimedia requests do not exist
-- 500 - Error obtaining request responses | Error obtaining client team for authorization
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+* 404 - Team does not exist for client | Multimedia requests do not exist
+* 500 - Error obtaining request responses | Error obtaining client team for authorization
 
 ## Approve Request Response
 
@@ -2086,78 +2702,296 @@ versus_v2_approve_request_response
 
 ```json
 {
-  "message": "Successfully approved request response",
+  "message":"Successfully approved request response",
   "responseRef": "12345"
 }
 ```
 
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
 ## Reject Request Response.
 
-**Endpoint**
-
-versus_v2_reject_request_response
+> Endpoint: versus_v2_reject_request_response
 
 > Sample payload
 
 ```json
 {
   "clientRef": "12345",
+  "uid": "6789",
+  "idToken": "101112",
   "requestRef": "123456",
   "responseRef": "78900",
-  "reasonForRejection": [
-    "Wrong subject matter",
-    "Poor quality",
-    "Inapropriate content"
-  ],
+  "reasonForRejection":  "NSFW", // NSFW, irrelevant, poor_quality,
   "optionalMessage": "You are not a very serious scout. Why are you running?",
-  "uid": "6789",
-  "idToken": "101112"
 }
-```
-
-> Sample response
-
-```json
-{
-  "message": "Successfully rejected request response",
-  "responseRef": "78900"
-}
-```
-
-## Batch Approve Request Responses.
-
-> Endpoint: versus_v2_reject_request_response
-
-> Payload
-
-```python
-{
-  "clientRef": "12345",
-  "requestRef": "123456",
-  "responseRefs": ["123456", "789081", "213634", "234879"],
-  "uid": "6789",
-  "idToken": "101112"
-}
-
-
 ```
 
 > Response
 
-```python
+```json
+{
+  "message":"Successfully rejected request response",
+  "responseRef": "78900"
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+## Batch Approve Request Responses.
+
+> Endpoint: versus_v2_batch_approve_request_response
+
+> Payload
+
+```json
+{
+  "clientRef": "12345",
+  "uid": "6789",
+  "idToken": "101112",
+  "responseRefs": ["87dudhd8u8udd", "8d8fd77df8huhfdf", "7dyd7f8dfudh8fuhdf8"],
+}
+```
+
+> Response
+
+```json
 {
   "message":"Successfully batch-approved request responses",
   "responseRefs": ["123456", "789081", "213634", "234879"],
 }
 ```
 
-# Share Request Responses.
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+## Credit Scout Interact.
+
+> Endpoint: versus_v2_credit_scout_interact.
+
+> Payload
+
+```json
+{
+  "clientRef": "12345",
+  "uid": "6789",
+  "idToken": "101112",
+  "response": {
+    "scoutRef": "",
+    "responseRef": "",
+    "mediaType": ""
+  }
+}
+```
+
+> Response
+
+``` json
+{
+  "message": "Successfully credited scout",
+  "scoutRef": "2we2e2eexee",
+  "responseRef": "d8s678sd",
+  "credits": 20,
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+## Duplicate Question.
+
+> Endpoint: versus_v2_duplicate_question
+
+> Payload
+
+```json
+{
+    "uid":"dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjhiMjFkNWE1Y2U2OGM1MjNlZTc0MzI5YjQ3ZDg0NGE3YmZjODRjZmYiLCJ0eXAiOiJKV1QifQ.",
+    "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+    "question":  "what's your name?",
+    "optionsType": "nps",
+    "optionsRange": null,
+    "optionsList": ["", ""],
+    "sequence": 3,
+}
+```
+> Response
+
+```json
+{
+  "message":"successfully duplicated campaign !!!",
+  "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+## Update Question.
+
+> Endpoint: versus_v2_update_question
+
+> Payload
+
+```json
+{    
+     "clientRef": "05404180-ac57-4728-a558-4270395678b5",
+   "campaignRef": "d010c0dd-1ade-4ab5-9c5c-938e17832a62",
+   "questionRef": "49cd9ed7-5604-441d-857e-4bba267a60e6",
+      "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+      "question": "Glory to God in the high high_est ...",
+      "optionsType": "multiplechoice",
+      "optionsRange": [],
+      "optionsList": ["yes", "yes12", "yes 333", "ddd"],
+      "sequence": 1,
+    "idToken":"eyJhbG..............."
+}
+```
+
+> Response
+
+```json
+{
+  "message":"successfully updated question !!!",
+  "questionRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+## Reorder Question.
+
+> Endpoint: versus_v2_reorder_questions
+
+> Payload
+
+```json
+{    
+    "clientRef": "14-35bf-45b0-a551-497e10f344de",
+    "uid":"dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjhiMjFkNWE1Y2U2OGM1MjNlZTc0MzI5YjQ3ZDg0NGE3YmZjODRjZmYiLCJ0eXAiOiJKV1QifQ.",
+    "campaignRef": "35bf-45b0-a551-497e10f344de",
+    "questionRef": "0e328014-35bf-45b0-a551-497e10f344de",
+    "orderActionType": "up", // or down
+}
+```
+
+> Response
+
+```json
+{
+  "message":"successfully reorder questions !!!",
+  "questionRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+## Delete Draft Survey.
+
+> Endpoint: versus_v2_delete_draft_survey
+
+> Payload
+
+```json
+{
+    "clientRef":"nqaXKB0SzWN6xh7RVyzl",
+    "uid":"dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjhiMjFkNWE1Y2U2OGM1MjNlZTc0MzI5YjQ3ZDg0NGE3YmZjODRjZmYiLCJ0eXAiOiJKV1QifQ.",
+    "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+> Response
+
+```json
+{
+  "message":"successfully deleted campaign !!!",
+  "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+
+## Delete Question.
+
+> Endpoint: versus_v2_delete_question
+
+> Payload
+
+```json
+{
+    "clientRef":"nqaXKB0SzWN6xh7RVyzl",
+    "uid":"dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+    "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjhiMjFkNWE1Y2U2OGM1MjNlZTc0MzI5YjQ3ZDg0NGE3YmZjODRjZmYiLCJ0eXAiOiJKV1QifQ.",
+    "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+    "questionRef": "8014-35bf-45b0-a551-497e10f344de",
+}
+
+```
+
+> Response
+
+```json
+{
+  "message":"successfully deleted question !!!",
+  "campaignRef": "0e328014-35bf-45b0-a551-497e10f344de",
+}
+```
+
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+# Others
+
+
+## Share Request Responses.
 
 > Endpoint: versus_v2_share_request_responses
 
 > Payload
 
-```python
+```json
 {
   "clientRef": "12345",
   "requestRef": "1234566",
@@ -2170,20 +3004,27 @@ versus_v2_reject_request_response
 
 > Response
 
-```python
+```json
 {
   "message":"Successfully obtained responses zip url for sharing",
   "requestResponsesZipUrl": "https://all-the-responses.zip"
 }
 ```
 
-# Download Request Responses..
+**Errors**
+
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+## Download Request Responses..
 
 > Endpoint: versus_v2_download_request_responses
 
 > Payload
 
-```python
+```json
 {
   "clientRef": "12345",
   "requestRef": "1234566",
@@ -2196,33 +3037,40 @@ versus_v2_reject_request_response
 
 > Response
 
-```python
+```json
 {
 
 }
 ```
 
-## Get Requests Responses
+**Errors**
 
+* 400 - Missing parameter | Invalid param ... Should be of type ...
+* 401 - User is not authorized to make this request | Error authenticating user
+* 403 - Only POST requests are allowed | Unauthorized request
+
+
+
+##  Get Requests Responses
 Get a list of responses for a request.
 
 > Endpoint: versus_v2_get_request_responses
 
 > Payload
 
-```python
+```json
 {
   "clientRef": "12345",
   "requestRef": "12345",
   "uid": "6789",
-  "idToken": "101112"
+  "idToken": "101112",
 }
 
 ```
 
 > Response
 
-```python
+```json
 {
   "message":"Successfully obtained request",
   "request": {
@@ -2244,7 +3092,7 @@ Get a list of responses for a request.
 }
 ```
 
-> Errors
+**Errors**
 
 - 400 - Missing parameter subscriptionPlanRef
 - 403 - Only POST requests are allowed
@@ -2290,15 +3138,16 @@ Add a new client and team on signup. This is the first step before setting up a 
 **Method** POST
 
 **Required Params**
-| Field | Type | Description |
-| - | - | - |
-| email | String | Client admin email |
-| firstName | String | Client admin first name |
-| lastName | String | Client admin last name |
-| organizationName | String | Client organization name |
-| organizationSector_id | String | Client organization sector ID |
-| subscriptionPlanRef | String | Selected subscription plan ref |
-| subscriptionPlanName | String | Selected subscription plan name |
+
+| Field | Type | Description.
+| --- | --- | --- 
+| email | String | Client admin email.
+|firstName | String | Client admin first name.
+| lastName | String | Client admin last name.
+| organizationName | String | Client organization name.
+| organizationSector_id | Integer | Client organization sector.
+| subscriptionPlanRef | String | Selected subscription plan ref.
+| subscriptionPlanName | String | Selected subscription plan name .
 
 **Sample response** 200
 
@@ -2317,6 +3166,10 @@ Add a new client and team on signup. This is the first step before setting up a 
 
 **Errors**
 
+* 400 - Missing parameter
+* 409 - Client already exists and has onboarded
+* 500 - Error creating new team | Error creating new SME client | Error getting client by email
+
 - 400 - Missing parameter
 - 409 - Client already exists and has onboarded
 - 500 - Error creating new team | Error creating new SME client | Error getting client by email
@@ -2330,10 +3183,11 @@ Securely create a checkout session for subscription payments via Stripe.
 **Method** POST
 
 **Required Params**
-| Field | Type | Description |
-| - | - | - |
-| client | Object | The standard client object complete with properties including email, firstName, etc |
-| subscriptionPlan | String | Selected subscription plan ref |
+
+| Field | Type | Description.
+| --- | --- | --- 
+| client | Object | The standard client object complete with properties including email, firstName, etc.
+| subscriptionPlan | String | Selected subscription plan ref.
 
 **Sample response** 200
 
@@ -2345,6 +3199,11 @@ Securely create a checkout session for subscription payments via Stripe.
 ```
 
 **Errors**
+
+* 400 - Missing parameter
+* 403 - Only POST requests are allowed
+* 404 - Subscription plan does not exist
+* 500 - Error creating Stripe checkout session | Error obtaining subscription plan
 
 - 400 - Missing parameter
 - 403 - Only POST requests are allowed
@@ -2361,11 +3220,13 @@ Securely handles subscription and other payment events from Stripe. It adds the 
 
 **Errors**
 
+* 400 - Webhook error
+* Logs only - Error adding subscription plan to client | Error adding purchased versus credits for client
+
 - 400 - Webhook error
 - Logs only - Error adding subscription plan to client | Error adding purchased versus credits for client
 
 ## Subscribe Free Plan
-
 Subscribes client to free plan. This subscription is processed outside of Stripe.
 
 **Endpoint** versus_v2_subscribe_free_plan
@@ -2374,10 +3235,10 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 
 **Required Params**
 
-| Field            | Type   | Description                                                                         |
-| ---------------- | ------ | ----------------------------------------------------------------------------------- |
-| client           | Object | The standard client object complete with properties including email, firstName, etc |
-| subscriptionPlan | String | Selected subscription plan ref                                                      |
+| Field | Type | Description |
+| - | - | - |
+| client | Object | The standard client object complete with properties including email, firstName, etc  |
+| subscriptionPlan | String | Selected subscription plan ref |
 
 **Sample response** 200
 
@@ -2390,120 +3251,8 @@ Subscribes client to free plan. This subscription is processed outside of Stripe
 
 **Errors**
 
-- 400 - Missing parameter | Invalid param . Should be type | Subscription plan is not free
-- 403 - Only POST requests are allowed
-- 404 - Subscription plan does not exist
-- 500 - Error subscribing client to free plan | Error obtaining subscription plan
+* 400 - Missing parameter | Invalid param . Should be type | Subscription plan is not free
+* 403 - Only POST requests are allowed
+* 404 - Subscription plan does not exist
+* 500 - Error subscribing client to free plan | Error obtaining subscription plan
 
-## Publish Client Scraped News
-
-Fetches news items that match a client's search terms from the scraper project and publishes them to Pub Sub.
-
-**Endpoint** publish_client_scraped_news
-
-**Method** POST
-
-**Required parameters**
-
-| Field       | Type   | Description                                                            |
-| ----------- | ------ | ---------------------------------------------------------------------- |
-| clientRef   | String | Client unique reference                                                |
-| searchTerms | Array  | An array of strings listing client search terms                        |
-| from        | String | Datetime string indicating upper limit of when the search should cover |
-| to          | String | Datetime string indicating lower limit of when the search should cover |
-
-**Sample response** 202
-
-```json
-{
-  "message": "Successfully fetched scraper news"
-}
-```
-
-**Errors**
-
-## Publish Clients Scraped News
-
-Asynchronously calls publish_client_scraped_news to fetch and publish hourly news articles matching clients search terms.
-
-**Endpoint** publish_clients_scraped_news
-
-**Method** POST
-
-**Sample response** 200
-
-```json
-{
-  "message": "Successfully started clients scraped news publishing"
-}
-```
-
-**Errors**
-
-## Tweet Reclassify By Id
-
-Update sentiment retag requests by id.
-
-**Endpoint** tweet_reclassify_by_id
-
-**Method** POST
-
-> Sample payload (All the parameters here are required)
-
-```json
-{
-  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
-  "id_str": "1086372310163046400",
-  "old_class": 1,
-  "new_class": 1
-}
-```
-
-> Sample response
-
-```json
-{
-  "modified": 1
-}
-```
-
-**Errors**
-
-- 102 - missing required parameter
-- 103 - missing payload
-- 104 - error
-- 404 - Wrong authtoken
-
-## Tweet Reclassify By Screenname
-
-Update sentiment retag requests by screenname.
-
-**Endpoint** tweet_reclassify_by_screenname
-
-**Method** POST
-
-> Sample payload (All the parameters here are required)
-
-```json
-{
-  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
-  "screenname": "womenofpurpose",
-  "old_class": 1,
-  "new_class": 1
-}
-```
-
-> Sample response
-
-```json
-{
-  "modified": 1
-}
-```
-
-**Errors**
-
-- 102 - missing required parameter
-- 103 - missing payload
-- 104 - error
-- 404 - Wrong authtoken
