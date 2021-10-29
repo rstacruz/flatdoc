@@ -130,6 +130,10 @@ This documentation lists the API endpoints required for engineers on the Versus 
 
 * Dashboard
 
+# Others
+
+* Send WhatsApp Message
+
 # Getting started
 
 All endpoints are REST. The default method is POST unless otherwise specified. There is a base URL to which you will need to append the endpoint.
