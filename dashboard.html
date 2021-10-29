@@ -1,61 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-  <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="viewport" content="width=device-width" />
 
-  <title>Enterfive Docs - Dashboard</title>
+    <title>Enterfive Docs - Dashboard</title>
 
-  <!-- Flatdoc -->
-  <script src='support/vendor/jquery.js'></script>
-  <script src='legacy.js'></script>
-  <script src='flatdoc.js'></script>
+    <!-- Flatdoc -->
+    <script src="support/vendor/jquery.js"></script>
+    <script src="legacy.js"></script>
+    <script src="flatdoc.js"></script>
 
-  <!-- Flatdoc theme -->
-  <link  href='theme-white/style.css' rel='stylesheet'>
-  <script src='theme-white/script.js'></script>
-  <link  href='support/theme.css' rel='stylesheet'>
+    <!-- Flatdoc theme -->
+    <link href="theme-white/style.css" rel="stylesheet" />
+    <script src="theme-white/script.js"></script>
+    <link href="support/theme.css" rel="stylesheet" />
 
-  <!-- Initializer -->
-  <script>
-    Flatdoc.run({
-      fetcher: Flatdoc.file('Dashboard.md')
-    });
-  </script>
-</head>
-<body role='flatdoc'>
-
-  <div class='header'>
-    <div class='left'>
-      <h1><a href='.'>Enterfive</a></h1>
-      <ul>
-        <li><a href='clients.html'>Clients</a></li>
-        <li><a href='dashboard.html'>Dashboard</a></li>
-        <li><a href='email.html'>Email Templates</a></li>
-        <li><a href='profanity.html'>Profanity Filter</a></li>
-        <li><a href='reference.html'>API reference</a></li>
-        <li><a href='scout.html'>Scouts</a></li>
-        <li><a href='tixy.html'>Tixy</a></li>
-        <li><a href='versus-2.0.html'>Versus-2.0</a></li>
-        <li><a href='powertrack.html'>Powertrack</a></li>
-        <li><a href='settings.html'>Settings</a></li>
-        <li><a href="scrapers.html">Scrapers</a></li>
-        <li><a href="Others.html">Others</a></li>
-      </ul>
+    <!-- Initializer -->
+    <script>
+      Flatdoc.run({
+        fetcher: Flatdoc.file("Dashboard.md"),
+      });
+    </script>
+  </head>
+  <body role="flatdoc">
+    <div class="header">
+      <div class="left">
+        <h1><a href=".">Enterfive</a></h1>
+        <ul>
+          <li><a href="clients.html">Clients</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="email.html">Email Templates</a></li>
+          <li><a href="profanity.html">Profanity Filter</a></li>
+          <li><a href="reference.html">API reference</a></li>
+          <li><a href="scout.html">Scouts</a></li>
+          <li><a href="tixy.html">Tixy</a></li>
+          <li><a href="versus-2.0.html">Versus-2.0</a></li>
+          <li><a href="powertrack.html">Powertrack</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="scrapers.html">Scrapers</a></li>
+          <li><a href="sentiment.html">Sentiment</a></li>
+          <li><a href="Others.html">Others</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <iframe
+          src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;type=follow&amp;count=true"
+          allowtransparency="true"
+          frameborder="0"
+          scrolling="0"
+          width="170"
+          height="20"
+        ></iframe>
+        <iframe
+          src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;repo=flatdoc&amp;type=watch&amp;count=true"
+          allowtransparency="true"
+          frameborder="0"
+          scrolling="0"
+          width="110"
+          height="20"
+        ></iframe>
+      </div>
     </div>
-    <div class='right'>
-      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&amp;repo=flatdoc&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-    </div>
-  </div>
 
-  <div class='content-root'>
-    <div class='menubar'>
-      <div class='menu section' role='flatdoc-menu'></div>
+    <div class="content-root">
+      <div class="menubar">
+        <div class="menu section" role="flatdoc-menu"></div>
+      </div>
+      <div role="flatdoc-content" class="content"></div>
     </div>
-    <div role='flatdoc-content' class='content'></div>
-  </div>
-
-</body>
+  </body>
 </html>

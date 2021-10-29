@@ -6,12 +6,11 @@ Endpoints for Versus Scouts
 
 Add a response to a question.
 
-
 > Endpoint: scout_add_response
 
 > Payload
 
-``` javascript
+```javascript
 {
   "cRef": "",
   "qRef": "",
@@ -22,7 +21,8 @@ Add a response to a question.
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "response": {
     "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
@@ -68,6 +68,7 @@ Add a scout - firstName, lastName and phoneNumber are required
 ```
 
 > Result
+
 ```json
 {
   "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
@@ -78,17 +79,18 @@ Add a scout - firstName, lastName and phoneNumber are required
 
 Get all campaigns on the system
 
-
 > Endpoint: scout_get_campaigns
 
 > Payload
 
-``` javascript
-{}
+```javascript
+{
+}
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "campaigns": [
     {
@@ -117,19 +119,19 @@ Get all campaigns on the system
 
 Get a Scout reference given a phoneNumber.
 
-
 > Endpoint: scout_get_docref
 
 > Payload
 
-``` javascript
+```javascript
 {
   "phoneNumber": "08023004000"
 }
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "scouts": [
     {
@@ -166,38 +168,64 @@ Get a Scout reference given a phoneNumber.
 
 Get the questions associated with a campaign.
 
-| Field | Type | Required | Description |
-| - | - | - | - |
-| docRef | string | required | A unique identifier of the campaign |
-| scoutRef | string | optional | Scout unique identifier |
-
-
+| Field    | Type   | Required | Description                         |
+| -------- | ------ | -------- | ----------------------------------- |
+| docRef   | string | required | A unique identifier of the campaign |
+| scoutRef | string | optional | Scout unique identifier             |
 
 **Endpoint** scout_get_questions
 
 **Method** POST
- 
+
 **Sample payload**
-``` json
+
+```json
 {
-  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+  "docRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
   "scoutRef": "+2341234567890"
 }
 ```
 
 **Result**
-``` json
+
+```json
 {
   "message": "Successfully obtained questions",
   "questions": [
     {
-      "campaignName": "campaignRef",
-      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
-      "clientName": "clientName",
-      "clientRef": "clientRef",
-      "options": "1,2,3",
-      "question": "Big question",
-      "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
+      "questionRef": "9d2eb846-41f9-4745-af85-6d0a9951ecdc",
+      "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "campaignName": "Demographics Survey",
+      "clientName": "The Enterprise",
+      "question": "What is your highest education level?",
+      "options": {
+        "range": [],
+        "options_list": [
+          "No schooling completed",
+          "Nursery school to 8th grade",
+          "Some high school no diploma",
+          "High school graduate diploma or the equivalent (for example: GED)",
+          "Some college credit no degree",
+          "Trade/technical/vocational training",
+          "Associate degree",
+          "Bachelors degree",
+          "Masters degree",
+          "Professional degree",
+          "Doctorate degree"
+        ],
+        "unit": "single_select",
+        "type": "multiplechoice"
+      },
+      "sequence": null,
+      "optionsListNG": [],
+      "optionsListGH": [],
+      "optionsListKE": [],
+      "optionsUnitNG": null,
+      "optionsUnitGH": null,
+      "optionsUnitKE": null,
+      "optionsUnitTZ": null,
+      "optionsListTZ": []
     }
   ]
 }
@@ -205,28 +233,27 @@ Get the questions associated with a campaign.
 
 **Errors**
 
-* 400 - Invalid param | Missing docRef
-* 404 - Scout does not exist
-* 500 - Error obtaining scout | error encountered while reading from db
-
+- 400 - Invalid param | Missing docRef
+- 404 - Scout does not exist
+- 500 - Error obtaining scout | error encountered while reading from db
 
 ## Get Responses
 
 Get the responses associated with a question.
 
-
 > Endpoint: scout_get_questions
 
 > Payload
 
-``` javascript
+```javascript
 {
   "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9"
 }
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "questions": [
     {
@@ -244,19 +271,19 @@ Get the responses associated with a question.
 
 Get a scout given the docRef
 
-
 > Endpoint: scout_get_scout
 
 > Payload
 
-``` javascript
+```javascript
 {
   "docRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
 }
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
     "firstName": "firstName",
     "lastName": "lastName",
@@ -290,12 +317,12 @@ Get a scout given the docRef
 
 Create a Stellar Wallet associated with a Scout.
 
-| Field               | Type   | Description                                                                        |
-|---------------------|--------|------------------------------------------------------------------------------------|
-| sourceStellarSeed   | string | A Stellar Account funded in XLM to provide the mimimum balance needed for a wallet |
-| scoutRef            | string | A unique string to identify a scout, a wallet is created once for each scoutRef    | 
+| Field             | Type   | Description                                                                        |
+| ----------------- | ------ | ---------------------------------------------------------------------------------- |
+| sourceStellarSeed | string | A Stellar Account funded in XLM to provide the mimimum balance needed for a wallet |
+| scoutRef          | string | A unique string to identify a scout, a wallet is created once for each scoutRef    |
 
-> Endpoint: scout_create_wallet 
+> Endpoint: scout_create_wallet
 
 > Payload
 
@@ -318,11 +345,11 @@ Create a Stellar Wallet associated with a Scout.
 
 Create a Stellar Wallet associated with a Scout.
 
-| Field               | Type   | Description                                                 |
-|---------------------|--------|-------------------------------------------------------------|
-| sourceStellarSeed   | string | A Stellar Issuing Account to provide at transaction fee     |
-| scoutRef            | string | A unique string to used to create a wallet for the scout    | 
-| versusCoinCredit    | string | VersusCoin amount formatted as a string to fund the wallet  | 
+| Field             | Type   | Description                                                |
+| ----------------- | ------ | ---------------------------------------------------------- |
+| sourceStellarSeed | string | A Stellar Issuing Account to provide at transaction fee    |
+| scoutRef          | string | A unique string to used to create a wallet for the scout   |
+| versusCoinCredit  | string | VersusCoin amount formatted as a string to fund the wallet |
 
 > Endpoint: scout_fund_wallet
 
@@ -348,19 +375,19 @@ Create a Stellar Wallet associated with a Scout.
 
 Get a list of banks supported by cashout in Nigeria
 
-
 > Endpoint: scout_get_banks
 
 > Payload
 
-``` javascript
+```javascript
 {
   "authstring": "authentication string"
 }
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "msg":"Successfully obtained banks list",
   "banks":[
@@ -390,12 +417,11 @@ Get a list of banks supported by cashout in Nigeria
 
 Convert scout credits to amount in local currency
 
-
 > Endpoint: scout_convert_amount
 
 > Payload
 
-``` javascript
+```javascript
 {
   "authstring": "authentication string",
   "amount": "scout credits to be converted",
@@ -404,7 +430,8 @@ Convert scout credits to amount in local currency
 ```
 
 > Result
-``` javascript
+
+```javascript
 
 {
   "message":
@@ -422,7 +449,7 @@ Verify that scout bank account number is correct and can recieve funds
 
 > Payload
 
-``` javascript
+```javascript
 {
   "authstring": "authentication string",
   "accountNumber": "bank account number",
@@ -433,7 +460,8 @@ Verify that scout bank account number is correct and can recieve funds
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "message":"Sucessfully verified account number",
   "accountNumber":"1234567890",
@@ -449,7 +477,7 @@ Verify that scout bank account number is correct and can recieve funds
 
 > Payload
 
-``` javascript
+```javascript
 {
   "authstring": "authentication string",
   "accountNumber": "bank account number",
@@ -460,7 +488,8 @@ Verify that scout bank account number is correct and can recieve funds
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "message":"Sucessfully verified account number",
   "account": {
@@ -478,7 +507,7 @@ Cashout scout credits to local currency
 
 > Payload
 
-``` javascript
+```javascript
 {
   "authstring": "authentication string",
   "accountNumber": "bank account number",
@@ -489,7 +518,8 @@ Cashout scout credits to local currency
 ```
 
 > Result
-``` javascript
+
+```javascript
 {
   "message":"Successfully transferred money to recipient",
   "credits":"50",
@@ -499,27 +529,26 @@ Cashout scout credits to local currency
 }
 ```
 
-
 ## Get Image Requests
 
 Get a list of multimedia requests of mediaType _image_ a scout is eligible to send responses.
 
-**Endpoint** 
+**Endpoint**
 scout_get_image_requests
 
-**Method** 
+**Method**
 GET
 
 **Query params**
 
-| Field | Type | Description |
-| - | - | - |
+| Field       | Type   | Description             |
+| ----------- | ------ | ----------------------- |
 | phoneNumber | string | Scout unique identifier |
-| authString | string | Authentication string |
-
+| authString  | string | Authentication string   |
 
 > Sample response
-``` json
+
+```json
 {
   "message": "Successfully obtained image requests",
    "requests":[
@@ -549,25 +578,25 @@ GET
 
 **Errors**
 
-* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-* 401 - Invalid authstring
-* 403 - Scout is unverified | Scout is missing demographic field
-* 404 - Scout does not exist | There are no image requests
-* 500 - Error obtaining image requests
-
+- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 401 - Invalid authstring
+- 403 - Scout is unverified | Scout is missing demographic field
+- 404 - Scout does not exist | There are no image requests
+- 500 - Error obtaining image requests
 
 ## Get Audio Requests
 
 Get a list of multimedia requests of mediaType _audio_ a scout is eligible to send responses.
 
-**Endpoint** 
+**Endpoint**
 scout_get_audio_requests
 
-**Method** 
+**Method**
 GET
 
 > Result
-``` python
+
+```python
 {
   "message": "Successfully obtained audio requests",
    "requests":[
@@ -597,22 +626,22 @@ GET
 
 **Errors**
 
-* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-* 401 - Invalid authstring
-* 403 - Scout is unverified | Scout is missing demographic field
-* 404 - Scout does not exist | There are no audio requests
-* 500 - Error obtaining audio requests
-
+- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 401 - Invalid authstring
+- 403 - Scout is unverified | Scout is missing demographic field
+- 404 - Scout does not exist | There are no audio requests
+- 500 - Error obtaining audio requests
 
 ## Get Video Requests
 
 Get a list of multimedia requests of mediaType _video_ a scout is eligible to send responses.
 
-**Endpoint** 
+**Endpoint**
 scout_get_video_requests
 
 > Result
-``` python
+
+```python
 {
   "message": "Successfully obtained video requests",
    "requests":[
@@ -642,35 +671,35 @@ scout_get_video_requests
 
 **Errors**
 
-* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-* 401 - Invalid authstring
-* 403 - Scout is unverified | Scout is missing demographic field
-* 404 - Scout does not exist | There are no video requests
-* 500 - Error obtaining video requests
+- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 401 - Invalid authstring
+- 403 - Scout is unverified | Scout is missing demographic field
+- 404 - Scout does not exist | There are no video requests
+- 500 - Error obtaining video requests
 
 ## Get Multimedia Requests
 
 Get a list of multimedia requests a scout is eligible to send responses.
 
-**Endpoint** 
+**Endpoint**
 scout_get_multimedia_requests
 
-**Method** 
+**Method**
 GET
 
 **Query params**
 
-| Field | Type | Description |
-| - | - | - |
+| Field       | Type   | Description             |
+| ----------- | ------ | ----------------------- |
 | phoneNumber | string | Scout unique identifier |
-| authString | string | Authentication string |
-
+| authString  | string | Authentication string   |
 
 > Sample response
-``` json
+
+```json
 {
   "message": "Successfully obtained multimedia requests",
-  "requests":[
+  "requests": [
     {
       "clientRef": "12345",
       "clientName": "The Enterprise",
@@ -695,24 +724,23 @@ GET
 
 **Errors**
 
-* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-* 401 - Invalid authstring
-* 403 - Scout is unverified | Scout is missing demographic field
-* 404 - Scout does not exist | There are no multimedia requests
-* 500 - Error obtaining multimedia requests
-
+- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 401 - Invalid authstring
+- 403 - Scout is unverified | Scout is missing demographic field
+- 404 - Scout does not exist | There are no multimedia requests
+- 500 - Error obtaining multimedia requests
 
 ## Add Multimedia Response
 
 Add multimedia request responses
 
-| Field | Type | Description |
-| - | - | - |
-| requestRef | string | A unique identifier of the request for which a response is to be sent |
-| scoutRef | string | A unique identifier of the scout sending the response |
-| mediaType | string | The type of media the response is made of. `image`, `audio` or `video`
-| mediaUrls | array | An array of (string) URL(s) pointing to the location which the response media is stored | 
-| authstring | string | Authentication string |
+| Field      | Type   | Description                                                                             |
+| ---------- | ------ | --------------------------------------------------------------------------------------- |
+| requestRef | string | A unique identifier of the request for which a response is to be sent                   |
+| scoutRef   | string | A unique identifier of the scout sending the response                                   |
+| mediaType  | string | The type of media the response is made of. `image`, `audio` or `video`                  |
+| mediaUrls  | array  | An array of (string) URL(s) pointing to the location which the response media is stored |
+| authstring | string | Authentication string                                                                   |
 
 > Endpoint: scout_add_multimedia_request_response
 
@@ -720,62 +748,62 @@ Add multimedia request responses
 
 > Sample payload
 
-``` json
+```json
 {
   "requestRef": "12345",
   "scoutRef": "239485855559",
-  "mediaUrls":["https://google.api.com/235617"],
-  "mediaType":"audio",
+  "mediaUrls": ["https://google.api.com/235617"],
+  "mediaType": "audio",
   "authstring": "123567890987654321"
 }
 ```
 
 > Sample response
-``` json
+
+```json
 {
-  "message":"Successfully added multimedia request response",
+  "message": "Successfully added multimedia request response",
   "responseRef": "9596869640495837"
 }
 ```
 
 **Errors**
 
-* 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio | Failed authentication. Authstring invalid or not found in request body
-* 403 - Only POST requests are allowed
-* 404 - Multimedia request does not exist
-* 500 - Error adding multimedia request response | Error obtaining multimedia request
-
+- 400 - Missing parameter requestRef | Invalid param mediaUrls. Should be array of strings | Wrong mediaType. Request is for audio | Failed authentication. Authstring invalid or not found in request body
+- 403 - Only POST requests are allowed
+- 404 - Multimedia request does not exist
+- 500 - Error adding multimedia request response | Error obtaining multimedia request
 
 ## Get Multimedia Responses
 
 Get completed request responses arranged from the most recent.
 
-**Endpoint** 
+**Endpoint**
 scout_get_request_responses
 
-**Method** 
+**Method**
 GET
 
 **Query params**
 
-| Field | Type | Description |
-| - | - | - |
+| Field       | Type   | Description             |
+| ----------- | ------ | ----------------------- |
 | phoneNumber | string | Scout unique identifier |
-| authString | string | Authentication string |
-
+| authString  | string | Authentication string   |
 
 > Sample Response
-``` json
+
+```json
 {
   "message": "Successfully obtained request responses",
-  "responses":[
+  "responses": [
     {
       "clientRef": "12345",
       "requestRef": "12345",
       "scoutRef": "+2340927738929",
-      "mediaUrls":["https://google.api.com/235617"],
+      "mediaUrls": ["https://google.api.com/235617"],
       "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-      "mediaType":"audio",
+      "mediaType": "audio",
       "status": "pending"
     }
   ]
@@ -784,10 +812,9 @@ GET
 
 **Errors**
 
-* 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-* 401 - Invalid authstring
-* 500 - Error fetching request responses
-
+- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 401 - Invalid authstring
+- 500 - Error fetching request responses
 
 ## Get Scouts
 
@@ -796,7 +823,8 @@ Get scouts.
 > Endpoint: scout_get_all_scouts
 
 > Payload
-``` json
+
+```json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa...",
@@ -808,7 +836,8 @@ Get scouts.
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Successful",
@@ -816,9 +845,10 @@ Get scouts.
   "totalScouts": 40,
   "pageSize": 10,
   "currentPage": 1,
-  "data": [],
+  "data": []
 }
 ```
+
 ## Edit Scouts
 
 Edit scout.
@@ -826,23 +856,26 @@ Edit scout.
 > Endpoint: scout_edit_scout
 
 > Payload
-``` json
+
+```json
 {
-    "idToken": "eyJhbGciOiJSUzI1NiIs...",
-    "uid": "db3aLSS5AtalI7xqCa...",
-    "peopleInHousehold": 3,
-    "maritalStatus": "single",
-    // other scout properties
+  "idToken": "eyJhbGciOiJSUzI1NiIs...",
+  "uid": "db3aLSS5AtalI7xqCa...",
+  "peopleInHousehold": 3,
+  "maritalStatus": "single"
+  // other scout properties
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
-  "message": "Successful",
+  "message": "Successful"
 }
 ```
+
 ## Bulk Edit Scouts
 
 Edit multiple scouts.
@@ -850,23 +883,25 @@ Edit multiple scouts.
 > Endpoint: scout_bulk_edit_scouts
 
 > Payload
-``` json
+
+```json
 {
-    "idToken": "eyJhbGciOiJSUzI1NiIs...",
-    "uid": "db3aLSS5AtalI7xqCa...",
-    "scoutRefs": [],
-    "blacklisted": false,
-    "blacklistReason": "",
-    "blacklistContext": "",
-    "verified": false,
+  "idToken": "eyJhbGciOiJSUzI1NiIs...",
+  "uid": "db3aLSS5AtalI7xqCa...",
+  "scoutRefs": [],
+  "blacklisted": false,
+  "blacklistReason": "",
+  "blacklistContext": "",
+  "verified": false
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
-  "message": "Successful",
+  "message": "Successful"
 }
 ```
 
@@ -877,16 +912,18 @@ Get scouts Paystack Cashouts and Chart.
 > Endpoint: scout_get_scouts_paystack_cashouts
 
 > Payload
-``` json
+
+```json
 {
-    "idToken": "eyJhbGciOiJSUzI1NiIs...",
-    "uid": "db3aLSS5AtalI7xqCa...",
-    "period": "lastMonth"
+  "idToken": "eyJhbGciOiJSUzI1NiIs...",
+  "uid": "db3aLSS5AtalI7xqCa...",
+  "period": "lastMonth"
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Successful",
@@ -934,7 +971,6 @@ Get scouts Paystack Cashouts and Chart.
 }
 ```
 
-
 ## Get Scouts Paga Cashout
 
 Get scouts Paga Cashouts and Chart.
@@ -942,16 +978,18 @@ Get scouts Paga Cashouts and Chart.
 > Endpoint: scout_get_scouts_paga_cashouts
 
 > Payload
-``` json
+
+```json
 {
-    "idToken": "eyJhbGciOiJSUzI1NiIs...",
-    "uid": "db3aLSS5AtalI7xqCa...",
-    "period": "lastMonth"
+  "idToken": "eyJhbGciOiJSUzI1NiIs...",
+  "uid": "db3aLSS5AtalI7xqCa...",
+  "period": "lastMonth"
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Successful",
@@ -999,15 +1037,17 @@ Get scouts statistics.
 > Endpoint: scout_get_scouts_statistics
 
 > Payload
-``` json
+
+```json
 {
-    "idToken": "eyJhbGciOiJSUzI1NiIs...",
-    "uid": "db3aLSS5AtalI7xqCa..."
+  "idToken": "eyJhbGciOiJSUzI1NiIs...",
+  "uid": "db3aLSS5AtalI7xqCa..."
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Successful",
@@ -1031,8 +1071,6 @@ Get scouts statistics.
 }
 ```
 
-
-
 ## Missing Data Notification
 
 Get scouts statistics.
@@ -1040,7 +1078,8 @@ Get scouts statistics.
 > Endpoint: scout_missing_data_notification
 
 > Payload
-``` json
+
+```json
 {
     "idToken": "eyJhbGciOiJSUzI1NiIs...",
     "uid": "db3aLSS5AtalI7xqCa...",
@@ -1049,20 +1088,23 @@ Get scouts statistics.
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
-  "message": "Successfully notified scout",
+  "message": "Successfully notified scout"
 }
 ```
 
 ## Get Missing Data
+
 Get missing responses in demographic survey
 
 > Endpoint: scout_get_missing_data
 
 > Payload
-``` json
+
+```json
 {
     "authString": "dfbeavt4h463234255dsR"
     "scoutRef": "+23480343233
@@ -1070,7 +1112,8 @@ Get missing responses in demographic survey
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Successfully obtained missing questions",
@@ -1078,23 +1121,25 @@ Get missing responses in demographic survey
 }
 ```
 
-
 ## Image Is Safe
+
 Verify that an image is suitable for upload
 
 > Endpoint: scout_image_is_safe
 
 > Payload
-``` json
+
+```json
 {
-    "authString": "dfbeavt4h463234255dsR",
-    "scoutRef": "+23480343233",
-    "imageUrl": "http://some-image-url.jpeg"
+  "authString": "dfbeavt4h463234255dsR",
+  "scoutRef": "+23480343233",
+  "imageUrl": "http://some-image-url.jpeg"
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "status": true,
   "message": "Image is suitable for submission"
@@ -1108,17 +1153,19 @@ Cashout via Paga (NG) or Beyonic (KE).
 > Endpoint: redeem_credits
 
 > Payload
-``` json
+
+```json
 {
   "authstring": "eyJhbGciOiJSUzI1NiIs",
   "country": "NG",
   "phoneNumber": "+2347890123456",
-  "amount": "100",
+  "amount": "100"
 }
 ```
 
 > Result
-``` json
+
+```json
 {
   "message": "You have successfully sent N5,400.00 to +2347890123456. Paga Txn ID: 3QYS4. Thank you for using Paga!",
   "referenceNumber": "f6812351-f857-43f1-87cd-2ce18d48d667",
@@ -1127,9 +1174,96 @@ Cashout via Paga (NG) or Beyonic (KE).
 ```
 
 > Error
-* 400 - Missing body parameter(s) | Invalid format of parameter(s) | Error converting scout credit for transfer
-* 401 - Failed authentication. Authstring invalid or not found in request body
-* 403 - Cashout is disabled for this scout. Less than 8 credits | Insufficient scout credit balance
-* 404 - Scout does not exist | Country not found! We do not yet support that country
-* 500 - Unable to save transaction data in firestore
 
+- 400 - Missing body parameter(s) | Invalid format of parameter(s) | Error converting scout credit for transfer
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Cashout is disabled for this scout. Less than 8 credits | Insufficient scout credit balance
+- 404 - Scout does not exist | Country not found! We do not yet support that country
+- 500 - Unable to save transaction data in firestore
+
+## Update dob (Date of Birth)
+
+Updates a scout's date of birth.
+
+> Endpoint: scout_update_dob
+
+> Payload (All parameters are required)
+
+```json
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "dob": "2021-10-01"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
+
+## Update People In Household
+
+Updates the range of the number of people in a scout's household.
+
+> Endpoint: scout_update_people_in_household
+
+> Payload (All parameters are required)
+
+```json
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "people_in_household": "below_3"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
+
+## Update Children In Household
+
+Updates the range of the number of children in a scout's household.
+
+> Endpoint: scout_update_children_in_household
+
+> Payload (All parameters are required)
+
+```json
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "children_in_household": "below_3"
+}
+```
+
+> Response
+
+```json
+{
+  "modified": 1
+}
+```
+
+> Errors
+
+- 404 - wrong authtoken
+- 102 - missing required parameters
