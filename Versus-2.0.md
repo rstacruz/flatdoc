@@ -1032,19 +1032,18 @@ Get client data
 - 404 - Client or Team does not exist
 - 500 - Backend service error
 
-## Get Client Subscription Status
+## Get Subscription Status
 
-Get client subscription status
+Get subscription status
 
-> Endpoint: versus_v2_get_client_subscription_status
+> Endpoint: versus_v2_get_subscription_status
 
 > Payload
 
 ```json
 {
-  "clientRef": "0d3c2555-a595-4d76-b5f3-27096e947335",
-  "uid": "bfbbc055eeec778b",
-  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a"
+  "clientRef": "0d3c2555-a595-4d76-b5f3-27096e947335"
+
 }
 ```
 
@@ -1081,7 +1080,6 @@ Get client subscription status
 **Errors**
 
 - 400 - Missing required parameters
-- 401 - Unauthorized User || Error authenticating user
 - 404 - Error getting client subscription status
 - 500 - Error getting Versus client
 
