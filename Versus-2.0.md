@@ -393,9 +393,9 @@ Updates a scout's date of birth.
 
 ```json
 {
-   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
-    "scoutRef": "+2348134959703",
-    "dob": "2021-10-01"
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "dob": "2021-10-01"
 }
 ```
 
@@ -421,9 +421,10 @@ Updates the range of the number of people in a scout's household.
 > Payload (All parameters are required)
 
 ```json
-{   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
-    "scoutRef": "+2348134959703",
-    "people_in_household": "below_3"
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "people_in_household": "below_3"
 }
 ```
 
@@ -449,9 +450,10 @@ Updates the range of the number of children in a scout's household.
 > Payload (All parameters are required)
 
 ```json
-{   "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
-    "scoutRef": "+2348134959703",
-    "children_in_household": "below_3"
+{
+  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "scoutRef": "+2348134959703",
+  "children_in_household": "below_3"
 }
 ```
 
@@ -468,6 +470,65 @@ Updates the range of the number of children in a scout's household.
 - 404 - wrong authtoken
 - 102 - missing required parameters
 
+## Update Personal Monthly Income
+
+Updates a scout's personal monthly income.
+
+> Endpoint: scout_update_personal_monthly_income
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "personal_monthly_income": "100_to_500_USD",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Personal monthly income updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Invalid authtoken
+- 500 - Server error
+
+## Update Total Household Monthly Income
+
+Updates a scout's total household monthly income.
+
+> Endpoint: scout_update_household_monthly_income
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "household_monthly_income": "100_to_500_USD",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Household monthly income updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Invalid authtoken
+- 500 - Server error
 
 # Dashboard
 
