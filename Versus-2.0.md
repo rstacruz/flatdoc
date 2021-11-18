@@ -1148,7 +1148,7 @@ Get subscription status
 
 Get mentions caps status for client
 
-> Endpoint: versus_v2_get_mentions_client_status
+> Endpoint: versus_v2_get_mentions_cap_status
 
 > Payload
 
