@@ -1093,6 +1093,57 @@ Get client data
 - 404 - Client or Team does not exist
 - 500 - Backend service error
 
+## Get Subscription Status
+
+Get subscription status
+
+> Endpoint: versus_v2_get_subscription_status
+
+> Payload
+
+```json
+{
+  "clientRef": "0d3c2555-a595-4d76-b5f3-27096e947335"
+
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained client subscription status",
+  "subscription": [
+      {
+        "id": "sub_1Jk5QgFVq4cpBfbzCBuAMLsI",
+        "object": "subscription",
+        "application_fee_percent": null,
+        "automatic_tax": {
+            "enabled": false
+        },
+        "billing": "charge_automatically",
+        "billing_cycle_anchor": 1634123726,
+        "billing_thresholds": null,
+        "cancel_at": null,
+        "cancel_at_period_end": false,
+        "canceled_at": null,
+        "collection_method": "charge_automatically",
+        "created": 1634123726,
+        "current_period_end": 1639394126,
+        "current_period_start": 1636802126,
+        "customer": "cus_KOtDl5Ot72Swlm",
+        "...."
+      }
+  ]
+}
+```
+
+**Errors**
+
+- 400 - Missing required parameters
+- 404 - Error getting client subscription status
+- 500 - Error getting Versus client
+
 ## Get Filtered Mentions
 
 Get mentions for specific set of filters
