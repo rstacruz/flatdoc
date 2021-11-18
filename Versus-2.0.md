@@ -1175,9 +1175,8 @@ Get mentions caps status for client
 **Errors**
 
 - 400 - Missing required parameters
-- 401 - User is not authorized to make this request || Error authenticating user
-- 404 - Client does not exist
 - 403 - Only post requests allowed
+- 404 - Client does not exist
 - 500 - Error getting mentions
 
 
