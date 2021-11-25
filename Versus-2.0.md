@@ -429,7 +429,7 @@ Updates a scout's date of birth.
 
 ```json
 {
-  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6",
   "scoutRef": "+2348134959703",
   "dob": "2021-10-01"
 }
@@ -439,14 +439,16 @@ Updates a scout's date of birth.
 
 ```json
 {
-  "modified": 1
+  "message": "dob updated"
 }
 ```
 
 > Errors
 
-- 404 - wrong authtoken
-- 102 - missing required parameters
+- 400 - missing required parameters || wrong authtoken
+- 404 - scout not found
+- 405 - request method not allowed
+- 500 - internal server error
 
 ## Update People In Household
 
@@ -458,7 +460,7 @@ Updates the range of the number of people in a scout's household.
 
 ```json
 {
-  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6",
   "scoutRef": "+2348134959703",
   "people_in_household": "below_3"
 }
@@ -468,14 +470,16 @@ Updates the range of the number of people in a scout's household.
 
 ```json
 {
-  "modified": 1
+  "message": "people_in_household updated"
 }
 ```
 
 > Errors
 
-- 404 - wrong authtoken
-- 102 - missing required parameters
+- 400 - missing required parameters || wrong authtoken
+- 404 - scout not found
+- 405 - request method not allowed
+- 500 - internal server error
 
 ## Update Children In Household
 
@@ -487,7 +491,7 @@ Updates the range of the number of children in a scout's household.
 
 ```json
 {
-  "authtoken": "KXiJfTdkXRjsKqodwAQckv9TpXPm3ahHqjsFHJCVZWrLbWqtyAYg3XXhGFj7iQUd",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6",
   "scoutRef": "+2348134959703",
   "children_in_household": "below_3"
 }
@@ -497,14 +501,16 @@ Updates the range of the number of children in a scout's household.
 
 ```json
 {
-  "modified": 1
+  "message": "children_in_household updated"
 }
 ```
 
 > Errors
 
-- 404 - wrong authtoken
-- 102 - missing required parameters
+- 400 - missing required parameters || wrong authtoken
+- 404 - scout not found
+- 405 - request method not allowed
+- 500 - internal server error
 
 ## Update Personal Monthly Income
 
@@ -533,7 +539,9 @@ Updates a scout's personal monthly income.
 > Errors
 
 - 400 - Missing required parameters || Invalid parameters' values
-- 401 - Invalid authtoken
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 404 - Scout does not exist
+- 405 - Invalid request method (Only POST requests are allowed)
 - 500 - Server error
 
 ## Update Total Household Monthly Income
@@ -563,7 +571,233 @@ Updates a scout's total household monthly income.
 > Errors
 
 - 400 - Missing required parameters || Invalid parameters' values
-- 401 - Invalid authtoken
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 404 - Scout does not exist
+- 405 - Invalid request method (Only POST requests are allowed)
+- 500 - Server error
+
+## Update Religion
+
+Updates a scout's religion.
+
+> Endpoint: scout_update_religion
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "religion": "Christian Orthodox",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Religion updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist || Religion not found
+- 500 - Server
+
+## Update Tribe
+
+Updates a scout's tribe.
+
+> Endpoint: scout_update_tribe
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "tribe": "Hausa",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Tribe updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Gender
+
+Updates a scout's gender.
+
+> Endpoint: scout_update_gender
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "gender": "male",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Gender updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Marital Status
+
+Updates a scout's marital status.
+
+> Endpoint: scout_update_marital_status
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "marital_status": "Married or domestic partnership",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Marital status updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist || Marital status not found
+- 500 - Server error
+
+## Update Highest Education Level
+
+Updates a scout's highest education level.
+
+> Endpoint: scout_update_highest_education_level
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "highest_education_level": "Bachelors degree",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Education level updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist || Education level not found
+- 500 - Server error
+
+## Update Employment Status
+
+Updates a scout's employment status.
+
+> Endpoint: scout_update_employment_status
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "employment_status": "Self-employed",
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Employment status updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist || Employment status not found
+- 500 - Server error
+
+## Update Industry Affiliation / Interests
+
+Updates a scout's industry affiliation / interests.
+
+> Endpoint: scout_update_industry_affiliation
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "interests": ["Engineering", "Technology (Software)", "Oil & Gas"],
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Interests / industry affiliations updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist || Interests not found
 - 500 - Server error
 
 # Dashboard
