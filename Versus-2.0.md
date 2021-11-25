@@ -1378,6 +1378,42 @@ Get subscription status
 - 404 - Error getting client subscription status
 - 500 - Error getting Versus client
 
+## Get Mentions Caps Status
+
+Get mentions caps status for client
+
+> Endpoint: versus_v2_get_mentions_cap_status
+
+> Payload
+
+```json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained mentions for client nqaXKB0SzWN6xh7RVyzl ",
+  "mentions_cap_status": {
+    "mentionsLimit": 1000,
+    "mentions": 30,
+    "mentionsRemaining": 970,
+    "isMentionsCapped": false
+  }
+}
+```
+
+**Errors**
+
+- 400 - Missing required parameters
+- 403 - Only post requests allowed
+- 404 - Client does not exist
+- 500 - Error getting mentions
+
+
 ## Get Filtered Mentions
 
 Get mentions for specific set of filters
