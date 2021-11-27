@@ -1413,7 +1413,7 @@ Get mentions caps status for client
 - 404 - Client does not exist
 - 500 - Error getting mentions
 
-## Disable Client Mentions On Cap
+## Disable Mentions On Cap
 
 Disable client mentions on cap
 
