@@ -1413,6 +1413,28 @@ Get mentions caps status for client
 - 404 - Client does not exist
 - 500 - Error getting mentions
 
+## Disable Client Mentions On Cap
+
+Disable client mentions on cap
+
+> Endpoint: versus_v2_disable_mentions_on_cap
+
+> Response
+
+```json
+{
+  "message": "Successfully removed the power track rule" 
+}
+```
+
+**Errors**
+
+- 401 - Error removing the power track id
+- 403 - Only GET requests allowed
+- 404 - Client does not exist
+- 500 - Error getting clients
+
+
 
 ## Get Filtered Mentions
 
