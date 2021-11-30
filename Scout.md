@@ -277,39 +277,66 @@ Get a scout given the docRef
 
 ```javascript
 {
-  "docRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2"
+  "docRef": "+2347034969842"
 }
 ```
 
 > Result
 
-```javascript
+```json
 {
-    "firstName": "firstName",
-    "lastName": "lastName",
-    "phoneNumber": "phoneNumber",
-    "bankName": "bankName",
-    "bankCode": "bankCode",
-    "accountNumber": "accountNumber",
-    "bvn": "bvn",
-    "emailAddress": "emailAddress",
-    "dob": "dob",
-    "gender": "gender",
-    "education": "education",
-    "maritalStatus": "maritalStatus",
-    "religion": "religion",
-    "occupation": "occupation",
-    "country": "country",
-    "state": "state",
-    "language": "language",
-    "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
-    "versusCredits": {
-        "canCashOut": false,
-        "amount": 0
-    },
-    "verified": false,
-    "twoFA": false,
-    "requiresBankUpdate": false
+  "accountName": null,
+  "accountNumber": "",
+  "age": 29,
+  "anyChildUnder18": false,
+  "bankCode": "050",
+  "bankName": "Ecobank Nigeria",
+  "blacklistContext": null,
+  "blacklistReason": null,
+  "blacklisted": null,
+  "blacklisted_on": null,
+  "bvn": "",
+  "childrenInHousehold": "below_3",
+  "completedCampaigns": [
+    "0c40f707-d65f-4108-8b22-05cc9002339b",
+    "161c089e-170a-41d3-9c17-a2fb6266752a",
+    "16ede853-1013-4a22-8bef-999815accf27",
+    "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+    "0873fdd4-4219-4dcc-8500-a1345d107830"
+  ],
+  "country": null,
+  "deviceRegistrationToken": "fEHpqqpoSbqnHIlvMVkz97:APA91bGabezXYNUFXaKTDWiIKM0juEw3iFQO_5T15V6lG83AykRhVJYQJ0Ejn9DNOrf7N7Ml7OEpHd5BzyQnFudYpaysySV74AQxmcjbvyC3Z5hAhIT1iDIJ18m36wNlYdABBDlGOdZu",
+  "deviceRegistrationTokenRef": "b4a8eb4e-85c1-4cf0-949d-4139aaa68076",
+  "dob": "1992-10-09",
+  "education": "Bachelors degree",
+  "emailAddress": null,
+  "employment": "Self-employed",
+  "firstName": "Chukwuka",
+  "gender": "male",
+  "householdMonthlyIncome": "100_to_500_USD",
+  "income": "above_1000_USD",
+  "industryAffiliations": ["Engineering", "Oil & Gas", "Technology (Software)"],
+  "language": "English",
+  "lastName": "Emi",
+  "localGovernmentArea": "Eti-Osa",
+  "maritalStatus": "Married or domestic partnership",
+  "occupation": "",
+  "peopleInHousehold": "below_3",
+  "personalMonthlyIncome": "above_1000_USD",
+  "phoneNumber": "+2347034969842",
+  "recipientCode": "RCP_ugb6h9iwea6bzdn",
+  "religion": "Christian Orthodox",
+  "requiresBankUpdate": false,
+  "scoutPartnerRef": null,
+  "scoutRef": "+2347034969842",
+  "source": "",
+  "state": "Delta",
+  "tribe": "Hausa",
+  "twoFA": false,
+  "verified": true,
+  "versusCredits_amount": 75.0,
+  "versusCredits_canCashOut": false,
+  "versusCredits_holding": 0.0
 }
 ```
 
