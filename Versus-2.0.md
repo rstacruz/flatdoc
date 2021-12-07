@@ -1418,20 +1418,28 @@ Get mentions caps status for client
 Disable client mentions on cap
 
 > Endpoint: versus_v2_disable_mentions_on_cap
+> Payload
 
+```json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "powerTrackRuleId": "bfbbc055eeec778b",
+}
+```
 > Response
 
 ```json
 {
-  "message": "Successfully removed the power track rule" 
+  "status": "Ok" 
 }
 ```
 
 **Errors**
 
-- 401 - Error removing the power track id
-- 403 - Only GET requests allowed
-- 404 - Client does not exist
+- 400 - Missing parameter
+- 401 - Missing API key
+- 402 - Incorrect API key
+- 403 - Only POST requests are allowed
 - 500 - Error getting clients
 
 
