@@ -827,7 +827,11 @@ Add a new campaign
   "startAge": 16,
   "gender": "female",
   "numberOfRespondents": 500,
-}
+  "interest_id": 2,
+  "soccer_fan": true,
+  "sports_fan": true,
+  "favourite_team_id": 3,
+  }
 ```
 
 > Response
