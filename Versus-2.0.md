@@ -826,7 +826,7 @@ Add a new campaign
   "endAge": 65,
   "startAge": 16,
   "gender": "female",
-  "numberOfRespondents": 500
+  "numberOfRespondents": 500,
 }
 ```
 
@@ -1635,6 +1635,41 @@ Get social media and news mentions details for newsfeed
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
 - 500 - Backend service error
+
+## Get Interests
+
+Obtain sources of news mentions
+
+> Endpoint: versus_v2_get_interests
+
+> Payload
+
+```json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained interests data",
+  "interests": [{
+            "id": 1,
+            "name": "Agriculture"
+        },]
+}
+```
+
+**Errors**
+
+- 400 - Missing required parameters
+- 401 - User is not authorized to make this request || Error authenticating user
+- 500 - Backend service error || Oops! Something happened from our end
 
 ## Get News Mentions Sources
 
