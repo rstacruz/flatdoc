@@ -830,7 +830,7 @@ Add a new campaign
   "interest_id": 2,
   "soccer_fan": true,
   "sports_fan": true,
-  "favourite_team_id": 3,
+  "favorite_team_id": 3,
   }
 ```
 
@@ -979,7 +979,12 @@ Update a campaign
   "endAge": 29,
   "country": 160,
   "stateOrRegion": 20,
-  "startDate": "2021/07/23"
+  "startDate": "2021/07/23",
+  "interest_id": 2,
+  "soccer_fan": true,
+  "sports_fan": true,
+  "favorite_team_id": 3,
+  "
 }
 ```
 
