@@ -1442,6 +1442,34 @@ Disable client mentions on cap
 - 500 - Error getting clients
 
 
+## Iterate Clients Mentions On Cap
+
+Iterate Clients Mentions On Cap
+
+> Endpoint: versus_v2_iterate_clients_mentions_on_cap
+> Payload
+
+```json
+{
+  "apiKey": "nqaXKB0SzWN6xh7RVyzlbfbbc055eeec"
+}
+```
+> Response
+
+```json
+{
+  "message": "Successfully iterated through clients" 
+}
+```
+
+**Errors**
+
+- 401 - Missing API key
+- 402 - Incorrect API key
+- 403 - Only POST requests are allowed
+- 404 - There are no clients
+- 500 - Error getting clients
+
 
 ## Get Filtered Mentions
 
