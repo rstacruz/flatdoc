@@ -1588,3 +1588,99 @@ Updates a scout's industry affiliation / interests.
 - 403 - Invalid request method (Only POST requests are allowed)
 - 404 - Scout does not exist || Interests not found
 - 500 - Server error
+
+## Update Sports Fan
+
+Updates a scout's sports fan field.
+
+> Endpoint: scout_update_sports_fan
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "sportsFan": "yes", // yes or no
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "sportsFan updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Soccer Fan
+
+Updates a scout's soccer fan field.
+
+> Endpoint: scout_update_soccer_fan
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "soccerFan": "yes", // yes or no
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "soccerFan updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Arsenal Fan
+
+Updates a scout's arsenal fan field.
+
+> Endpoint: scout_update_arsenal_fan
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "arsenalFan": "yes", // yes or no
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "arsenalFan updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
