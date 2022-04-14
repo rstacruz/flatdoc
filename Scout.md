@@ -339,6 +339,49 @@ Get a scout given the docRef
   "versusCredits_holding": 0.0
 }
 ```
+## Get States
+
+Get list of states and the corresponding local government given the country_id
+
+> Endpoint: scout_get_states_lga
+
+> Payload
+
+```javascript
+{
+  "country_id": "160"
+}
+```
+
+> Result
+
+```json
+{
+  "status": true,
+    "message": "Successful",
+    "data": [
+        {
+            "id": 1,
+            "country_id": 160,
+            "name": "Abia",
+            "lga": [
+                "Aba North",
+                "Arochukwu",
+                "Aba South",
+                "Bende",
+                "Isiala Ngwa North",
+                "Ikwuano",
+                ]
+        }]
+
+}
+```
+
+**Errors**
+
+- 400 - Missing query parameter | Invalid param
+- 403 - Only POST requests are allowed
+- 500 - Unable to get States
 
 ## Create Scout Wallet
 
