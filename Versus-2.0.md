@@ -826,8 +826,11 @@ Add a new campaign
   "endAge": 65,
   "startAge": 16,
   "gender": ["female"],
-  "numberOfRespondents": 500
-}
+  "interest_id": 2,
+  "soccer_fan": true,
+  "sports_fan": true,
+  "favorite_team_id": 3,
+  }
 ```
 
 > Response
@@ -975,6 +978,11 @@ Update a campaign
   "endAge": 29,
   "country": 160,
   "stateOrRegion": 20,
+  "startDate": "2021/07/23",
+  "interest_id": 2,
+  "soccer_fan": true,
+  "sports_fan": true,
+  "favorite_team_id": 3,
 }
 ```
 
@@ -1034,6 +1042,43 @@ Update client data
 - 401 - Team member does not have edit capability || Error authenticating user
 - 402 - Insufficient versus credit balance
 - 403 - Missing required parameters
+- 404 - Team not found || Client does not exist
+- 500 - Backend service error
+
+## Edit Client Admin
+
+Update client data for admin
+
+> Endpoint: versus_v2_edit_client_admin
+
+> Payload
+
+```json
+{
+  "email": "xavier@stan.dev",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "clientData": {
+        "twitterHandles": "@johndoe",
+        "otherBrandNames": "enterfive",
+        ...
+        ...
+  }
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully updated client data"
+}
+```
+
+**Errors**
+- 400 - Missing required parameters || Error updating client data
+- 401 - Team member does not have edit capability || Error authenticating user
+- 403 - Only POST request is allowed
 - 404 - Team not found || Client does not exist
 - 500 - Backend service error
 
@@ -1325,6 +1370,44 @@ Get client data
 - 401 - User is not authorized to make this request || Error authenticating user
 - 404 - Client or Team does not exist
 - 500 - Backend service error
+
+## Get Clients
+
+Get clients data
+
+> Endpoint: versus_v2_get_clients
+
+> Payload
+
+```json
+{
+  "page": 1,
+  "size": 10,
+  "authstring": "13238bee-3ac9-4c77-b3b1"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained clients",
+  "totalPages": 1,
+  "totalClients": 10,
+  "pageSize": 10,
+  "currentPage": 1,
+  "clients": [],
+
+}
+```
+
+**Errors**
+
+- 400 - Missing required parameters
+- 401 - User is not authorized to make this request || Error authenticating user
+- 404 - No record found
+- 500 - Backend service error
+
 
 ## Get Subscription Status
 
@@ -1634,6 +1717,41 @@ Get social media and news mentions details for newsfeed
 - 400 - Missing required parameters
 - 401 - User is not authorized to make this request || Error authenticating user
 - 500 - Backend service error
+
+## Get Interests
+
+Obtain sources of news mentions
+
+> Endpoint: versus_v2_get_interests
+
+> Payload
+
+```json
+{
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "uid": "bfbbc055eeec778b",
+  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Successfully obtained interests data",
+  "interests": [{
+            "id": 1,
+            "name": "Agriculture"
+        },]
+}
+```
+
+**Errors**
+
+- 400 - Missing required parameters
+- 401 - User is not authorized to make this request || Error authenticating user
+- 500 - Backend service error || Oops! Something happened from our end
 
 ## Get News Mentions Sources
 
