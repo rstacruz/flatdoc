@@ -79,12 +79,17 @@ Add a scout - firstName, lastName and phoneNumber are required
 
 Get all campaigns on the system
 
-> Endpoint: scout_get_campaigns
+**Endpoint**
+scout_get_campaigns
+
+**Method**
+POST
 
 > Payload
 
 ```javascript
 {
+     "phoneNumber":"+2348134342570"
 }
 ```
 
@@ -93,6 +98,55 @@ Get all campaigns on the system
 ```javascript
 {
   "campaigns": [
+    {
+      "campaignName": "Biq Query",
+      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
+      "clientName": "The Enterprise",
+      "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+      "country": "NG",
+      "description": "Big query",
+      "education": null,
+      "endAge": 60,
+      "endDate": "2020-10-10 00:00:00",
+      "gender": null,
+      "maritalStatus": null,
+      "occupation": null,
+      "religion": null,
+      "startAge": 20,
+      "startDate": "2000-10-10 00:00:00",
+      "versusCreditsAccruing": 0
+    }
+  ]
+}
+```
+
+
+
+
+## Get All Campaigns
+
+Get all campaigns including Text and Media
+
+**Endpoint**
+scout_get_all_campaigns
+
+**Method**
+POST
+
+> Payload
+
+```javascript
+{
+     "phoneNumber":"+2348134342570"
+}
+```
+
+> Result
+
+```javascript
+{
+  "totalCampaigns": 12,
+  "all_campaigns": [
     {
       "campaignName": "Biq Query",
       "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
@@ -510,35 +564,6 @@ Convert scout credits to amount in local currency
   "currency":"NGN"
 }
 ```
-
-## Verify Account Number
-
-Verify that scout bank account number is correct and can recieve funds
-
-> Endpoint: scout_verify_account_number
-
-> Payload
-
-```javascript
-{
-  "authstring": "authentication string",
-  "accountNumber": "bank account number",
-  "bankCode": "bank code - returned from scout_getbanks",
-  "bankName": "name of bank - returned from scout_getbanks",
-  "phoneNumber": "scount phone number"
-}
-```
-
-> Result
-
-```javascript
-{
-  "message":"Sucessfully verified account number",
-  "accountNumber":"1234567890",
-  "accountName":"JOHN DOE"
-}
-```
-
 ## Verify Account Number
 
 Verify that scout bank account number is correct and can recieve funds
@@ -599,46 +624,27 @@ Cashout scout credits to local currency
 }
 ```
 
-## Get Image Requests
+## Get Favorite Teams
 
-Get a list of multimedia requests of mediaType _image_ a scout is eligible to send responses.
+Get list of favorite teams.
 
 **Endpoint**
-scout_get_image_requests
+scout_get_favorite_teams
 
 **Method**
-GET
+POST
 
 **Query params**
-
-| Field       | Type   | Description             |
-| ----------- | ------ | ----------------------- |
-| phoneNumber | string | Scout unique identifier |
-| authString  | string | Authentication string   |
 
 > Sample response
 
 ```json
 {
-  "message": "Successfully obtained image requests",
-   "requests":[
-      {
-        "clientRef": "12345",
-        "clientName": "The Enterprise",
-        "requestName": "Footage of the Lekki Protest",
-        "description": "Let’s get you started with a simple photo request.",
-        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-        "country": "NG",
-        "stateOrRegion": "Lagos",
-        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-        "endAge": 65,
-        "startAge": 16,
-        "gender": "female",
-        "numberOfRespondents": 500,
-        "mediaType": "image",
-        "status": "live",
-        "versusCreditsAccruing": 2
-      }
+   "data":[
+     {
+       "id": "",
+       "team: ""
+     }
     .
     .
     .
@@ -648,104 +654,11 @@ GET
 
 **Errors**
 
-- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 400 - Only POST requests are allowed | Missing query parameter | Invalid param
 - 401 - Invalid authstring
 - 403 - Scout is unverified | Scout is missing demographic field
 - 404 - Scout does not exist | There are no image requests
 - 500 - Error obtaining image requests
-
-## Get Audio Requests
-
-Get a list of multimedia requests of mediaType _audio_ a scout is eligible to send responses.
-
-**Endpoint**
-scout_get_audio_requests
-
-**Method**
-GET
-
-> Result
-
-```python
-{
-  "message": "Successfully obtained audio requests",
-   "requests":[
-      {
-        "clientRef": "12345",
-        "clientName": "The Enterprise",
-        "requestName": "Footage of the Lekki Protest",
-        "description": "Let’s get you started with a simple photo request.",
-        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-        "country": "NG",
-        "stateOrRegion": "Lagos",
-        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-        "endAge": 65,
-        "startAge": 16,
-        "gender": "female",
-        "numberOfRespondents": 500,
-        "mediaType": "audio",
-        "status": "live",
-        "versusCreditsAccruing": 2
-      }
-    .
-    .
-    .
-  ]
-}
-```
-
-**Errors**
-
-- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-- 401 - Invalid authstring
-- 403 - Scout is unverified | Scout is missing demographic field
-- 404 - Scout does not exist | There are no audio requests
-- 500 - Error obtaining audio requests
-
-## Get Video Requests
-
-Get a list of multimedia requests of mediaType _video_ a scout is eligible to send responses.
-
-**Endpoint**
-scout_get_video_requests
-
-> Result
-
-```python
-{
-  "message": "Successfully obtained video requests",
-   "requests":[
-      {
-        "clientRef": "12345",
-        "clientName": "The Enterprise",
-        "requestName": "Footage of the Lekki Protest",
-        "description": "Let’s get you started with a simple photo request.",
-        "requestRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
-        "country": "NG",
-        "stateOrRegion": "Lagos",
-        "created": "Thu Nov 12 2020 14:20:50 GMT+0100 (West Africa Standard Time)",
-        "endAge": 65,
-        "startAge": 16,
-        "gender": "female",
-        "numberOfRespondents": 500,
-        "mediaType": "audio",
-        "status": "live",
-        "versusCreditsAccruing": 2
-      }
-    .
-    .
-    .
-  ]
-}
-```
-
-**Errors**
-
-- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
-- 401 - Invalid authstring
-- 403 - Scout is unverified | Scout is missing demographic field
-- 404 - Scout does not exist | There are no video requests
-- 500 - Error obtaining video requests
 
 ## Get Multimedia Requests
 
@@ -755,7 +668,7 @@ Get a list of multimedia requests a scout is eligible to send responses.
 scout_get_multimedia_requests
 
 **Method**
-GET
+POST
 
 **Query params**
 
@@ -763,6 +676,8 @@ GET
 | ----------- | ------ | ----------------------- |
 | phoneNumber | string | Scout unique identifier |
 | authString  | string | Authentication string   |
+| mediaType   | string(optional) | audio, video, photo  |
+
 
 > Sample response
 
@@ -794,7 +709,7 @@ GET
 
 **Errors**
 
-- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 400 - Only POST requests are allowed | Missing query parameter | Invalid param
 - 401 - Invalid authstring
 - 403 - Scout is unverified | Scout is missing demographic field
 - 404 - Scout does not exist | There are no multimedia requests
@@ -852,7 +767,7 @@ Get completed request responses arranged from the most recent.
 scout_get_request_responses
 
 **Method**
-GET
+POST
 
 **Query params**
 
@@ -882,7 +797,7 @@ GET
 
 **Errors**
 
-- 400 - Only GET requests are allowed | Missing query parameter | Invalid param
+- 400 - Only POST requests are allowed | Missing query parameter | Invalid param
 - 401 - Invalid authstring
 - 500 - Error fetching request responses
 
@@ -1630,4 +1545,100 @@ Updates a scout's industry affiliation / interests.
 - 401 - Failed authentication. Authstring invalid or not found in request body
 - 403 - Invalid request method (Only POST requests are allowed)
 - 404 - Scout does not exist || Interests not found
+- 500 - Server error
+
+## Update Sports Fan
+
+Updates a scout's sports fan field.
+
+> Endpoint: scout_update_sports_fan
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "sportsFan": "yes", // yes or no
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "sportsFan updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Soccer Fan
+
+Updates a scout's soccer fan field.
+
+> Endpoint: scout_update_soccer_fan
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "soccerFan": "yes", // yes or no
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "soccerFan updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
+- 500 - Server error
+
+## Update Favorite Team
+
+Updates a scout's favorite team.
+
+> Endpoint: scout_update_favorite_team
+
+> Payload (All parameters are required)
+
+```json
+{
+  "scoutRef": "+2347034969842",
+  "favorite_team_id": 34, // favorite team id
+  "authtoken": "55ad4986-b519-4e44-ab0b-890527299af6"
+}
+```
+
+> Response
+
+```json
+{
+  "message": "Favorite team updated"
+}
+```
+
+> Errors
+
+- 400 - Missing required parameters || Invalid parameters' values
+- 401 - Failed authentication. Authstring invalid or not found in request body
+- 403 - Invalid request method (Only POST requests are allowed)
+- 404 - Scout does not exist
 - 500 - Server error

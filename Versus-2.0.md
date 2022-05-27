@@ -825,8 +825,7 @@ Add a new campaign
   "stateOrRegion": 6, // state or region id
   "endAge": 65,
   "startAge": 16,
-  "gender": "female",
-  "numberOfRespondents": 500,
+  "gender": ["female"],
   "interest_id": 2,
   "soccer_fan": true,
   "sports_fan": true,
@@ -974,7 +973,7 @@ Update a campaign
   "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
   "campaignName": "Demographics Survey",
   "description": "Let’s get you started with a simple demographics survey!",
-  "gender": "male",
+  "gender": ["male"],
   "startAge": 20,
   "endAge": 29,
   "country": 160,
@@ -984,7 +983,6 @@ Update a campaign
   "soccer_fan": true,
   "sports_fan": true,
   "favorite_team_id": 3,
-  "
 }
 ```
 
@@ -2013,8 +2011,8 @@ Change Client search terms.
         "otherBrandNames": "e5, versus
         ",
         "twitterHandles": "@vwedesam",
-        "countriesToTrack": [ 2, 4, 6],
-        "languagesToTrack": [ "EN" , "FR" ]
+        "countriesToTrack": [{ "Code": "AX", "Name": "Aland Islands" }],
+        "languagesToTrack": [{ "Code": "EN", "Name": "EN" }]
     },
     "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
     "idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjMwMjUxYWIxYTJmYzFkMzllNDMwMWNhYjc1OTZkNDQ5ZDgwNDI1ZjYiLCJ0eXAiOiJKV1QifQ."
@@ -2279,7 +2277,7 @@ Get a count of total responses for a client
 ```json
 {
   "message": "Successfully obtained total responses",
-  "totalQuestions": 320
+  "totalResponses": 320
 }
 ```
 
@@ -3351,7 +3349,7 @@ versus_v2_approve_request_response
   "response": {
     "scoutRef": "",
     "responseRef": "",
-    "mediaType": ""
+    "mediaType": "" // text, video, audio
   }
 }
 ```
