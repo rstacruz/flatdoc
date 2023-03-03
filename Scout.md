@@ -120,9 +120,6 @@ POST
 }
 ```
 
-
-
-
 ## Get All Campaigns
 
 Get all campaigns including Text and Media
@@ -321,6 +318,142 @@ Get the responses associated with a question.
 }
 ```
 
+## Get One Scout
+
+Get a scout given the phone number
+
+> Endpoint: scout_get_one_scout
+
+> Payload
+
+```javascript
+{
+  "phone": "+2348066109631"
+}
+```
+
+> Result
+
+```json
+{
+  "scoutRef": "+2348066109631",
+  "dob": "1990-10-31T00:00:00.000Z",
+  "anyChildUnder18": false,
+  "childrenInHouseHold": "below_3",
+  "gender": "female",
+  "householdMonthlyIncome": "above_1000_USD",
+  "peopleInHousehold": "3_to_5",
+  "personalMonthlyIncome": "above_1000_USD",
+  "tribe": "Yoruba",
+  "deviceRegistrationToken": null,
+  "deviceRegistrationTokenRef": null,
+  "accountName": null,
+  "accountNumber": "",
+  "bankCode": "",
+  "bankName": "",
+  "blacklistContext": null,
+  "blacklisted_on": null,
+  "blacklistReason": null,
+  "blacklisted": null,
+  "bvn": "",
+  "emailAddress": null,
+  "firstName": "queen",
+  "lastName": "busola",
+  "income": null,
+  "phoneNumber": "+2348066109631",
+  "recipientCode": null,
+  "twoFA": false,
+  "verified": false,
+  "source": "",
+  "requiresBankUpdate": false,
+  "occupation": "",
+  "lga_id": 689,
+  "language": "English",
+  "versusCredits_amount": 0,
+  "versusCredits_canCashOut": false,
+  "versusCredits_holding": 0,
+  "country": "NG",
+  "education": "Bachelor's degree",
+  "employment": "Fully employed",
+  "maritalStatus": "No",
+  "scoutPartnerRef": null,
+  "state": "Ondo",
+  "localGovernmentArea": "Akure South",
+  "age": 32,
+  "completedCampaigns": []
+}
+```
+
+## Search Scouts
+
+Search a scout given the phone number from list of scouts
+
+> Endpoint: scout_search_scouts
+
+> Payload
+
+```javascript
+{
+  "phone": "+2348066109631"
+}
+```
+
+> Result
+
+```json
+{
+  "scoutRef": "+2348066109631",
+  "dob": "1990-10-31T00:00:00.000Z",
+  "gender": "female",
+  "personalMonthlyIncome": "above_1000_USD",
+  "householdMonthlyIncome": "above_1000_USD",
+  "peopleInHousehold": "3_to_5",
+  "childrenInHousehold": "below_3",
+  "anyChildUnder18": false,
+  "deviceRegistrationToken": null,
+  "deviceRegistrationTokenRef": null,
+  "accountName": null,
+  "accountNumber": "",
+  "bankCode": "",
+  "bankName": "",
+  "blacklistContext": null,
+  "blacklisted_on": null,
+  "blacklistReason": null,
+  "blacklisted": null,
+  "bvn": "",
+  "emailAddress": null,
+  "firstName": "queen",
+  "lastName": "busola",
+  "income": null,
+  "phoneNumber": "+2348066109631",
+  "recipientCode": null,
+  "twoFA": false,
+  "verified": false,
+  "source": "",
+  "requiresBankUpdate": false,
+  "occupation": "",
+  "localGovernmentArea": "Akure South",
+  "language": "English",
+  "versusCredits_amount": 0,
+  "versusCredits_canCashOut": false,
+  "versusCredits_holding": 0,
+  "state_id": 28,
+  "country_id": 160,
+  "religion_id": 4,
+  "education": 14,
+  "marital_status_id": 3,
+  "employment": 2,
+  "maritalStatus": "No",
+  "religion": "Christian Orthodox",
+  "employmentStatus": "Fully employed",
+  "tribe": "Yoruba",
+  "education_level": "Bachelor's degree",
+  "scoutPartnerRef": null,
+  "state_name": "Ondo",
+  "completedCampaigns": []
+}
+```
+
 ## Get Scout
 
 Get a scout given the docRef
@@ -372,6 +505,7 @@ Get a scout given the docRef
   "industryAffiliations": ["Engineering", "Oil & Gas", "Technology (Software)"],
   "language": "English",
   "lastName": "Emi",
+  "lga_id": 634,
   "localGovernmentArea": "Eti-Osa",
   "maritalStatus": "Married or domestic partnership",
   "occupation": "",
@@ -393,6 +527,7 @@ Get a scout given the docRef
   "versusCredits_holding": 0.0
 }
 ```
+
 ## Get States
 
 Get list of states and the corresponding local government given the country_id
@@ -412,22 +547,22 @@ Get list of states and the corresponding local government given the country_id
 ```json
 {
   "status": true,
-    "message": "Successful",
-    "data": [
-        {
-            "id": 1,
-            "country_id": 160,
-            "name": "Abia",
-            "lga": [
-                "Aba North",
-                "Arochukwu",
-                "Aba South",
-                "Bende",
-                "Isiala Ngwa North",
-                "Ikwuano",
-                ]
-        }]
-
+  "message": "Successful",
+  "data": [
+    {
+      "id": 1,
+      "country_id": 160,
+      "name": "Abia",
+      "lga": [
+        "Aba North",
+        "Arochukwu",
+        "Aba South",
+        "Bende",
+        "Isiala Ngwa North",
+        "Ikwuano"
+      ]
+    }
+  ]
 }
 ```
 
@@ -564,6 +699,7 @@ Convert scout credits to amount in local currency
   "currency":"NGN"
 }
 ```
+
 ## Verify Account Number
 
 Verify that scout bank account number is correct and can recieve funds
@@ -672,12 +808,11 @@ POST
 
 **Query params**
 
-| Field       | Type   | Description             |
-| ----------- | ------ | ----------------------- |
-| phoneNumber | string | Scout unique identifier |
-| authString  | string | Authentication string   |
-| mediaType   | string(optional) | audio, video, photo  |
-
+| Field       | Type             | Description             |
+| ----------- | ---------------- | ----------------------- |
+| phoneNumber | string           | Scout unique identifier |
+| authString  | string           | Authentication string   |
+| mediaType   | string(optional) | audio, video, photo     |
 
 > Sample response
 
