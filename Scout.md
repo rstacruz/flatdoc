@@ -75,6 +75,37 @@ Add a scout - firstName, lastName and phoneNumber are required
 }
 ```
 
+## Validate new Signup
+
+Validate scouts data b4 creating account for them.
+
+> Endpoint: scout_validate_new_signup
+
+> Payload
+
+```javascript
+{
+  "authstring": "authentication string",
+  "accountNumber": "bank account number",
+  "bankCode": "bank code - returned from scout_getbanks",
+  "phoneNumber": "scount phone number",
+  "firstName": "OGHENEVWEDE",
+  "lastName": "SAMUEL"
+}
+```
+
+> Result
+
+```javascript
+{
+  "message":"Sucessfully validated signup data",
+  "account": {
+    "account_number":"1234567890",
+    "account_name":"SAMUEL OGHENEVWEDE"
+  }
+}
+```
+
 ## Get Campaigns
 
 Get all campaigns on the system
