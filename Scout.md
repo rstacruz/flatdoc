@@ -276,39 +276,50 @@ Get the questions associated with a campaign.
   "message": "Successfully obtained questions",
   "questions": [
     {
-      "questionRef": "9d2eb846-41f9-4745-af85-6d0a9951ecdc",
-      "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81",
+      "questionRef": "073c36b7-0bdb-46a2-9c55-114b4a65e741",
+      "campaignRef": "48afd59b-c367-4d60-a695-76984fb65be8",
+      "question": "Which snack do you like best?",
+      "response_type": "multiplechoice",
+      "response_units": "single_select",
+      "response_lower_range": null,
+      "response_upper_range": null,
+      "sequence": null,
+      "campaignName": "Lawyers Survey",
+      "clientsName": "",
+      "campaignDescription": "Lawyers",
       "clientRef": "nqaXKB0SzWN6xh7RVyzl",
-      "campaignName": "Demographics Survey",
-      "clientName": "The Enterprise",
-      "question": "What is your highest education level?",
       "options": {
-        "range": [],
         "options_list": [
-          "No schooling completed",
-          "Nursery school to 8th grade",
-          "Some high school no diploma",
-          "High school graduate diploma or the equivalent (for example: GED)",
-          "Some college credit no degree",
-          "Trade/technical/vocational training",
-          "Associate degree",
-          "Bachelors degree",
-          "Masters degree",
-          "Professional degree",
-          "Doctorate degree"
+          {
+            "id": 2627,
+            "option": "Peanuts",
+            "option_type": "specified"
+          },
+          {
+            "id": 2623,
+            "option": "Biscuits",
+            "option_type": "specified"
+          },
+          {
+            "id": 2624,
+            "option": "Chocolate",
+            "option_type": "specified"
+          },
+          {
+            "id": 2625,
+            "option": "Groundnuts",
+            "option_type": "specified"
+          },
+          {
+            "id": 2626,
+            "option": "Other",
+            "option_type": "unspecified"
+          }
         ],
+        "range": [null, null],
         "unit": "single_select",
         "type": "multiplechoice"
-      },
-      "sequence": null,
-      "optionsListNG": [],
-      "optionsListGH": [],
-      "optionsListKE": [],
-      "optionsUnitNG": null,
-      "optionsUnitGH": null,
-      "optionsUnitKE": null,
-      "optionsUnitTZ": null,
-      "optionsListTZ": []
+      }
     }
   ]
 }

@@ -931,12 +931,17 @@ Add a new campaign question
 
 ```json
 {
-  "uid": "bfbbc055eeec778b",
-  "idToken": "13238bee-3ac9-4c77-b3b1-c7c53f113d5a.13238bee-3ac9-4c77-b3b1-c7c53f113d5a",
+  "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4ODI0YTI2ZjFlY2Q1NjEyN2U4OWY1YzkwYTg4MDYxMTJhYmU5OWMiLCJ0eXAiOiJKV1Q",
   "question": "Which snack do you like best?",
   "optionsType": "multiplechoice",
-  "optionsList": ["Biscuits", "Chocolate", "Groundnuts"],
-  "campaignRef": "a0ad177c-a6d0-44a4-8662-7f2851093b81"
+  "optionsList": [
+    { "option": "Biscuits", "option_type": "specified" },
+    { "option": "Chocolate", "option_type": "specified" },
+    { "option": "Groundnuts", "option_type": "specified" },
+    { "option": "Others", "option_type": "unspecified" }
+  ],
+  "campaignRef": "48afd59b-c367-4d60-a695-76984fb65be8"
 }
 ```
 
@@ -3437,16 +3442,21 @@ versus_v2_approve_request_response
 
 ```json
 {
-  "clientRef": "05404180-ac57-4728-a558-4270395678b5",
-  "campaignRef": "d010c0dd-1ade-4ab5-9c5c-938e17832a62",
-  "questionRef": "49cd9ed7-5604-441d-857e-4bba267a60e6",
   "uid": "dK8IJ5G9Z1PfH8Enclct5lu0vIk1",
-  "question": "Glory to God in the high high_est ...",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4ODI0YTI2ZjFlY2Q1NjEyN2U4OWY1YzkwYTg4MDYxMTJhYmU5OWMiLCJ0eXAiOiJKV1Qi",
+  "question": "Which snack do you like best?",
   "optionsType": "multiplechoice",
-  "optionsRange": [],
-  "optionsList": ["yes", "yes12", "yes 333", "ddd"],
-  "sequence": 1,
-  "idToken": "eyJhbG..............."
+  "optionsList": [
+    { "option": "Biscuits", "option_type": "specified", "id": 2623 },
+    { "option": "Chocolate", "option_type": "specified", "id": 2624 },
+    { "option": "Groundnuts", "option_type": "specified", "id": 2625 },
+    { "option": "Peanuts", "option_type": "specified", "id": "new" },
+    { "option": "Other", "option_type": "unspecified", "id": 2626 }
+  ],
+  "campaignRef": "48afd59b-c367-4d60-a695-76984fb65be8",
+  "questionRef": "073c36b7-0bdb-46a2-9c55-114b4a65e741",
+  "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+  "optionsRange": []
 }
 ```
 
