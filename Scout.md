@@ -90,7 +90,8 @@ Validate scouts data b4 creating account for them.
   "bankCode": "bank code - returned from scout_getbanks",
   "phoneNumber": "scount phone number",
   "firstName": "OGHENEVWEDE",
-  "lastName": "SAMUEL"
+  "lastName": "SAMUEL",
+  "recipientCode": "re_wdwdw.[d.d]"
 }
 ```
 
