@@ -90,8 +90,7 @@ Validate scouts data b4 creating account for them.
   "bankCode": "bank code - returned from scout_getbanks",
   "phoneNumber": "scount phone number",
   "firstName": "OGHENEVWEDE",
-  "lastName": "SAMUEL",
-  "recipientCode": "re_wdwdw.[d.d]"
+  "lastName": "SAMUEL"
 }
 ```
 
@@ -102,7 +101,8 @@ Validate scouts data b4 creating account for them.
   "message":"Sucessfully validated signup data",
   "account": {
     "account_number":"1234567890",
-    "account_name":"SAMUEL OGHENEVWEDE"
+    "account_name":"SAMUEL OGHENEVWEDE",
+    "recipientCode": "re_wdwdw.[d.d]"
   }
 }
 ```
