@@ -15,7 +15,8 @@ Add a response to a question.
   "cRef": "",
   "qRef": "",
   "sRef": "",
-  "response": "",
+  "optionRef": 2626,
+  "response": [{"option": "Small Chops", "option_type": "specified","id": 2626}],
   "clientRef": ""
 }
 ```
@@ -28,6 +29,7 @@ Add a response to a question.
     "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
     "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
     "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
+    "optionRef": "optionRef",
     "response": "response",
     "clientRef": "clientRef"
   }
@@ -335,13 +337,14 @@ Get the questions associated with a campaign.
 
 Get the responses associated with a question.
 
-> Endpoint: scout_get_questions
+> Endpoint: scout_get_responses
 
 > Payload
 
 ```javascript
 {
-  "docRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9"
+  "cRef": "48afd59b-c367-4d60-a695-76984fb65be8",
+  "qRef": "073c36b7-0bdb-46a2-9c55-114b4a65e741"
 }
 ```
 
@@ -349,15 +352,17 @@ Get the responses associated with a question.
 
 ```javascript
 {
-  "questions": [
-    {
-      "campaignRef": "0b3cf5bd-bea9-429b-b374-8f65e5473ed9",
-      "questionRef": "c30e78b6-ff88-49a5-91e9-bb7fb46f1455"
-      "scoutRef": "ea7ca901-9217-4a04-9af4-3c6c21ccc3a2",
-      "response": "response",
-      "clientRef": "clientRef"
-    }
-  ]
+  "responses": [
+        {
+            "campaignRef": "48afd59b-c367-4d60-a695-76984fb65be8",
+            "clientRef": "nqaXKB0SzWN6xh7RVyzl",
+            "scoutRef": "+23480661xxxxx",
+            "questionRef": "073c36b7-0bdb-46a2-9c55-114b4a65e741",
+            "optionRef": 2626,
+            "response": "Small Chops",
+            "created_at": "2021-11-01 08:40:33.559000"
+        }
+    ]
 }
 ```
 
