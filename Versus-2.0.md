@@ -2506,7 +2506,10 @@ Get Survey options data
   "personsInHousehold": ["3_to_5"],
   "householdEarningsMonthly": ["100_to_500_USD"],
   "personalEarningsMonthly": ["100_to_500_USD"],
-  "childrenUnder18": ["yes"]
+  "childrenUnder18": ["yes"],
+  "states": ["Delta"],
+  "targetQuestionRefToFilterBy": "6cd0ba7a-31dd-492a-acb6-05b93cdd6a10", //Optional
+  "targetResponseOptionToFilterBy": "I don't know" //Optional
 }
 ```
 
@@ -2551,7 +2554,10 @@ Get Total Filtered Survey Respondents
   "personsInHousehold": ["3_to_5"],
   "householdEarningsMonthly": ["100_to_500_USD"],
   "personalEarningsMonthly": ["100_to_500_USD"],
-  "childrenUnder18": ["yes"]
+  "childrenUnder18": ["yes"],
+  "states": ["Delta"],
+  "targetQuestionRefToFilterBy": "6cd0ba7a-31dd-492a-acb6-05b93cdd6a10",
+  "targetResponseOptionToFilterBy": "No"
 }
 ```
 
