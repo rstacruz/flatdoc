@@ -77,6 +77,49 @@ Add a scout - firstName, lastName and phoneNumber are required
 }
 ```
 
+## Update Scout
+
+Update a scout - authtoken, firstName, lastName and phoneNumber are required.
+if accountNumber is provided then bankCode woud be required.
+
+**Endpoint**: scout_update_scout
+
+**Method**: POST
+
+**Payload**
+
+```json
+{
+  "authtoken": "7a9w8w7w-hdgee-4e8g-ab0b",
+  "firstName": "James",
+  "lastName": "Austin",
+  "phoneNumber": "+2347023004000",
+  "bankName": "Prudential",
+  "bankCode": "002",
+  "accountNumber": "1656767655",
+  "bvn": "bvn",
+  "emailAddress": "a@test.com",
+  "dob": "2017-12-31",
+  "gender": "Female",
+  "education": "education",
+  "maritalStatus": "maritalStatus",
+  "religion": "religion",
+  "occupation": "occupation",
+  "country": "country",
+  "state": 24,
+  "localGovernmentArea": 803,
+  "language": "English"
+}
+```
+
+> Result
+
+```json
+{
+  "text": "Successfully updated the scout details to DB"
+}
+```
+
 ## Validate new Signup
 
 Validate scouts data b4 creating account for them.
