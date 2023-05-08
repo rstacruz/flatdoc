@@ -100,7 +100,7 @@ if accountNumber is provided then bankCode woud be required.
   "bvn": "bvn",
   "emailAddress": "a@test.com",
   "dob": "2017-12-31",
-  "gender": "Female",
+  "gender": "female",
   "education": "education",
   "maritalStatus": "maritalStatus",
   "religion": "religion",
