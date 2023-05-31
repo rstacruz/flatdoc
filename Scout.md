@@ -338,27 +338,47 @@ Get the questions associated with a campaign.
           {
             "id": 2627,
             "option": "Peanuts",
-            "option_type": "specified"
+            "option_type": "specified",
+            "skip_logic": {
+              "action_type": "JUMP",
+              "jump_questionRef": "8f80e145-eb1b-4c5e-92a4-60a8523ebb0f"
+            }
           },
           {
             "id": 2623,
             "option": "Biscuits",
-            "option_type": "specified"
+            "option_type": "specified",
+            "skip_logic": {
+              "action_type": "END_SURVEY",
+              "jump_questionRef": null
+            }
           },
           {
             "id": 2624,
             "option": "Chocolate",
-            "option_type": "specified"
+            "option_type": "specified",
+            "skip_logic": {
+              "action_type": "NONE",
+              "jump_questionRef": null
+            }
           },
           {
             "id": 2625,
             "option": "Groundnuts",
-            "option_type": "specified"
+            "option_type": "specified",
+            "skip_logic": {
+              "action_type": "JUMP",
+              "jump_questionRef": "9f80e145-eb1b-4c5e-92a4-60a8523ebb0j"
+            }
           },
           {
             "id": 2626,
             "option": "Other",
-            "option_type": "unspecified"
+            "option_type": "unspecified",
+            "skip_logic": {
+              "action_type": null,
+              "jump_questionRef": null
+            }
           }
         ],
         "range": [null, null],
@@ -369,6 +389,13 @@ Get the questions associated with a campaign.
   ]
 }
 ```
+
+**SKIP LOGIC EXPLANATION**
+
+- The skip logic `action_type` value can be `JUMP`, `END_SURVEY`, or `NONE`.
+- If the `skip_logic[action_type]` of a question's option is `NONE` or `null`, skip logic does not apply. This is the default implementation.
+- If the `skip_logic[action_type]` of a question's option is `JUMP` and the option is selected, _JUMP_ to the question whose questionRef is the same as the `skip_logic[jump_questionRef]`.
+- If the `skip_logic[action_type]` of a question's option is `END_SURVEY` and the option is selected, end the campaign.
 
 **Errors**
 

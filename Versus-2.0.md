@@ -1265,7 +1265,17 @@ Get campaign data
       "response_upper_range": null,
       "sequence": 1,
       "options": {
-        "options_list": [{ "id": 234, "option": "always happy" }],
+        "options_list": [
+          {
+            "id": 234,
+            "option": "always happy",
+            "option_type": "specified",
+            "skip_logic": {
+              "action_type": "JUMP",
+              "jump_questionRef": "18f7af41-2774-4f7t-a33d-ba3e00b72725"
+            }
+          }
+        ],
         "type": "nps"
       }
     }
